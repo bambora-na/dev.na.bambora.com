@@ -11,6 +11,9 @@ navigation:
     header_active: guides
 ---
 
+# Test This
+Test this functionality
+
 # Configure the form
 After the user clicks on the link or button on your site, they are redirected to the Bambora Checkout Form.
 
