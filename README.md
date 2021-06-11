@@ -6,13 +6,13 @@
   - [Contents](#contents)
   - [Build the site](#build-the-site)
     - [Docker](#docker)
-      - [Build](#build)
-      - [Run](#run)
+      - [Build The Image](#build-the-image)
+      - [Run In Docker](#run-in-docker)
       - [Test Local](#test-local)
       - [Build Static Site Locally](#build-static-site-locally)
     - [Bundler](#bundler)
-      - [Build](#build-1)
-      - [Run](#run-1)
+      - [Build The Content](#build-the-content)
+      - [Run The Web Server](#run-the-web-server)
   - [Branching, merging and deploying](#branching-merging-and-deploying)
   - [Editing the docs](#editing-the-docs)
     - [Ways to make changes](#ways-to-make-changes)
@@ -52,13 +52,13 @@
 The simplest way to get set up is to use the included Dockerfile (must install
 [docker](https://www.docker.com) first).
 
-#### Build
+#### Build The Image
 
 ```shell
 make build
 ```
 
-#### Run
+#### Run In Docker
 
 ```shell
 make run
@@ -103,13 +103,13 @@ Alternatively, you can build and run the site locally. You're going to need:
 
     ```gem install bundler```
 
-#### Build
+#### Build The Content
 
 ```shell
 bundle install
 ```
 
-#### Run
+#### Run The Web Server
 
 To start the preview web server:
 
@@ -248,7 +248,7 @@ If a `title` value in the table of contents config matches a page's frontmatter 
 
 ### Markdown
 
-After the frontmatter configuration, the actual content of pages is defined (for the most part) in markdown. See (here)[http://commonmark.org/help/] for a good overview of the capabilities of markdown.
+After the frontmatter configuration, the actual content of pages is defined (for the most part) in markdown. See [here](http://commonmark.org/help/) for a good overview of the capabilities of markdown.
 
 The markdown parser ([Redcarpet](https://github.com/vmg/redcarpet)) supports tables formatted like so:
 
@@ -380,7 +380,7 @@ language_tabs: # declare as many languages as you wish to support.
 
 #### Swagger layout
 
-The swagger layout is used to render a (Swagger)[http://swagger.io/specification/] file. It has additional frontmatter configuration to set the swagger file used.
+The swagger layout is used to render a [Swagger](http://swagger.io/specification/) file. It has additional frontmatter configuration to set the swagger file used.
 
 As well, you can optionally passed a list of 'ignored_paths' to skip them when building the output:
 
@@ -397,6 +397,7 @@ ignored_paths: # optional
 ```
 
 Or if you want to hide an entire tag that is also possible with 'ignored_tags':
+
 ```yaml
 ---
 
