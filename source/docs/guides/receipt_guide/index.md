@@ -81,8 +81,7 @@ The table below defines the fields the optional receipt fields. Although not req
 
 ## Standard Receipt Template 
 The template below represents the standard receipt for all transactions, with all possible fields allocated to their desired position on the receipt. 
-
-<TODO> Add screenshots
+<img src="/docs/guides/receipt_guide/StandardReceiptTemplate.png" alt="StandardReceiptTemplate.png">
 
 # Receipt Field Breakdowns & Retrieval
 
@@ -112,7 +111,37 @@ Make a payment using credit card, cash, check, profile, token, Apple Pay or Andr
 |     level2                	|     object     	|     Level 2 processing is for B2B customers. Additional information can   be provided, to the benefit of corporate/government/industrial customers,   that includes a customer code & tax amounts.                                                                                                          	|
 |     card_on_file          	|     object     	|     When processing a transaction where the credit card information is   stored on file, you must pass along an indicator showing the type of   credential-on-file transaction that is being processed.                                                                                                     	|
 
-<TODO> add Request screenshot
+Request
+```json
+Method:
+POST
+
+Header:
+Passcode:[Authorization: Passcode Base64Encoded(merchant_id:passcode)]
+
+Body:
+{ 
+   "PaymentRequest":[ 
+      { 
+        "order_number":{ 
+               "amount":{ 
+        "payment_method":{ 
+               "language":{ 
+        "customer_ip":{ 
+               "term_url":{ 
+        "comments":{ 
+               "billing":{ 
+        "shipping":{ 
+               "custom":{ 
+        "card":{ 
+               "payment_profile":{ 
+        "token":{ 
+               "recurring_payment":{ 
+        "level2":{ 
+               "card_on_file":{ 
+      }
+} 
+```
 
 ### Response
 If successful, you should receive a payment response with the HTTP code 200: success. The response definition is returned as outlined below:
@@ -135,7 +164,33 @@ If successful, you should receive a payment response with the HTTP code 200: suc
 |     links                                  	|     array      	|     Related links provided for the transaction.                                                                                                                                                            	|
 |     card_on_file                           	|     object     	|     When processing a transaction where the credit card information is   stored on file, you must pass along an indicator showing the type of   credential-on-file transaction that is being processed.    	|
 
-<TODO> add Response screenshot
+Response
+```json
+Result:
+HTTP 200: Success
+
+Body:
+{ 
+   "PaymentResponse":[ 
+      { 
+        "id":{ 
+               "authorizing_merchant_id":{ 
+        "approved":{ 
+               "message_id":{ 
+        "message":{ 
+               "auth_code":{ 
+        "created":{ 
+               "order_number":{ 
+        "type":{ 
+               "amount":{ 
+        "payment_method":{ 
+               "custom":{ 
+        "card":{ 
+               "links":{ 
+               "card_on_file":{ 
+      }
+} 
+```
 
 ## Glossary
 
