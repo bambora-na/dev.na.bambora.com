@@ -25,7 +25,7 @@ eCommerce application development vendors must incorporate certain receipt data 
 
 | Requirement                                                                                                                 	| eCommerce Cardholder copy 	| eCommerce Merchant copy 	| MO/TO Cardholder copy 	| MO/TO Merchant copy 	|
 |-----------------------------------------------------------------------------------------------------------------------------	|:-------------------------:	|:-----------------------:	|:---------------------:	|:-------------------:	|
-| TODO                                                                                                                        	|              X            	|             X           	|            X          	|           X         	|
+| Merchant DBA (card acceptor) name, most recognizable to consumers may be:<ul><li>DBA name as used on your website</li><li>Merchant URL or name used in clearing file</li></ul>                                                                                                                        	|              X            	|             X           	|            X          	|           X         	|
 |     Merchant DBA (card acceptor) location. Must match   location (city, state, province, country) sent in clearing file.    	|              X            	|             X           	|            X          	|           X         	|
 |     Merchant location code                                                                                                  	|              X            	|             X           	|            X          	|           X         	|
 |     Transaction amount                                                                                                      	|              X            	|             X           	|            X          	|           X         	|
@@ -46,7 +46,7 @@ eCommerce application development vendors must incorporate certain receipt data 
 |     Price of the   goods or services                                                                                        	|              X            	|             X           	|            X          	|           X         	|
 |     Customer   service contact information                                                                                  	|              X            	|                         	|            X          	|                     	|
 |     Merchant online address                                                                                                 	|              X            	|             X           	|            X          	|           X         	|
-| TODO                                                                                                                        	|                           	|                         	|            X          	|           X         	|
+| Merchant must write the following letters or words on the signature line of the transaction receipt:<ul><li>TO (Telephone order)</li><li>MO (Mail order)</li><li>Recurring transaction</li></ul>                                                                                                                        	|                           	|                         	|            X          	|           X         	|
 
 
 ### Retrieving required fields
