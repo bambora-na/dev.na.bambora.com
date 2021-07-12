@@ -14,11 +14,11 @@ navigation:
 # Receipt Integration Guide 
 
 # Introduction
-The following document is designed to provide an overview of the best practices for receipt generation for eCommerce and Mail Order/Telephone Order (MOTO) transactions. The intention is to ensure that there is clarity on the brand requirements, federal law requirements, and Global Payments’ recommended best practices.
+The following document is designed to provide an overview of the best practices for receipt generation for eCommerce and Mail Order/Telephone Order (MOTO) transactions. The intention is to ensure that there is clarity on the brand requirements, federal law requirements, and recommended best practices.
 
 ## Intended audience
 This guide is intended for internal staff and eCommerce or web application developers to provide the elements that need to be present on receipts for all markets.
-This guide does not provide all technical or business requirements for development and payment acceptance. Instead, this guide is a tool for developers that provides receipt requirements for eCommerce applications in the U.S. Marketplace.
+This guide does not provide all technical or business requirements for development and payment acceptance. Instead, this guide is a tool for developers that provides receipt requirements for eCommerce applications in North America Marketplace.
 
 ## Common Receipt Requirements
 eCommerce application development vendors must incorporate certain receipt data elements but may modify the layout to be consistent with their current receipt layout (unless otherwise noted in these requirements). See the table below for the required fields across the different receipt types.
@@ -50,8 +50,8 @@ eCommerce application development vendors must incorporate certain receipt data 
 
 
 ### Retrieving required fields
-For a transaction request example and how to retrieve these fields, please see <TODO> Section_2 Receipt Field Breakdowns & Retrieval.  
-Ensure you are properly authenticated with the Bambora service and create a payment transaction request using the REST API service. For more information on using the Bambora Payment API, see <TODO> the developer documentation.
+For a transaction request example and how to retrieve these fields, please see [Receipt Field Breakdowns and Retrieval](#receipt-field-breakdowns-and-retrieval).  
+Ensure you are properly authenticated with the Bambora service and create a payment transaction request using the REST API service. For more information on using the Bambora Payment API, see [the developer documentation](/docs/references/payment_APIs/v1-0-5).
 
 ## Conditionally required fields 
 The table below defines the fields that can be provided on a receipt under certain conditions
@@ -83,7 +83,7 @@ The table below defines the fields the optional receipt fields. Although not req
 The template below represents the standard receipt for all transactions, with all possible fields allocated to their desired position on the receipt. 
 <img src="/docs/guides/receipt_guide/StandardReceiptTemplate.png" alt="StandardReceiptTemplate.png">
 
-# Receipt Field Breakdowns & Retrieval
+# Receipt Field Breakdowns and Retrieval
 
 ## Credit Sale (Purchase)
 The Sale transaction, also sometimes referred to as Purchase transaction, is the most basic and most common transaction used for the purchase of goods or services. In a sale, the authorizing agent's system compares the cardholder's credit limit to the amount specified in the sale transaction. If the amount is available, the card issuer transmits an approval code. If the amount is not available, then a decline is received from the card issuer.  
