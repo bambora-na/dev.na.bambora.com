@@ -107,6 +107,12 @@ cards:
             Process payments with Visa Secure Remote Commerce (SRC).
         icon: creditcard-outline
         link: /docs/guides/visa_checkout
+    -
+        title: Receipt Integration Guide
+        description: >
+            An overview of the best practices for receipt generation for eCommerce and Mail Order/Telephone Order (MOTO) transactions.
+        icon: list
+        link: /docs/guides/receipt_guide
 ---
 
 # Guides
