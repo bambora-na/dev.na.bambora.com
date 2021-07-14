@@ -112,35 +112,40 @@ Make a payment using credit card, cash, check, profile, token, Apple Pay or Andr
 |     card_on_file          	|     object     	|     When processing a transaction where the credit card information is   stored on file, you must pass along an indicator showing the type of   credential-on-file transaction that is being processed.                                                                                                     	|
 
 Request
-```json
-Method:
-POST
-
-Header:
-Passcode:[Authorization: Passcode Base64Encoded(merchant_id:passcode)]
-
-Body:
-{ 
-   "PaymentRequest":[ 
-      { 
-        "order_number":{ 
-               "amount":{ 
-        "payment_method":{ 
-               "language":{ 
-        "customer_ip":{ 
-               "term_url":{ 
-        "comments":{ 
-               "billing":{ 
-        "shipping":{ 
-               "custom":{ 
-        "card":{ 
-               "payment_profile":{ 
-        "token":{ 
-               "recurring_payment":{ 
-        "level2":{ 
-               "card_on_file":{ 
-      }
-} 
+```javascript
+{
+    "order_number": "000011",
+    "amount": 5.01,
+    "payment_method": "card",
+    "card": {
+        "name": "Test User",
+        "number": "4030000010001234",
+        "expiry_month": "12",
+        "expiry_year": "25",
+        "cvd": 123
+    },
+    "shipping": {
+    	"name" : "Test User",
+		"address_line1" : "123 Victoria St",
+		"city" : "Victoria",
+		"province" : "BC",
+		"country" : "CA",
+		"postal_code" : "30329",
+		"phone_number" : "1-250-222-3333"
+    },
+     "billing": {
+    	"name" : "Test User",
+		"address_line1" : "123 Victoria St",
+		"city" : "Victoria",
+		"province" : "BC",
+		"country" : "CA",
+		"postal_code" : "30329",
+		"phone_number" : "1-250-222-3333"
+    },
+    "custom": {
+    	"ref1":"Test"
+    }
+}
 ```
 
 ### Response
@@ -165,31 +170,43 @@ If successful, you should receive a payment response with the HTTP code 200: suc
 |     card_on_file                           	|     object     	|     When processing a transaction where the credit card information is   stored on file, you must pass along an indicator showing the type of   credential-on-file transaction that is being processed.    	|
 
 Response
-```json
-Result:
-HTTP 200: Success
 
-Body:
-{ 
-   "PaymentResponse":[ 
-      { 
-        "id":{ 
-               "authorizing_merchant_id":{ 
-        "approved":{ 
-               "message_id":{ 
-        "message":{ 
-               "auth_code":{ 
-        "created":{ 
-               "order_number":{ 
-        "type":{ 
-               "amount":{ 
-        "payment_method":{ 
-               "custom":{ 
-        "card":{ 
-               "links":{ 
-               "card_on_file":{ 
-      }
-} 
+```javascript
+{
+    "id": "10001756",
+    "authorizing_merchant_id": 353880000,
+    "approved": "1",
+    "message_id": "1",
+    "message": "Approved",
+    "auth_code": "TEST",
+    "created": "2021-07-07T10:18:34",
+    "order_number": "OrderNumberExample1234",
+    "type": "P",
+    "payment_method": "CC",
+    "risk_score": 0.1,
+    "amount": 99.99,
+    "custom": {
+        "ref1": "",
+        "ref2": "",
+        "ref3": "",
+        "ref4": "",
+        "ref5": ""
+    },
+    "card": {
+        "card_type": "VI",
+        "last_four": "1234",
+        "address_match": 0,
+        "postal_result": 0,
+        "avs_result": "0",
+        "cvd_result": "5",
+        "eci": 7,
+        "avs": {
+            "id": "U",
+            "message": "Address information is unavailable.",
+            "processed": false
+        }
+    }
+}
 ```
 
 ## Glossary
