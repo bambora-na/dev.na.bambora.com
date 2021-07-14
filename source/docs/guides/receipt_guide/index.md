@@ -112,6 +112,8 @@ Make a payment using credit card, cash, check, profile, token, Apple Pay or Andr
 |     card_on_file          	|     object     	|     When processing a transaction where the credit card information is   stored on file, you must pass along an indicator showing the type of   credential-on-file transaction that is being processed.                                                                                                     	|
 
 Request
+
+
 ```javascript
 {
     "order_number": "000011",
