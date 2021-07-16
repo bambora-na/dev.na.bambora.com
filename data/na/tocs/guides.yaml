@@ -30,3 +30,5 @@
   title: 'SSL'
 - file: '/docs/guides/visa_checkout'
   title: 'Visa Secure Remote Commerce'
+- file: '/docs/guides/receipt_guide'
+  title: 'Receipt Integration Guide'
