@@ -39,7 +39,7 @@ integration, the VbV, SecureCode, and SafeKey process requires two transaction r
 
 **Step 1:** Submit a payment request and process the first result.
 
-The merchant’s processing script forwards the transaction details to our REST API. The request includes a special 
+The merchant's processing script forwards the transaction details to our REST API. The request includes a special 
 'term_url' variable. This term_url variable allows the merchant to specify the URL where the bank VbV or SC, or SafeKey 
 response is returned, after the customer enters their PIN and it is verified on the bank portal.
 
@@ -64,12 +64,12 @@ curl https://api.na.bambora.com/v1/payments \
             "acceptHeader": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3",
             "javaEnabled": "false",
             "language": "en-US",
-            "colorDepth": "24bits",
+            "colorDepth": "24",
             "screenHeight": 1080,
             "screenWidth": 1920,
             "timeZone": -120,
             "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36",
-            "JavascriptEnabled": true,
+            "javascriptEnabled": true,
          },
          "enabled": true,
          "version": 2,
@@ -94,11 +94,11 @@ Response (HTTP status code 302 redirect)
 
 In the 302 response above, the 'merchant_data' attribute value should be saved in the current users session.
 
-The merchant’s process URL decodes the response redirect and displays the information in the customer’s web browser. 
+The merchantâ€™s process URL decodes the response redirect and displays the information in the customerâ€™s web browser. 
 This forwards the client to the VbV or SC, or SafeKey banking portal. On the bank portal, the customer enters their 
 secure credit card pin number in the fields provided on the standard banking interface.
 
-The bank forwards a response to the merchant’s TERM URL including the following variables:
+The bank forwards a response to the merchantâ€™s TERM URL including the following variables:
 - PaRes (Authentication Code)
 - MD (Unique Payment ID)
 
@@ -198,7 +198,7 @@ system variables:
 | Attribute | Description |
 | --- | --- |
 | xid | Include the 3D Secure transaction identifier (up to 20-digits). |
-| eci | SecureECI is a 1-digit status code: 5 – authenticated; 6 – attempted, not completed. |
+| eci | SecureECI is a 1-digit status code: 5 â€“ authenticated; 6 â€“ attempted, not completed. |
 | cavv | Include the 40-character Cardholder Authentication Verification Value. |
 
 ```shell
@@ -285,13 +285,13 @@ and in the case of an failure, an error code.  The naming of the parameters in t
            - screenWidth, numeric (0 to 9999999), required
            - timeZone, numeric (-840 to 720), required
            - userAgent, string (1-2048), required
-           - JavascriptEnabled, optional Boolean true/false, default true.
+           - javascriptEnabled, optional Boolean true/false, default true.
       - Additional 3DSecure parameters
            - version, Optional and will default to what is configured in the merchants account
            - authRequired (If set to true the transaction will not continue processing unless 3DS authentication is successful)
 
    - Payment API response:
-      - The response will no longer return an �eci code� to indicate if 3DS was successful or failed.  Instead the following parameters will be returned
+      - The response will no longer return an ‘eci code’ to indicate if 3DS was successful or failed.  Instead the following parameters will be returned
            - status_id, set to one of the following values, set to a value of 1-4.
            - status, set to the text description associated to the status_id
                 1 = Authenticated
@@ -305,9 +305,9 @@ and in the case of an failure, an error code.  The naming of the parameters in t
                 3 = Internal error
       - Challenge Redirection:
         In the case of a challenge flow the parameter names returned in the response will be changing:
-           - �md� will instead be named �threeDSSessionData�
-           - �pa_res� will instead be named �cres�
+           - ‘md’ will instead be named ‘threeDSSessionData’
+           - ‘pa_res’ will instead be named ‘cres’
     - Payment API Auth Request
       In the call to the Payment API Auth Request Continue method we will need:
-           - Place the value of �threeDSSessionData� in the URI rather than the value of �md�
-           - Pass a value of �cres� in the body rather than parameter �pa_res�.
+           - Place the value of ‘threeDSSessionData’ in the URI rather than the value of ‘md’
+           - Pass a value of ‘cres’ in the body rather than parameter ‘pa_res’.
