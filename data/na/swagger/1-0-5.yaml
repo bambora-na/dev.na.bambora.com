@@ -2041,14 +2041,14 @@ definitions:
     description: |
       Data collected about the cardholders browser, required for 3DS 2.0 transactions, optional for others.
     required:
-      - acceptHeader
-      - javaEnabled
+      - accept_header
+      - java_enabled
       - language
-      - screenHeight
-      - screenWidth
-      - timeZone
-      - userAgent
-      - javascriptEnabled
+      - screen_height
+      - screen_width
+      - time_zone
+      - user_agent
+      - javascript_enabled
     properties:
       accept_header:
         type: string
