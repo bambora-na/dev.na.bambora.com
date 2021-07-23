@@ -2007,7 +2007,7 @@ definitions:
     properties:
       pa_res:
         type: string
-        description: 'For a 3D Secure payment process this stores the Authentication Code (PaRes).  NOTE: No longer used, this field is renamed to cres'.
+        description: 'For a 3D Secure payment process this stores the Authentication Code (PaRes).  NOTE: Only used for 3DS 1, use cres for 3DS 2'.
       cres:
         type: string
         description: 'For a 3D Secure payment process this stores the Authentication Code.'
@@ -2041,19 +2041,19 @@ definitions:
     description: |
       Data collected about the cardholders browser, required for 3DS 2.0 transactions, optional for others.
     required:
-      - acceiptHeader
+      - acceptHeader
       - javaEnabled
       - language
       - screenHeight
       - screenWidth
       - timeZone
       - userAgent
-      - JavascriptEnabled
+      - javascriptEnabled
     properties:
       acceptHeader:
         type: string
         maxLength: 2048
-        description: 'Accept Header returned by the browser.'
+        description: 'HTTP Accept Header returned by the browser.'
       javaEnabled:
         type: boolean
         description: 'True if the browser supports Java.'
@@ -2076,8 +2076,8 @@ definitions:
       userAgent:
         type: string
         maxLength: 2048
-        description: 'User-Agent header returned by the browser.'
-      JavascriptEnabled:
+        description: 'User-Agent header returned by the browser in the client HTTP request.'
+      javascriptEnabled:
         type: boolean
         default: true
         description: 'True if the browser has JavaScript enabled.'
