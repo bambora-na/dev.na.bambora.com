@@ -2005,7 +2005,6 @@ definitions:
     required:
       - pa_res
       - cres
-      - threeDSSessionData
     properties:
       pa_res:
         type: string
@@ -2013,9 +2012,6 @@ definitions:
       cres:
         type: string
         description: 'For a 3D Secure payment process this stores the Authentication Code.'
-      threeDSSessionData:
-        type: string
-        descripion: '3DS Requestor session data that is returned by the ACS in the CRes message POST to the 3DS Requestor.'
   3DSecure:
     description: |
       Payment with 3D Secure (Verified by Visa, Mastercard SecureCode, American Express SafeKey).
