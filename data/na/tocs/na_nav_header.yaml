@@ -1,7 +1,7 @@
 logo: 
   link: /docs/
-  light: svg/zebraffe-dev-white.svg
-  dark: svg/zebraffe-dark-dev.svg
+  light: bambora_White_Turquoise_RGB.png
+  dark: bambora_Grey_Turquoise_RGB.png
 links:
   - file: /docs/guides/
     title: Guides

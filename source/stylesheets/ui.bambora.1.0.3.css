@@ -1041,6 +1041,8 @@ p a:not(.btn) {
       -ms-flex-pack: center;
           justify-content: center;
       margin-right: 20px; }
+    .nav-pane .nav-links > a.logo > img {
+      max-width: 200px; }
     .nav-pane .nav-links > a:hover:not(.logo) {
       color: rgba(120, 71, 181, 1); }
     .nav-pane .nav-links > a.active {

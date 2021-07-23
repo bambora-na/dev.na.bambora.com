@@ -65,3 +65,10 @@
 | 554 | Duplicate Number | Duplicate Number |
 | 555 | MICR Error | MICR Error |
 | 556 | Too Many Checks | Too Many Checks |
+| 1163 | Partial Approval | Partial Approval |
+| 1164 | Approval - VIP Approval | Approval - VIP Approval |
+| 1165 | Approval - Honor Mastercard with ID | Approval - Honor Mastercard with ID |
+| 1166 | SRCHG Not Allowed - Surcharge amount not permitted on Visa cards or EBT food stamps | SRCHG Not Allowed - Surcharge amount not permitted on Visa cards or EBT food stamps |
+| 1167 | SRCHG Not Allowed - Surcharge amount not supported by debit network issuer | SRCHG Not Allowed - Surcharge amount not supported by debit network issuer |
+| 1168 | System Error | System Error |
+| 1169 | Undefined Response | Undefined Response |

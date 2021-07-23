@@ -6,13 +6,13 @@
   - [Contents](#contents)
   - [Build the site](#build-the-site)
     - [Docker](#docker)
-      - [Build](#build)
-      - [Run](#run)
+      - [Build The Image](#build-the-image)
+      - [Run In Docker](#run-in-docker)
       - [Test Local](#test-local)
       - [Build Static Site Locally](#build-static-site-locally)
     - [Bundler](#bundler)
-      - [Build](#build-1)
-      - [Run](#run-1)
+      - [Build The Content](#build-the-content)
+      - [Run The Web Server](#run-the-web-server)
   - [Branching, merging and deploying](#branching-merging-and-deploying)
   - [Editing the docs](#editing-the-docs)
     - [Ways to make changes](#ways-to-make-changes)
@@ -52,13 +52,13 @@
 The simplest way to get set up is to use the included Dockerfile (must install
 [docker](https://www.docker.com) first).
 
-#### Build
+#### Build The Image
 
 ```shell
 make build
 ```
 
-#### Run
+#### Run In Docker
 
 ```shell
 make run
@@ -79,21 +79,7 @@ To build the same content that our CI server builds & deploys, you can do the fo
 - Rebuild the docker image:
 
 ```shell
-make build
-
-# If you see "make: 'build' is up to date", you may need to force a rebuild with -B (or whatever your version of make uses for "Unconditionally make all targets", verify with --help)
-```
-
-- create a local directory for the output:
-
-```shell
-mkdir build
-```
-
-- generate the content via Docker into that directory:
-
-```shell
-docker run -e ONBOARDING_HOST=test-onboardingapi -v `pwd`/build:/usr/src/app/build bambora/devbamboracom static
+make static
 ```
 
 - inspect the `build/` folder which will contain the generated static site.
@@ -117,13 +103,13 @@ Alternatively, you can build and run the site locally. You're going to need:
 
     ```gem install bundler```
 
-#### Build
+#### Build The Content
 
 ```shell
 bundle install
 ```
 
-#### Run
+#### Run The Web Server
 
 To start the preview web server:
 
@@ -149,7 +135,7 @@ More complete, internal only documentation about deploying can be found in Confl
 at: <https://confluence.beanstream.com/pages/viewpage.action?pageId=64456558>
 
 Changes should first be made and tested on a feature branch, then pushed to the test branch,
-and only test should be merged/pushed to master.
+and only test should be merged/pushed to the production branch.
 
 Any team branch that is pushed to the Github repo will be built and deployed to an internally
 accessible s3 bucket with the name `dev.beanstream.com.<branch_name>`.
@@ -162,7 +148,7 @@ There are two ways to make changes to the documentation:
 
 #### Through your web browser
 
-Every page of the developer portal has an 'Edit this page' button in the top right corner. Clicking this will prompt you to create or sign in to a Github account and fork the developer portal repository. You will then be taken to the markdown version of the page you wish to edit. After making your changes, click propose file changes and then create a pull request against the master branch of the repository. Your changes will be reviewed and merged into the developer portal.
+Every page of the developer portal has an 'Edit this page' button in the top right corner. Clicking this will prompt you to create or sign in to a Github account and fork the developer portal repository. You will then be taken to the markdown version of the page you wish to edit. After making your changes, click propose file changes and then create a pull request against the production branch of the repository. Your changes will be reviewed and merged into the developer portal.
 
 #### Through a git branch
 
@@ -262,7 +248,7 @@ If a `title` value in the table of contents config matches a page's frontmatter 
 
 ### Markdown
 
-After the frontmatter configuration, the actual content of pages is defined (for the most part) in markdown. See (here)[http://commonmark.org/help/] for a good overview of the capabilities of markdown.
+After the frontmatter configuration, the actual content of pages is defined (for the most part) in markdown. See [here](http://commonmark.org/help/) for a good overview of the capabilities of markdown.
 
 The markdown parser ([Redcarpet](https://github.com/vmg/redcarpet)) supports tables formatted like so:
 
@@ -394,7 +380,7 @@ language_tabs: # declare as many languages as you wish to support.
 
 #### Swagger layout
 
-The swagger layout is used to render a (Swagger)[http://swagger.io/specification/] file. It has additional frontmatter configuration to set the swagger file used.
+The swagger layout is used to render a [Swagger](http://swagger.io/specification/) file. It has additional frontmatter configuration to set the swagger file used.
 
 As well, you can optionally passed a list of 'ignored_paths' to skip them when building the output:
 
@@ -411,6 +397,7 @@ ignored_paths: # optional
 ```
 
 Or if you want to hide an entire tag that is also possible with 'ignored_tags':
+
 ```yaml
 ---
 

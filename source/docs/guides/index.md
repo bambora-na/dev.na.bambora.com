@@ -11,7 +11,7 @@ navigation:
   header_active: Guides
 
 cards:
-    -                
+    -
         title: Quickstart - Merchant
         description: >
             Create a test account and test our Payment APIs.
@@ -90,6 +90,12 @@ cards:
         icon: creditcard-outline
         link: /docs/guides/recurring_payment
     -
+        title: Settlement Report
+        description: >
+            Query for credit card settlement and fee information.
+        icon: creditcard-outline
+        link: /docs/guides/settlement_report
+    -
         title: SSL
         description: >
             Encrypt information and provide computer to computer authentication.
@@ -101,6 +107,12 @@ cards:
             Process payments with Visa Secure Remote Commerce (SRC).
         icon: creditcard-outline
         link: /docs/guides/visa_checkout
+    -
+        title: Receipt Integration Guide
+        description: >
+            An overview of the best practices for receipt generation for eCommerce and Mail Order/Telephone Order (MOTO) transactions.
+        icon: list
+        link: /docs/guides/receipt_guide
 ---
 
 # Guides

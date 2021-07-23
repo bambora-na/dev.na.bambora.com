@@ -12,7 +12,7 @@ echo "plan name: ${planName}"
 newBucket=False
 if [ -z "$planName" ] || [ "$planName" = "dev portal" ]
 then
-    echo "deploying master to production..."
+    echo "deploying production branch to production..."
     bucket_name=dev.beanstream.com
 else
     echo "deploying branch to test..."
