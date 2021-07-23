@@ -2025,7 +2025,7 @@ definitions:
       version:
         type: integer
         description: 'Version of 3DS to perform (1 or 2).  Optional and will default to what is configured in the merchants account.'
-      authRequired:
+      auth_required:
         type: boolean
         description: 'If set to true the transaction will not continue processing unless 3DS authentication is successful.'
       xid:
@@ -2050,34 +2050,34 @@ definitions:
       - userAgent
       - javascriptEnabled
     properties:
-      acceptHeader:
+      accept_header:
         type: string
         maxLength: 2048
         description: 'HTTP Accept Header returned by the browser.'
-      javaEnabled:
+      java_enabled:
         type: boolean
         description: 'True if the browser supports Java.'
       language:
         type: string
         maxLength: 8
         description: 'Language currently set in the browser.'
-      colorDepth:
+      color_depth:
         type: integer
         description: 'Color bit-depth of the screen.'
-      screenHeight:
+      screen_height:
         type: integer
         description: 'Height, in pixels, of the screen.'
-      screenWidth:
+      screen_width:
         type: integer
         description: 'Width, in pixels, of the screen.'
-      timeZone:
+      time_zone:
         type: integer
         description: 'Timezone returned by the browser.'
-      userAgent:
+      user_agent:
         type: string
         maxLength: 2048
         description: 'User-Agent header returned by the browser in the client HTTP request.'
-      javascriptEnabled:
+      javascript_enabled:
         type: boolean
         default: true
         description: 'True if the browser has JavaScript enabled.'
