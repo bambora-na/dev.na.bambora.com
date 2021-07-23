@@ -61,19 +61,19 @@ curl https://api.na.bambora.com/v1/payments \
       "code":"gt7-0f2f20dd-777e-487e-b688-940b526172cd",
       "3d_secure": {
          "browser": {
-            "acceptHeader": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3",
-            "javaEnabled": "false",
+            "accept_header": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3",
+            "java_enabled": "false",
             "language": "en-US",
-            "colorDepth": "24",
-            "screenHeight": 1080,
-            "screenWidth": 1920,
-            "timeZone": -120,
-            "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36",
-            "javascriptEnabled": true,
+            "color_depth": "24",
+            "screen_height": 1080,
+            "screen_width": 1920,
+            "time_zone": -120,
+            "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36",
+            "javascript_enabled": true,
          },
          "enabled": true,
          "version": 2,
-         "authRequired": false
+         "auth_required": false
       }
    }
 }'
@@ -94,11 +94,11 @@ Response (HTTP status code 302 redirect)
 
 In the 302 response above, the 'merchant_data' attribute value should be saved in the current users session.
 
-The merchantâ€™s process URL decodes the response redirect and displays the information in the customerâ€™s web browser. 
+The merchant's process URL decodes the response redirect and displays the information in the customer's web browser. 
 This forwards the client to the VbV or SC, or SafeKey banking portal. On the bank portal, the customer enters their 
 secure credit card pin number in the fields provided on the standard banking interface.
 
-The bank forwards a response to the merchantâ€™s TERM URL including the following variables:
+The bank forwards a response to the merchant's TERM URL including the following variables:
 - PaRes (Authentication Code)
 - MD (Unique Payment ID)
 
@@ -198,7 +198,7 @@ system variables:
 | Attribute | Description |
 | --- | --- |
 | xid | Include the 3D Secure transaction identifier (up to 20-digits). |
-| eci | SecureECI is a 1-digit status code: 5 â€“ authenticated; 6 â€“ attempted, not completed. |
+| eci | SecureECI is a 1-digit status code: 5 = authenticated; 6 = attempted, not completed. |
 | cavv | Include the 40-character Cardholder Authentication Verification Value. |
 
 ```shell
