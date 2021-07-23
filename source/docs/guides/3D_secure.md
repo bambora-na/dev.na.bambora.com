@@ -198,7 +198,7 @@ system variables:
 | Attribute | Description |
 | --- | --- |
 | xid | Include the 3D Secure transaction identifier (up to 20-digits). |
-| eci | SecureECI is a 1-digit status code: 5 = authenticated; 6 = attempted, not completed. |
+| eci | SecureECI is a 1-digit status code: 5 - authenticated; 6 - attempted, not completed. |
 | cavv | Include the 40-character Cardholder Authentication Verification Value. |
 
 ```shell
@@ -277,15 +277,15 @@ and in the case of an failure, an error code.  The naming of the parameters in t
 
     - Payment API request
        - Browser data
-           - acceptHeader, string (1-2048), required
-           - javaEnabled, Boolean true/false, required
+           - accept_header, string (1-2048), required
+           - java_hnabled, Boolean true/false, required
            - language, string (1-8), required
-           - colorDepth, 
-           - screenHeight, numeric (0 to 9999999), required
-           - screenWidth, numeric (0 to 9999999), required
-           - timeZone, numeric (-840 to 720), required
-           - userAgent, string (1-2048), required
-           - javascriptEnabled, optional Boolean true/false, default true.
+           - color_depth, 
+           - screen_height, numeric (0 to 9999999), required
+           - screen_width, numeric (0 to 9999999), required
+           - time_zone, numeric (-840 to 720), required
+           - user_agent, string (1-2048), required
+           - javascript_enabled, optional Boolean true/false, default true.
       - Additional 3DSecure parameters
            - version, Optional and will default to what is configured in the merchants account
            - authRequired (If set to true the transaction will not continue processing unless 3DS authentication is successful)
