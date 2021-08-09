@@ -42,6 +42,12 @@ cards:
         icon: list
         link: /docs/guides/3D_secure
     -
+        title: 3D Secure 2.0
+        description: >
+            Learn about implementing 3D Secure based payments.
+        icon: list
+        link: /docs/guides/3D_secure_2
+    -
         title: Apple Pay
         description: >
             Work with Apple Pay based payments from mobile devices and the Web.
