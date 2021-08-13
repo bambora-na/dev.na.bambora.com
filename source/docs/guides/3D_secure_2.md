@@ -3,8 +3,8 @@ title: 3D Secure
 layout: tutorial
 
 summary: >
-    Verified by Visa (VbV), MasterCard SecureCode, and AMEX SafeKey are security features that prompt customers to enter a 
-    passcode when they pay by Visa, MasterCard, or AMEX. Merchants that want to integrate VbV, SecureCode, or SafeKey must 
+    Visa Secure (formerly Verified by Visa), MasterCard SecureCode, and AMEX SafeKey are security features that prompt customers to enter a 
+    passcode when they pay by Visa, MasterCard, or AMEX. Merchants that want to integrate Visa Secure, SecureCode, or SafeKey must 
     have signed up for the service through their bank merchant account issuer. This service must also be enabled by our 
     support team.
 
@@ -17,14 +17,14 @@ navigation:
 
 # 3D Secure 2.0
 
-Verified by Visa (VbV), MasterCard SecureCode, and AMEX SafeKey are security features that prompt customers to enter a 
-passcode when they pay by Visa, MasterCard, or AMEX. Merchants that want to integrate VbV, SecureCode, or SafeKey must 
+Visa Secure (formerly Verified by Visa), MasterCard SecureCode, and AMEX SafeKey are security features that prompt customers to enter a 
+passcode when they pay by Visa, MasterCard, or AMEX. Merchants that want to integrate Visa Secure, SecureCode, or SafeKey must 
 have signed up for the service through their bank merchant account issuer. This service must also be enabled by our 
 support team.
 
 For assistance, you can send a message to Client Services or call 1-888-472-0811.
 
-With a VbV, SecureCode, or SafeKey transaction, a customer is redirected to a bank portal to enter their secure pin 
+With a Visa Secure, SecureCode, or SafeKey transaction, a customer is redirected to a bank portal to enter their secure pin 
 number before a transaction is processed. The bank then returns an authentication response which must be forwarded to 
 our API for a transaction to complete.
 
@@ -35,7 +35,7 @@ In addition to this guide feel free to check out our [Payment APIs Demo implemen
 In the request to the Payment API the merchant will be required to pass a number of new parameters related to the client browser
 along with new optional parameters to indicate the 3DS version and if a transaction should continue to be completed if 3DS authentication fails.
 
-The payment response will now return a status code in addition to the eci code to indicate if 3DS authentication was successful. The naming of the parameters in the redirection will also be changing, but their contents and usage will be the same.
+The payment response will now return a status code to indicate if 3DS authentication was successful. The naming of the parameters in the redirection will also be changing, but their contents and usage will be the same.
 
 ## API Calls
 
@@ -100,7 +100,7 @@ Payment response - redirect to challenge flow (HTTP status code 302 redirect):
 In the 302 response above, the 'merchant_data' attribute value should be saved in the current user's session.
 
 The merchant's process URL decodes the response redirect and displays the information in the customer's web browser. 
-This forwards the client to the VbV or SC, or SafeKey banking portal. On the bank portal, the customer enters their 
+This forwards the client to the Visa Secure or SC, or SafeKey banking portal. On the bank portal, the customer enters their 
 secure credit card pin number in the fields provided on the standard banking interface.
 
 The bank forwards a response to the merchant's TERM URL including the following variables:
@@ -155,7 +155,6 @@ Continue response:
       "address_match": 0,
       "postal_result": 0,
       "cvd_result": 1,
-      "eci": 5,
       "cavv_result": 2
    },
    "3d_secure": {
@@ -189,14 +188,13 @@ Continue response:
         - auth_required (If set to true the transaction will not continue processing unless 3DS authentication is successful)
 
 - Payment API response:
-    - In addition to the eci code the payment response will also return a status field under the 3d_secure field.
-        - status, string. Possible values are:
-            - Success
-            - Attempted
-            - Rejected
-            - Failed
-            - Unavailable
-            - Error
+    - The payment response will return a status field under the 3d_secure field. Possible values are:
+        - Success
+        - Attempted
+        - Rejected
+        - Failed
+        - Unavailable
+        - Error
     - Challenge Redirection: In the case of a challenge flow the parameter names returned in the response will be changing:
         - 'md' will instead be named 'threeDSSessionData'
         - 'pa_res' will instead be named 'cres'
