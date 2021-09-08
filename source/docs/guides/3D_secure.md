@@ -1,5 +1,5 @@
 ---
-title: 3D Secure
+title: 3D Secure - Legacy
 layout: tutorial
 
 summary: >
@@ -15,7 +15,9 @@ navigation:
   header_active: Guides
 ---
 
-# 3D Secure
+# 3D Secure - Legacy
+
+**Effective October 16th, 2021,** Visa transactions using 3DS 1.0 will no longer provide you with liability shift. Losing the liability shift means Visa will no longer take responsibility for fraudulent transactions when using 3DS 1.0.
 
 Verified by Visa (VbV), MasterCard SecureCode, and AMEX SafeKey are security features that prompt customers to enter a 
 passcode when they pay by Visa, MasterCard, or AMEX. Merchants that want to integrate VbV, SecureCode, or SafeKey must 

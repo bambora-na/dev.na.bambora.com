@@ -36,17 +36,17 @@ cards:
         icon: creditcard-outline
         link: /docs/guides/custom_checkout/
     -
-        title: 3D Secure
+        title: 3D Secure - Legacy
         description: >
             Learn about implementing 3D Secure based payments.
         icon: list
         link: /docs/guides/3D_secure
     -
-        title: 3D Secure 2.0
+        title: EMV 3D Secure
         description: >
-            Learn about implementing 3D Secure based payments.
+            Learn about implementing EMV 3D Secure based payments.
         icon: list
-        link: /docs/guides/3D_secure_2
+        link: /docs/guides/EMV_3D_secure
     -
         title: Apple Pay
         description: >
