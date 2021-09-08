@@ -91,7 +91,7 @@ curl https://api.na.bambora.com/v1/payments \
          },
          "enabled": true,
          "version": 2,
-         "authentication_required": false
+         "auth_required": false
       }
    }
 }'
@@ -195,7 +195,7 @@ Continue response:
 
 Payments request:
 
-```curl --location --request POST 'https://uattest-api.na.bambora.com/v1/payments' \
+```curl --location --request POST 'https://api.na.bambora.com/v1/payments' \
 --header 'Authorization: Passcode MzY5MTcwMDAwOmJhbWJvcmE=' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -222,7 +222,7 @@ Payments request:
          },
          "enabled": true,
          "version": 2,
-         "authentication_required": false
+         "auth_required": false
       }
    }
 }'
@@ -251,7 +251,7 @@ These examples are applicable to merchants who use Custom Checkout or who tokeni
 Tokens request:
 
 ```shell
-curl --location --request POST 'https://uattest-web.na.bambora.com/scripts/tokenization/tokens' \
+curl --location --request POST 'https://web.na.bambora.com/scripts/tokenization/tokens' \
 --header 'Content-Type: application/json' \
 --data-raw '{
   "number":"4716519788977219",
@@ -265,7 +265,7 @@ Tokens Response:
 
 ```shell
 {
-    "token": "uattest01-4128746e-e957-4585-a7ad-ef5b09c8fefe",
+    "token": "web01-4128746e-e957-4585-a7ad-ef5b09c8fefe",
     "code": 1,
     "version": 1,
     "message": ""
@@ -277,14 +277,14 @@ Tokens Response:
 Payments request:
 
 ```shell
-curl --location --request POST 'https://uattest-api.na.bambora.com/v1/payments' \
+curl --location --request POST 'https://api.na.bambora.com/v1/payments' \
 --header 'Authorization: Passcode MzUwMTgwMDAwOmJhbWJvcmE=' \
 --header 'Content-Type: application/json' \
 --data-raw '{
    "amount": 250.01,
    "payment_method": "token",
    "customer_ip": "123.123.123.123",
-   "term_url":"https://uattest-web.na.bambora.com/debug.asp",
+   "term_url":"https://web.na.bambora.com/debug.asp",
    "token": {
       "code": "uattest01-732fc9fd-d58b-4ea6-8e47-e1a02339ea06",
       "name": "Test User",
@@ -303,7 +303,7 @@ curl --location --request POST 'https://uattest-api.na.bambora.com/v1/payments' 
          },
          "enabled": true,
          "version": 2,
-         "authentication_required": false
+         "auth_required": false
       }
    }
 }'
@@ -320,7 +320,7 @@ These examples are applicable to merchants who use Secure Payment Profiles.
 Payments request:
 
 ```shell
-curl --location --request POST 'https://uattest-api.na.bambora.com/v1/payments' \
+curl --location --request POST 'https://api.na.bambora.com/v1/payments' \
 --header 'Authorization: Passcode MzUwMTgwMDAwOmJhbWJvcmE=' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -344,7 +344,7 @@ curl --location --request POST 'https://uattest-api.na.bambora.com/v1/payments' 
          },
          "enabled": true,
          "version": 2,
-         "authentication_required": false
+         "auth_required": false
       }
    }
 }'
@@ -394,12 +394,12 @@ Payments response:
     "links": [
         {
             "rel": "void",
-            "href": "https://uattest-api.na.bambora.com/v1/payments/10000122/void",
+            "href": "https://api.na.bambora.com/v1/payments/10000122/void",
             "method": "POST"
         },
         {
             "rel": "return",
-            "href": "https://uattest-api.na.bambora.com/v1/payments/10000122/returns",
+            "href": "https://api.na.bambora.com/v1/payments/10000122/returns",
             "method": "POST"
         }
     ]
@@ -421,7 +421,7 @@ system variables:
 | Attribute | Description |
 | --- | --- |
 | xid | Include the 3D Secure transaction identifier (up to 20-digits). |
-| eci | SecureECI is a 1-digit status code. For Visa/Amex: 5 - authenticated; 6 - attempted, not completed; 7 - authentication unsuccessful or not completed. For Mastercard: 1 - unsuccessful; 2 - authenticated; 0 - authentication unsuccessful or not completed |
+| eci | SecureECI is a 1-digit status code. For Visa/Amex: 5 - authenticated; 6 - attempted, For Mastercard: 1 - unsuccessful; 2 - authenticated; |
 | cavv | Include the 40-character Cardholder Authentication Verification Value. |
 | ds_transaction_id| Directory Server transaction ID (36 characters) |
 | version | Which version of 3DS to process with. 1 or 2 |
@@ -431,7 +431,7 @@ system variables:
 Payments request
 
 ```shell
-curl --location --request POST 'https://uattest-api.na.bambora.com/v1/payments' \
+curl --location --request POST 'https://api.na.bambora.com/v1/payments' \
 --header 'Authorization: Passcode Mzg5MzUwMDAwOmJhbWJvcmE=' \
 --header 'Content-Type: application/json' \
 --data-raw '{
@@ -496,12 +496,12 @@ Payments response:
     "links": [
         {
             "rel": "void",
-            "href": "https://uattest-api.na.bambora.com/v1/payments/10000088/void",
+            "href": "https://api.na.bambora.com/v1/payments/10000088/void",
             "method": "POST"
         },
         {
             "rel": "return",
-            "href": "https://uattest-api.na.bambora.com/v1/payments/10000088/returns",
+            "href": "https://api.na.bambora.com/v1/payments/10000088/returns",
             "method": "POST"
         }
     ]
@@ -579,7 +579,7 @@ trnApproved=1
         - javascript_enabled, optional Boolean true/false, default true.
     - Additional 3DSecure parameters
         - version, Optional and will default to what is configured in the merchant's account
-        - authentication_required (If set to true the transaction will not continue processing unless 3DS authentication is successful)
+        - auth_required (If set to true the transaction will not continue processing unless 3DS authentication is successful)
 
 - Payment API response:
     - The payment response will return a status field under the 3d_secure field. Possible values are:

@@ -745,8 +745,6 @@ definitions:
         description: Security code on the back of the credit card. This can be set to mandatory in the back office.
       3d_secure:
          $ref: '#/definitions/3DSecure'
-      broswer_data:
-         $ref: '#/definitions/BrowserData'
       masterpass_wallet_id:
         type: string
         maxLength: 3
@@ -1026,6 +1024,8 @@ definitions:
         $ref: '#/definitions/Custom'
       card:
         $ref: '#/definitions/CardPurchaseResponse'
+      3d_secure:
+        $ref: '#/definitions/3DSecureResponse'
       merchant_data:
         type: string
         maxLength: 32
@@ -2019,6 +2019,8 @@ definitions:
     required:
       - enabled
     properties:
+      browser:
+        $ref: '#/definitions/BrowserData'
       enabled:
         type: boolean
         default: true
@@ -2038,6 +2040,15 @@ definitions:
       eci:
         type: integer
         description: 'The electronic commerce indicator (ECI) used for processing transactions with 3D Secure.'
+  3DSecureResponse: 
+    description: |
+      3D Secure result data
+    required:
+      - status
+    properties:
+        status: 
+            type: string
+            description: 'Status of 3D secure authentication for the transaction. One of: Success, Attempted, Rejected, Failed, Unavailable, or Error'
   BrowserData:
     description: |
       Data collected about the cardholders browser, required for 3DS 2.0 transactions, optional for others.
