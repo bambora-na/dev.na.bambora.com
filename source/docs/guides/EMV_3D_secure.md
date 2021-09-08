@@ -17,7 +17,7 @@ navigation:
 
 # EMV 3D Secure
 
-If you are currently using our legacy 3D Secure functionality, the documentation is <a href="../guides/3D_secure">here</a>.
+If you are currently using our legacy 3D Secure functionality, the documentation is [here](/docs/guides/3D_secure/)
 
 Note: EMV 3DS is currently only available for merchants who process payments through TD. 
 
