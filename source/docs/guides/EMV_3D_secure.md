@@ -87,7 +87,7 @@ curl https://api.na.bambora.com/v1/payments \
             "screen_width": 1920,
             "time_zone": -120,
             "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36",
-            "Javascript_enabled": true
+            "javascript_enabled": true
          },
          "enabled": true,
          "version": 2,
@@ -106,11 +106,11 @@ Payment response - redirect to challenge flow (HTTP status code 302 redirect):
 ```shell
 {
  "3d_session_data": "YTk5OWM1OTEtZTI0OC00NzY2LTk2NjEtODlmNzNhYWRjYmZi",
- "contents": "%3cHTML%3e%3cHEAD%3e%3c%2fHEAD%3e%3cBODY%3e%3cFORM+action%3d%22https%3a%2f%2fapi.na.bambora.com%2factiveMerchantEmulator%2fgateway.asp%22+method%3d%22POST%22+id%3d%22form1%22+name%3d%22form1%22%3e%3cINPUT+type%3d%22hidden%22+name%3d%22PaReq%22+value%3d%22TEST_paRaq%22%3e%3cinput+type%3d%22hidden%22+name%3d%22merchant_name%22+value%3d%22Seven+Sparrow+Inc.%22%3e%3cinput+type%3d%22hidden%22+name%3d%22trnDatetime%22+value%3d%222%2f23%2f2017+5%3a05%3a42+PM%22%3e%3cinput+type%3d%22hidden%22+name%3d%22trnAmount%22+value%3d%22100.00%22%3e%3cinput+type%3d%22hidden%22+name%3d%22trnEncCardNumber%22+value%3d%22XXXX+XXXX+XXXX+3312%22%3e%3cINPUT+type%3d%22hidden%22+name%3d%22MD%22+value%3d%222CCD7715-9E97-4F11-9FFF36E6584E3200%22%3e%3cINPUT+type%3d%22hidden%22+name%3d%22TermUrl%22+value%3d%22http%3a%2f%2f10.240.9.64%3a5000%2fpayment%2fenhanced%2fredirect%2f3d-secure%22%3e%3c%2fFORM%3e%3cSCRIPT+language%3d%22JavaScript%22%3edocument.form1.submit()%3b%3c%2fSCRIPT%3e%3c%2fBODY%3e%3c%2fHTML%3e",
+ "contents": "%3CHTML%3E%3CHEAD%3E%3C%2FHEAD%3E%3CBODY%3E%3CFORM%20action%3D%22https%3A%2F%2Fapi.na.bambora.com%2FactiveMerchantEmulator%2Fgateway.asp%22%20method%3D%22POST%22%20id%3D%22form1%22%20name%3D%22form1%22%3E%3CINPUT%20type%3D%22hidden%22%20name%3D%22PaReq%22%20value%3D%22TEST_paRaq%22%3E%3Cinput%20type%3D%22hidden%22%20name%3D%22merchant_name%22%20value%3D%22Seven%20Sparrow%20Inc.%22%3E%3Cinput%20type%3D%22hidden%22%20name%3D%22trnDatetime%22%20value%3D%222%2F23%2F2017%205%3A05%3A42%20PM%22%3E%3Cinput%20type%3D%22hidden%22%20name%3D%22trnAmount%22%20value%3D%22100.00%22%3E%3Cinput%20type%3D%22hidden%22%20name%3D%22trnEncCardNumber%22%20value%3D%22XXXX%20XXXX%20XXXX%203312%22%3E%3CINPUT%20type%3D%22hidden%22%20name%3D%22MD%22%20value%3D%22YTk5OWM1OTEtZTI0OC00NzY2LTk2NjEtODlmNzNhYWRjYmZi%22%3E%3CINPUT%20type%3D%22hidden%22%20name%3D%22TermUrl%22%20value%3D%22http%3A%2F%2F10.240.9.64%3A5000%2Fpayment%2Fenhanced%2Fredirect%2F3d-secure%22%3E%3C%2FFORM%3E%3CSCRIPT%20language%3D%22JavaScript%22%3Edocument.form1.submit()%3B%3C%2FSCRIPT%3E%3C%2FBODY%3E%3C%2FHTML%3E",
  "links": [ 
  {
  "rel": "continue",
- "href":"https://api.na.bambora.com/v1/payments/2ccd7715-9e97-4f11-9fff36e6584e3200/continue",
+ "href":"https://api.na.bambora.com/v1/payments/YTk5OWM1OTEtZTI0OC00NzY2LTk2NjEtODlmNzNhYWRjYmZi/continue",
  "method":"POST"
  }
  ]
@@ -134,7 +134,7 @@ Use the 3d_session_data and cres values in the continue request detailed below.
 Continue request:
 
 ```shell
-curl https://api.na.bambora.com/v1/payments/2ccd7715-9e97-4f11-9fff36e6584e3200/continue \
+curl https://api.na.bambora.com/v1/payments/YTk5OWM1OTEtZTI0OC00NzY2LTk2NjEtODlmNzNhYWRjYmZi/continue \
 -H "Authorization: Passcode MzAwMjAwNTc4OjRCYUQ4MkQ5MTk3YjRjYzRiNzBhMjIxOTExZUU5Zjcw" \
 -H "Content-Type: application/json" \
 -d '{
@@ -218,7 +218,7 @@ Payments request:
             "screen_width": 1920,
             "time_zone": -120,
             "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36",
-            "Javascript_enabled": true
+            "javascript_enabled": true
          },
          "enabled": true,
          "version": 2,
@@ -299,7 +299,7 @@ curl --location --request POST 'https://uattest-api.na.bambora.com/v1/payments' 
             "screen_width": 1920,
             "time_zone": -120,
             "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36",
-            "Javascript_enabled": true
+            "javascript_enabled": true
          },
          "enabled": true,
          "version": 2,
@@ -340,7 +340,7 @@ curl --location --request POST 'https://uattest-api.na.bambora.com/v1/payments' 
             "screen_width": 1920,
             "time_zone": -120,
             "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36",
-            "Javascript_enabled": true
+            "javascript_enabled": true
          },
          "enabled": true,
          "version": 2,
