@@ -6,7 +6,7 @@ summary: >
     Visa Secure (formerly Verified by Visa), MasterCard SecureCode, and AMEX SafeKey are security features that prompt customers to enter a 
     passcode when they pay by Visa, MasterCard, or AMEX. Merchants that want to integrate Visa Secure, SecureCode, or SafeKey must 
     have signed up for the service through their bank merchant account issuer. This service must also be enabled by our 
-    support team.
+    Customer Care team.
 
 navigation:
   header: na.tocs.na_nav_header
@@ -17,24 +17,28 @@ navigation:
 
 # EMV 3D Secure
 
-EMV 3D Secure (3DS2), also known as Visa Secure (formerly Verified by Visa), MasterCard Identity Check (formerly SecureCode), and AMEX SafeKey, is a security standard used to authenticate card not present payments. It is an upgrade from 3DS 1 that reduces friction for the cardholder. Merchants that want to integrate 3DS2 must have signed up for the service through their bank merchant account issuer. This service must also be enabled by our support team.
+If you are currently using our legacy 3D Secure functionality, the documentation is <a href="../guides/3D_secure">here</a>.
 
-For assistance with integrations and any questions you may have about 3DS2, you can send a message to Customer Care or call  1-833-226-2672.
+Note: EMV 3DS is currently only available for merchants who process payments through TD. 
+
+EMV 3D Secure (3DS2), also known as Visa Secure (formerly Verified by Visa), MasterCard Identity Check (formerly SecureCode), and AMEX SafeKey, is a security standard used to authenticate card-not-present payments. This upgrade from 3DS 1 reduces friction for the cardholder. Merchants that want to integrate 3DS2 must have signed up for the service through their bank merchant account issuer. This service must also be enabled by our Customer Care team.
+
+For assistance with integrations and any questions you may have about 3DS2, you may <a href="https://help.na.bambora.com/hc/en-us/requests/new" target="_blank">submit a request</a> to Customer Care or call 1-833-226-2672.
 
 When your customer (the cardholder) starts a transaction on your website, either one of these two scenario flows can happen:
 
 - Challenge flow: The cardholder will need to provide additional data to authenticate themselves.
-- Frictionless flow: The cardholders do not need to authenticate themselves because the authentication took place in the background without their input. In this case, the issuer is confident with the information you provided with the transaction and the liability shifts to the issuer. 
+- Frictionless flow: The cardholders will not need to authenticate themselves as the authentication took place in the background without their input. In this case, the issuer is confident with the information you provided with the transaction and the liability shifts to the issuer. 
 
-As the decision is now in the hands of the issuer, they will ask you for more data. The more data you provide, the more accurate the issuer can make their decision about the risk of the transaction, which can ultimately lead to a frictionless scenario for your customers.
+As the decision is now in the hands of the issuer, they will ask you for more data. The more data you provide, the more accurate the issuer can make their decision about the risk of the transaction - ultimately lead to a frictionless scenario for your customers.
 
-In addition to this guide feel free to check out our [Payment APIs Demo implementation](https://github.com/bambora/na-payment-apis-demo) on GitHub.
+In addition to this guide, feel free to check out our [Payment APIs Demo implementation](https://github.com/bambora/na-payment-apis-demo) on GitHub.
 
 # Benefits 
 
-The expectation in the market is that a substantial percentage of transactions using 3DS2 will follow the frictionless flow, which doesn't require anything additional from the consumer compared to current non-3DS2 checkout flows. This means that you benefit from the increased security and liability shift that is provided by the 3DS2 programs, while the conversion in your checkout process shouldn't be negatively impacted.
+The expectation in the market is that a substantial percentage of transactions using 3DS2 will follow the frictionless flow. Compared to current non-3DS2 checkout flows, this doesn't require anything additional from the consumer. This means that you benefit from the increased security and liability shift that is provided by the 3DS2 programs, while the conversion in your checkout process shouldn't be negatively impacted.
 
-# 3DS2, Whats new?
+# 3DS2, What's new?
 
 Depending on your integration method, you may need to pass in new parameters related to the client browser. There are also optional parameters to indicate the 3DS version and if a transaction should continue to be processed if 3DS authentication fails.
 
@@ -46,17 +50,17 @@ The payment response will now return a status code to indicate if 3DS authentica
 # Use our 3DS2 MPI
 
 Use our RESTful Payment APIs to initiate the Payment and to complete the transaction request. In this standard 
-integration, the 3DS2 process may complete in just one request or may require two. 
+integration, the 3DS2 process may complete in one request or may require two in some cases. 
 
 ## REST API - card number passed in 
 
-Examples for integrations using our RESTful Payments API. These examples are only applicable to merchants who collect sensitive cardholder data and pass it in to our API.
+Examples for integrations using our RESTful Payments API: these examples are only applicable to merchants who collect sensitive cardholder data and pass it in to our API.
 
 ### POST /payments
 
 Payment request: 
 
-Note: Browser data and ustomer IP should be passed through from the client's browser as is, with no changes.
+Note: Browser data and customer IP should be passed through from the client's browser as is, with no changes.
 
 ```shell
 {
@@ -93,7 +97,7 @@ curl https://api.na.bambora.com/v1/payments \
 }'
 ```
 
-From here the payment will follow one of two flows. Depending on the response from the bank, the redirection to the challenge flow that was mandatory in 3DS 1 may be skipped in 3DS 2. If that is the case, the payment response detailed below for the continue flow will be returned immediately.
+From here the payment will follow one of two flows. Depending on the response from the bank, the redirection to the challenge flow that was mandatory in 3DS 1 may be skipped in 3DS2. If that is the case, the payment response detailed below for the continue flow will be returned immediately.
 
 However, if the challenge flow is required, the following response will be returned.
 
@@ -116,7 +120,7 @@ Payment response - redirect to challenge flow (HTTP status code 302 redirect):
 In the 302 response above, the 'merchant_data' attribute value should be saved in the current user's session.
 
 The merchant's process URL decodes the response redirect and displays the information in the customer's web browser. 
-This forwards the client to the issuer authentication portal. On the bank portal, the customer follows the authenticaiton prompts such as entering a one time passcode received via an email or text message. 
+This forwards the client to the issuer authentication portal. On the bank portal, the customer follows the authentication prompts such as entering a one time passcode received via an email or text message. 
 
 The issuer forwards a response to the merchant's TERM URL including the following variables:
 
@@ -305,11 +309,11 @@ curl --location --request POST 'https://uattest-api.na.bambora.com/v1/payments' 
 }'
 ```
 
-From here the request and response flow for a single use token transaction is exactly the same as the card number provided flow above, either the transaction is authenticated immediately and the merchant receives the Continue response with the results of the transaction including the auth code and 3DS status, or a 302 response is provided for the merchant to redirect the user to the challenge flow.
+From here the request and response flow for a single use token transaction is exactly the same as the card number provided flow above. Either the transaction is authenticated immediately and the merchant receives the Continue response with the results of the transaction including the auth code and 3DS status, or a 302 response is provided to the merchant to redirect the user to the challenge flow.
 
 ## REST API - Secure Payment Profile
 
-These examples are applicable to merchants who use Secure Payment Profiles
+These examples are applicable to merchants who use Secure Payment Profiles.
 
 ### Payments 
 
@@ -346,7 +350,7 @@ curl --location --request POST 'https://uattest-api.na.bambora.com/v1/payments' 
 }'
 ```
 
-From here the request and response flow for a secure payment profile transaction is exactly the same as the card number provided flow above, either the transaction is authenticated immediately and the merchant receives the Continue response with the results of the transaction including the auth code and 3DS status, or a 302 response is provider for the merchant to redirect the user to the challenge flow.
+From here the request and response flow for a secure payment profile transaction is exactly the same as the card number provided flow above. Either the transaction is authenticated immediately and the merchant receives the Continue response with the results of the transaction including the auth code and 3DS status, or a 302 response is provided to the merchant to redirect the user to the challenge flow.
 
 Payments response:
 
@@ -402,22 +406,6 @@ Payments response:
 }
 ```
 
-## Querystring API
-
-Please note this section will not appear in public documentation, Querystring documentation will be provided separately.
-
-Querystring request
-
-```shell
-curl --location --request POST 'https://uattest-api.na.bambora.com/scripts/process_transaction.asp?merchant_id=369170000&requestType=BACKEND&passcode=bambora&trnType=P&trnAmount=2.45&paymentMethod=CC&browser_language=en-US&browser_javaEnabled=false&browser_colorDepth=24&browser_screenHeight=1440&browser_screenWidth=2560&browser_timeZone=420&browser_javascriptEnabled=true&browser_acceptHeader=text/html,application/xhtml+xml,application/xml;q&browser_userAgent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36&customerIp=10.240.30.172&trnCardNumber=4567350000427977&trnExpMonth=01&trnExpYear=27&termUrl=https://www.beanstream.com/debug.asp&3DsecureVersion=2'
-```
-
-Querystring response:
-
-```shell
-trnApproved=1&trnId=10000123&messageId=1&messageText=Approved&trnOrderNumber=10000123&authCode=TEST&errorType=N&errorFields=&responseType=T&trnAmount=2%2E45&trnDate=2021%2D08%2D20+4%3A53%3A31+PM&avsProcessed=0&avsId=U&avsResult=0&avsAddrMatch=0&avsPostalMatch=0&avsMessage=Address+information+is+unavailable%2E&cvdId=2&cardType=VI&trnType=P&paymentMethod=CC&ref1=&ref2=&ref3=&ref4=&ref5=&3DSecureStatus=Succeeded&hashValue=6f9ba07b9487d427c344690064f67b14773619c2
-```
-
 ## Use your own process
 
 Some large merchants complete the Visa Secure, MasterCard SecureCode, or AMEX SafeKey certification to handle 
@@ -425,7 +413,7 @@ authentication on their own side. These merchants can use their existing Visa Se
 process, and send the results of the bank authentication to us with their standard transaction request. To do 
 this, the merchant must integrate using a server-to-server type connection.
 
-Note: This option must be enabled by us. Contact support if you want to use this method.
+Note: This option must be enabled by us. Contact Customer Care if you want to use this method.
 
 The Visa Secure, SecureCode, or SafeKey bank authentication results must be sent with the transaction request using these five 
 system variables:
@@ -520,9 +508,9 @@ Payments response:
 }
 ```
 
-## Hosted checkout
+## Checkout
 
-3DS 2 can also be used with our hosted checkout form. The 3DS Version used will be controlled by the back office 'Default 3DS Version' setting, and there is a new optional parameter '3DsecureAuthRequired' which defaults to false. If 3DsecureAuthRequired is set to true the transaction will not continue processing unless 3DS authentication is successful.
+3DS2 can also be used with our Checkout form. The 3DS Version used will be controlled by the Member Area 'Default 3DS Version' setting, and there is a new optional parameter '3DsecureAuthRequired' which defaults to false. If 3DsecureAuthRequired is set to true the transaction will not continue processing unless 3DS authentication is successful.
 
 Checkout will also return the '3DSecureStatus' in the approve/decline redirect.
 
@@ -576,7 +564,7 @@ trnApproved=1
 &3DSecureStatus=Success
 ```
 
-##Detailed list of changes from 3DS 1
+## Detailed list of changes from 3DS 1
 
 - Payment API request
     - Browser data - from client's browser, passed through unchanged
@@ -608,7 +596,7 @@ trnApproved=1
     - Place the value of '3d_session_data' in the URI rather than the value of 'md'
     - Pass a value of 'cres' in the body rather than parameter 'pa_res'.
 
-### Status details 
+## Status details 
 
 | Status | Description | Recommended Merchant Action | Liability Shift | Authentication Required: False | Authentication Required: True | Visa/Amex ECI Code | MasterCard ECI Code |
 |--------|---------|-----|-----|-----|-----|-----|-----|
@@ -617,13 +605,13 @@ trnApproved=1
 | Rejected | Rejected by issuing bank. | Do not proceed with the transaction. Notify the card holder to contact their card issuer. | No | Transaction declined message 311 | Transaction declined message 311 | 7 | 7 |
 | Failed | Failed to authenticate card holder. | Do not proceed with the transaction. Notify the card holder to contact their card issuer. | No | Transaction declined message 311 | Transaction declined message 311 | 7 | 7 |
 | Unavailable | The 3DS service is unavailable due to technical issues. | If you continue with the transaction there will be no lability shift and there will be risk of chargeback. The transaction and 3DS authentication can be retried at a later time. | No | Transaction processes | Transaction declined message 311 | 7 | 7 |
-| Error | Authentication failed due to an internal error. | If you continue with the transaction there will be no lability shift and there will be risk of chargeback. An unexpected internal error occurred processing the 3DSecure authentication. If the problem persists contact support. | No | Transaction processes | Transaction declined message 311 | 7 | 7 |
+| Error | Authentication failed due to an internal error. | If you continue with the transaction there will be no lability shift and there will be risk of chargeback. An unexpected internal error occurred processing the 3DSecure authentication. If the problem persists contact Customer Care. | No | Transaction processes | Transaction declined message 311 | 7 | 7 |
 
 _Please note that the liability shift only applies for chargebacks based on a fraud reason code. Any reason codes related to other types disputes are not covered by the liability shift._
 
 _In rare cases the issuer can downgrade an authenticated transaction after processing the payment so that the liability shifts back to the merchant. For that scenario, the Payment API returns 0 for the cavv\_result field._
 
-# Test Cards
+## Test Cards
 
 | Card Type | Card Number | 3DS Status | Flow Type | 
 |--------|---------|-----|-----|
@@ -692,5 +680,3 @@ _In rare cases the issuer can downgrade an authenticated transaction after proce
 |Amex|376632086941180|Rejected|Challenge|
 |MasterCard|5148904639667695|Unavailable|Challenge|
 |MasterCard|5137739025252071|Unavailable|Challenge|
-
-

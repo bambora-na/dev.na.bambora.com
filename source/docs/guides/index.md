@@ -36,7 +36,7 @@ cards:
         icon: creditcard-outline
         link: /docs/guides/custom_checkout/
     -
-        title: 3D Secure
+        title: 3D Secure - Legacy
         description: >
             Learn about implementing 3D Secure based payments.
         icon: list
