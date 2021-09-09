@@ -28,7 +28,7 @@ curl https://api.na.bambora.com/v1/payments \
             "screen_width": 1920,
             "time_zone": -120,
             "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36",
-            "Javascript_enabled": true,
+            "javascript_enabled": true,
          },
          "enabled": true,
          "version": 2,
