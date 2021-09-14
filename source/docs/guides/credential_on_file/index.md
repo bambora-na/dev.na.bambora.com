@@ -402,7 +402,8 @@ The `subsequent_customer_initiated` Credential-on-File type is used for any tran
 and uses that cardholder's stored payment credentials as the form of payment.  These transactions are not charged on any regular interval, 
 and they can be either a purchase or a pre-auth transaction.  An example of this type is when the cardholder is reloading a prepaid cash card.
 
-Since these transactions are initiated by the cardholder, they are not considered connected together as a set.  Therefore, no series ID should be specified, and a new series ID will be returned back in the response message.
+Even though these transactions are initiated by the cardholder, they are still subsequent transactions in a set of transactions.  Therefore, 
+the series ID is required to be passed in the request message.
 
 #### Request 5
 
@@ -422,6 +423,7 @@ curl -X POST https://api.na.bambora.com/v1/payments
         },
         "card_on_file": {
             "type": "subsequent_customer_initiated"
+            "series_id": 2411
         }
     }'
 ```
