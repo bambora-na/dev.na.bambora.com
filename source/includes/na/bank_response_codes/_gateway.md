@@ -121,5 +121,5 @@
 | 944 | Card entry method not accepted | Card entry method not accepted |
 | 1134 | Transaction cannot be voided | Transaction cannot be voided |
 | 1135 | Amount in the request does not match the amount in the payment token. | Declined |
-| 1136 | Invalid card-on-file request parameters | Invalid card-on-file request parameters |
+| 1136 | Invalid or missing card-on-file request parameters | Invalid or missing card-on-file request parameters |
 | 1137 | You are not authorized to process card-on-file transactions through this account. | You are not authorized to process card-on-file transactions through this account. |
