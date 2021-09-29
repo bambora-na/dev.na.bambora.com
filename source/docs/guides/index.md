@@ -74,7 +74,7 @@ cards:
     -
         title: Masterpass
         description: >
-            Deprecated Oct 5. 2021.
+            Deprecated Oct 5, 2021.
         icon: creditcard-outline
         link: /docs/guides/masterpass
     -
