@@ -74,7 +74,7 @@ cards:
     -
         title: Masterpass
         description: >
-            Process payments with Masterpass.
+            Deprecated Oct 5, 2021.
         icon: creditcard-outline
         link: /docs/guides/masterpass
     -
