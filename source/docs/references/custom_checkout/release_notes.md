@@ -14,7 +14,7 @@ navigation:
 
 # Custom Checkout Release Notes
 
-## 1.0.2
+## 1.0.3
 
 **October 6, 2021**
 
