@@ -14,6 +14,14 @@ navigation:
 
 # Custom Checkout Release Notes
 
+## 1.0.2
+
+**October 6, 2021**
+
+- Add attribute aria-label with description values to each input
+- Add attribute aria-invalid="true" to invalid inputs
+- Add attribute aria-invalid="false" to valid inputs
+
 ## 1.0.1
 
 **September 11, 2017**
