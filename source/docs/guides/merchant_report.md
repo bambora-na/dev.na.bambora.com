@@ -17,7 +17,7 @@ navigation:
 ## Report Overview
 
 The Merchant Report provides an overview of merchants progress through the boarding process. 
-You will be able to view information relating to a merchant or its submerchants including the account status, batch limits, cards eneabled and features. 
+You will be able to view information relating to a merchant or its sub-merchants including the account status, batch limits, cards enabled and features. 
 
 ## Report Columns
 
@@ -83,7 +83,7 @@ to the Merchant Report API.
 
 ### Request Headers
 
-Requests to the settlement endpoint should include two request headers:
+Requests to the merchant endpoint should include two request headers:
 a `Content-type` header with the value `application/json` and a `Authorization`
 header which is outlined in the next section.
 
@@ -117,7 +117,7 @@ In this example `yourAPIAccessPassCode` would be
 used when making a call to the Merchant Report API.
 
 Alternatively, for convenience, you can also use the
-[form](https://dev.na.bambora.com/docs/forms/encode_api_passcode/) which does
+[form](https://dev.na.bambora.com/docs/forms/encode_api_passcode/) which does the
 same calculation.
 
 It is worth noting that while this process obfuscates/obscures your Reporting
@@ -129,12 +129,12 @@ equal sensitivity/security as your Reporting API Passcode itself.
 The Merchant Report can accept one parameter to control the data returned by
 the endpoint: `merchants`, which is supplied as part of the URL
 
-If not passed the data returned will be for all the submerchants of the Channel Partner requesting the report.
-If a submerchant is passed in then only data for that submerchant will be returned
+If not passed the data returned will be for all the sub-merchants of the Channel Partner requesting the report.
+If a sub-merchant is passed in then only data for that sub-merchant will be returned
 
 ### Example
 
-An example request to get submerchant details is illustrated below.
+An example request to get sub-merchant details is illustrated below.
 
 #### Request
 
@@ -146,7 +146,7 @@ curl --location --request GET 'https://api.na.bambora.com/v1/reports/merchants/{
 
 Replace `<YOUR API ACCESS PASSCODE>` with your API passcode.
 
-If you wish to only retrieve information for your own account then the request would be 
+If you wish to retrieve information for all of your sub-merchants then the request would be:
 
 ```shell
 curl --location --request GET 'https://api.na.bambora.com/v1/reports/merchants' \
