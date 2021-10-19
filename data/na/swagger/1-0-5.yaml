@@ -267,9 +267,9 @@ paths:
       summary: Settlement Report
       description: |
         This report provides credit card settlement and fee information. It is helpful to understand the credit date, amount, and fees of each settlement. You can retrieve settlement data with up to a three-month range.
-      
+
         Note:
-        
+
         * Our system calculates settlement using Pacific Time (PT) with midnight cut off.
       tags:
         - Reports
@@ -1024,6 +1024,8 @@ definitions:
         $ref: '#/definitions/Custom'
       card:
         $ref: '#/definitions/CardPurchaseResponse'
+      3d_secure:
+        $ref: '#/definitions/3DSecureResponse'
       merchant_data:
         type: string
         maxLength: 32
@@ -1054,7 +1056,7 @@ definitions:
         $ref: '#/definitions/CvdResult'
       eci:
         type: integer
-        description: 'The electronic commerce indicator (ECI) returned back in the transaction response.'
+        description: 'The electronic commerce indicator (ECI) returned back in the transaction response. NOTE: No longer returned for 3DS 2.0, please see status_id instead.'
       address_match:
         type: integer
         description: 'Result of Address verification. 0 if Adddress Verification Service(AVS) is disabled or AVS fails. 1 if AVS is enabled and address and postal/zip code match'
@@ -1065,6 +1067,22 @@ definitions:
         $ref: '#/definitions/AvsResponse'
       cavv_result:
         $ref: '#/definitions/CavvResult'
+      status_id:
+        type: integer
+        enum: ['1','2','3','4']
+        description: 'Status/result of a 3DS 2 transaction.  Set to a value of 1-4, see status for a text description.'
+      status:
+        type: string
+        enum: ['1','2','3','4']
+        description: 'Status/result of a 3DS 2 transaction. 1 = Authenticated, 2 = Attempted, 3 = Non participating, 4 = Failed'
+      error_id:
+        type: integer
+        enum: ['1','2','3']
+        description: 'Returned if status is ''Failed''.  Set to a value of 1-3, see error for a text description.'
+      error:
+        type: string
+        enum: ['1','2','3']
+        description: 'Returned if status is ''Failed''.  1 = 3D Secure service is not enabled, 2 = Service temporarily unavailble, 3 = Internal error'
   AvsResponse:
     properties:
       id:
@@ -1986,10 +2004,14 @@ definitions:
     description: 'For a 3D Secure payment process.'
     required:
       - pa_res
+      - cres
     properties:
       pa_res:
         type: string
-        description: 'For a 3D Secure payment process this stores the Authentication Code (PaRes).'
+        description: 'For a 3D Secure payment process this stores the Authentication Code (PaRes).  NOTE: Only used for 3DS 1, use cres for 3DS 2.'
+      cres:
+        type: string
+        description: 'For a 3D Secure payment process this stores the Authentication Code.'
   3DSecure:
     description: |
       Payment with 3D Secure (Verified by Visa, Mastercard SecureCode, American Express SafeKey).
@@ -1997,10 +2019,18 @@ definitions:
     required:
       - enabled
     properties:
+      browser:
+        $ref: '#/definitions/BrowserData'
       enabled:
         type: boolean
         default: true
         description: 'If 3D Secure is enabled on the merchant account, set to false to process transactions without 3D Secure.  Otherwise, set to true to process transactions with 3D Secure.'
+      version:
+        type: integer
+        description: 'Version of 3DS to perform (1 or 2).  Optional and will default to what is configured in the merchants account.'
+      auth_required:
+        type: boolean
+        description: 'If set to true the transaction will not continue processing unless 3DS authentication is successful.'
       xid:
         type: string
         description: 'The transaction ID (XID) used for processing transactions with 3D Secure.'
@@ -2010,6 +2040,59 @@ definitions:
       eci:
         type: integer
         description: 'The electronic commerce indicator (ECI) used for processing transactions with 3D Secure.'
+  3DSecureResponse: 
+    description: |
+      3D Secure result data
+    required:
+      - status
+    properties:
+        status: 
+            type: string
+            description: 'Status of 3D secure authentication for the transaction. One of: Success, Attempted, Rejected, Failed, Unavailable, or Error'
+  BrowserData:
+    description: |
+      Data collected about the cardholders browser, required for 3DS 2.0 transactions, optional for others.
+    required:
+      - accept_header
+      - java_enabled
+      - language
+      - screen_height
+      - screen_width
+      - time_zone
+      - user_agent
+      - javascript_enabled
+    properties:
+      accept_header:
+        type: string
+        maxLength: 2048
+        description: 'HTTP Accept Header returned by the browser.'
+      java_enabled:
+        type: boolean
+        description: 'True if the browser supports Java.'
+      language:
+        type: string
+        maxLength: 8
+        description: 'Language currently set in the browser.'
+      color_depth:
+        type: integer
+        description: 'Color bit-depth of the screen.'
+      screen_height:
+        type: integer
+        description: 'Height, in pixels, of the screen.'
+      screen_width:
+        type: integer
+        description: 'Width, in pixels, of the screen.'
+      time_zone:
+        type: integer
+        description: 'Timezone returned by the browser.'
+      user_agent:
+        type: string
+        maxLength: 2048
+        description: 'User-Agent header returned by the browser in the client HTTP request.'
+      javascript_enabled:
+        type: boolean
+        default: true
+        description: 'True if the browser has JavaScript enabled.'
   InteracResponse:
     description: 'For an Interac Online payment process.'
     required:

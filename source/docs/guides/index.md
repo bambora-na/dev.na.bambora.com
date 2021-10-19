@@ -36,11 +36,17 @@ cards:
         icon: creditcard-outline
         link: /docs/guides/custom_checkout/
     -
-        title: 3D Secure
+        title: 3D Secure - Legacy
         description: >
             Learn about implementing 3D Secure based payments.
         icon: list
         link: /docs/guides/3D_secure
+    -
+        title: EMV 3D Secure
+        description: >
+            Learn about implementing EMV 3D Secure based payments.
+        icon: list
+        link: /docs/guides/EMV_3D_secure
     -
         title: Apple Pay
         description: >
@@ -68,7 +74,7 @@ cards:
     -
         title: Masterpass
         description: >
-            Process payments with Masterpass.
+            Deprecated Oct 5, 2021.
         icon: creditcard-outline
         link: /docs/guides/masterpass
     -
@@ -107,6 +113,12 @@ cards:
             Process payments with Visa Secure Remote Commerce (SRC).
         icon: creditcard-outline
         link: /docs/guides/visa_checkout
+    -
+        title: Receipt Integration Guide
+        description: >
+            An overview of the best practices for receipt generation for eCommerce and Mail Order/Telephone Order (MOTO) transactions.
+        icon: list
+        link: /docs/guides/receipt_guide
 ---
 
 # Guides
