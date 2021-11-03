@@ -72,3 +72,6 @@
 | 1167 | SRCHG Not Allowed - Surcharge amount not supported by debit network issuer | SRCHG Not Allowed - Surcharge amount not supported by debit network issuer |
 | 1168 | System Error | System Error |
 | 1169 | Undefined Response | Undefined Response |
+| 1173 | Domestic Debit not allowed | Domestic Debit not allowed |
+| 1174 | Suspected Fraud | Suspected Fraud |
+| 1175 | Closed Account | Closed Account |
