@@ -17,6 +17,8 @@ navigation:
 
 # Masterpass
 
+## Deprecated Oct 5, 2021
+
 Masterpass simplifies and secures online payments by storing payment information.
 It removes the need for a customer to re-enter and share card information.
 
