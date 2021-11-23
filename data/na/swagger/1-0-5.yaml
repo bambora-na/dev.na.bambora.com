@@ -313,32 +313,32 @@ paths:
         * Our system calculates fees using Pacific Time (PT) with midnight cut off.
       tags:
         - Reports
-      operationId: getCardSettlementReport
+      operationId: getStatementReport
       parameters:
         - name: start_year
           in: query
           description: "The start year."
           required: true
-          type: string
-          format: date
+          type: number
+          format: integer
         - name: start_month
           in: query
           description: "The start month (inclusive)."
           required: true
-          type: string
-          format: date
+          type: number
+          format: integer
         - name: end_year
           in: query
           description: "The end year."
           required: true
-          type: string
-          format: date
+          type: number
+          format: integer
         - name: end_month
           in: query
           description: "The end month (inclusive)."
           required: true
-          type: string
-          format: date
+          type: number
+          format: integer
       responses:
         200:
           description: A statement object.
