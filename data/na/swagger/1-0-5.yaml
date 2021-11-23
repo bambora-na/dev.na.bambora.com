@@ -296,8 +296,58 @@ paths:
           $ref: '#/responses/BadRequest'
         401:
           $ref: '#/responses/Unauthorized'
-        402:
-          $ref: '#/responses/PaymentRequired'
+        403:
+          $ref: '#/responses/Forbidden'
+        405:
+          $ref: '#/responses/MethodNotAllowed'
+        500:
+          $ref: '#/responses/InternalServerError'
+  '/reports/statements':
+    get:
+      summary: Statement Report
+      description: |
+        This report provides details on fees applied to your monthly statement. For partners we also provide comission and fees charged to your sub merchants.
+
+        Note:
+
+        * Our system calculates fees using Pacific Time (PT) with midnight cut off.
+      tags:
+        - Reports
+      operationId: getStatementReport
+      parameters:
+        - name: start_year
+          in: query
+          description: "The start year."
+          required: true
+          type: number
+          format: integer
+        - name: start_month
+          in: query
+          description: "The start month (inclusive)."
+          required: true
+          type: number
+          format: integer
+        - name: end_year
+          in: query
+          description: "The end year."
+          required: true
+          type: number
+          format: integer
+        - name: end_month
+          in: query
+          description: "The end month (inclusive)."
+          required: true
+          type: number
+          format: integer
+      responses:
+        200:
+          description: A statement object.
+          schema:
+            $ref: '#/definitions/StatementReport'
+        400:
+          $ref: '#/responses/BadRequest'
+        401:
+          $ref: '#/responses/Unauthorized'
         403:
           $ref: '#/responses/Forbidden'
         405:
