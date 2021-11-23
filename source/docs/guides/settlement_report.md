@@ -63,7 +63,7 @@ specification which can be found at:
 The Settlement Report API is accessed via the URL
 <https://api.na.bambora.com/v1/reports/settlement>
 
-In addition, you will need use your Merchant ID and Reporting API Access
+In addition, you will need to use your Merchant ID and Reporting API Access
 Passcode from your Bambora account.  See the "Authentication" section below
 for more details on how to generate your access passcode to use in the request
 to the Settlement Report API.
