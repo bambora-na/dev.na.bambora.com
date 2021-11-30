@@ -1404,6 +1404,59 @@ definitions:
         type:  number
         format:  double
         description: 'Total amount that Bambora held in a reserve account as of the previous statement period.'
+  statementReport:
+    properties:
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/statementRecord'
+  CardSettlementRecord:
+    properties:
+      billing_period:
+        type:  string
+        format:  date
+        description: 'The billing period that fees and commissions have been applied to.  Billing periods are monthly where this field will always be set as the 1st day of the month.'
+      parent_id:
+        type:  number
+        format:  integer
+        description: 'The id of the parent merchant for this statement. This field is only returned for channel partner accounts.'
+      parent_name:
+        type: string
+        description: 'The name of the parent merchant for this statement. This field is only returned for channel partner accounts.'
+      statement_id:
+        type:  number
+        format:  integer
+        description: 'The id of the statement for the associated billing period.'
+      merchant_id:
+        type:  number
+        format:  integer
+        description: 'The id of the merchant for this statement.'
+      merchant_name:
+        type:  string
+        description: 'The name of the merchant for this statement. This field is only returned for channel partner accounts.'
+      fee_type:
+        type:  string
+        description: 'The type of fee being charged.'
+      fee_volume:
+        type:  number
+        format:  integer
+        description: 'The count of the associated fee being charged.'
+      fee_rate:
+        type:  number
+        format:  double
+        description: 'The rate of the fee being charged.'
+      fee_amount:
+        type:  number
+        format:  double
+        description: 'The fee amount being charged.'
+      commission_rate:
+        type:  number
+        format:  double
+        description: 'The commission rate to be collected against the fee. This field is only returned for channel partner accounts.'
+      commission_amount:
+        type:  number
+        format:  double
+        description: 'The commission amount collected against the fee. This field is only returned for channel partner accounts.'
   SearchQuery:
     required:
       - name
