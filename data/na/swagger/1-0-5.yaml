@@ -1409,8 +1409,8 @@ definitions:
       data:
         type: array
         items:
-          $ref: '#/definitions/statementRecord'
-  CardSettlementRecord:
+          $ref: '#/definitions/StatementRecord'
+  StatementRecord:
     properties:
       billing_period:
         type:  string
