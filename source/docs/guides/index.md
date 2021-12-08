@@ -102,6 +102,12 @@ cards:
         icon: creditcard-outline
         link: /docs/guides/settlement_report
     -
+        title: Merchant Report
+        description: >
+            Query for merchant account status and features information.
+        icon: creditcard-outline
+        link: /docs/guides/merchant_report
+    -
         title: SSL
         description: >
             Encrypt information and provide computer to computer authentication.
