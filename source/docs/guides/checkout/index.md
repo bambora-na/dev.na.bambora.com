@@ -13,7 +13,7 @@ navigation:
 
 # Checkout
 
-Checkout allows you to accept payments online with just one link. It is a hosted payment form that supports payment cards, Masterpass and Visa Checkout wallets and Interac Online. You can link to Checkout from your website or from an email, allowing it to slot into either a shopping cart flow or an invoicing flow.
+Checkout allows you to accept payments online with just one link. It is a hosted payment form that supports payment cards, Visa Checkout wallets and Interac Online. You can link to Checkout from your website or from an email, allowing it to slot into either a shopping cart flow or an invoicing flow.
 
 This guide will show you how to create a form and a link before sending it out to clients, customers, and donors.
 
