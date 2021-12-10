@@ -801,10 +801,6 @@ definitions:
         description: Security code on the back of the credit card. This can be set to mandatory in the back office.
       3d_secure:
          $ref: '#/definitions/3DSecure'
-      masterpass_wallet_id:
-        type: string
-        maxLength: 3
-        description: 'The Masterpass code related to the wallet that the card information was sent from.'
       visa_checkout_call_id:
         type: string
         maxLength: 20
@@ -1774,8 +1770,8 @@ definitions:
       entry_method:
         type: string
         maxLength: 1
-        description: 'How the transaction was initiated. N = Standard Entry, A = Apple Pay, G = Android Pay, M = MasterPass, S = EMV Swipe, V = Visa Checkout, Y = Unimag Card Swiper, T = EMV Chip Tap, E = EMV Chip Dip'
-        enum: ['N','A','G','M','S','V','Y','T','E']
+        description: 'How the transaction was initiated. N = Standard Entry, A = Apple Pay, G = Android Pay, S = EMV Swipe, V = Visa Checkout, Y = Unimag Card Swiper, T = EMV Chip Tap, E = EMV Chip Dip'
+        enum: ['N','A','G','S','V','Y','T','E']
       authorizing_merchant_id:
         type: integer
         description: 'The id of the merchant that authorized this transaction.'
