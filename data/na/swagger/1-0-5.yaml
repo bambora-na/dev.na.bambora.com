@@ -33,7 +33,7 @@ paths:
         Make a payment using credit card, cash, cheque, profile, token, Apple Pay or Android Pay. Each payment type has its own json definition passed in the
         body. For all payments you have the standard Billing, Shipping, Comments, etc. fields that are optional. Only the amount is required along with the
         payment data for card, cash, cheque, profile, and token. You must change the payment&#95;method for each payment type. Credit Card - "card",
-        Payment Profile - "payment&#95;profile", Legato Token - "token", Cash - "cash", Cheque - "cheque", Interac - "interac", Apple Pay - "apple&#95;pay",
+        Payment Profile - "payment&#95;profile", Single Use Token - "token", Cash - "cash", Cheque - "cheque", Interac - "interac", Apple Pay - "apple&#95;pay",
         Android Pay - "android&#95;pay".
       tags:
         - Payments
@@ -801,10 +801,6 @@ definitions:
         description: Security code on the back of the credit card. This can be set to mandatory in the back office.
       3d_secure:
          $ref: '#/definitions/3DSecure'
-      masterpass_wallet_id:
-        type: string
-        maxLength: 3
-        description: 'The Masterpass code related to the wallet that the card information was sent from.'
       visa_checkout_call_id:
         type: string
         maxLength: 20
@@ -910,8 +906,8 @@ definitions:
         description: 'set to false for Pre-Authorize, and true to complete a payment'
       code:
         type: string
-        maxLength: 36
-        description: the payment token you retrieved from the Legato service.
+        maxLength: 40
+        description: the payment token you retrieved from the service.
       name:
         type: string
         minLength: 4
@@ -919,10 +915,6 @@ definitions:
         description: Card holder name.
       3d_secure:
          $ref: '#/definitions/3DSecure'
-      masterpass_wallet_id:
-        type: string
-        maxLength: 3
-        description: 'The Masterpass code related to the wallet that the card information was sent from.'
       visa_checkout_call_id:
         type: string
         maxLength: 20
@@ -1102,8 +1094,8 @@ definitions:
       card_type:
         type: string
         maxLength: 2
-        description: 'The type of card used in the transaction. AM = American Express, DI = Diners, JB = JCB, MC = MasterCard, NN = Discover, VI = Visa'
-        enum: ['AM','DI','JB','MC','NN''VI']
+        description: 'The type of card used in the transaction. AM = American Express, DI = Diners, JB = JCB, MC = MasterCard, NN = Discover, VI = Visa, PV = Visa Debit, MD = Debit Mastercard'
+        enum: ['AM','DI','JB','MC','NN','VI','PV','MD']
       last_four:
         type: string
         maxLength: 4
@@ -1165,8 +1157,8 @@ definitions:
       card_type:
         type: string
         maxLength: 2
-        description: 'The type of card used in the transaction. AM = American Express, DI = Diners, JB = JCB, MC = MasterCard, NN = Discover, VI = Visa'
-        enum: ['AM','DI','JB','MC','NN','VI']
+        description: 'The type of card used in the transaction. AM = American Express, DI = Diners, JB = JCB, MC = MasterCard, NN = Discover, VI = Visa, PV = Visa Debit, MD = Debit Mastercard'
+        enum: ['AM','DI','JB','MC','NN','VI','PV','MD']
       last_four:
         type: string
         maxLength: 4
@@ -1778,8 +1770,8 @@ definitions:
       entry_method:
         type: string
         maxLength: 1
-        description: 'How the transaction was initiated. N = Standard Entry, A = Apple Pay, G = Android Pay, M = MasterPass, S = EMV Swipe, V = Visa Checkout, Y = Unimag Card Swiper, T = EMV Chip Tap, E = EMV Chip Dip'
-        enum: ['N','A','G','M','S','V','Y','T','E']
+        description: 'How the transaction was initiated. N = Standard Entry, A = Apple Pay, G = Android Pay, S = EMV Swipe, V = Visa Checkout, Y = Unimag Card Swiper, T = EMV Chip Tap, E = EMV Chip Dip'
+        enum: ['N','A','G','S','V','Y','T','E']
       authorizing_merchant_id:
         type: integer
         description: 'The id of the merchant that authorized this transaction.'
