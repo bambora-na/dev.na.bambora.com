@@ -1404,7 +1404,7 @@ definitions:
         type:  number
         format:  double
         description: 'Total amount that Bambora held in a reserve account as of the previous statement period.'
-  statementReport:
+  StatementReport:
     properties:
       data:
         type: array
