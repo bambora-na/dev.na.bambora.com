@@ -57,10 +57,10 @@ the table below.
 | `fee_type` | The type of fee |
 | `fee_volume` | The total count for this fee |
 | `fee_rate` | The rate charged for this fee |
-| `fee_method` | Set to '$' for fixed rate commission, '%' for percentage based commission, or 'B' for buy rate commission. |
 | `fee_amount` | Amount charged for this fee |
 | `commission_rate` | The commission rate for this fee |
-| `item_commission_amount` | Commission amount paid for this fee |
+| `commission_method` | Set to '$' for fixed rate commission, '%' for percentage based commission, or 'B' for buy rate commission. |
+| `commission_amount` | Commission amount paid for this fee |
 
 More detailed information about these fields can be found in our API
 specification which can be found at:
