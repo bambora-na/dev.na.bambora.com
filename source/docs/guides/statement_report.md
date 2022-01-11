@@ -57,6 +57,7 @@ the table below.
 | `fee_type` | The type of fee |
 | `fee_volume` | The total count for this fee |
 | `fee_rate` | The rate charged for this fee |
+| `fee_method` | Set to '$' for fixed rate commission, '%' for percentage based commission, or 'B' for buy rate commission. |
 | `fee_amount` | Amount charged for this fee |
 | `commission_rate` | The commission rate for this fee |
 | `item_commission_amount` | Commission amount paid for this fee |
@@ -109,7 +110,7 @@ yourAPIAccessPassCode = btoa(merchantID + ":" + reportingAPIPasscode);
 
 In this example `yourAPIAccessPassCode` would be
 `MTIzNDU2Nzg5OmZkMzZkMjQ1YTM1ODQ0MzRiOTA0MDk2NTI1NTQ3ZjE3` which is the value
-used when making a call to the Settlement Report API.
+used when making a call to the Statement Report API.
 
 Alternatively, for convenience, you can also use the
 [form](https://dev.na.bambora.com/docs/forms/encode_api_passcode/) which does
