@@ -561,7 +561,7 @@ trnApproved=1
 
 ## EMV 3D Secure API
 
-The EMV 3D Secure API provides a set of end points that you may want to utilize to perform 3D Secure authentication without immediately processing a payment.  This can be useful in instances where may want to authenticate a card holder before storing their credentials to a customer profile, or for authenticating a transaction that may be processed at a later time.  Our Payments API supports accepting the 3DS Session Data token of a previously authenticated 3D Secure transaction as a reference to the card data, and 3D Secure authentication results.
+The EMV 3D Secure API provides a set of end points where you may want to utilize to perform 3D Secure authentication without immediately processing a payment.  This can be useful in instances where may want to authenticate a card holder before storing their credentials to a customer profile, or for authenticating a transaction that may be processed at a later time.  Our Payments API supports accepting the 3DS Session Data token of a previously authenticated 3D Secure transaction as a reference to the card data, and 3D Secure authentication results.
 
 A passcode must be passed in the authorization header when making a request to the EMV 3DS API.  This API shares the same passcode as the Payment API.
 
@@ -569,7 +569,7 @@ Access to this API must be enabled by a member of our support team.  For assista
 
 ### /POST /V1/EMV3DS/AuthRequst
 
-This endpoint is your first touchpoint for validating card via the EMV 3D Secure process; all new requests must start here.
+This endpoint is your first touchpoint for validating a card via the EMV 3D Secure process; all new requests must start here.
 
 One of the primary components of EMV 3D Secure is the requirement for card holder browser data. This data improves the chances for a frictionless flow, but also enables a customized challenge flow experience for the card holder (if required); one that is tailored to their language and device.
 
@@ -933,8 +933,8 @@ The 3D Secure Status returned in the authentication response indicates if the ca
 | Attempted | Authentication was attempted but could not be completed. | Continue with transaction processing | Yes | Transaction processes | Transaction processes | 6 | 1 |
 | Rejected | Rejected by issuing bank. | Do not proceed with the transaction. Notify the card holder to contact their card issuer. | No | Transaction declined message 311 | Transaction declined message 311 | 7 | 7 |
 | Failed | Failed to authenticate card holder. | Do not proceed with the transaction. Notify the card holder to contact their card issuer. | No | Transaction declined message 311 | Transaction declined message 311 | 7 | 7 |
-| Unavailable | The 3DS service is unavailable due to technical issues. | If you continue with the transaction there will be no lability shift and there will be risk of chargeback. The transaction and 3DS authentication can be retried at a later time. | No | Transaction processes | Transaction declined message 311 | 7 | 7 |
-| Error | Authentication failed due to an internal error. | If you continue with the transaction there will be no lability shift and there will be risk of chargeback. An unexpected internal error occurred processing the 3D Secure authentication. If the problem persists contact Customer Care. | No | Transaction processes | Transaction declined message 311 | 7 | 7 |
+| Unavailable | The 3DS service is unavailable due to technical issues. | If you continue with the transaction there will be no liability shift and there will be risk of chargeback. The transaction and 3DS authentication can be retried at a later time. | No | Transaction processes | Transaction declined message 311 | 7 | 7 |
+| Error | Authentication failed due to an internal error. | If you continue with the transaction there will be no liability shift and there will be risk of chargeback. An unexpected internal error occurred processing the 3D Secure authentication. If the problem persists contact Customer Care. | No | Transaction processes | Transaction declined message 311 | 7 | 7 |
 
 _Please note that the liability shift only applies for chargebacks based on a fraud reason code. Any reason codes related to other types disputes are not covered by the liability shift._
 
