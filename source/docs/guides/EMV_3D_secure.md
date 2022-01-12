@@ -19,7 +19,7 @@ navigation:
 
 If you are currently using our legacy 3D Secure functionality, the documentation is [here](/docs/guides/3D_secure/)
 
-Note: EMV 3DS is currently only available for merchants who process payments through TD. 
+Note: EMV 3DS is currently only available for merchants who process payments through TD Bank. 
 
 EMV 3D Secure (3DS2), also known as Visa Secure (formerly Verified by Visa), MasterCard Identity Check (formerly SecureCode), and AMEX SafeKey, is a security standard used to authenticate card-not-present payments. This upgrade from 3DS 1 reduces friction for the cardholder. Merchants that want to integrate 3DS2 must have signed up for the service through their bank merchant account issuer. This service must also be enabled by our Customer Care team.
 
@@ -47,12 +47,12 @@ Depending on your integration method, you may need to pass in new parameters rel
 
 The payment response will now return a status code to indicate if 3DS authentication was successful. The naming of the parameters in the redirection will also be changing, but their contents and usage will be the same.
 
-# Use our 3DS2 MPI
+# Processing Payments with 3DS Authentication
 
 Use our RESTful Payment APIs to initiate the Payment and to complete the transaction request. In this standard 
 integration, the 3DS2 process may complete in one request or may require two in some cases. 
 
-## REST API - card number passed in 
+## Payment API - card number passed in 
 
 Examples for integrations using our RESTful Payments API: these examples are only applicable to merchants who collect sensitive cardholder data and pass it in to our API.
 
@@ -191,7 +191,7 @@ Continue response:
 
 ## Other responses 
 
-311 - 3DSecure Failed response
+311 - 3D Secure Failed response
 
 Payments request:
 
@@ -242,7 +242,7 @@ Payments response:
 }
 ```
 
-## REST API - Single Use Token 
+## Payment API - Single Use Token 
 
 These examples are applicable to merchants who use Custom Checkout or who tokenize sensitive cardholder information before sending the request to our RESTful Payments API.
 
@@ -311,11 +311,11 @@ curl --location --request POST 'https://api.na.bambora.com/v1/payments' \
 
 From here the request and response flow for a single use token transaction is exactly the same as the card number provided flow above. Either the transaction is authenticated immediately and the merchant receives the Continue response with the results of the transaction including the auth code and 3DS status, or a 302 response is provided to the merchant to redirect the user to the challenge flow.
 
-## REST API - Secure Payment Profile
+## Payment API - Secure Payment Profile
 
 These examples are applicable to merchants who use Secure Payment Profiles.
 
-### Payments 
+### POST /payments
 
 Payments request:
 
@@ -406,14 +406,9 @@ Payments response:
 }
 ```
 
-## Use your own process
+## Payment API - Passthrough Method
 
-Some large merchants complete the Visa Secure, MasterCard SecureCode, or AMEX SafeKey certification to handle 
-authentication on their own side. These merchants can use their existing Visa Secure, SecureCode, or SafeKey authentication 
-process, and send the results of the bank authentication to us with their standard transaction request. To do 
-this, the merchant must integrate using a server-to-server type connection.
-
-Note: This option must be enabled by us. Contact Customer Care if you want to use this method.
+If you have your own 3D Secure MPI and have no need to use our integrated MPI solution, you can use the Passthrough Method. This allows you to use your existing Visa Secure, SecureCode, or SafeKey authentication process, and send the results of the 3D Secure authentication to us with your payment request.
 
 The Visa Secure, SecureCode, or SafeKey bank authentication results must be sent with the transaction request using these five 
 system variables:
@@ -564,6 +559,338 @@ trnApproved=1
 &3DSecureStatus=Success
 ```
 
+## EMV 3D Secure API
+
+The EMV 3D Secure API provides a set of end points where you may want to utilize to perform 3D Secure authentication without immediately processing a payment.  This can be useful in instances where may want to authenticate a card holder before storing their credentials to a customer profile, or for authenticating a transaction that may be processed at a later time.  Our Payments API supports accepting the 3DS Session Data token of a previously authenticated 3D Secure transaction as a reference to the card data, and 3D Secure authentication results.
+
+A passcode must be passed in the authorization header when making a request to the EMV 3DS API.  This API shares the same passcode as the Payment API.
+
+Access to this API must be enabled by a member of our support team.  For assistance, you can send a message to Client Services or call 1-888-472-0811.
+
+### /POST /V1/EMV3DS/AuthRequst
+
+This endpoint is your first touchpoint for validating a card via the EMV 3D Secure process; all new requests must start here.
+
+One of the primary components of EMV 3D Secure is the requirement for card holder browser data. This data improves the chances for a frictionless flow, but also enables a customized challenge flow experience for the card holder (if required); one that is tailored to their language and device.
+
+All the browser values can be collected via JavaScript, unless of course they have JavaScript disabled.  For reference on how to use JavaScript to collect the required browser data, use or refer to the following mini-library.  https://web.na.bambora.com/admin/assets/js/Bambora3DS2.js
+
+#### Request Parameters
+|Parameter|Data Type|Description|
+|---:|---:|---|
+|browser.accept_header|String|HTTP Accept Header returned by the browser.|
+|browser.ip_address|String|The IP Address of the card holders browser.|
+|browser.java_enabled|Boolean|True if the browser supports Java.|
+|browser.language|String|Language currently set in the browser.|
+|browser.color_depth|Integer|Color bit-depth of the screen.|
+|browser.screen_height|Integer|Height, in pixels, of the screen.|
+|browser.screen_width|Integer|Width, in pixels, of the screen.|
+|browser.time_zone|Integer|Time zone returned by the browser.|
+|browser.user_agent|String|User-Agent header returned by the browser in the client HTTP request.|
+|browser.javascript_enabled|Boolean|True if the browser has JavaScript enabled.  Defaults to true if not provided.|
+|redirect_url|String|The URL that you would like your customer redirect to after completing their 3DS challenge.|
+|message_category|Enum|Set to a value of ‘PaymentAuthentication’ when the 3DS check is being performed before authorizing a charge to the card.  Use ‘NonPaymentAuthentication’ when there will be no immediate authorization such as storing a card to a profile for later use.|
+|amount|Numeric|The amount to be charged in the payment associated to this authentication.|
+|card.number|String|The credit card number to authenticate against|
+|card.expiry.month|Number|The two digit month of the card expiration date.|
+|card.expiry.year|Number|The four digit year of the card expiration date.|
+|token|String|Single-use token id associated to the card to authenticate|
+|payment_profile.customer_code|String|The Secure Payment Profile Customer Code to process the authentication against|
+|payment_profile.card_id|Number|The Card Id to process the authentication against.  This is an optional field, where if not provided the default card will be referenced.|
+|reference|String|Reference field to associate with the transaction.|
+
+
+#### Card Data Authentication Request Sample
+```shell
+curl --location --request POST 'https://api.na.bambora.com/v1/EMV3DS/AuthRequest' \
+--header 'Authorization: Passcode MzkwOTgwMDAwOmJhbWJvcmE=' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+	"browser": {
+		"accept_header": "text/html,application/xhtml+xml,application/xml;
+        q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;
+        v=b3",
+		"ip_address": "104.200.16.15",
+		"java_enabled": false,
+		"javascript_enabled": true,
+		"language": "en-US",
+		"color_depth": 24,
+		"screen_height": 1080,
+		"screen_width": 1920,
+		"time_zone": 420,
+		"user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) 
+        AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 
+        Safari/537.36"
+	},
+	"redirect_url": "https://www.mycompanydomain.com/3DSChallengeResonse",
+	"amount": 55.66,
+	"card": {
+		"number": "4567350000427977",
+		"expiry": {
+			"month": "05",
+			"year": "2026"
+		}
+	},
+    "reference":"123"
+}'
+```
+
+#### Secure Payment Profile Authentication Request Sample
+```shell
+curl --location --request POST 'https://api.na.bambora.com/v1/EMV3DS/AuthRequest' \
+--header 'Authorization: Passcode MzkwOTgwMDAwOmJhbWJvcmE=' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+	"browser": {
+		"accept_header": "text/html,application/xhtml+xml,application/xml;
+        q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;
+        v=b3",
+		"ip_address": "10.200.16.15",
+		"java_enabled": false,
+		"javascript_enabled": true,
+		"language": "en-US",
+		"color_depth": 24,
+		"screen_height": 1080,
+		"screen_width": 1920,
+		"time_zone": 420,
+		"user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) 
+        AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 
+        Safari/537.36"
+	},
+	"redirect_url": "https://www.mycompanydomain.com/3DSChallengeResonse",
+	"amount": 5.22,
+    "payment_profile": {
+        "customer_code": "Rtu6Wop1fdE2S"
+	},
+    "reference":"123"
+}
+```
+
+#### Single Use Token Authentication Request Sample
+```shell
+curl --location --request POST 'https://api.na.bambora.com/v1/EMV3DS/AuthRequest' \
+--header 'Authorization: Passcode MzkwOTgwMDAwOmJhbWJvcmE=' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+	"browser": {
+		"accept_header": "text/html,application/xhtml+xml,application/xml;
+        q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;
+        v=b3",
+		"ip_address": "10.200.16.15",
+		"java_enabled": false,
+		"javascript_enabled": true,
+		"language": "en-US",
+		"color_depth": 24,
+		"screen_height": 1080,
+		"screen_width": 1920,
+		"time_zone": 420,
+		"user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) 
+        AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 
+        Safari/537.36"
+	},
+	"redirect_url": "https://www.mycompanydomain.com/3DSChallengeResonse",
+	"amount": 5.22,
+    "token": "CGY01-acc96ac4-907f-4f9f-8d42-a327072c808c",
+    "reference":"123"
+}
+```
+
+
+#### Response Parameters
+
+|Parameter|Data Type|Description|
+|---:|---:|---|
+|threeDS_session_data|String|Unique identifier for this 3DSv2 session. This value is used when completing a challenge flow or future payment request if needed.|
+|redirection.url|String|The URL to redirect the card holder to complete their EMV 3DS challenge.|
+|redirection.values|Dictionary|This is a dictionary of name/value pairs of parameters to submit in the challenge redirection.|
+|authorization.eci|String|Two digit Electronic Commerce Indicator.  This will be set to a value of either 01, 02, 05, or 06.  The ECI code is related to the card brand and authentication status.|
+|authorization.cavv|String|The Cardholder Authentication Verification Value (CAVV), the Accountholder Authentication Value (AAV), and the American Express Verification Value (AEVV), are the values returned by the card brand issuer for an authenticated EMV 3DS transaction.|
+|authorization.xid|Numeric|The EMV 3DS transaction id.|
+|authorization.ds_transaction_id|String|Directory server transaction id.|
+|authorization.protocol_version|String|EMV 3DS protocol version|
+|status|String|The status of the authentication set to a value of either 'Succeeded', 'Attempted', 'Rejected', 'Failed', 'Unavailable', or 'Error'.|
+|type|String|If the request resulted in an error this will contain the error type identifier. Possible values are Validation, Account, Unavailable, Processor, TransactionNotFound, Internal, and Unknown|
+|message|String|In the case of an error, this field will contain a descriptive message indicating the reason the request was rejected.|
+
+
+#### Successful Frictionless Sample Response
+```shell
+{
+    "threeDS_session_data": "MzA4YjkzMDMtMDk3NC00MDA0LTk5ZTItNTdiNzdkZjljNmIx",
+    "redirection": null,
+    "authorization": {
+        "eci": "05",
+        "cavv": "AAABBEg0VhI0VniQEjRWAAAAAAA=",
+        "xid": 12093654975,
+        "ds_transaction_id": "E50D953F-3E7B-401C-8A46-37300431E211",
+        "protocol_version": "2.2"
+    },
+    "status": "Succeeded"
+}
+```
+
+#### Challenge Sample Response
+
+```shell
+{
+    "threeDS_session_data": "MTkxN2I1NzAtY2M2Mi00YjQ0LWFhYWMtMGY4YzRmZjQ3Mjgw",
+    "redirection": {
+        "url": "https://mpi-v2-simulation.test.v-psp.com/acs-simulation/challenge",
+        "values": {
+            "threeDSSessionData": "MTkxN2I1NzAtY2M2Mi00YjQ0LWFhYWMtMGY4YzRmZjQ3Mjgw",
+            "creq": "eyJhY3NUcmFuc0lEIjoiRDEwOTZBQjUtMjJEMi00ODA1LUI0RUEtRUNCNTNERkMzRjkxIiwiY2hhbGxlbmdlV2luZG93U2l6ZSI6IjA1IiwibWVzc2FnZVR5cGUiOiJDUmVxIiwibWVzc2FnZVZlcnNpb24iOiIyLjIuMCIsInRocmVlRFNTZXJ2ZXJUcmFuc0lEIjoiMDc4ZDIzMGItMDkyZC00OTRlLTljYzItOTVmNzljYTYxOTRhIn0"
+        }
+    },
+    "authorization": null,
+    "status": "PendingChallenge"
+}
+```
+
+#### Failed Data Validation Sample Response
+```shell
+{
+    "threeDS_session_data": "MzkyZGY3YmYtYmQxOS00OTVhLWFiYTItZmRlM2U0ZTc3MzYy",
+    "type": "Validation",
+    "message": "Failed data validation",
+    "details": [
+        "browser.javaEnabled",
+        "browser.language",
+        "browser.accept_header",
+        "browser.ip_address"
+    ]
+}
+```
+
+#### 3D Secure Network is Unavailable Sample Response
+```shell
+{
+    "threeDS_session_data": "MzdjMTQ1OGYtMmFlZS00ZDBkLWEyNTQtNDUyYzdjNDM1ZGUw",
+    "redirection": null,
+    "authorization": null,
+    "status": "Unavailable"
+}
+```
+
+#### Service Not Enabled Sample Response
+```shell
+{
+    "threeDS_session_data": "OWUzOTYwOTYtMTYzMi00YThmLWI4ZDUtMWZjZTNmMWZmNzY5",
+    "type": "Account",
+    "message": "Account is not enabled for 3dSecure v2",
+    "details": []
+}
+```
+
+
+### /POST /V1/EMV3DS/AuthResponse
+
+Any cards that cannot be validated with the frictionless flow, must go through a challenge with the card holder; the results of that challenge are sent to this endpoint.
+		
+The AuthResponse call is a very simple one; most information has already been stored associated with the session.  All parameters are required.
+
+AuthResponse requests share the same response types of the AuthRequest call; refer to that section above for details. The one exception to this is that you will never receive another challenge flow response from this endpoint.
+
+
+#### Request Parameters
+
+|paramter|Data Type|Description
+|---:|---:|---|
+|threeDS_session_data|String|Unique identifier for this 3DSv2 session. This is the same value you got from your 'AuthRequest'.|
+|cres|String|This value will have been received in the challenge flow response.|
+
+#### Sample Authentication Response Request
+
+```shell
+{
+    "threeDS_session_data": "YzFjNDQxNWMtZjNiOC00MDIzLThkZGItZTJjM2IwMGQ1M2Q1",
+    "cres": "eyJhY3NUcmFuc0lEIjoiRDEwOTZBQjUtMjJEMi00ODA1LUI0RUEtRUNCNTNERkMzRjkxI
+    iwidHJhbnNTdGF0dXMiOiJZIiwibWVzc2FnZVR5cGUiOiJDUmVzIiwibWVzc2FnZVZlcnN
+    pb24iOiIyLjIuMCIsInRocmVlRFNTZXJ2ZXJUcmFuc0lEIjoiYjhiYmRjZjQtNzE1My00N
+    2Q2LWFjNDgtZGVmZTczZDJhMWVmIn0"
+}
+```
+
+### GET /[threeDS_session_data]
+
+Use this endpoint to fetch information about previous 3DSv2 sessions.
+		Responses from this endpoint will always take the following format:
+
+|Parameter|Data Type|Description|
+|---:|---:|---|
+|threeDS_session_data|string|Unique identifier for this 3DSv2 session.|
+|transaction_id|Numeric|Identifier for the transaction in your transaction reports which the 3DSv2 session is associated with|
+|amount|Currency|Value of the transaction in dollars and cents (or chosen currency equivalent)|
+|card.bin|String|First six digits of card number|
+|card.last_four|String|Last four digits of card number|
+|card.expiry_month|String|Two-digit expiration month of card|
+|card.expiry_year|String|Four-digit expiration year of card|
+|protocolVersion|String|The type/version of the 3DSv2 session|
+|dsTransactionId|String|The directory server transaction identifier|
+|xid|Numeric|The 3DS transaction identifier|
+|eci|Numeric|The electronic commerce indicator|
+|cavv|String|The cardholder authentication verification value|
+|flow_type|String|Indicates the 3DS flow completed for this transaction set to 'F' for Frictionless, and 'C' for Challenge|
+|status|String|Enum string representing the status of the 3DSv2 session|
+|error|String|If the request resulted in an error this will contain the emun error identifier|
+
+#### Sample GET Request
+
+```shell
+curl --location --request GET 'https://api.na.bambora.com/v1/EMV3DS/MDBiYmI5NTYtOTEwNy0A5Y2FlZDMxY2Vh' \
+--header 'Authorization: Passcode MzkwOTgwMDAwOmJhbWJvcmE=' \
+--header 'Content-Type: application/json'
+```
+
+#### Sample GET Response
+
+```shell
+{
+    "threeDS_session_data": "MDBiYmI5NTYtOTEwNy00MzU1LTg0YmUtMTA5Y2FlZDMxY2Vh",
+    "amount": 55.66,
+    "card": {
+        "bin": "456735",
+        "last_four": "7977",
+        "expiry_month": "05",
+        "expiry_year": "2019"
+    },
+    "flow_type": "F",
+    "status": "Success",
+    "authorization": {
+        "eci": "5",
+        "cavv": "AAABBEg0VhI0VniQEjRWAAAAAAA=",
+        "xid": 12093654972,
+        "ds_transaction_id": "63AEEFE8-BE1F-41FA-AD52-4B5E2E16671D",
+        "protocol_version": "2.2"
+    },
+    "error": null,
+    "created_datetime_utc": "2021-12-14T02:11:50.45"
+}
+```
+
+### Processing a Payment Using a 3DS Session Data Token
+
+A credit card that has been successfully authenticated through the EMV 3DS API can be later referenced to complete a payment, without needing to resubmit the credit card number and expiry. The value of the 'threeDS_session_data' parameter returned in the authentication response can be used as a token to the card data and 3D Secure results, when submitting a request to the Payment API.
+
+In the payment request we must set the 'payment_method' to a value of '3d_secure', then pass a '3d_secure' object containing the 'threeDS_session_data' as the token to the card data and 3D Secure results.
+
+The 3DS Session Data Token must be related to an authenticated 3D Secure transaction that was completed within the last 45 days.  3DS Session Data Tokens may only be referenced for a single payment and cannot be reused.  The Payment API will decline a request with code 1177 if the associated 3DS Session Data Token is invalid, expired, or already utilized in a payment.
+
+#### Payment Request using a 3DS Session Data Token
+```shell
+curl --location --request POST 'https://api.na.bambora.com/v1/payments' \
+--header 'Authorization: Passcode MzkwOTgwMDAwOmJhbWJvcmE=' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+   "payment_method": "3d_secure",
+   "customer_ip": "123.123.123.123",
+   "amount": 41.99,
+   "3d_secure": {
+       "threeDS_session_data": "OGE5OWYzYTgtZDIwMi00MTFiLWFiNjctYjJmNTU1ODJjNTAy",
+       "complete": true
+   }
+}
+```
+
 ## Detailed list of changes from 3DS 1
 
 - Payment API request
@@ -577,7 +904,7 @@ trnApproved=1
         - time_zone, numeric (-840 to 720), required
         - user_agent, string (1-2048), required
         - javascript_enabled, optional Boolean true/false, default true.
-    - Additional 3DSecure parameters
+    - Additional 3D Secure parameters
         - version, Optional and will default to what is configured in the merchant's account
         - auth_required (If set to true the transaction will not continue processing unless 3DS authentication is successful)
 
@@ -596,7 +923,9 @@ trnApproved=1
     - Place the value of '3d_session_data' in the URI rather than the value of 'md'
     - Pass a value of 'cres' in the body rather than parameter 'pa_res'.
 
-## Status details 
+## 3D Secure Status
+
+The 3D Secure Status returned in the authentication response indicates if the card holder was successfully authenticated, and if there was a liability shift.
 
 | Status | Description | Recommended Merchant Action | Liability Shift | Authentication Required: False | Authentication Required: True | Visa/Amex ECI Code | MasterCard ECI Code |
 |--------|---------|-----|-----|-----|-----|-----|-----|
@@ -604,12 +933,13 @@ trnApproved=1
 | Attempted | Authentication was attempted but could not be completed. | Continue with transaction processing | Yes | Transaction processes | Transaction processes | 6 | 1 |
 | Rejected | Rejected by issuing bank. | Do not proceed with the transaction. Notify the card holder to contact their card issuer. | No | Transaction declined message 311 | Transaction declined message 311 | 7 | 7 |
 | Failed | Failed to authenticate card holder. | Do not proceed with the transaction. Notify the card holder to contact their card issuer. | No | Transaction declined message 311 | Transaction declined message 311 | 7 | 7 |
-| Unavailable | The 3DS service is unavailable due to technical issues. | If you continue with the transaction there will be no lability shift and there will be risk of chargeback. The transaction and 3DS authentication can be retried at a later time. | No | Transaction processes | Transaction declined message 311 | 7 | 7 |
-| Error | Authentication failed due to an internal error. | If you continue with the transaction there will be no lability shift and there will be risk of chargeback. An unexpected internal error occurred processing the 3DSecure authentication. If the problem persists contact Customer Care. | No | Transaction processes | Transaction declined message 311 | 7 | 7 |
+| Unavailable | The 3DS service is unavailable due to technical issues. | If you continue with the transaction there will be no liability shift and there will be risk of chargeback. The transaction and 3DS authentication can be retried at a later time. | No | Transaction processes | Transaction declined message 311 | 7 | 7 |
+| Error | Authentication failed due to an internal error. | If you continue with the transaction there will be no liability shift and there will be risk of chargeback. An unexpected internal error occurred processing the 3D Secure authentication. If the problem persists contact Customer Care. | No | Transaction processes | Transaction declined message 311 | 7 | 7 |
 
 _Please note that the liability shift only applies for chargebacks based on a fraud reason code. Any reason codes related to other types disputes are not covered by the liability shift._
 
 _In rare cases the issuer can downgrade an authenticated transaction after processing the payment so that the liability shifts back to the merchant. For that scenario, the Payment API returns 0 for the cavv\_result field._
+
 
 ## Test Cards
 
@@ -680,3 +1010,4 @@ _In rare cases the issuer can downgrade an authenticated transaction after proce
 |Amex|376632086941180|Rejected|Challenge|
 |MasterCard|5148904639667695|Unavailable|Challenge|
 |MasterCard|5137739025252071|Unavailable|Challenge|
+
