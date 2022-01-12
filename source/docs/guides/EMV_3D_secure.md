@@ -408,7 +408,7 @@ Payments response:
 
 ## Payment API - Passthrough Method
 
-If you have your own 3D Secure MPI and have no need to use our integrated MPI solution you can use the Passthrough Method. This allows you to use your existing Visa Secure, SecureCode, or SafeKey authentication process, and send the results of the 3DSecure authentication to us with your payment request.
+If you have your own 3D Secure MPI and have no need to use our integrated MPI solution, you can use the Passthrough Method. This allows you to use your existing Visa Secure, SecureCode, or SafeKey authentication process, and send the results of the 3DSecure authentication to us with your payment request.
 
 The Visa Secure, SecureCode, or SafeKey bank authentication results must be sent with the transaction request using these five 
 system variables:
@@ -561,7 +561,7 @@ trnApproved=1
 
 ## EMV 3D Secure API
 
-The EMV 3D Secure API provides a set of end points that you can utilize to perform 3DSecure authentication without immediately processing a payment.  This can be useful in instances where may want to authenticate a card holder before storing their credentials to a customer profile or for authenticating a transaction that may be processed at a later time.  Our Payments API supports accepting the 3DS Session Data token of a previously authenticated 3D Secure transaction as a reference to the card data and 3D Secure authentication results.
+The EMV 3D Secure API provides a set of end points that you may want to utilize to perform 3DSecure authentication without immediately processing a payment.  This can be useful in instances where may want to authenticate a card holder before storing their credentials to a customer profile, or for authenticating a transaction that may be processed at a later time.  Our Payments API supports accepting the 3DS Session Data token of a previously authenticated 3D Secure transaction as a reference to the card data, and 3D Secure authentication results.
 
 A passcode must be passed in the authorization header when making a request to the EMV 3DS API.  This API shares the same passcode as the Payment API.
 
@@ -709,8 +709,8 @@ curl --location --request POST 'https://api.na.bambora.com/v1/EMV3DS/AuthRequest
 |authorization.ds_transaction_id|String|Directory server transaction id.|
 |authorization.protocol_version|String|EMV 3DS protocol version|
 |status|String|The status of the authentication set to a value of either 'Succeeded', 'Attempted', 'Rejected', 'Failed', 'Unavailable', or 'Error'.|
-|type|String|If the request resulted in an error this will contain the error type indentifier. Possible values are Validation, Account, Unavailable, Processor, TransactionNotFound, Internal, and Unknown|
-|message|String|in the case of an errror, this field will contain a descrition message indicating the reason the request was rejected.|
+|type|String|If the request resulted in an error this will contain the error type identifier. Possible values are Validation, Account, Unavailable, Processor, TransactionNotFound, Internal, and Unknown|
+|message|String|In the case of an error, this field will contain a descriptive message indicating the reason the request was rejected.|
 
 
 #### Successful Frictionless Sample Response
@@ -827,11 +827,11 @@ Use this endpoint to fetch information about previous 3DSv2 sessions.
 |protocolVersion|String|The type/version of the 3DSv2 session|
 |dsTransactionId|String|The directory server transaction identifier|
 |xid|Numeric|The 3DS transaction identifier|
-|eci|Numeric|The electoronic commerce indicator|
+|eci|Numeric|The electronic commerce indicator|
 |cavv|String|The cardholder authentication verification value|
 |flow_type|String|Indicates the 3DS flow completed for this transaction set to 'F' for Frictionless, and 'C' for Challenge|
 |status|String|Enum string representing the status of the 3DSv2 session|
-|error|String|If the request resulted in an error this will contain the emun error indentifier|
+|error|String|If the request resulted in an error this will contain the emun error identifier|
 
 #### Sample GET Request
 
@@ -867,9 +867,9 @@ curl --location --request GET 'https://api.na.bambora.com/v1/EMV3DS/MDBiYmI5NTYt
 }
 ```
 
-### Processing a Payment Using a 3DS Sesstion Data Token
+### Processing a Payment Using a 3DS Session Data Token
 
-A credit card that has been successfully authenticated through the EMV 3DS API can be later referenced to complete a payment, without needing to resubmit the credit card number and expiry. The value of the 'threeDS_session_data' parameter returned in the authentication response can be used as a token to the card data and 3D Secure results when sumbitting a request to the Payment API.
+A credit card that has been successfully authenticated through the EMV 3DS API can be later referenced to complete a payment, without needing to resubmit the credit card number and expiry. The value of the 'threeDS_session_data' parameter returned in the authentication response can be used as a token to the card data and 3D Secure results, when submitting a request to the Payment API.
 
 In the payment request we must set the 'payment_method' to a value of '3d_secure', then pass a '3d_secure' object containing the 'threeDS_session_data' as the token to the card data and 3D Secure results.
 
