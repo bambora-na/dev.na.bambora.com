@@ -191,7 +191,7 @@ Continue response:
 
 ## Other responses 
 
-311 - 3DSecure Failed response
+311 - 3D Secure Failed response
 
 Payments request:
 
@@ -408,7 +408,7 @@ Payments response:
 
 ## Payment API - Passthrough Method
 
-If you have your own 3D Secure MPI and have no need to use our integrated MPI solution, you can use the Passthrough Method. This allows you to use your existing Visa Secure, SecureCode, or SafeKey authentication process, and send the results of the 3DSecure authentication to us with your payment request.
+If you have your own 3D Secure MPI and have no need to use our integrated MPI solution, you can use the Passthrough Method. This allows you to use your existing Visa Secure, SecureCode, or SafeKey authentication process, and send the results of the 3D Secure authentication to us with your payment request.
 
 The Visa Secure, SecureCode, or SafeKey bank authentication results must be sent with the transaction request using these five 
 system variables:
@@ -561,7 +561,7 @@ trnApproved=1
 
 ## EMV 3D Secure API
 
-The EMV 3D Secure API provides a set of end points that you may want to utilize to perform 3DSecure authentication without immediately processing a payment.  This can be useful in instances where may want to authenticate a card holder before storing their credentials to a customer profile, or for authenticating a transaction that may be processed at a later time.  Our Payments API supports accepting the 3DS Session Data token of a previously authenticated 3D Secure transaction as a reference to the card data, and 3D Secure authentication results.
+The EMV 3D Secure API provides a set of end points that you may want to utilize to perform 3D Secure authentication without immediately processing a payment.  This can be useful in instances where may want to authenticate a card holder before storing their credentials to a customer profile, or for authenticating a transaction that may be processed at a later time.  Our Payments API supports accepting the 3DS Session Data token of a previously authenticated 3D Secure transaction as a reference to the card data, and 3D Secure authentication results.
 
 A passcode must be passed in the authorization header when making a request to the EMV 3DS API.  This API shares the same passcode as the Payment API.
 
@@ -569,9 +569,9 @@ Access to this API must be enabled by a member of our support team.  For assista
 
 ### /POST /V1/EMV3DS/AuthRequst
 
-This endpoint is your first touchpoint for validating card via the EMV 3DSecure process; all new requests must start here.
+This endpoint is your first touchpoint for validating card via the EMV 3D Secure process; all new requests must start here.
 
-One of the primary components of EMV 3DSecure is the requirement for card holder browser data. This data improves the chances for a frictionless flow, but also enables a customized challenge flow experience for the card holder (if required); one that is tailored to their language and device.
+One of the primary components of EMV 3D Secure is the requirement for card holder browser data. This data improves the chances for a frictionless flow, but also enables a customized challenge flow experience for the card holder (if required); one that is tailored to their language and device.
 
 All the browser values can be collected via JavaScript, unless of course they have JavaScript disabled.  For reference on how to use JavaScript to collect the required browser data, use or refer to the following mini-library.  https://web.na.bambora.com/admin/assets/js/Bambora3DS2.js
 
@@ -761,7 +761,7 @@ curl --location --request POST 'https://api.na.bambora.com/v1/EMV3DS/AuthRequest
 }
 ```
 
-#### 3DSecure Network is Unavailable Sample Response
+#### 3D Secure Network is Unavailable Sample Response
 ```shell
 {
     "threeDS_session_data": "MzdjMTQ1OGYtMmFlZS00ZDBkLWEyNTQtNDUyYzdjNDM1ZGUw",
@@ -873,7 +873,7 @@ A credit card that has been successfully authenticated through the EMV 3DS API c
 
 In the payment request we must set the 'payment_method' to a value of '3d_secure', then pass a '3d_secure' object containing the 'threeDS_session_data' as the token to the card data and 3D Secure results.
 
-The 3DS Session Data Token must be related to an authenticated 3DSecure transaction that was completed within the last 45 days.  3DS Session Data Tokens may only be referenced for a single payment and cannot be reused.  The Payment API will decline a request with code 1177 if the associated 3DS Session Data Token is invalid, expired, or already utilized in a payment.
+The 3DS Session Data Token must be related to an authenticated 3D Secure transaction that was completed within the last 45 days.  3DS Session Data Tokens may only be referenced for a single payment and cannot be reused.  The Payment API will decline a request with code 1177 if the associated 3DS Session Data Token is invalid, expired, or already utilized in a payment.
 
 #### Payment Request using a 3DS Session Data Token
 ```shell
@@ -904,7 +904,7 @@ curl --location --request POST 'https://api.na.bambora.com/v1/payments' \
         - time_zone, numeric (-840 to 720), required
         - user_agent, string (1-2048), required
         - javascript_enabled, optional Boolean true/false, default true.
-    - Additional 3DSecure parameters
+    - Additional 3D Secure parameters
         - version, Optional and will default to what is configured in the merchant's account
         - auth_required (If set to true the transaction will not continue processing unless 3DS authentication is successful)
 
@@ -934,7 +934,7 @@ The 3D Secure Status returned in the authentication response indicates if the ca
 | Rejected | Rejected by issuing bank. | Do not proceed with the transaction. Notify the card holder to contact their card issuer. | No | Transaction declined message 311 | Transaction declined message 311 | 7 | 7 |
 | Failed | Failed to authenticate card holder. | Do not proceed with the transaction. Notify the card holder to contact their card issuer. | No | Transaction declined message 311 | Transaction declined message 311 | 7 | 7 |
 | Unavailable | The 3DS service is unavailable due to technical issues. | If you continue with the transaction there will be no lability shift and there will be risk of chargeback. The transaction and 3DS authentication can be retried at a later time. | No | Transaction processes | Transaction declined message 311 | 7 | 7 |
-| Error | Authentication failed due to an internal error. | If you continue with the transaction there will be no lability shift and there will be risk of chargeback. An unexpected internal error occurred processing the 3DSecure authentication. If the problem persists contact Customer Care. | No | Transaction processes | Transaction declined message 311 | 7 | 7 |
+| Error | Authentication failed due to an internal error. | If you continue with the transaction there will be no lability shift and there will be risk of chargeback. An unexpected internal error occurred processing the 3D Secure authentication. If the problem persists contact Customer Care. | No | Transaction processes | Transaction declined message 311 | 7 | 7 |
 
 _Please note that the liability shift only applies for chargebacks based on a fraud reason code. Any reason codes related to other types disputes are not covered by the liability shift._
 

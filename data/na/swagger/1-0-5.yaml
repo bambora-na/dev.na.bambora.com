@@ -924,8 +924,8 @@ definitions:
         maxLength: 20
         description: 'The Visa Checkout payment request ID.'
   3d_secure:
-    description: "Payment with a 3D Secure Session Data token.  Reference a previously proessed 3D Secure transaction 
-      processed through the EMV 3DS API.  This will apply the associated card number, card expiry, and 3DSecure results 
+    description: "Payment with a 3D Secure Session Data token.  Reference a previously processed 3D Secure transaction 
+      processed through the EMV 3DS API.  This will apply the associated card number, card expiry, and 3D Secure results 
       to your payment request. The payment_method must be '3d_secure'"
     required:
       - threeDS_session_data
