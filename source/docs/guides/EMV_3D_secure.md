@@ -406,9 +406,9 @@ Payments response:
 }
 ```
 
-## Use your own 3D Secure MPI
+## Payment API - Passthrough Method
 
-If you have your own 3D Secure MPI and have no need to use our integrated MPI solution you can pass through method.  This allows you to use your existing Visa Secure, SecureCode, or SafeKey authentication process, and send the results of the 3DSecure authentication to us with their standard transaction request.
+If you have your own 3D Secure MPI and have no need to use our integrated MPI solution you can use the Passthrough Method. This allows you to use your existing Visa Secure, SecureCode, or SafeKey authentication process, and send the results of the 3DSecure authentication to us with your payment request.
 
 The Visa Secure, SecureCode, or SafeKey bank authentication results must be sent with the transaction request using these five 
 system variables:
@@ -561,7 +561,7 @@ trnApproved=1
 
 ## EMV 3D Secure API
 
-The EMV 3D Secure API provides a set of end points that you can utilize to perform 3DSecure authentication without immediately processing a payment.  This allows the card holder and credit card number to be authenticated and potentially stored or later referenced in a payment transaction.  Our Payments API supports accepting the 3DS Session Data a token to the card data utilized in a previously authenticated 3D Secure transaction.
+The EMV 3D Secure API provides a set of end points that you can utilize to perform 3DSecure authentication without immediately processing a payment.  This can be useful in instances where may want to authenticate a card holder before storing their credentials to a customer profile or for authenticating a transaction that may be processed at a later time.  Our Payments API supports accepting the 3DS Session Data token of a previously authenticated 3D Secure transaction as a reference to the card data and 3D Secure authentication results.
 
 A passcode must be passed in the authorization header when making a request to the EMV 3DS API.  This API shares the same passcode as the Payment API.
 
@@ -597,7 +597,7 @@ All the browser values can be collected via JavaScript, unless of course they ha
 |token|String|Single-use token id associated to the card to authenticate|
 |payment_profile.customer_code|String|The Secure Payment Profile Customer Code to process the authentication against|
 |payment_profile.card_id|Number|The Card Id to process the authentication against.  This is an optional field, where if not provided the default card will be referenced.|
-|reference|String|Reference field to associate with the transaction. The API does not eforce uniqueness but it is recommended that a unique transaction reference be passed in this field to support.|
+|reference|String|Reference field to associate with the transaction.|
 
 
 #### Card Data Authentication Request Sample
@@ -869,9 +869,9 @@ curl --location --request GET 'https://api.na.bambora.com/v1/EMV3DS/MDBiYmI5NTYt
 
 ### Processing a Payment Using a 3DS Sesstion Data Token
 
-A credit card that has been successfully authenticated through the EMV 3DS API can be later referenced to complete a payment without needing to resubmit the credit card number and expiry. The value of the 'threeDS_session_data' parameter returned in the authentication response can be used a card number token when calling the Payment API to charge the card.
+A credit card that has been successfully authenticated through the EMV 3DS API can be later referenced to complete a payment, without needing to resubmit the credit card number and expiry. The value of the 'threeDS_session_data' parameter returned in the authentication response can be used as a token to the card data and 3D Secure results when sumbitting a request to the Payment API.
 
-In the payment request we must set the 'payment_method' to a value of '3d_secure' then pass a '3d_secure' object containing the 'threeDS_session_data' as the card token and indicate if 'complete' should be true or false.
+In the payment request we must set the 'payment_method' to a value of '3d_secure', then pass a '3d_secure' object containing the 'threeDS_session_data' as the token to the card data and 3D Secure results.
 
 The 3DS Session Data Token must be related to an authenticated 3DSecure transaction that was completed within the last 45 days.  3DS Session Data Tokens may only be referenced for a single payment and cannot be reused.  The Payment API will decline a request with code 1177 if the associated 3DS Session Data Token is invalid, expired, or already utilized in a payment.
 
@@ -925,7 +925,7 @@ curl --location --request POST 'https://api.na.bambora.com/v1/payments' \
 
 ## 3D Secure Status
 
-The 3D Secure Status returned in the authentication response indicates if the card holder was successfully authenticated and if there was a libility shift.
+The 3D Secure Status returned in the authentication response indicates if the card holder was successfully authenticated, and if there was a liability shift.
 
 | Status | Description | Recommended Merchant Action | Liability Shift | Authentication Required: False | Authentication Required: True | Visa/Amex ECI Code | MasterCard ECI Code |
 |--------|---------|-----|-----|-----|-----|-----|-----|
