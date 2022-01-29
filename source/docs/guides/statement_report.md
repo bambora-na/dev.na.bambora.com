@@ -59,7 +59,7 @@ the table below.
 | `fee_rate` | The rate charged for this fee |
 | `fee_amount` | Amount charged for this fee |
 | `commission_rate` | The commission rate for this fee |
-| `commission_method` | Set to '$' for fixed rate commission, '%' for percentage based commission, or 'B' for buy rate commission. |
+| `commission_method` | Set to '$' for fixed rate commission, '%' for percentage based commission, or 'B' for basis points commission. |
 | `commission_amount` | Commission amount paid for this fee |
 
 More detailed information about these fields can be found in our API
