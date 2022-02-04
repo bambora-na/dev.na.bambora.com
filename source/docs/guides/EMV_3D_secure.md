@@ -559,6 +559,24 @@ trnApproved=1
 &3DSecureStatus=Success
 ```
 
+## Card on File Transactions
+
+Merchants that are storing their customers credit card numbers rather than prompting for the card number at the time of purchase, must ensure that they are passing the appropriate Card on File type in their payment request.  The type of Card on File transaction must be utilized appropriately in conjunction with your 3D Secure authentications.  Card on File types fall into two categories of being either a Customer Initiated or Merchant Initiated transaction.  Customer Initiated transactions support 3D Secure authentication, but Merchant Initiated transactions do not.
+
+For Customer Initiated transactions, these would be the case where the customer is present for the transaction and is either making their first or subsequent payment using a card number stored by the merchant.  Since the customer is initiating the transaction, 3D Secure is supported on the payment due to the customer being present to complete any challenge flow required.
+
+For Merchant Initiated transactions this would be the case where the merchant has initiated a charge the card holder at a time that the card holder is not present during the authorization to complete any 3D Secure authentication.  For these Card on File types, we do not support 3D Secure authentication.  Any request to the Payment API with a Merchant Initiated Card on File type will not perform any 3D Secure authentication even if that payment request is being processed using a 3D Secure Session Data token payment method.
+
+|Card on File Type|Initiated By|3D Secure Support|
+|---:|---:|---:|
+|First Installment|Customer|Yes|
+|Subsequent Installment|Merchant|No|
+|First Recurring|Customer|Yes|
+|Subsequent Recurring|Merchant|No|
+|Subsequent Customer Initiated|Customer|Yes|
+|Subsequent Unscheduled|Merchant|No|
+
+
 ## EMV 3D Secure API
 
 The EMV 3D Secure API provides a set of end points where you may want to utilize to perform 3D Secure authentication without immediately processing a payment.  This can be useful in instances where may want to authenticate a card holder before storing their credentials to a customer profile, or for authenticating a transaction that may be processed at a later time.  Our Payments API supports accepting the 3DS Session Data token of a previously authenticated 3D Secure transaction as a reference to the card data, and 3D Secure authentication results.
@@ -781,14 +799,47 @@ curl --location --request POST 'https://api.na.bambora.com/v1/EMV3DS/AuthRequest
 }
 ```
 
+### Challenge Flow Redirection
+
+When a Challenge Flow is required to complete the 3D Secure authentication, the response to the /V1/EMV3DS/AuthRequest will return the 'redirection' object which will contain a redirection url and a dictionary of name value pair parameters. The presence of the 'redirection' object is an indication that a challenge flow is required to complete the 3D Secure authentication.  You will need to instruct the card holder's browser to perform the challenge flow redirection by constructing an HTML document embedding the redirection url, the dictionary of name value pair parameters as hidden form fields, and a JavaScript instruction to trigger the redirect.
+
+The dictionary of name value pairs to submit in the redirection response will be seen as the same two parameters named 'threeDSSessionData' and 'cres' in all challenge flow redirects.  To support potential future changes in the 3D Secure service it is recommended that your integration is built to support any number of parameters and parameter names to be returned in the redirection object.
+
+Here is an example HTML document that can be used to perform the card holder browser redirection to the 3D Secure challenge screen.
+
+```shell
+<!doctype html>
+ <html>
+   <head>
+     <meta charset='utf-8' />
+     <script>
+       window.addEventListener('load', function() {
+         document.getElementById('challengeform').submit();
+       }, false);
+     </script>
+   </head>
+   <body>
+     <form id='challengeform' action='https://authentication.cardinalcommerce.com/ThreeDSecure/V2_1_0/CReq' method='post'>
+       <input type='hidden' name='threeDSSessionData' value='MjVhYTc2YzYtYjlkMi00NmU3LWI2NWItZTgxM2UxZjQzZThm' />
+       <input type='hidden' name='creq' value='eyJhY3NUcmFuc0lEIjoiRDEwOTZBQjUtMjJEMi00ODA1LUI0RUEtRUNCNTNERkMzRjkxIiwiY2hhbGxlbmdlV2luZG93U2l6ZSI6IjA1IiwibWVzc2FnZVR5cGUiOiJDUmVxIiwibWVzc2FnZVZlcnNpb24iOiIyLjIuMCIsInRocmVlRFNTZXJ2ZXJUcmFuc0lEIjoiNWEzM2IyMTEtMDdjMC00MTIyLWFkM2EtN2ZkZjE5NTJhOWM0In0' />
+       </form>
+   </body>
+ </html>
+ ```
+
+
 
 ### /POST /V1/EMV3DS/AuthResponse
 
 Any cards that cannot be validated with the frictionless flow, must go through a challenge with the card holder; the results of that challenge are sent to this endpoint.
-		
+
 The AuthResponse call is a very simple one; most information has already been stored associated with the session.  All parameters are required.
 
+A card holder that has completed their challenge will have their browser redirect back to the url definded in the 'redirect_url' parameter returning the 'threeDSSessionData' as the sesson identifier and the resulting 'cres' value used to authenticate the completed challenge.  The value of these two parameters but be submitted in the /v1/EMV3DS/AuthRespose call to complete the authentication.
+
 AuthResponse requests share the same response types of the AuthRequest call; refer to that section above for details. The one exception to this is that you will never receive another challenge flow response from this endpoint.
+
+If an invalid value is passed as in 'cres' parameter this will trigger a 400 bad request http status code with the message of 'Unable to complete request'.
 
 
 #### Request Parameters
@@ -965,16 +1016,16 @@ _In rare cases the issuer can downgrade an authenticated transaction after proce
 |MasterCard|5576939757108172|Attempted|Frictionless|
 |Amex|376691390182618|Attempted|Frictionless|
 |Amex|344822942822422|Attempted|Frictionless|
-|Visa|4469362473905800|Failed|Frictionless|
-|Visa|4012000305337014|Failed|Frictionless|
-|Visa|4532151725292767|Failed|Frictionless|
-|Visa|4921813693255758|Failed|Frictionless|
-|MasterCard|5114974939548499|Failed|Frictionless|
-|MasterCard|5102178582044293|Failed|Frictionless|
-|MasterCard|5200001683397918|Failed|Frictionless|
-|MasterCard|5576931977544583|Failed|Frictionless|
-|Amex|375439384971666|Failed|Frictionless|
-|Amex|343477454564812|Failed|Frictionless|
+|Visa|4419177274955460|Failed|Frictionless|
+|Visa|4012001775445550|Failed|Frictionless|
+|Visa|4532157407598025|Failed|Frictionless|
+|Visa|4921817248633948|Failed|Frictionless|
+|MasterCard|5177974232361974|Failed|Frictionless|
+|MasterCard|5165908764250365|Failed|Frictionless|
+|MasterCard|5200008192910263|Failed|Frictionless|
+|MasterCard|5576938399119654|Failed|Frictionless|
+|Amex|379462724081554|Failed|Frictionless|
+|Amex|348058683731797|Failed|Frictionless|
 |Visa|4337328333414325|Rejected|Frictionless|
 |Visa|4012003360932265|Rejected|Frictionless|
 |Visa|4532157741142902|Rejected|Frictionless|
