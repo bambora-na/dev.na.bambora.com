@@ -236,7 +236,7 @@ paths:
   /reports:
     post:
       summary: Search Query
-      description: 'Query for transactions using a date range and optional search criteria. This method allows you to page your search results if you are expecting a lot of results to be returned. The page start value begins at 1. If no records are found the API will return a 200 response message with an empty array. For details on the parameters and allowed values for Criteria please visit the documentation http://dev.na.bambora.com'
+      description: 'Query for transactions using a date range and optional search criteria. This method allows you to page your search results if you are expecting a lot of results to be returned. The page start value begins at 1 and the results will be limited to 500 rows. If no records are found the API will return a 200 response message with an empty array. For details on the parameters and allowed values for Criteria please visit the documentation http://dev.na.bambora.com'
       tags:
         - Reports
       operationId: getReport
@@ -1610,7 +1610,7 @@ definitions:
       end_row:
         type: number
         format: integer
-        description: Used to page the results. 1-based. This should always be 1 larger than start_row.
+        description: Used to page the results. 1-based. This should always be 1 larger than start_row with a maximum difference of 500 between them. 
         default: 2
       criteria:
         description: Optional search criteria. All criteria are ANDed together.
