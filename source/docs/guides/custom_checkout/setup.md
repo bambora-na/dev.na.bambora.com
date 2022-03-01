@@ -109,7 +109,7 @@ customCheckout.on('complete', function(event) {
 
 You request a token for the card data in the Custom Checkout text inputs at any time using `customCheckout.createToken`. It will only return a token if the card data is valid, otherwise it will return an error.
 
-The token returned is a nonce. It expires on-use or after 15 minutes.
+The token returned is a nonce. It expires on-use or after 5 minutes.
 
 ```javascript
 customCheckout.createToken(function (result) {
