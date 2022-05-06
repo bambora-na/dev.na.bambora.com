@@ -33,7 +33,7 @@ paths:
         Make a payment using credit card, cash, cheque, profile, token, Apple Pay or Android Pay. Each payment type has its own json definition passed in the
         body. For all payments you have the standard Billing, Shipping, Comments, etc. fields that are optional. Only the amount is required along with the
         payment data for card, cash, cheque, profile, and token. You must change the payment&#95;method for each payment type. Credit Card - "card",
-        Payment Profile - "payment&#95;profile", Legato Token - "token", Cash - "cash", Cheque - "cheque", Interac - "interac", Apple Pay - "apple&#95;pay",
+        Payment Profile - "payment&#95;profile", Single Use Token - "token", Cash - "cash", Cheque - "cheque", Interac - "interac", Apple Pay - "apple&#95;pay",
         Android Pay - "android&#95;pay".
       tags:
         - Payments
@@ -236,7 +236,7 @@ paths:
   /reports:
     post:
       summary: Search Query
-      description: 'Query for transactions using a date range and optional search criteria. This method allows you to page your search results if you are expecting a lot of results to be returned. The page start value begins at 1. If no records are found the API will return a 200 response message with an empty array. For details on the parameters and allowed values for Criteria please visit the documentation http://dev.na.bambora.com'
+      description: 'Query for transactions using a date range and optional search criteria. This method allows you to page your search results if you are expecting a lot of results to be returned. The page start value begins at 1 and the results will be limited to 500 rows. If no records are found the API will return a 200 response message with an empty array. For details on the parameters and allowed values for Criteria please visit the documentation http://dev.na.bambora.com'
       tags:
         - Reports
       operationId: getReport
@@ -250,6 +250,62 @@ paths:
           description: A transaction object.
           schema:
             $ref: '#/definitions/SearchResult'
+        400:
+          $ref: '#/responses/BadRequest'
+        401:
+          $ref: '#/responses/Unauthorized'
+        402:
+          $ref: '#/responses/PaymentRequired'
+        403:
+          $ref: '#/responses/Forbidden'
+        405:
+          $ref: '#/responses/MethodNotAllowed'
+        500:
+          $ref: '#/responses/InternalServerError'
+  '/reports/merchants':
+    get:
+      summary: Merchant Report
+      description: |
+        This report provides information about a merchant and their sub-merchants.
+      tags:
+        - Reports
+      operationId: getAllMerchants
+      responses:
+        200:
+          description: A merchant object.
+          schema:
+            $ref: '#/definitions/MerchantReport'
+        400:
+          $ref: '#/responses/BadRequest'
+        401:
+          $ref: '#/responses/Unauthorized'
+        402:
+          $ref: '#/responses/PaymentRequired'
+        403:
+          $ref: '#/responses/Forbidden'
+        405:
+          $ref: '#/responses/MethodNotAllowed'
+        500:
+          $ref: '#/responses/InternalServerError'
+  '/reports/merchants/{merchantId}':
+    get:
+      summary: Merchant Report
+      description: |
+        This report provides information about a merchant's specific sub-merchant.
+      tags:
+        - Reports
+      operationId: getMerchant
+      parameters:
+        - name: merchantId
+          in: path
+          description: The id of the sub-merchant.
+          required: true
+          type: integer
+      responses:
+        200:
+          description: A merchant object.
+          schema:
+            $ref: '#/definitions/MerchantReport'
         400:
           $ref: '#/responses/BadRequest'
         401:
@@ -795,10 +851,6 @@ definitions:
         description: Security code on the back of the credit card. This can be set to mandatory in the back office.
       3d_secure:
          $ref: '#/definitions/3DSecure'
-      masterpass_wallet_id:
-        type: string
-        maxLength: 3
-        description: 'The Masterpass code related to the wallet that the card information was sent from.'
       visa_checkout_call_id:
         type: string
         maxLength: 20
@@ -904,8 +956,8 @@ definitions:
         description: 'set to false for Pre-Authorize, and true to complete a payment'
       code:
         type: string
-        maxLength: 36
-        description: the payment token you retrieved from the Legato service.
+        maxLength: 40
+        description: the payment token you retrieved from the service.
       name:
         type: string
         minLength: 4
@@ -913,10 +965,6 @@ definitions:
         description: Card holder name.
       3d_secure:
          $ref: '#/definitions/3DSecure'
-      masterpass_wallet_id:
-        type: string
-        maxLength: 3
-        description: 'The Masterpass code related to the wallet that the card information was sent from.'
       visa_checkout_call_id:
         type: string
         maxLength: 20
@@ -1096,8 +1144,8 @@ definitions:
       card_type:
         type: string
         maxLength: 2
-        description: 'The type of card used in the transaction. AM = American Express, DI = Diners, JB = JCB, MC = MasterCard, NN = Discover, VI = Visa'
-        enum: ['AM','DI','JB','MC','NN''VI']
+        description: 'The type of card used in the transaction. AM = American Express, DI = Diners, JB = JCB, MC = MasterCard, NN = Discover, VI = Visa, PV = Visa Debit, MD = Debit Mastercard'
+        enum: ['AM','DI','JB','MC','NN','VI','PV','MD']
       last_four:
         type: string
         maxLength: 4
@@ -1159,8 +1207,8 @@ definitions:
       card_type:
         type: string
         maxLength: 2
-        description: 'The type of card used in the transaction. AM = American Express, DI = Diners, JB = JCB, MC = MasterCard, NN = Discover, VI = Visa'
-        enum: ['AM','DI','JB','MC','NN','VI']
+        description: 'The type of card used in the transaction. AM = American Express, DI = Diners, JB = JCB, MC = MasterCard, NN = Discover, VI = Visa, PV = Visa Debit, MD = Debit Mastercard'
+        enum: ['AM','DI','JB','MC','NN','VI','PV','MD']
       last_four:
         type: string
         maxLength: 4
@@ -1457,6 +1505,184 @@ definitions:
         type:  number
         format:  double
         description: 'The commission amount collected against the fee. This field is only returned for channel partner accounts.'
+  MerchantReport:
+    $ref: '#/definitions/MerchantRecord'
+  MerchantRecord:
+    properties:
+      merchant_id:
+        type:  number
+        format:  integer
+        description: 'The id of the merchant.'
+      merchant_name:
+        type: string
+        maxLength: 64
+        description: 'The name of the merchant.'
+      website:
+        type:  string
+        maxLength: 64
+        description: 'The merchant''s website.'
+      address:
+        $ref: '#/definitions/MerchantAddress'
+      merchant_status:
+        $ref: '#/definitions/MerchantStatus'
+      processor:
+        $ref: '#/definitions/MerchantProcessor'
+      batch:
+        $ref: '#/definitions/Batch'
+      settlement:
+        $ref: '#/definitions/Settlement'
+      cards:
+        $ref: '#/definitions/MerchantCards'
+      features:
+        $ref: '#/definitions/MerchantFeatures'
+  MerchantAddress:
+    properties:
+      street_address:
+        type: string
+        maxLength: 64
+        description: Street address
+      province:
+        type: string
+        maxLength: 32
+        description: characters (2)
+      country:
+        type: string
+        maxLength: 64
+        description: 'Country name'
+      postal_code:
+        type: string
+        maxLength: 16
+        description: 'Postal/Zip code'
+  MerchantCards:
+    properties:
+      mastercard_enabled:
+        type: boolean
+        default: false
+        description: 'Whether the merchant is configured to process MasterCard.'
+      visa_enabled:
+        type: boolean
+        default: false
+        description: 'Whether the merchant is configured to process Visa.'
+      amex_enabled:
+        type: boolean
+        default: false
+        description: 'Whether the merchant is configured to process Amex.'
+      discover_enabled:
+        type: boolean
+        default: false
+        description: 'Whether the merchant is configured to process Discover.'
+      diners_enabled:
+        type: boolean
+        default: false
+        description: 'Whether the merchant is configured to process Diners.'
+      jcb_enabled:
+        type: boolean
+        default: false
+        description: 'Whether the merchant is configured to process JCB.'
+      mastercard_debit_enabled:
+        type: boolean
+        default: false
+        description: 'Whether the merchant is configured to process MasterCard Debit.'
+      visa_debit_enabled:
+        type: boolean
+        default: false
+        description: 'Whether the merchant is configured to process Visa Debit.'
+  MerchantFeatures:
+    properties:
+      checkout_enabled:
+        type: boolean
+        default: false
+        description: 'Whether the merchant is configured to use Checkout.'
+      payment_profile_enabled:
+        type: boolean
+        default: false
+        description: 'Whether the merchant is configured to use Payment Profiles.'
+      recurring_billing_enabled:
+        type: boolean
+        default: false
+        description: 'Whether the merchant is configured to use Recurring Billing.'
+      credit_card_batch_enabled:
+        type: boolean
+        default: false
+        description: 'Whether the merchant is configured to use Credit Card Batch.'
+      eft_ach_enabled:
+        type: boolean
+        default: false
+        description: 'Whether the merchant is configured to use Eft/Ach.'
+      interac_online_enabled:
+        type: boolean
+        default: false
+        description: 'Whether the merchant is configured to use Interac Online.'
+      visa_src_enabled:
+        type: boolean
+        default: false
+        description: 'Whether the merchant is configured to use Visa Src.'
+  MerchantProcessor:
+    properties:
+      processor_name:
+        type:  string
+        maxLength: 32
+        description: 'The name of this processor.'
+      currency:
+        type: string
+        maxLength: 3
+        description: 'The currency abbreviation for this processor.'
+  MerchantStatus:
+    properties:
+      status:
+        type:  string
+        maxLength:  32
+        description: 'The status of this merchant.'
+        enum: ['Active', 'Temporarily Disabled', 'Disabled', 'Closed']
+      state:
+        type: string
+        maxLength:  10
+        description: 'The state of this merchant.'
+        enum: ['Created', 'Approved', 'Declined', 'Pending', 'Live', 'Disabled', 'Enabled', 'Authorized', 'Received']
+      live_date:
+        type:  string
+        format:  date
+        description: 'The date this merchant went live.'
+      created_date:
+        type:  string
+        format:  date
+        description: 'The date this merchant was created.'
+      authorized_date:
+        type:  string
+        format:  date
+        description: 'The date this merchant was authorized.'
+      temp_disabled_date:
+        type:  string
+        format:  date
+        description: 'The date this merchant was temp disabled.'
+      last_enabled_date:
+        type:  string
+        format:  date
+        description: 'The date that an account was enabled after being ''temp disabled'''
+      disabled_date:
+        type:  string
+        format:  date
+        description: 'The date this merchant was disabled.'
+  Batch:
+    properties:
+      batch_limit:
+        type: number
+        format: double
+        description: 'Processing limit for batches.'
+      batch_line_limit:
+        type: number
+        format: double
+        description: 'Processing limit per line for batches.'
+      eft_credit_lag:
+        type: number
+        format: integer
+        description: 'Settlement lag for eft.'
+  Settlement:
+    properties:
+      credit_lag:
+        type: number
+        format: integer
+        description: 'Settlement lag for credit.'
   SearchQuery:
     required:
       - name
@@ -1483,7 +1709,7 @@ definitions:
       end_row:
         type: number
         format: integer
-        description: Used to page the results. 1-based. This should always be 1 larger than start_row.
+        description: Used to page the results. 1-based. This should always be 1 larger than start_row with a maximum difference of 500 between them. 
         default: 2
       criteria:
         description: Optional search criteria. All criteria are ANDed together.
@@ -1643,8 +1869,8 @@ definitions:
       entry_method:
         type: string
         maxLength: 1
-        description: 'How the transaction was initiated. N = Standard Entry, A = Apple Pay, G = Android Pay, M = MasterPass, S = EMV Swipe, V = Visa Checkout, Y = Unimag Card Swiper, T = EMV Chip Tap, E = EMV Chip Dip'
-        enum: ['N','A','G','M','S','V','Y','T','E']
+        description: 'How the transaction was initiated. N = Standard Entry, A = Apple Pay, G = Android Pay, S = EMV Swipe, V = Visa Checkout, Y = Unimag Card Swiper, T = EMV Chip Tap, E = EMV Chip Dip'
+        enum: ['N','A','G','S','V','Y','T','E']
       authorizing_merchant_id:
         type: integer
         description: 'The id of the merchant that authorized this transaction.'

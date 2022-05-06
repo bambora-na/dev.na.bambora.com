@@ -18,7 +18,7 @@ curl https://api.na.bambora.com/v1/payments
 ```php
 $beanstream = new \Beanstream\Gateway('300200578', '4BaD82D9197b4cc4b70a221911eE9f70', 'www', 'v1');
 
-$legato_payment_data = array(
+$token_payment_data = array(
     'order_number' => "orderNum45678",
     'amount' => 100.0,
     'name' => 'Mrs. Testerson'

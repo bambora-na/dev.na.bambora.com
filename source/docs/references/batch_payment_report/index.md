@@ -32,6 +32,8 @@ The API requires the XML document to include `merchantId` and `passCode` element
 
 Filters are assembled as in groups containing a column name (`rptFilterBy*`), an operation type (`rptOperationType*`) and a value (`rptFilterValue*`). The API requires the XML document to include all three, if any one is included.
 
+Note: **Paging limit is set to 500 records**
+
 ### Elements
 
 - **merchantId** - The authorizing merchant ID. Numeric string. Length: 9 chars.
@@ -80,6 +82,8 @@ Filters are assembled as in groups containing a column name (`rptFilterBy*`), an
 ## Response
 
 The format of the response object is relative to `rptFormat` element in the request in either JSON, XMl, TSV, CSV, or XLS formats.
+
+If the difference between `rtpStartRow` and `rtpEndRow` rows is greater than 500, only the top 500 records will be retrieved.
 
 JSON and XML response object contains a "code" property indicating the success of the request. This will be a number between 1 and 8, inclusive, where "1" indicates success. It also has a message property with a description of the code.
 
