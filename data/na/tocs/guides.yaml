@@ -16,8 +16,6 @@
   title: 'Credential-on-File'
 - file: '/docs/guides/interac_online'
   title: 'Interac Online'
-- file: '/docs/guides/masterpass'
-  title: 'Masterpass'
 - file: '/docs/guides/onboarding'
   title: 'Onboarding'
 - file: '/docs/guides/payment_profiles'

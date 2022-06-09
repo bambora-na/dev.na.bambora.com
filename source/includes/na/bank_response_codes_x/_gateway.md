@@ -115,7 +115,6 @@
 | 936 | Declined please try again | Invalid or expired single use token |
 | 937 | Declined please try again | Single use token service unavailable |
 | 938 | Authentication is required to process this transaction | Authentication is required to process this transaction |
-| 940 | DECLINE | Masterpass account is not enabled |
 | 941 | DECLINE | oauth_verifier is required |
 | 942 | DECLINE | checkout_resource_url is required |
 | 944 | Card entry method not accepted | Card entry method not accepted |
