@@ -31,7 +31,7 @@ the table below.
 | `statement_id` | The id of the statement |
 | `merchant_id` | The id of the merchant |
 | `merchant_name` | The name of the merchant |
-| `fee_type` | The type of fee |
+| `fee_type` | The enum value of fee type |
 | `fee_volume` | The total count for this fee |
 | `fee_rate` | The rate charged for this fee |
 | `fee_amount` | Amount charged for this fee |
@@ -54,7 +54,7 @@ the table below.
 | `statement_id` | The id of the statement |
 | `merchant_id` | The id of the merchant |
 | `merchant_name` | The name of the merchant |
-| `fee_type` | The type of fee |
+| `fee_type` | The enum value of fee type |
 | `fee_volume` | The total count for this fee |
 | `fee_rate` | The rate charged for this fee |
 | `fee_amount` | Amount charged for this fee |
@@ -159,7 +159,7 @@ Replace `<YOUR API ACCESS PASSCODE>` with your API passcode.
                 "billing_period": "2021-11-01",
                 "statement_id": 1003844007,
                 "merchant_id": 391020000,
-                "fee_type": "Account Monthly Charge",
+                "fee_type": "AccountMonthly",
                 "fee_volume": 1,
                 "fee_rate": 10.00,
                 "fee_amount": 10.00
@@ -168,7 +168,7 @@ Replace `<YOUR API ACCESS PASSCODE>` with your API passcode.
                 "billing_period": "2021-11-01",
                 "statement_id": 1003844007,
                 "merchant_id": 391020000,
-                "fee_type": "Approved Credit Card Transactions",
+                "fee_type": "ApprovedCreditCardTransactions",
                 "fee_volume": 10,
                 "fee_rate": 0.25,
                 "fee_amount": 2.50
@@ -177,7 +177,7 @@ Replace `<YOUR API ACCESS PASSCODE>` with your API passcode.
                 "billing_period": "2021-11-01",
                 "statement_id": 1003844007,
                 "merchant_id": 391020000,
-                "fee_type": "Declined Card Transactions",
+                "fee_type": "DeclinedCardTransactions",
                 "fee_volume": 0,
                 "fee_rate": 0.10,
                 "fee_amount": 0.00
@@ -186,7 +186,7 @@ Replace `<YOUR API ACCESS PASSCODE>` with your API passcode.
                 "billing_period": "2021-04-01",
                 "statement_id": 1003844007,
                 "merchant_id": 391020000,
-                "fee_type": "Adjustment: Account monthly charge",
+                "fee_type": "AdjAccountMonthly",
                 "fee_volume": 1,
                 "fee_rate": -5.00,
                 "fee_amount": -5.00
