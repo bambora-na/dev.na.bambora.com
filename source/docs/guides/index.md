@@ -102,6 +102,12 @@ cards:
         icon: creditcard-outline
         link: /docs/guides/settlement_report
     -
+        title: Statement Report
+        description: >
+            Query for information on fees charged to your monthly statement.  For partners this will also include sub merchant fees and assocaited commissions.
+        icon: creditcard-outline
+        link: /docs/guides/statement_report
+    -
         title: Merchant Report
         description: >
             Query for merchant account status and features information.
