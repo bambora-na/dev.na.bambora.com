@@ -42,7 +42,7 @@ To enable Apple Pay on your Merchant Account, you'll set a password for your P12
 >VERY IMPORTANT NOTE: You must upload the ***"ApplePay Payment Processing Certificate".***
 For furter information visit: [Configure Merchant ID and Certificates](https://developer.apple.com/documentation/apple_pay_on_the_web/configuring_your_environment)
 
->If you use a different certificate instead to ***"ApplePay Payment Processing Certificate"*** you may get the error: 
+>If you use a different certificate instead of ***"ApplePay Payment Processing Certificate"*** you may get the error: 
 ```"Wrong certificate type. Apple Pay Merchant Identity certificates are for Web site usage only. Use an Apple Pay Payment Processing certificate type."```** 
 
 ### Enable Apple Pay
