@@ -30,6 +30,8 @@
   title: 'Settlement Report'
 - file: '/docs/guides/statement_report'
   title: 'Statement Report'
+- file: '/docs/guides/merchant_report'
+  title: 'Merchant Report'
 - file: '/docs/guides/SSL'
   title: 'SSL'
 - file: '/docs/guides/visa_checkout'

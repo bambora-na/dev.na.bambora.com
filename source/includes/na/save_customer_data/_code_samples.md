@@ -274,7 +274,7 @@ $profile_create_token = array(
 		),
 	'token' => array(
 		'name' => 'John Doe',
-        'code' => $legatoToken
+        'code' => $singleUseToken
 	)
 );
 $profile_id = $beanstream->profiles()->createProfile($profile_create_token);
@@ -322,7 +322,7 @@ billing.setAddressLine1("123 FAKE ST.");
 billing.setPostalCode("V9T2G6");
 billing.setEmailAddress("TEST@BEANSTREAM.COM");
 billing.setPhoneNumber("12501234567");
-Token token = new Token("John Doe", "myLegatoToken");
+Token token = new Token("John Doe", "mySingleUseToken");
 
 ProfileResponse createdProfile = beanstream.profiles().createProfile(token, billing);
 ```
@@ -331,7 +331,7 @@ ProfileResponse createdProfile = beanstream.profiles().createProfile(token, bill
 ProfileResponse response = beanstream.Profiles.CreateProfile (
   new Token() {
     Name = "Jane Doe",
-    Code = "myLegatoToken"
+    Code = "mySingleUseToken"
   },
   new Address() {
     Name = "Jane Doe",

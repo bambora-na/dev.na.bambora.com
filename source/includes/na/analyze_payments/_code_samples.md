@@ -70,7 +70,7 @@ $search_criteria = array(
      'start_date' => '1999-01-01T00:00:00',
      'end_date' => '2016-01-01T23:59:59',   
      'start_row' => '1',
-     'end_row' => '15000',
+     'end_row' => '500',
      'criteria' => array(
          'field' => '1',
          'operator' => '%3E',
@@ -117,7 +117,7 @@ List<TransactionRecord> records = beanstream.Reporting.Query (
 	DateTime.Now.Subtract(TimeSpan.FromMinutes(1)),
 	DateTime.Now.Add(TimeSpan.FromMinutes(5)),
 	1,
-	1000,
+	500,
 	new Criteria[]{
 		new Criteria() {
 			Field = QueryFields.TransactionId,
@@ -137,13 +137,15 @@ With the Reporting API you can access basic summary order information using simp
 
 Each search can be performed using a date range and an optional number of search criteria, to narrow down the search.
 
-Note: Make sure you are using the Reporting API key gathered from the member area in your account.
+Notes: 
+* Make sure you are using the Reporting API key gathered from the member area in your account.
+* **Paging limit is set to 500 records**
 
 ### Parameters
 There are several parameters that are required to perform a search:
 
 * **Date Range:** The start and end dates that you want to search between.
-* **Paging rows:** If you are searching for possibly a lot of records, these parameters let you page the results. The starting row value must be 1 or greater. If you are just looking to retrieve one row, set the start row to 1 and the end row to 2.
+* **Paging rows:** If you are searching for possibly a lot of records, these parameters let you page the results. The starting row value must be 1 or greater. If you are just looking to retrieve one row, set the start row to 1 and the end row to 2. If the difference between start and end rows is greater than 500, only the top 500 records will be retrieved.
 * **Criteria:** (Optional) You can narrow down your search by using specific search criteria
 
 #### Search Criteria
