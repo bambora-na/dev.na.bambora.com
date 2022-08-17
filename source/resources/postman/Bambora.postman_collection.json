@@ -3531,7 +3531,7 @@
 								"profiles"
 							]
 						},
-						"description": "Create a new payment profile using either a card or a Legato token. "
+						"description": "Create a new payment profile using either a card or a single use token. "
 					},
 					"response": []
 				},

@@ -23,13 +23,13 @@ curl https://api.na.bambora.com/v1/payments
 ```php
 $beanstream = new \Beanstream\Gateway('300200578', '4BaD82D9197b4cc4b70a221911eE9f70', 'www', 'v1');
 
-$legato_payment_data = array(
+$token_payment_data = array(
     'order_number' => "orderNum45678",
     'amount' => 100.0,
-    'name' => 'Mrs. Legato Testerson'
+    'name' => 'Mrs. Token Testerson'
 );
 try {
-    $result = $beanstream->payments()->makeLegatoTokenPayment($token, $legato_payment_data, TRUE);
+    $result = $beanstream->payments()->makeSingleUseTokenPayment($token, $token_payment_data, TRUE);
     print_r( $result );
 } catch (\Beanstream\Exception $e) {
     //handle exception
@@ -56,7 +56,7 @@ tokenReq.setAmount(100.00);
 tokenReq.setOrderNumber("myOrder9999");
 tokenReq.getToken()
         .setName("John Doe")
-        .setCode(myLegatoToken);
+        .setCode(myToken);
 
 try {
     PaymentResponse response = beanstream.payments().makePayment(tokenReq);
@@ -80,7 +80,7 @@ PaymentResponse response = bambora.Payments.MakePayment (
         Amount = 30.0,
         OrderNumber = "myOrder88888",
         Token = new Token {
-            Code = token, // your Legato token
+            Code = token, // your single use token
             Name = "John Doe"
         }
     }
@@ -134,13 +134,13 @@ curl https://api.na.bambora.com/v1/payments/{transId}/completions
 ```php
 $beanstream = new \Beanstream\Gateway('300200578', '4BaD82D9197b4cc4b70a221911eE9f70', 'www', 'v1');
 
-$legato_payment_data = array(
+$token_payment_data = array(
     'order_number' => "orderNum45678",
     'amount' => 100.0,
-    'name' => 'Mrs. Legato Testerson'
+    'name' => 'Mrs. Token Testerson'
 );
 try {
-    $result = $beanstream->payments()->makeLegatoTokenPayment($token, $legato_payment_data, FALSE);//set to FALSE for Pre-Auth
+    $result = $beanstream->payments()->makeTokenPayment($token, $token_payment_data, FALSE);//set to FALSE for Pre-Auth
     $transaction_id = $result['id'];
     // complete payment
     $result = $beanstream->payments()->complete($transaction_id, 12.5);
@@ -173,7 +173,7 @@ req.setAmount(80.00);
 req.setOrderNumber("myOrder77777");
 req.getToken()
     .setName("John Doe")
-    .setCode(myLegatoToken);
+    .setCode(mySingleUseToken);
 
 try {
     PaymentResponse response = beanstream.payments().preAuth(req);
@@ -197,7 +197,7 @@ PaymentResponse response = bambora.Payments.PreAuth (
         Amount = 30,
         OrderNumber = "orderNumber66666",
         Token = new Token {
-            Code = token, // your Legato token
+            Code = token, // your single use token
             Name = "John Doe"
         }
     }

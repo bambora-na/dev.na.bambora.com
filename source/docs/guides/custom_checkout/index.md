@@ -40,7 +40,7 @@ Checkout is an alternative to building your own payment form with Custom Checkou
 
 ## Migration
 
-Custom Checkout replaces our legacy Payfields/CheckoutFields, Payform and Legato scripts. These, along with direct posts to our Token API, are classified as SAQ A-EP solutions.
+Custom Checkout replaces our legacy Payfields/CheckoutFields, Payform and single use token scripts. These, along with direct posts to our Token API, are classified as SAQ A-EP solutions.
 
 The token returned by Custom Checkout is identical to that returned by these other scripts. This means you can easily migrate to Custom Checkout by switching out the scripts on the client-side while leaving your server-side integration unchanged.
 
