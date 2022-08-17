@@ -42,16 +42,8 @@ To enable Apple Pay on your Merchant Account, you'll set a password for your P12
 >VERY IMPORTANT NOTE: You must upload the ***"ApplePay Payment Processing Certificate".***
 For furter information visit: [Configure Merchant ID and Certificates](https://developer.apple.com/documentation/apple_pay_on_the_web/configuring_your_environment)
 
->If you use a different certificate instead ***"ApplePay Payment Processing Certificate"*** you will could get the error: 
+>If you use a different certificate instead to ***"ApplePay Payment Processing Certificate"*** you may get the error: 
 ```"Wrong certificate type. Apple Pay Merchant Identity certificates are for Web site usage only. Use an Apple Pay Payment Processing certificate type."```** 
-
-<!-- ```
-{
-    "code": 816,
-    "category" : 3,
-    "message" : "Card track data decoding failed"
-}
-``` -->
 
 ### Enable Apple Pay
 
@@ -176,9 +168,9 @@ func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationView
 }
 ```
 
->It's very important to notice that the ***payment_token is Base64 encoded*** including the paymentData.
+>It's important that the ***payment_token is Base64 encoded*** and included in the paymentData object.
 
->Below it's shown an example of the paymentData object that should be submitted.
+>Below is an example of the paymentData object that should be submitted.
 
 ```
 {
