@@ -131,6 +131,15 @@
 | 187 | Declined | Declined |
 | 188 | Declined | Declined |
 | 189 | Declined | Declined |
+| 710 | PT Token Expired | PT Token Expired |
+| 711 | PT Token start date in the future, no active yet | PT Token start date in the future, no active yet |
+| 712 | PT Token and PAN are present in the request message | PT Token and PAN are present in the request message |
+| 713 | Invalid PT Token | Invalid PT Token |
+| 714 | Merchant does not subscribe to Merchant OMNI Tokenization | Merchant does not subscribe to Merchant OMNI Tokenization |
+| 715 | PT Token no present in request message | PT Token no present in request message |
+| 716 | PT Token is present, Expiry Date is not present | PT Token is present, Expiry Date is not present |
+| 717 | OMNI Tokenization is disabled | OMNI Tokenization is disabled |
+| 718 | Invalid API version | Invalid API version |
 | 771 | Declined | Declined |
 | 772 | Declined | Declined |
 | 773 | Declined | Declined |
