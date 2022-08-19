@@ -772,7 +772,7 @@ definitions:
       payment_method:
         type: string
         description: 'The desired method of payment.'
-        enum: ['card', 'token', 'payment_profile', 'cash', 'cheque', 'interac', 'apple_pay', 'android_pay', '3d_secure']
+        enum: ['card', 'token', 'payment_profile', 'cash', 'cheque', 'interac', 'apple_pay', 'android_pay', '3d_secure','network_token']
       language:
         type: string
         maxLength: 3
@@ -817,6 +817,8 @@ definitions:
         $ref: '#/definitions/Level2'
       card_on_file:
         $ref: '#/definitions/CardOnFile'
+      network_token:
+        $ref: '#/definitions/NetworkToken'
   Card:
     description: "Payment with a credit card. The payment_method must be 'card'"
     required:
@@ -928,6 +930,23 @@ definitions:
         type: boolean
         default: true
         description: set to false for Pre-Authorize, and true to complete a payment
+  NetworkToken:
+    description: "Payment with Network Token. The payment_method must be 'network_token'"
+    required:
+      - token
+    properties:
+      token:
+        type: string
+        maxLength: 23
+        description: 'The payment token you retrieved from the service.'
+      expiry_month:
+        type: string
+        maxLength: 2
+        description: eg. 02 for February.
+      expiry_year:
+        type: string
+        maxLength: 2
+        description: eg. 15 for 2015.
   ProfilePurchase:
     description: "Payment with a Payment Profile. The payment_method must be 'payment_profile'"
     required:
