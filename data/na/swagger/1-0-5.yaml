@@ -818,7 +818,7 @@ definitions:
       card_on_file:
         $ref: '#/definitions/CardOnFile'
       network_token:
-        $ref: '#/definitions/NetworkToken'
+        $ref: '#/definitions/NetworkTokenRequest'
   Card:
     description: "Payment with a credit card. The payment_method must be 'card'"
     required:
@@ -930,14 +930,17 @@ definitions:
         type: boolean
         default: true
         description: set to false for Pre-Authorize, and true to complete a payment
-  NetworkToken:
-    description: "Payment with Network Token. The payment_method must be 'network_token'"
+  NetworkTokenRequest:
+    description: "Payment with Network Token. The payment_method must be 'network_token'."
     required:
-      - token
+      - payment_token
+      - expiry_month
+      - expiry_year
     properties:
-      token:
+      payment_token:
         type: string
-        maxLength: 23
+        minLength: 16
+        maxLength: 19
         description: 'The payment token you retrieved from the service.'
       expiry_month:
         type: string
@@ -947,6 +950,23 @@ definitions:
         type: string
         maxLength: 2
         description: eg. 15 for 2015.
+  NetworkTokenResponse:
+    description: "Token information generated from card request, or what was used to submit payment."
+    properties:
+      payment_token:
+        type: string
+        minLength: 16
+        maxLength: 19
+        description: 'The payment token.'
+      reporting_token:
+        type: string
+        maxLength: 23
+        description: 'Token used for reporting.'
+      token_status:
+        type: string
+        minLength: 1
+        maxLength: 1
+        description: 'Status of the token.'
   ProfilePurchase:
     description: "Payment with a Payment Profile. The payment_method must be 'payment_profile'"
     required:
@@ -1203,6 +1223,8 @@ definitions:
         description: 'Result of postal verification. 0 if the postal\_code parameter does does not match the customers address records or if AVS was not processed for the transaction. 1 if the postal\_code parameter matches the consumers address records at the issuing bank.'
       avs:
         $ref: '#/definitions/AvsResponse'
+      network_token:
+        $ref: '#/definitions/NetworkTokenResponse'
       cavv_result:
         $ref: '#/definitions/CavvResult'
       status_id:
@@ -1271,6 +1293,8 @@ definitions:
         description: 'a 2 digit representation of the expiry year. For example 2016 is 16.'
       cavv_result:
         $ref: '#/definitions/CavvResult'
+      network_token:
+        $ref: '#/definitions/NetworkTokenResponse'
   Link:
     properties:
       ref:
