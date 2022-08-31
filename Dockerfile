@@ -6,7 +6,7 @@ RUN apt-get install -y nodejs
 
 COPY Gemfile /usr/src/app/
 COPY Gemfile.lock /usr/src/app/
-
+ENV BUNDLER_VERSION='1.17.3'
 COPY Rakefile /usr/src/app/
 WORKDIR /usr/src/app
 RUN gem install bundler
