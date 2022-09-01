@@ -962,7 +962,7 @@ definitions:
         type: string
         maxLength: 23
         description: 'Token used for reporting.'
-      token_status:
+      status:
         type: string
         minLength: 1
         maxLength: 1
