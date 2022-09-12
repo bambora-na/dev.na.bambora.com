@@ -2067,6 +2067,8 @@ definitions:
     properties:
       card:
         $ref: '#/definitions/ProfileFromCard'
+      network_token:
+        $ref: '#/definitions/ProfileFromNetworktoken'        
       bank_account:
         $ref: '#/definitions/ProfileFromBankAccount'
       create_from_id:
@@ -2088,11 +2090,13 @@ definitions:
       validate:
         type: boolean
         default: false
-        description: 'Set to true to automatically process a pre-auth transaction for validation purposes'
+        description: 'Set to true to automatically process a pre-auth transaction for validation purposes, it must be set to true for network token transaction'
   ProfileBodyCard:
     properties:
       card:
         $ref: '#/definitions/ProfileFromCard'
+      network_token:
+        $ref: '#/definitions/ProfileFromNetworktoken'           
       token:
         $ref: '#/definitions/ProfileFromToken'
       comment:
@@ -2102,7 +2106,7 @@ definitions:
       validate:
         type: boolean
         default: false
-        description: 'Set to true to automatically process a pre-auth transaction for validation purposes'
+        description: 'Set to true to automatically process a pre-auth transaction for validation purposes, it must be set to true for network token transaction'
   ProfileFromCard:
     required:
       - name
@@ -2133,6 +2137,24 @@ definitions:
         default: '123'
         maxLength: 4
         description: Security code on the back of the credit card. This can be set to mandatory in the back office.
+  ProfileFromNetworktoken:
+      required:
+      - payment_token
+      - expiry_year
+      - expiry_month
+    properties:
+      payment_token:
+        type: string
+        maxLength: 16
+        description: The merchant can use the PT token to initiate a payment transactions that are Credential on File, or Merchant Initiated Transactions.
+      expiry_year:
+        type: string
+        maxLength: 2
+        description: Format YY.
+      expiry_month:
+        type: string
+        maxLength: 2
+        description: Format MM.        
   ProfileFromBankAccount:
     required:
       - account_number
