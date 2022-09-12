@@ -1209,12 +1209,12 @@ definitions:
       last_four:
         type: string
         maxLength: 4
-        description: 'The last 4 digits of the credit card used in the transaction'
+        description: 'For all payments completed using a credit card, this field will contain the last four digits of the card number used. Payments completed using ApplePay will return last four digits of the Device Primary Account Number (DPAN) associated to the transaction.'
       card_bin:
         type: string
         minLength: 6
         maxLength: 8
-        description: 'The first 6 to 8 digits of the credit card used in the transaction'
+        description: 'For all payments completed using a credit card, this field will contain the Bank Identification Number (BIN) of the card used. The field will be set to either the first six or first eight digits of the card PAN. Payments completed using ApplePay will return the first six digits of the Device Primary Account Number (DPAN) associated to the transaction. This field will not be returned for credit card transactions processed using a Network Token.'
       cvd_result:
         $ref: '#/definitions/CvdResult'
       eci:
