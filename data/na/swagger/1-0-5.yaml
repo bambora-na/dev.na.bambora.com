@@ -2067,6 +2067,8 @@ definitions:
     properties:
       card:
         $ref: '#/definitions/ProfileFromCard'
+      network_token:
+        $ref: '#/definitions/ProfileFromNetworktoken'        
       bank_account:
         $ref: '#/definitions/ProfileFromBankAccount'
       create_from_id:
@@ -2088,11 +2090,13 @@ definitions:
       validate:
         type: boolean
         default: false
-        description: 'Set to true to automatically process a pre-auth transaction for validation purposes'
+        description: 'Set to true to automatically process a pre-auth transaction for validation purposes. Network token transactions require validation, and must be set to true.'
   ProfileBodyCard:
     properties:
       card:
         $ref: '#/definitions/ProfileFromCard'
+      network_token:
+        $ref: '#/definitions/ProfileFromNetworktoken'           
       token:
         $ref: '#/definitions/ProfileFromToken'
       comment:
@@ -2102,7 +2106,7 @@ definitions:
       validate:
         type: boolean
         default: false
-        description: 'Set to true to automatically process a pre-auth transaction for validation purposes'
+        description: 'Set to true to automatically process a pre-auth transaction for validation purposes. Network token transactions require validation, and must be set to true.'
   ProfileFromCard:
     required:
       - name
@@ -2133,6 +2137,27 @@ definitions:
         default: '123'
         maxLength: 4
         description: Security code on the back of the credit card. This can be set to mandatory in the back office.
+  ProfileFromNetworktoken:
+      required:
+      - payment_token
+      - expiry_year
+      - expiry_month
+    properties:
+      payment_token:
+        type: string
+        minLength: 15
+        maxLength: 19
+        description: The merchant can use a payment token to initiate transactions that are Credential on File, or Merchant Initiated Transactions.
+      expiry_year:
+        type: string
+        minLength: 2
+        maxLength: 2
+        description: Format YY.
+      expiry_month:
+        type: string
+        minLength: 2
+        maxLength: 2
+        description: Format MM.        
   ProfileFromBankAccount:
     required:
       - account_number
