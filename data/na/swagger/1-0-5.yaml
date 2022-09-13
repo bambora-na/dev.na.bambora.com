@@ -2090,7 +2090,7 @@ definitions:
       validate:
         type: boolean
         default: false
-        description: 'Set to true to automatically process a pre-auth transaction for validation purposes, it must be set to true for network token transaction'
+        description: 'Set to true to automatically process a pre-auth transaction for validation purposes. Network token transactions require validation, and must be set to true.'
   ProfileBodyCard:
     properties:
       card:
@@ -2106,7 +2106,7 @@ definitions:
       validate:
         type: boolean
         default: false
-        description: 'Set to true to automatically process a pre-auth transaction for validation purposes, it must be set to true for network token transaction'
+        description: 'Set to true to automatically process a pre-auth transaction for validation purposes. Network token transactions require validation, and must be set to true.'
   ProfileFromCard:
     required:
       - name
@@ -2145,14 +2145,17 @@ definitions:
     properties:
       payment_token:
         type: string
-        maxLength: 16
-        description: The merchant can use the PT token to initiate a payment transactions that are Credential on File, or Merchant Initiated Transactions.
+        maxLength: 15
+        maxLength: 19
+        description: The merchant can use a payment token to initiate transactions that are Credential on File, or Merchant Initiated Transactions.
       expiry_year:
         type: string
+        minLength: 2
         maxLength: 2
         description: Format YY.
       expiry_month:
         type: string
+        minLength: 2
         maxLength: 2
         description: Format MM.        
   ProfileFromBankAccount:
