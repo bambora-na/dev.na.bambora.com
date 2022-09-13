@@ -2145,7 +2145,7 @@ definitions:
     properties:
       payment_token:
         type: string
-        maxLength: 15
+        minLength: 15
         maxLength: 19
         description: The merchant can use a payment token to initiate transactions that are Credential on File, or Merchant Initiated Transactions.
       expiry_year:
