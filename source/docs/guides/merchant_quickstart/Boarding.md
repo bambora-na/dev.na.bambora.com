@@ -66,7 +66,6 @@ After we've confirmed this information is readily available on your website, we 
 If you've already got a Merchant Account through a bank or credit union, you'll be able to connect your previous account as a Terminal Account. We'll need a few specific details about those accounts so we can connect you to the Bambora gateway, this list of account providers below outlines the necessary details.
 
 [Chase Paymentech](#chase-paymentech)
-<br>[Elavon](#elavon)
 <br>[First Data](#first-data)
 <br>[Global Payments](#global-payments)
 <br>[Royal Bank of Canada (RBC), Scotiabank, Desjardins, Moneris, and Canadian Credit Unions](#royscomondesoth)
@@ -85,16 +84,6 @@ If you're using Chase Paymentech, ensure that your accounts are set up on the **
  - NetConnect password.
  - Merchant numbers for each accepted card type.
 
-<a name="elavon"></a>
-
-#### Elavon
-For Elavon merchant accounts, request a terminal setup sheet if you don't already have one. It will include your:
-
- - 6-digit bank ID/BIN number.
- - 16-digit terminal ID.
- - Merchant numbers for each accepted card type.
-
-If you are processing a high volume of transactions, your setup sheet may also include additional information such as FTP usernames and passwords.
 
 <a name="first-data"></a>
 
