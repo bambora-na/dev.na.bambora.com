@@ -939,7 +939,7 @@ definitions:
     properties:
       payment_token:
         type: string
-        minLength: 16
+        minLength: 15
         maxLength: 19
         description: 'The payment token you retrieved from the service.'
       expiry_month:
@@ -955,7 +955,7 @@ definitions:
     properties:
       payment_token:
         type: string
-        minLength: 16
+        minLength: 15
         maxLength: 19
         description: 'The payment token.'
       reporting_token:
