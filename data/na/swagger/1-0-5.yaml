@@ -772,7 +772,7 @@ definitions:
       payment_method:
         type: string
         description: 'The desired method of payment.'
-        enum: ['card', 'token', 'payment_profile', 'cash', 'cheque', 'interac', 'apple_pay', 'android_pay', '3d_secure','network_token']
+        enum: ['card', 'token', 'payment_profile', 'cash', 'cheque', 'interac', 'apple_pay', 'android_pay', '3d_secure','processor_token']
       language:
         type: string
         maxLength: 3
@@ -817,8 +817,8 @@ definitions:
         $ref: '#/definitions/Level2'
       card_on_file:
         $ref: '#/definitions/CardOnFile'
-      network_token:
-        $ref: '#/definitions/NetworkTokenRequest'
+      processor_token:
+        $ref: '#/definitions/ProcessorTokenRequest'
   Card:
     description: "Payment with a credit card. The payment_method must be 'card'"
     required:
@@ -930,8 +930,8 @@ definitions:
         type: boolean
         default: true
         description: set to false for Pre-Authorize, and true to complete a payment
-  NetworkTokenRequest:
-    description: "Payment with Network Token. The payment_method must be 'network_token'."
+  ProcessorTokenRequest:
+    description: "Payment with Processor Token. The payment_method must be 'processor_token'."
     required:
       - payment_token
       - expiry_month
@@ -950,7 +950,7 @@ definitions:
         type: string
         maxLength: 2
         description: eg. 15 for 2015.
-  NetworkTokenResponse:
+  ProcessorTokenResponse:
     description: "Token information generated from card request, or what was used to submit payment."
     properties:
       payment_token:
@@ -1214,7 +1214,7 @@ definitions:
         type: string
         minLength: 6
         maxLength: 8
-        description: 'For all payments completed using a credit card, this field will contain the Bank Identification Number (BIN) of the card used. The field will be set to either the first six or first eight digits of the card PAN. Payments completed using ApplePay will return the first six digits of the Device Primary Account Number (DPAN) associated to the transaction. This field will not be returned for credit card transactions processed using a Network Token.'
+        description: 'For all payments completed using a credit card, this field will contain the Bank Identification Number (BIN) of the card used. The field will be set to either the first six or first eight digits of the card PAN. Payments completed using ApplePay will return the first six digits of the Device Primary Account Number (DPAN) associated to the transaction. This field will not be returned for credit card transactions processed using a Processor Token.'
       cvd_result:
         $ref: '#/definitions/CvdResult'
       eci:
@@ -1228,8 +1228,8 @@ definitions:
         description: 'Result of postal verification. 0 if the postal\_code parameter does does not match the customers address records or if AVS was not processed for the transaction. 1 if the postal\_code parameter matches the consumers address records at the issuing bank.'
       avs:
         $ref: '#/definitions/AvsResponse'
-      network_token:
-        $ref: '#/definitions/NetworkTokenResponse'
+      processor_token:
+        $ref: '#/definitions/ProcessorTokenResponse'
       cavv_result:
         $ref: '#/definitions/CavvResult'
       status_id:
@@ -1298,8 +1298,8 @@ definitions:
         description: 'a 2 digit representation of the expiry year. For example 2016 is 16.'
       cavv_result:
         $ref: '#/definitions/CavvResult'
-      network_token:
-        $ref: '#/definitions/NetworkTokenResponse'
+      processor_token:
+        $ref: '#/definitions/ProcessorTokenResponse'
   Link:
     properties:
       ref:
@@ -2067,8 +2067,8 @@ definitions:
     properties:
       card:
         $ref: '#/definitions/ProfileFromCard'
-      network_token:
-        $ref: '#/definitions/ProfileFromNetworktoken'        
+      processor_token:
+        $ref: '#/definitions/ProfileFromProcessorToken'        
       bank_account:
         $ref: '#/definitions/ProfileFromBankAccount'
       create_from_id:
@@ -2090,13 +2090,13 @@ definitions:
       validate:
         type: boolean
         default: false
-        description: 'Set to true to automatically process a pre-auth transaction for validation purposes. Network token transactions require validation, and must be set to true.'
+        description: 'Set to true to automatically process a pre-auth transaction for validation purposes. Processor token transactions require validation, and must be set to true.'
   ProfileBodyCard:
     properties:
       card:
         $ref: '#/definitions/ProfileFromCard'
-      network_token:
-        $ref: '#/definitions/ProfileFromNetworktoken'           
+      processor_token:
+        $ref: '#/definitions/ProfileFromProcessorToken'           
       token:
         $ref: '#/definitions/ProfileFromToken'
       comment:
@@ -2106,7 +2106,7 @@ definitions:
       validate:
         type: boolean
         default: false
-        description: 'Set to true to automatically process a pre-auth transaction for validation purposes. Network token transactions require validation, and must be set to true.'
+        description: 'Set to true to automatically process a pre-auth transaction for validation purposes. Processor token transactions require validation, and must be set to true.'
   ProfileFromCard:
     required:
       - name
@@ -2137,7 +2137,7 @@ definitions:
         default: '123'
         maxLength: 4
         description: Security code on the back of the credit card. This can be set to mandatory in the back office.
-  ProfileFromNetworktoken:
+  ProfileFromProcessorToken:
       required:
       - payment_token
       - expiry_year
