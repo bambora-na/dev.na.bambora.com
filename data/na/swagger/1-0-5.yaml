@@ -2067,8 +2067,6 @@ definitions:
     properties:
       card:
         $ref: '#/definitions/ProfileFromCard'
-      processor_token:
-        $ref: '#/definitions/ProfileFromProcessorToken'        
       bank_account:
         $ref: '#/definitions/ProfileFromBankAccount'
       create_from_id:
@@ -2095,8 +2093,6 @@ definitions:
     properties:
       card:
         $ref: '#/definitions/ProfileFromCard'
-      processor_token:
-        $ref: '#/definitions/ProfileFromProcessorToken'           
       token:
         $ref: '#/definitions/ProfileFromToken'
       comment:
@@ -2137,27 +2133,6 @@ definitions:
         default: '123'
         maxLength: 4
         description: Security code on the back of the credit card. This can be set to mandatory in the back office.
-  ProfileFromProcessorToken:
-      required:
-      - payment_token
-      - expiry_year
-      - expiry_month
-    properties:
-      payment_token:
-        type: string
-        minLength: 15
-        maxLength: 19
-        description: The merchant can use a payment token to initiate transactions that are Credential on File, or Merchant Initiated Transactions.
-      expiry_year:
-        type: string
-        minLength: 2
-        maxLength: 2
-        description: Format YY.
-      expiry_month:
-        type: string
-        minLength: 2
-        maxLength: 2
-        description: Format MM.        
   ProfileFromBankAccount:
     required:
       - account_number
