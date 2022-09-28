@@ -88,8 +88,6 @@ The following workflows are currently supported:
     * terminal.global_terminal.discover_number
     * terminal.chase_paymentech_terminal.amex_number
     * terminal.chase_paymentech_terminal.discover_number
-    * terminal.elavon_terminal.amex_number
-    * terminal.elavon_terminal.discover_number
     * terminal.tsys_terminal.amex_number
     * terminal.tsys_terminal.discover_number
 * New fields for GW-CDN
