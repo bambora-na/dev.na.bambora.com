@@ -964,9 +964,15 @@ definitions:
         description: 'Token used for reporting.'
       status:
         type: string
-        minLength: 1
-        maxLength: 1
+        enum: ['success','fail']
         description: 'Status of the token.'
+      source:
+        type: string
+        minLength: 4
+        maxLength: 12
+        description: 'This will contain the name of the processor that is hosting the tokenization feature.'
+      source_data:
+        $ref: '#/definitions/SourceData'
   ProfilePurchase:
     description: "Payment with a Payment Profile. The payment_method must be 'payment_profile'"
     required:
@@ -2547,3 +2553,18 @@ definitions:
         type: number
         format: integer
         description: 'The identifier for the set of transactions that this transaction belongs to.'
+  source_data:
+    description: 'This will contain processor specific data related to the tokenization feature returned for informational use only.'
+    properties:
+          td_token_status:
+            type: string
+            minLength: 1
+            maxLength: 1
+            description: |
+              This field is returned only on response message and it will indicate the status of generating the PT and/or RT tokens. Valid values are:'
+              * 0 = successful – PT and/or RT were generated
+              * 1 = PT token could not be generated
+              * 2 = RT token could not be generated
+              * 3 = PT and RT tokens could not be generated
+              * 4 = Invalid instance value
+              * 5 = PT not able to detokenize        
