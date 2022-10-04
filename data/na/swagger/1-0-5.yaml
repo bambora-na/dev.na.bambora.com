@@ -2553,7 +2553,7 @@ definitions:
         type: number
         format: integer
         description: 'The identifier for the set of transactions that this transaction belongs to.'
-  source_data:
+  SourceData:
     description: 'This will contain processor specific data related to the tokenization feature returned for informational use only.'
     properties:
           td_token_status:
@@ -2561,7 +2561,7 @@ definitions:
             minLength: 1
             maxLength: 1
             description: |
-              This field is returned only on response message and it will indicate the status of generating the PT and/or RT tokens. Valid values are:'
+              This field is returned only on response message and it will indicate the status of generating the PT and/or RT tokens. Valid values are:
               * 0 = successful – PT and/or RT were generated
               * 1 = PT token could not be generated
               * 2 = RT token could not be generated
