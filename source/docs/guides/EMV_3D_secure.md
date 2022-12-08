@@ -606,7 +606,7 @@ All the browser values can be collected via JavaScript, unless of course they ha
 |browser.time_zone|Integer|Time zone returned by the browser.|
 |browser.user_agent|String|User-Agent header returned by the browser in the client HTTP request.|
 |browser.javascript_enabled|Boolean|True if the browser has JavaScript enabled.  Defaults to true if not provided.|
-|redirect_url|String|The URL that you would like your customer redirect to after completing their 3DS challenge.|
+|redirect_url|String|The URL that you would like your customer redirect to after completing their 3DS challenge.  Maximum length of 255 characters.|
 |message_category|Enum|Set to a value of ‘PaymentAuthentication’ when the 3DS check is being performed before authorizing a charge to the card.  Use ‘NonPaymentAuthentication’ when there will be no immediate authorization such as storing a card to a profile for later use.|
 |amount|Numeric|The amount to be charged in the payment associated to this authentication.|
 |card.number|String|The credit card number to authenticate against|
@@ -922,7 +922,7 @@ curl --location --request GET 'https://api.na.bambora.com/v1/EMV3DS/MDBiYmI5NTYt
 
 A credit card that has been successfully authenticated through the EMV 3DS API can be later referenced to complete a payment, without needing to resubmit the credit card number and expiry. The value of the 'threeDS_session_data' parameter returned in the authentication response can be used as a token to the card data and 3D Secure results, when submitting a request to the Payment API.
 
-In the payment request we must set the 'payment_method' to a value of '3d_secure', then pass a '3d_secure' object containing the 'threeDS_session_data' as the token to the card data and 3D Secure results.
+In the payment request we must set the 'payment_method' to a value of '3d_secure_token', then pass a '3d_secure' object containing the 'threeDS_session_data' as the token to the card data and 3D Secure results.
 
 The 3DS Session Data Token must be related to an authenticated 3D Secure transaction that was completed within the last 45 days.  3DS Session Data Tokens may only be referenced for a single payment and cannot be reused.  The Payment API will decline a request with code 1177 if the associated 3DS Session Data Token is invalid, expired, or already utilized in a payment.
 
@@ -932,7 +932,7 @@ curl --location --request POST 'https://api.na.bambora.com/v1/payments' \
 --header 'Authorization: Passcode MzkwOTgwMDAwOmJhbWJvcmE=' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-   "payment_method": "3d_secure",
+   "payment_method": "3d_secure_token",
    "customer_ip": "123.123.123.123",
    "amount": 41.99,
    "3d_secure": {
