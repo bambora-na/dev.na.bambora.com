@@ -606,7 +606,7 @@ All the browser values can be collected via JavaScript, unless of course they ha
 |browser.time_zone|Integer|Time zone returned by the browser.|
 |browser.user_agent|String|User-Agent header returned by the browser in the client HTTP request.|
 |browser.javascript_enabled|Boolean|True if the browser has JavaScript enabled.  Defaults to true if not provided.|
-|redirect_url|String|The URL that you would like your customer redirect to after completing their 3DS challenge.|
+|redirect_url|String|The URL that you would like your customer redirect to after completing their 3DS challenge.  Maximum length of 255 characters.|
 |message_category|Enum|Set to a value of ‘PaymentAuthentication’ when the 3DS check is being performed before authorizing a charge to the card.  Use ‘NonPaymentAuthentication’ when there will be no immediate authorization such as storing a card to a profile for later use.|
 |amount|Numeric|The amount to be charged in the payment associated to this authentication.|
 |card.number|String|The credit card number to authenticate against|
