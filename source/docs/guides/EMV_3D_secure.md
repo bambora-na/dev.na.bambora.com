@@ -1011,7 +1011,6 @@ _In rare cases the issuer can downgrade an authenticated transaction after proce
 |Visa|4532155854421931|Attempted|Frictionless|
 |Visa|4921814859264089|Attempted|Frictionless|
 |MasterCard|5156400512420624|Attempted|Frictionless|
-|MasterCard|5156400512420624|Attempted|Frictionless|
 |MasterCard|5200008932030109|Attempted|Frictionless|
 |MasterCard|5576939757108172|Attempted|Frictionless|
 |Amex|376691390182618|Attempted|Frictionless|
