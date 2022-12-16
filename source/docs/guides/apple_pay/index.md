@@ -39,6 +39,12 @@ To enable Apple Pay on your Merchant Account, you'll set a password for your P12
 3. Ensure your File Format is set to **.Personal Information Exchange (.p12)** before clicking **Save**.
 4. Enter the password you'll use when uploading your .p12 to the Member Area and click **OK**.
 
+>VERY IMPORTANT NOTE: You must upload the ***"ApplePay Payment Processing Certificate".***
+For further information visit: [Configure Merchant ID and Certificates](https://developer.apple.com/documentation/apple_pay_on_the_web/configuring_your_environment)
+
+>If you use a different certificate instead of ***"ApplePay Payment Processing Certificate"***, you may get the error: 
+```"Wrong certificate type. Apple Pay Merchant Identity certificates are for Web site usage only. Use an Apple Pay Payment Processing certificate type."```** 
+
 ### Enable Apple Pay
 
 To turn on Apple Pay for your account, log into the [Member Area](https://web.na.bambora.com). Under **configuration**, click on **mobile payments**. From the Mobile Payments screen, you can enable Apple Pay by adding your Apple Pay signing certificate.
@@ -123,7 +129,8 @@ func paymentButtonAction() {
 
 ### Issue Payment Token
 
-This sample outlines how to handle the payment token once the payment request has been successfully authorised. To send the generated token to the server, execute the following request.
+This sample outlines how to handle the payment token once the payment request has been successfully authorized. 
+To send the generated token to the server, execute the following request.
 
 ```swift
 // Executes a process payment request on the Mobile Payments Demo Server
@@ -160,6 +167,25 @@ func paymentAuthorizationViewController(_ controller: PKPaymentAuthorizationView
     }
 }
 ```
+
+>It's important that the ***payment_token is Base64 encoded*** and included in the paymentData object.
+
+>Below is an example of the paymentData object that should be submitted.
+
+```
+{
+   "data": "...xxxxxxxxx...",
+   "signature": "...xxxxxxx...",
+   "header": {
+       "ephemeralPublicKey" : "...xxxxx...",
+       "publicKeyHash": "XwslXXdP388+XdHp4XpX1bc2Xp48XXXynlaqc4XXiIg=",
+       "transactionId": "8158127844d5aa8ede2c2401e2370f24ab2d6b15a1943a1fc3ff15f6d777abxx"
+   },
+   "version": "EC_v1"
+}
+```
+
+>If the paymentData has a different format you will get an error like this: "Payment Token Version Not Supported: EC_vX", or this "Expected token version not found."
 
 > Note: This iOS client is sending the payment token to our Payment APIs Demo Server, as outlined on [Github](https://github.com/bambora/na-payment-apis-demo).
 
