@@ -29,7 +29,7 @@
 | 85 | Declined | Declined |
 | 86 | PLEASE TRY AGAIN | Declined |
 | 87 | Declined | Declined ADJ NOT ALLOWED |
-| 88 | Declined | Declined |
+| 88 | Declined Do Not Retry | Declined Do Not Retry |
 | 89 | Declined | Declined INVALID TRAN DATE |
 | 90 | Declined | Declined |
 | 91 | PLEASE TRY AGAIN | Declined |
@@ -131,6 +131,7 @@
 | 187 | Declined | Declined |
 | 188 | Declined | Declined |
 | 189 | Declined | Declined |
+| 700 | Declined | Declined Do Not Retry |
 | 710 | PT Token Expired | PT Token Expired |
 | 711 | PT Token start date in the future, no active yet | PT Token start date in the future, no active yet |
 | 712 | PT Token and PAN are present in the request message | PT Token and PAN are present in the request message |
@@ -158,3 +159,4 @@
 | 786 | Declined | Declined |
 | 787 | Declined | Declined |
 | 824 | Approved | Approved |
+| 909 | Declined Do Not Retry | Declined Do Not Retry |
