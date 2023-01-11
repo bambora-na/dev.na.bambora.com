@@ -10,7 +10,7 @@ COPY Gemfile.lock /usr/src/app/
 ENV BUNDLER_VERSION='1.17.3'
 COPY Rakefile /usr/src/app/
 WORKDIR /usr/src/app
-RUN gem install bundler
+RUN gem install bundler -v 2.3.26
 RUN bundle install
 
 COPY . /usr/src/app
