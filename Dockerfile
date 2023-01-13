@@ -6,10 +6,11 @@ RUN apt-get install -y nodejs
 
 COPY Gemfile /usr/src/app/
 COPY Gemfile.lock /usr/src/app/
-
+#Specify bundler version to prevent Windows build error
+ENV BUNDLER_VERSION='1.17.3'
 COPY Rakefile /usr/src/app/
 WORKDIR /usr/src/app
-RUN gem install bundler
+RUN gem install bundler -v 2.3.26
 RUN bundle install
 
 COPY . /usr/src/app

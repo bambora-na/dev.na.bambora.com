@@ -63,3 +63,4 @@
 | 742 | DECLINE | DECLINE |
 | 823 | ISS UNAV/DATE ER | ISS UNAV/DATE ER |
 | 939 | Reversal Outside Window | Reversal Outside Window |
+| 1176 | ADD AUTH REQUIRE | ADD AUTH REQUIRE |
