@@ -772,7 +772,7 @@ definitions:
       payment_method:
         type: string
         description: 'The desired method of payment.'
-        enum: ['card', 'token', 'payment_profile', 'cash', 'cheque', 'interac', 'apple_pay', 'android_pay']
+        enum: ['card', 'token', 'payment_profile', 'cash', 'cheque', 'interac', 'apple_pay', 'android_pay', '3d_secure','processor_token']
       language:
         type: string
         maxLength: 3
@@ -805,6 +805,8 @@ definitions:
         $ref: '#/definitions/ProfilePurchase'
       token:
         $ref: '#/definitions/TokenPurchase'
+      3d_secure:
+        $ref: '#/definitions/3d_secure'
       recurring_payment:
         type: boolean
         description: |
@@ -815,6 +817,8 @@ definitions:
         $ref: '#/definitions/Level2'
       card_on_file:
         $ref: '#/definitions/CardOnFile'
+      processor_token:
+        $ref: '#/definitions/ProcessorTokenRequest'
   Card:
     description: "Payment with a credit card. The payment_method must be 'card'"
     required:
@@ -926,6 +930,49 @@ definitions:
         type: boolean
         default: true
         description: set to false for Pre-Authorize, and true to complete a payment
+  ProcessorTokenRequest:
+    description: "Payment with Processor Token. The payment_method must be 'processor_token'."
+    required:
+      - payment_token
+      - expiry_month
+      - expiry_year
+    properties:
+      payment_token:
+        type: string
+        minLength: 15
+        maxLength: 19
+        description: 'The payment token you retrieved from the service.'
+      expiry_month:
+        type: string
+        maxLength: 2
+        description: eg. 02 for February.
+      expiry_year:
+        type: string
+        maxLength: 2
+        description: eg. 15 for 2015.
+  ProcessorTokenResponse:
+    description: "Token information generated from card request, or what was used to submit payment."
+    properties:
+      payment_token:
+        type: string
+        minLength: 15
+        maxLength: 19
+        description: 'The payment token.'
+      reporting_token:
+        type: string
+        maxLength: 23
+        description: 'Token used for reporting.'
+      status:
+        type: string
+        enum: ['success','fail']
+        description: 'Status of the token.'
+      source:
+        type: string
+        minLength: 4
+        maxLength: 12
+        description: 'This will contain the name of the processor that is hosting the tokenization feature.'
+      source_data:
+        $ref: '#/definitions/SourceData'
   ProfilePurchase:
     description: "Payment with a Payment Profile. The payment_method must be 'payment_profile'"
     required:
@@ -935,7 +982,7 @@ definitions:
       complete:
         type: boolean
         default: true
-        description: 'set to false for Pre-Authorize, and true to complete a payment'
+        description: 'Set to false for Pre-Authorize, and true to complete a payment'
       customer_code:
         type: string
         maxLength: 32
@@ -953,7 +1000,7 @@ definitions:
       complete:
         type: boolean
         default: false
-        description: 'set to false for Pre-Authorize, and true to complete a payment'
+        description: 'Set to false for Pre-Authorize, and true to complete a payment'
       code:
         type: string
         maxLength: 40
@@ -969,6 +1016,25 @@ definitions:
         type: string
         maxLength: 20
         description: 'The Visa Checkout payment request ID.'
+  3d_secure:
+    description: "Payment with a 3D Secure Session Data token.  Reference a previously processed 3D Secure transaction 
+      processed through the EMV 3DS API.  This will apply the associated card number, card expiry, and 3D Secure results 
+      to your payment request. The payment_method must be '3d_secure'"
+    required:
+      - threeDS_session_data
+    properties:
+      complete:
+        type: boolean
+        default: false
+        description: 'Set to false for Pre-Authorize, and true to complete a payment'
+      threeDS_session_data:
+        type: string
+        minLength: 1
+        maxLength: 128
+        description: ''
+      auth_required:
+        type: boolean
+        description: 'If set to true the transaction will not continue processing unless 3DS authentication is successful.'
   RequestBillingAddress:
     properties:
       name:
@@ -1154,7 +1220,7 @@ definitions:
         type: string
         minLength: 6
         maxLength: 8
-        description: 'For all payments completed using a credit card, this field will contain the Bank Identification Number (BIN) of the card used. The field will be set to either the first six or first eight digits of the card PAN. Payments completed using ApplePay will return the first six digits of the Device Primary Account Number (DPAN) associated to the transaction. This field will not be returned for credit card transactions processed using a Network Token.'
+        description: 'For all payments completed using a credit card, this field will contain the Bank Identification Number (BIN) of the card used. The field will be set to either the first six or first eight digits of the card PAN. Payments completed using ApplePay will return the first six digits of the Device Primary Account Number (DPAN) associated to the transaction. This field will not be returned for credit card transactions processed using a Processor Token.'
       cvd_result:
         $ref: '#/definitions/CvdResult'
       eci:
@@ -1168,6 +1234,8 @@ definitions:
         description: 'Result of postal verification. 0 if the postal\_code parameter does does not match the customers address records or if AVS was not processed for the transaction. 1 if the postal\_code parameter matches the consumers address records at the issuing bank.'
       avs:
         $ref: '#/definitions/AvsResponse'
+      processor_token:
+        $ref: '#/definitions/ProcessorTokenResponse'
       cavv_result:
         $ref: '#/definitions/CavvResult'
       status_id:
@@ -1236,6 +1304,8 @@ definitions:
         description: 'a 2 digit representation of the expiry year. For example 2016 is 16.'
       cavv_result:
         $ref: '#/definitions/CavvResult'
+      processor_token:
+        $ref: '#/definitions/ProcessorTokenResponse'
   Link:
     properties:
       ref:
@@ -2024,7 +2094,7 @@ definitions:
       validate:
         type: boolean
         default: false
-        description: 'Set to true to automatically process a pre-auth transaction for validation purposes'
+        description: 'Set to true to automatically process a pre-auth transaction for validation purposes. Processor token transactions require validation, and must be set to true.'
   ProfileBodyCard:
     properties:
       card:
@@ -2038,7 +2108,7 @@ definitions:
       validate:
         type: boolean
         default: false
-        description: 'Set to true to automatically process a pre-auth transaction for validation purposes'
+        description: 'Set to true to automatically process a pre-auth transaction for validation purposes. Processor token transactions require validation, and must be set to true.'
   ProfileFromCard:
     required:
       - name
@@ -2483,3 +2553,18 @@ definitions:
         type: number
         format: integer
         description: 'The identifier for the set of transactions that this transaction belongs to.'
+  SourceData:
+    description: 'This will contain processor specific data related to the tokenization feature returned for informational use only.'
+    properties:
+          td_token_status:
+            type: string
+            minLength: 1
+            maxLength: 1
+            description: |
+              This field is returned only on response message and it will indicate the status of generating the PT and/or RT tokens. Valid values are:
+              * 0 = successful – PT and/or RT were generated
+              * 1 = PT token could not be generated
+              * 2 = RT token could not be generated
+              * 3 = PT and RT tokens could not be generated
+              * 4 = Invalid instance value
+              * 5 = PT not able to detokenize        
