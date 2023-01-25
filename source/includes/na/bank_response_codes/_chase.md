@@ -151,3 +151,4 @@
 | 492 | Batch Not Found | Batch Not Found |
 | 794 | NO CHECKING ACCT | NO CHECKING ACCT |
 | 805 | Signature Debit Not Allowed | Signature Debit Not Allowed |
+| T58 | SMTINQ	MISS AMEX SCAP T58 | MISSING AMEX SCAP RECORD FOR AMEX OPTBLUE |
