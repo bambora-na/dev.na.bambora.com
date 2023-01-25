@@ -1,4 +1,4 @@
-FROM ruby:2.3
+FROM ruby:2.6
 EXPOSE 4567
 
 RUN apt-get update && apt-get install -y git
