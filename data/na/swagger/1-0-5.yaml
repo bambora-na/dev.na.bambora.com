@@ -2243,6 +2243,8 @@ definitions:
       reference:
         type: string
         description: Not used. Always returns an empty string.
+      card:
+        $ref: '#/definitions/CardPurchaseResponse'
       details:
         type: array
         items:

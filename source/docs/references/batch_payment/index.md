@@ -105,6 +105,7 @@ For batches of credit card transactions, the API expects the following columns:
   - 0 – Not a recurring transaction
 - **Dynamic descriptor** - By default the Bambora merchant company name will show on your customer's bank statement. You can override this default by populating the Dynamic Descriptor field.
 - **Customer code** - The 32-character customer code located in the Payment Profile. Do not populate bank account fields in the file when processing against a Payment Profile.
+- **Processor Payment Token** - The 19-character TD Payment token.  Leave this field blank if the Adjustment ID is populated, or if either Card Number or Customer Code is populated.
 
 
 ## Response object
