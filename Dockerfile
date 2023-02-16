@@ -2,7 +2,7 @@ FROM ruby:2.3
 EXPOSE 4567
 
 RUN apt-get update && apt-get install -y git
-RUN apt-get install -y nodejs
+RUN apt-get install -y nodejs --force-yes
 
 COPY Gemfile /usr/src/app/
 COPY Gemfile.lock /usr/src/app/
