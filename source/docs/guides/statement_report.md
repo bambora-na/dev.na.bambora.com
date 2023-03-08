@@ -142,7 +142,7 @@ An example request is illustrated below.
 #### Request
 
 ```shell
-curl --location --request GET 'https://api.na.bambora.com/v1/reports/statement?start_year=2021&start_month=4&end_year=2021&end_month=7' \
+curl --location --request GET 'https://api.na.bambora.com/v1/reports/statements?start_year=2021&start_month=4&end_year=2021&end_month=7' \
 --header 'Authorization: Passcode <YOUR API ACCESS PASSCODE>' \
 --header 'Content-Type: application/json'
 ```
