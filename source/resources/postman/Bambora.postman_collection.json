@@ -1,9 +1,10 @@
 {
 	"info": {
-		"_postman_id": "44e58ca4-8868-4023-834f-eec63c60795f",
+		"_postman_id": "098dc952-601a-4721-9bdf-07b90625d054",
 		"name": "Bambora",
 		"description": "Postman collection for Bambora.",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8745712"
 	},
 	"item": [
 		{
@@ -25,8 +26,7 @@
 									"    var jsonData = JSON.parse(responseBody);",
 									"    postman.setEnvironmentVariable(\"batchId\", jsonData.batch_id);",
 									"}"
-								],
-								"id": "b79a6848-5c63-41f4-9c1e-97b66cf3f2a9"
+								]
 							}
 						},
 						{
@@ -38,8 +38,7 @@
 									"",
 									"var passcode_encoded = btoa(environment[\"merchant_id\"] + \":\" + environment[\"batch_passcode\"]);",
 									"postman.setEnvironmentVariable(\"passcode_encoded\", passcode_encoded);"
-								],
-								"id": "1b5e62a8-7904-4adc-bdb2-d9c4df870aa6"
+								]
 							}
 						}
 					],
@@ -92,8 +91,7 @@
 									"    var jsonData = JSON.parse(responseBody);",
 									"    postman.setEnvironmentVariable(\"batchId\", jsonData.batch_id);",
 									"}"
-								],
-								"id": "34f50526-f19f-4740-a69a-1a71844b7512"
+								]
 							}
 						},
 						{
@@ -105,8 +103,7 @@
 									"",
 									"var passcode_encoded = btoa(environment[\"merchant_id\"] + \":\" + environment[\"batch_passcode\"]);",
 									"postman.setEnvironmentVariable(\"passcode_encoded\", passcode_encoded);"
-								],
-								"id": "0e2b0afd-6d5f-4937-82f9-6e6fe947d476"
+								]
 							}
 						}
 					],
@@ -159,8 +156,7 @@
 									"    var jsonData = JSON.parse(responseBody);",
 									"    postman.setEnvironmentVariable(\"batchId\", jsonData.batch_id);",
 									"}"
-								],
-								"id": "b2f186c6-d9f4-49fe-b663-ff3f14e4b4ed"
+								]
 							}
 						},
 						{
@@ -172,8 +168,7 @@
 									"",
 									"var passcode_encoded = btoa(environment[\"merchant_id\"] + \":\" + environment[\"batch_passcode\"]);",
 									"postman.setEnvironmentVariable(\"passcode_encoded\", passcode_encoded);"
-								],
-								"id": "26a4c9f9-10dd-47e1-86b4-5d856fcc5e7d"
+								]
 							}
 						}
 					],
@@ -226,8 +221,7 @@
 									"    var jsonData = JSON.parse(responseBody);",
 									"    postman.setEnvironmentVariable(\"batchId\", jsonData.batch_id);",
 									"}"
-								],
-								"id": "000c04b2-6a4e-451c-9f30-28c42cd723cf"
+								]
 							}
 						},
 						{
@@ -239,8 +233,7 @@
 									"",
 									"var passcode_encoded = btoa(environment[\"merchant_id\"] + \":\" + environment[\"batch_passcode\"]);",
 									"postman.setEnvironmentVariable(\"passcode_encoded\", passcode_encoded);"
-								],
-								"id": "a07ea587-c5b3-4cf7-bb50-14d2135fd1f9"
+								]
 							}
 						}
 					],
@@ -293,8 +286,7 @@
 									"    var jsonData = JSON.parse(responseBody);",
 									"    postman.setEnvironmentVariable(\"batchId\", jsonData.batch_id);",
 									"}"
-								],
-								"id": "a264a8d1-cd82-463e-8300-97cc646a3aab"
+								]
 							}
 						},
 						{
@@ -306,8 +298,7 @@
 									"",
 									"var passcode_encoded = btoa(environment[\"merchant_id\"] + \":\" + environment[\"batch_passcode\"]);",
 									"postman.setEnvironmentVariable(\"passcode_encoded\", passcode_encoded);"
-								],
-								"id": "cfe64362-cbeb-4e20-b5ee-71d6556bf97d"
+								]
 							}
 						}
 					],
@@ -360,8 +351,7 @@
 									"    var jsonData = JSON.parse(responseBody);",
 									"    postman.setEnvironmentVariable(\"batchId\", jsonData.batch_id);",
 									"}"
-								],
-								"id": "31bb5574-0aa2-450c-b2dd-47b44cc93789"
+								]
 							}
 						},
 						{
@@ -373,8 +363,7 @@
 									"",
 									"var passcode_encoded = btoa(environment[\"merchant_id\"] + \":\" + environment[\"batch_passcode\"]);",
 									"postman.setEnvironmentVariable(\"passcode_encoded\", passcode_encoded);"
-								],
-								"id": "77ce9f2a-2b9c-422d-bc39-becf9b743624"
+								]
 							}
 						}
 					],
@@ -411,8 +400,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Batch Payment Report",
@@ -426,8 +414,7 @@
 								"type": "text/javascript",
 								"exec": [
 									"tests[\"Status code is 200\"] = responseCode.code === 200;"
-								],
-								"id": "d12972c6-e279-44e0-959d-435aa729694d"
+								]
 							}
 						}
 					],
@@ -466,8 +453,7 @@
 								"type": "text/javascript",
 								"exec": [
 									"tests[\"Status code is 200\"] = responseCode.code === 200;"
-								],
-								"id": "4db9bcae-a80f-4205-b8d8-0a9da66e7589"
+								]
 							}
 						}
 					],
@@ -506,8 +492,7 @@
 								"type": "text/javascript",
 								"exec": [
 									"tests[\"Status code is 200\"] = responseCode.code === 200;"
-								],
-								"id": "265da87d-eefa-4990-ad09-6106301134db"
+								]
 							}
 						}
 					],
@@ -546,8 +531,7 @@
 								"type": "text/javascript",
 								"exec": [
 									"tests[\"Status code is 200\"] = responseCode.code === 200;"
-								],
-								"id": "d6d773c1-5949-4b13-8f9e-d1f889e03a63"
+								]
 							}
 						}
 					],
@@ -586,8 +570,7 @@
 								"type": "text/javascript",
 								"exec": [
 									"tests[\"Status code is 200\"] = responseCode.code === 200;"
-								],
-								"id": "d260c51a-5e55-4472-b03d-95b637fa32c2"
+								]
 							}
 						}
 					],
@@ -626,8 +609,7 @@
 								"type": "text/javascript",
 								"exec": [
 									"tests[\"Status code is 200\"] = responseCode.code === 200;"
-								],
-								"id": "fc0db06f-3aab-4ad5-b69a-f269bd1b8c2a"
+								]
 							}
 						}
 					],
@@ -657,8 +639,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Boarding",
@@ -672,8 +653,7 @@
 								"type": "text/javascript",
 								"exec": [
 									"tests[\"Status code is 200\"] = responseCode.code === 200;"
-								],
-								"id": "01383008-3e3e-4289-bcfc-e446a888cd4e"
+								]
 							}
 						}
 					],
@@ -729,8 +709,7 @@
 									"    var jsonData = JSON.parse(responseBody);",
 									"    postman.setEnvironmentVariable(\"applicationId\", jsonData.id);",
 									"}"
-								],
-								"id": "6f789629-34d9-401c-b2be-c348be83fa74"
+								]
 							}
 						}
 					],
@@ -780,8 +759,7 @@
 								"exec": [
 									"tests[\"Status code is 200\"] = responseCode.code === 200;",
 									""
-								],
-								"id": "ba55b6ac-6a69-4d2c-aec9-cafeb25b2cc0"
+								]
 							}
 						}
 					],
@@ -832,8 +810,7 @@
 								"type": "text/javascript",
 								"exec": [
 									"tests[\"Status code is 200\"] = responseCode.code === 200;"
-								],
-								"id": "3d75e5e8-8ab5-4a9b-8df8-e8ec8594846e"
+								]
 							}
 						}
 					],
@@ -883,8 +860,7 @@
 								"type": "text/javascript",
 								"exec": [
 									"tests[\"Status code is 200\"] = responseCode.code === 200;"
-								],
-								"id": "7a4c462b-6df4-47cb-979a-ec587a30b137"
+								]
 							}
 						}
 					],
@@ -930,8 +906,7 @@
 								"type": "text/javascript",
 								"exec": [
 									"tests[\"Status code is 200\"] = responseCode.code === 200;"
-								],
-								"id": "bdb4239e-c535-4536-be20-43db1739e503"
+								]
 							}
 						}
 					],
@@ -987,8 +962,7 @@
 									"    var jsonData = JSON.parse(responseBody);",
 									"    postman.setEnvironmentVariable(\"applicationId\", jsonData.id);",
 									"}"
-								],
-								"id": "faf92b99-e853-4461-ac6f-a4b59e75e47a"
+								]
 							}
 						}
 					],
@@ -1038,8 +1012,7 @@
 								"exec": [
 									"tests[\"Status code is 200\"] = responseCode.code === 200;",
 									""
-								],
-								"id": "649be1a7-95d9-4f42-b666-224eae96c0b6"
+								]
 							}
 						}
 					],
@@ -1090,8 +1063,7 @@
 								"type": "text/javascript",
 								"exec": [
 									"tests[\"Status code is 200\"] = responseCode.code === 200;"
-								],
-								"id": "47acfece-48be-4759-a45a-13d8fcd9dfa4"
+								]
 							}
 						}
 					],
@@ -1141,8 +1113,7 @@
 								"type": "text/javascript",
 								"exec": [
 									"tests[\"Status code is 200\"] = responseCode.code === 200;"
-								],
-								"id": "083f0085-714a-4b08-b420-f638c36da244"
+								]
 							}
 						}
 					],
@@ -1188,8 +1159,7 @@
 								"type": "text/javascript",
 								"exec": [
 									"tests[\"Status code is 200\"] = responseCode.code === 200;"
-								],
-								"id": "5ef0e621-9d1d-4190-9399-99e8b083d3b3"
+								]
 							}
 						}
 					],
@@ -1245,8 +1215,7 @@
 									"    var jsonData = JSON.parse(responseBody);",
 									"    postman.setEnvironmentVariable(\"applicationId\", jsonData.id);",
 									"}"
-								],
-								"id": "7be63f6d-eb91-41b9-a731-74775b192def"
+								]
 							}
 						}
 					],
@@ -1296,8 +1265,7 @@
 								"exec": [
 									"tests[\"Status code is 200\"] = responseCode.code === 200;",
 									""
-								],
-								"id": "ac6eaa9f-a303-4dbc-8244-d7c71d85d709"
+								]
 							}
 						}
 					],
@@ -1348,8 +1316,7 @@
 								"type": "text/javascript",
 								"exec": [
 									"tests[\"Status code is 200\"] = responseCode.code === 200;"
-								],
-								"id": "ff0e38df-ebbf-4df8-bea3-07504d4e58db"
+								]
 							}
 						}
 					],
@@ -1399,8 +1366,7 @@
 								"type": "text/javascript",
 								"exec": [
 									"tests[\"Status code is 200\"] = responseCode.code === 200;"
-								],
-								"id": "2ce91fd7-6698-4060-94e3-a7c3ad25ddc3"
+								]
 							}
 						}
 					],
@@ -1446,8 +1412,7 @@
 								"type": "text/javascript",
 								"exec": [
 									"tests[\"Status code is 200\"] = responseCode.code === 200;"
-								],
-								"id": "59541f7d-a0a5-453c-a036-f7c3666e40be"
+								]
 							}
 						}
 					],
@@ -1503,8 +1468,7 @@
 									"    var jsonData = JSON.parse(responseBody);",
 									"    postman.setEnvironmentVariable(\"applicationId\", jsonData.id);",
 									"}"
-								],
-								"id": "84af89ee-45b5-4903-80df-599078cf6f6a"
+								]
 							}
 						}
 					],
@@ -1553,8 +1517,7 @@
 								"type": "text/javascript",
 								"exec": [
 									"tests[\"Status code is 200\"] = responseCode.code === 200;"
-								],
-								"id": "aa738aa8-578a-4730-bed7-9002908e4022"
+								]
 							}
 						}
 					],
@@ -1605,8 +1568,7 @@
 								"type": "text/javascript",
 								"exec": [
 									"tests[\"Status code is 200\"] = responseCode.code === 200;"
-								],
-								"id": "a3d68697-b03f-43e6-b0b7-cb54aa885c18"
+								]
 							}
 						}
 					],
@@ -1656,8 +1618,7 @@
 								"type": "text/javascript",
 								"exec": [
 									"tests[\"Status code is 200\"] = responseCode.code === 200;"
-								],
-								"id": "83ebf5fe-3ed8-4bac-8914-242c5184753d"
+								]
 							}
 						}
 					],
@@ -1703,8 +1664,7 @@
 								"type": "text/javascript",
 								"exec": [
 									"tests[\"Status code is 200\"] = responseCode.code === 200;"
-								],
-								"id": "ef6f7cb8-5f26-4577-a90d-374c9572581e"
+								]
 							}
 						}
 					],
@@ -1760,8 +1720,7 @@
 									"    var jsonData = JSON.parse(responseBody);",
 									"    postman.setEnvironmentVariable(\"applicationId\", jsonData.id);",
 									"}"
-								],
-								"id": "705388c8-fb1e-4ea2-a0b3-ead92ea9f486"
+								]
 							}
 						}
 					],
@@ -1810,8 +1769,7 @@
 								"type": "text/javascript",
 								"exec": [
 									"tests[\"Status code is 200\"] = responseCode.code === 200;"
-								],
-								"id": "885db868-de10-40c3-b938-a2f800c16270"
+								]
 							}
 						}
 					],
@@ -1861,8 +1819,7 @@
 								"type": "text/javascript",
 								"exec": [
 									"tests[\"Status code is 200\"] = responseCode.code === 200;"
-								],
-								"id": "8b04e835-09d8-426b-b034-194803425bde"
+								]
 							}
 						}
 					],
@@ -1908,8 +1865,7 @@
 								"type": "text/javascript",
 								"exec": [
 									"tests[\"Status code is 200\"] = responseCode.code === 200;"
-								],
-								"id": "3a09d850-8146-4912-8e15-3547e12a0b86"
+								]
 							}
 						}
 					],
@@ -1965,8 +1921,7 @@
 									"    var jsonData = JSON.parse(responseBody);",
 									"    postman.setEnvironmentVariable(\"applicationId\", jsonData.id);",
 									"}"
-								],
-								"id": "8fce5195-6931-4d6d-a70f-06ea7f08b9ac"
+								]
 							}
 						}
 					],
@@ -2015,8 +1970,7 @@
 								"type": "text/javascript",
 								"exec": [
 									"tests[\"Status code is 200\"] = responseCode.code === 200;"
-								],
-								"id": "74f059a9-7ae3-4e98-ba7e-a7856313ef1b"
+								]
 							}
 						}
 					],
@@ -2067,8 +2021,7 @@
 								"type": "text/javascript",
 								"exec": [
 									"tests[\"Status code is 200\"] = responseCode.code === 200;"
-								],
-								"id": "a12246f3-bb83-46f8-818e-8ddfc5d9ffef"
+								]
 							}
 						}
 					],
@@ -2118,8 +2071,7 @@
 								"type": "text/javascript",
 								"exec": [
 									"tests[\"Status code is 200\"] = responseCode.code === 200;"
-								],
-								"id": "cc465680-f5e4-48df-b9c8-08d57406ec38"
+								]
 							}
 						}
 					],
@@ -2165,8 +2117,7 @@
 								"type": "text/javascript",
 								"exec": [
 									"tests[\"Status code is 200\"] = responseCode.code === 200;"
-								],
-								"id": "a32f205c-63cb-4600-b6f1-4d7ee7eca252"
+								]
 							}
 						}
 					],
@@ -2222,8 +2173,7 @@
 									"    var jsonData = JSON.parse(responseBody);",
 									"    postman.setEnvironmentVariable(\"applicationId\", jsonData.id);",
 									"}"
-								],
-								"id": "46e3c378-77ac-4b50-bb5a-27545d7d8bd8"
+								]
 							}
 						}
 					],
@@ -2272,8 +2222,7 @@
 								"type": "text/javascript",
 								"exec": [
 									"tests[\"Status code is 200\"] = responseCode.code === 200;"
-								],
-								"id": "e00183bb-a275-45da-af16-9754dd857133"
+								]
 							}
 						}
 					],
@@ -2323,8 +2272,7 @@
 								"type": "text/javascript",
 								"exec": [
 									"tests[\"Status code is 200\"] = responseCode.code === 200;"
-								],
-								"id": "0f741d5f-b2ec-46b1-8558-97b56de8274d"
+								]
 							}
 						}
 					],
@@ -2370,8 +2318,7 @@
 								"type": "text/javascript",
 								"exec": [
 									"tests[\"Status code is 200\"] = responseCode.code === 200;"
-								],
-								"id": "1df7a9a6-7ba5-41c4-a5f1-236f1a4f92f5"
+								]
 							}
 						}
 					],
@@ -2427,8 +2374,7 @@
 									"    var jsonData = JSON.parse(responseBody);",
 									"    postman.setEnvironmentVariable(\"applicationId\", jsonData.id);",
 									"}"
-								],
-								"id": "d3e6ebeb-b701-4d82-ac04-4e9a42ae9ef1"
+								]
 							}
 						}
 					],
@@ -2477,8 +2423,7 @@
 								"type": "text/javascript",
 								"exec": [
 									"tests[\"Status code is 200\"] = responseCode.code === 200;"
-								],
-								"id": "3280cd37-07cb-46e7-84b2-bdba494264ca"
+								]
 							}
 						}
 					],
@@ -2528,8 +2473,7 @@
 								"type": "text/javascript",
 								"exec": [
 									"tests[\"Status code is 200\"] = responseCode.code === 200;"
-								],
-								"id": "9f3310d2-a01c-447b-8c1e-91f5f2e0d5b9"
+								]
 							}
 						}
 					],
@@ -2566,8 +2510,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Payment",
@@ -2592,8 +2535,7 @@
 									"    postman.setEnvironmentVariable(\"currentOrderNumber\", parseInt(jsonData.order_number)+1);",
 									"}",
 									""
-								],
-								"id": "d90f3abc-fbfb-437d-b230-8271363c7b89"
+								]
 							}
 						},
 						{
@@ -2603,8 +2545,7 @@
 								"exec": [
 									"var passcode_encoded = btoa(environment[\"merchant_id\"] + \":\" + environment[\"payment_passcode\"]);",
 									"postman.setEnvironmentVariable(\"passcode_encoded\", passcode_encoded);"
-								],
-								"id": "6e2b7e7b-a8f1-40f6-b02c-8634b86ed686"
+								]
 							}
 						}
 					],
@@ -2654,8 +2595,7 @@
 									"    // increment order number to keep unique",
 									"    postman.setEnvironmentVariable(\"currentOrderNumber\", parseInt(jsonData.order_number)+1);",
 									"}"
-								],
-								"id": "408b43c3-1524-4d15-aca7-a7d7f42b7177"
+								]
 							}
 						},
 						{
@@ -2665,8 +2605,7 @@
 								"exec": [
 									"var passcode_encoded = btoa(environment[\"merchant_id\"] + \":\" + environment[\"payment_passcode\"]);",
 									"postman.setEnvironmentVariable(\"passcode_encoded\", passcode_encoded);"
-								],
-								"id": "c59a2268-f56a-412f-8181-5670b10f4149"
+								]
 							}
 						}
 					],
@@ -2721,8 +2660,7 @@
 									"    postman.setEnvironmentVariable(\"currentOrderNumber\", parseInt(jsonData.order_number)+1);",
 									"}",
 									""
-								],
-								"id": "7eb8079f-042e-41c9-bdb4-a6b64529adc3"
+								]
 							}
 						},
 						{
@@ -2732,8 +2670,7 @@
 								"exec": [
 									"var passcode_encoded = btoa(environment[\"merchant_id\"] + \":\" + environment[\"payment_passcode\"]);",
 									"postman.setEnvironmentVariable(\"passcode_encoded\", passcode_encoded);"
-								],
-								"id": "69bf0f88-1063-4cbd-a826-749ba7dc799b"
+								]
 							}
 						}
 					],
@@ -2777,8 +2714,7 @@
 									"tests[\"Status code is 200\"] = responseCode.code === 200;",
 									"postman.clearEnvironmentVariable(\"passcode_encoded\");",
 									""
-								],
-								"id": "86be1f25-1248-47e4-8d85-195d06fd7ac4"
+								]
 							}
 						},
 						{
@@ -2788,8 +2724,7 @@
 								"exec": [
 									"var passcode_encoded = btoa(environment[\"merchant_id\"] + \":\" + environment[\"payment_passcode\"]);",
 									"postman.setEnvironmentVariable(\"passcode_encoded\", passcode_encoded);"
-								],
-								"id": "2dca3cee-8c90-43ec-9dd2-4c241ac353b0"
+								]
 							}
 						}
 					],
@@ -2845,8 +2780,7 @@
 									"    // increment order num to keep unique",
 									"    postman.setEnvironmentVariable(\"currentOrderNumber\", parseInt(jsonData.order_number)+1);",
 									"}"
-								],
-								"id": "cf00901a-67f9-4b9f-bfd2-1cfb717d79a4"
+								]
 							}
 						},
 						{
@@ -2856,8 +2790,7 @@
 								"exec": [
 									"var passcode_encoded = btoa(environment[\"merchant_id\"] + \":\" + environment[\"payment_passcode\"]);",
 									"postman.setEnvironmentVariable(\"passcode_encoded\", passcode_encoded);"
-								],
-								"id": "76cf50de-c43d-4dff-be16-30c5f36b6a51"
+								]
 							}
 						}
 					],
@@ -2909,8 +2842,7 @@
 									"}",
 									"",
 									""
-								],
-								"id": "6ea254b3-8727-4761-b754-ed4af14a3784"
+								]
 							}
 						},
 						{
@@ -2920,8 +2852,7 @@
 								"exec": [
 									"var passcode_encoded = btoa(environment[\"merchant_id\"] + \":\" + environment[\"payment_passcode\"]);",
 									"postman.setEnvironmentVariable(\"passcode_encoded\", passcode_encoded);"
-								],
-								"id": "a829dda1-6c0e-4ab1-8743-17e74bb6db7a"
+								]
 							}
 						}
 					],
@@ -2967,8 +2898,7 @@
 									"tests[\"Status code is 200\"] = responseCode.code === 200;",
 									"postman.clearEnvironmentVariable(\"passcode_encoded\");",
 									""
-								],
-								"id": "be3f2ed1-a76b-43d1-b6b1-a06f8d1bef08"
+								]
 							}
 						},
 						{
@@ -2978,8 +2908,7 @@
 								"exec": [
 									"var passcode_encoded = btoa(environment[\"merchant_id\"] + \":\" + environment[\"payment_passcode\"]);",
 									"postman.setEnvironmentVariable(\"passcode_encoded\", passcode_encoded);"
-								],
-								"id": "3e8a5229-79b4-4979-a473-8be86107517b"
+								]
 							}
 						}
 					],
@@ -3030,8 +2959,7 @@
 									"",
 									"postman.clearEnvironmentVariable(\"passcode_encoded\");",
 									""
-								],
-								"id": "0ebb46e7-14fe-4b49-a70d-4ccf4e45837a"
+								]
 							}
 						},
 						{
@@ -3041,8 +2969,7 @@
 								"exec": [
 									"var passcode_encoded = btoa(environment[\"merchant_id\"] + \":\" + environment[\"payment_passcode\"]);",
 									"postman.setEnvironmentVariable(\"passcode_encoded\", passcode_encoded);"
-								],
-								"id": "9b799c0e-6838-4fc2-af49-5c67d496d8b9"
+								]
 							}
 						}
 					],
@@ -3095,8 +3022,7 @@
 									"    postman.setEnvironmentVariable(\"currentOrderNumber\", parseInt(jsonData.order_number)+1);",
 									"}",
 									""
-								],
-								"id": "4f86de3c-84c6-4a9d-8c8d-22939c98965d"
+								]
 							}
 						},
 						{
@@ -3106,8 +3032,7 @@
 								"exec": [
 									"var passcode_encoded = btoa(environment[\"partner_id\"] + \":\" + environment[\"partner_payment_passcode\"]);",
 									"postman.setEnvironmentVariable(\"passcode_encoded\", passcode_encoded);"
-								],
-								"id": "9cab2b08-2e5b-4a0d-bec7-29d261efccf3"
+								]
 							}
 						}
 					],
@@ -3164,8 +3089,7 @@
 									"    postman.setEnvironmentVariable(\"currentOrderNumber\", parseInt(jsonData.order_number)+1);",
 									"}",
 									""
-								],
-								"id": "3b805a54-7fa3-4421-9e1b-c56fcb0e3ceb"
+								]
 							}
 						},
 						{
@@ -3175,8 +3099,7 @@
 								"exec": [
 									"var passcode_encoded = btoa(environment[\"partner_id\"] + \":\" + environment[\"partner_payment_passcode\"]);",
 									"postman.setEnvironmentVariable(\"passcode_encoded\", passcode_encoded);"
-								],
-								"id": "37acd088-2146-4af0-8964-98f5cf3bcab6"
+								]
 							}
 						}
 					],
@@ -3234,8 +3157,7 @@
 									"",
 									"postman.clearEnvironmentVariable(\"passcode_encoded\");",
 									""
-								],
-								"id": "e34ca2f0-c64c-43a7-9386-9673f956683c"
+								]
 							}
 						},
 						{
@@ -3245,8 +3167,7 @@
 								"exec": [
 									"var passcode_encoded = btoa(environment[\"merchant_id\"] + \":\" + environment[\"payment_passcode\"]);",
 									"postman.setEnvironmentVariable(\"passcode_encoded\", passcode_encoded);"
-								],
-								"id": "949fa78b-dee8-441e-9c3f-0166a5b2a6df"
+								]
 							}
 						}
 					],
@@ -3299,8 +3220,7 @@
 									"    postman.setEnvironmentVariable(\"currentOrderNumber\", parseInt(jsonData.order_number)+1);",
 									"}",
 									""
-								],
-								"id": "0d14c96a-a0fb-4b4f-9c35-7af30bbac7d2"
+								]
 							}
 						},
 						{
@@ -3310,8 +3230,7 @@
 								"exec": [
 									"var passcode_encoded = btoa(environment[\"merchant_id\"] + \":\" + environment[\"payment_passcode\"]);",
 									"postman.setEnvironmentVariable(\"passcode_encoded\", passcode_encoded);"
-								],
-								"id": "0ce5c5b3-94b2-456b-9a6a-02cd98e4a788"
+								]
 							}
 						}
 					],
@@ -3344,8 +3263,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Payment Profile",
@@ -3367,8 +3285,7 @@
 									"",
 									"postman.clearEnvironmentVariable(\"passcode_encoded\");",
 									""
-								],
-								"id": "f4d1f60c-c1a7-4c7e-a30d-99dbd26f0134"
+								]
 							}
 						},
 						{
@@ -3378,8 +3295,7 @@
 								"exec": [
 									"var passcode_encoded = btoa(environment[\"merchant_id\"] + \":\" + environment[\"profile_passcode\"]);",
 									"postman.setEnvironmentVariable(\"passcode_encoded\", passcode_encoded);"
-								],
-								"id": "3287f41a-2bfd-47a0-80ba-8c0d131b2580"
+								]
 							}
 						}
 					],
@@ -3424,8 +3340,7 @@
 									"",
 									"postman.clearEnvironmentVariable(\"passcode_encoded\");",
 									""
-								],
-								"id": "a9b231c0-d378-4adb-bde5-cb9aca269694"
+								]
 							}
 						},
 						{
@@ -3435,8 +3350,7 @@
 								"exec": [
 									"var passcode_encoded = btoa(environment[\"merchant_id\"] + \":\" + environment[\"profile_passcode\"]);",
 									"postman.setEnvironmentVariable(\"passcode_encoded\", passcode_encoded);"
-								],
-								"id": "0162f2bc-0056-4412-a12c-d20a0b3b00bd"
+								]
 							}
 						}
 					],
@@ -3489,8 +3403,7 @@
 									"",
 									"postman.clearEnvironmentVariable(\"passcode_encoded\");",
 									""
-								],
-								"id": "aad7fb6b-1146-4d2a-839e-def5f8c6aa6d"
+								]
 							}
 						},
 						{
@@ -3500,8 +3413,7 @@
 								"exec": [
 									"var passcode_encoded = btoa(environment[\"merchant_id\"] + \":\" + environment[\"profile_passcode\"]);",
 									"postman.setEnvironmentVariable(\"passcode_encoded\", passcode_encoded);"
-								],
-								"id": "c0852846-469d-45e4-9781-c3e8d37c3051"
+								]
 							}
 						}
 					],
@@ -3547,8 +3459,7 @@
 									"",
 									"postman.clearEnvironmentVariable(\"passcode_encoded\");",
 									""
-								],
-								"id": "2aa1ac07-d538-43c1-a5e3-30d1906231e4"
+								]
 							}
 						},
 						{
@@ -3558,8 +3469,7 @@
 								"exec": [
 									"var passcode_encoded = btoa(environment[\"merchant_id\"] + \":\" + environment[\"profile_passcode\"]);",
 									"postman.setEnvironmentVariable(\"passcode_encoded\", passcode_encoded);"
-								],
-								"id": "58d852e4-c1aa-4264-b3c0-eb00973c8945"
+								]
 							}
 						}
 					],
@@ -3602,8 +3512,7 @@
 									"",
 									"postman.clearEnvironmentVariable(\"passcode_encoded\");",
 									""
-								],
-								"id": "baaf179b-152c-47dc-a961-ca26ff44700c"
+								]
 							}
 						},
 						{
@@ -3613,8 +3522,7 @@
 								"exec": [
 									"var passcode_encoded = btoa(environment[\"merchant_id\"] + \":\" + environment[\"profile_passcode\"]);",
 									"postman.setEnvironmentVariable(\"passcode_encoded\", passcode_encoded);"
-								],
-								"id": "f907f1de-50e4-481a-8312-d4877ab80cab"
+								]
 							}
 						}
 					],
@@ -3667,8 +3575,7 @@
 									"postman.clearEnvironmentVariable(\"passcode_encoded\");",
 									"",
 									""
-								],
-								"id": "f1ef2f30-2d1b-444e-aea6-091cb0179348"
+								]
 							}
 						},
 						{
@@ -3678,8 +3585,7 @@
 								"exec": [
 									"var passcode_encoded = btoa(environment[\"merchant_id\"] + \":\" + environment[\"profile_passcode\"]);",
 									"postman.setEnvironmentVariable(\"passcode_encoded\", passcode_encoded);"
-								],
-								"id": "1e70f272-7d7e-4b3a-8415-742cb9e80e21"
+								]
 							}
 						}
 					],
@@ -3723,8 +3629,7 @@
 									"",
 									"postman.clearEnvironmentVariable(\"passcode_encoded\");",
 									""
-								],
-								"id": "a2f7e97c-f152-4e12-a752-3c06981a4872"
+								]
 							}
 						},
 						{
@@ -3734,8 +3639,7 @@
 								"exec": [
 									"var passcode_encoded = btoa(environment[\"merchant_id\"] + \":\" + environment[\"profile_passcode\"]);",
 									"postman.setEnvironmentVariable(\"passcode_encoded\", passcode_encoded);"
-								],
-								"id": "dcab3da2-4b3c-417e-8593-7a5cff9e2a5c"
+								]
 							}
 						}
 					],
@@ -3784,8 +3688,7 @@
 									"",
 									"postman.clearEnvironmentVariable(\"passcode_encoded\");",
 									""
-								],
-								"id": "6efd816e-bf6a-44fc-bb3d-dcd4d23315e3"
+								]
 							}
 						},
 						{
@@ -3795,8 +3698,7 @@
 								"exec": [
 									"var passcode_encoded = btoa(environment[\"merchant_id\"] + \":\" + environment[\"profile_passcode\"]);",
 									"postman.setEnvironmentVariable(\"passcode_encoded\", passcode_encoded);"
-								],
-								"id": "33893dac-f3f0-4476-8a01-b2c09414f4fe"
+								]
 							}
 						}
 					],
@@ -3844,8 +3746,7 @@
 									"",
 									"postman.clearEnvironmentVariable(\"passcode_encoded\");",
 									""
-								],
-								"id": "56c068a8-3676-426b-9972-06504d587471"
+								]
 							}
 						},
 						{
@@ -3855,8 +3756,7 @@
 								"exec": [
 									"var passcode_encoded = btoa(environment[\"merchant_id\"] + \":\" + environment[\"profile_passcode\"]);",
 									"postman.setEnvironmentVariable(\"passcode_encoded\", passcode_encoded);"
-								],
-								"id": "13ee7460-3494-42c2-837b-cfdbf6192628"
+								]
 							}
 						}
 					],
@@ -3904,8 +3804,7 @@
 									"",
 									"postman.clearEnvironmentVariable(\"passcode_encoded\");",
 									""
-								],
-								"id": "76c7da2c-72c7-4413-ace6-2e2f357d1192"
+								]
 							}
 						},
 						{
@@ -3915,8 +3814,7 @@
 								"exec": [
 									"var passcode_encoded = btoa(environment[\"merchant_id\"] + \":\" + environment[\"profile_passcode\"]);",
 									"postman.setEnvironmentVariable(\"passcode_encoded\", passcode_encoded);"
-								],
-								"id": "72967e60-b81b-4f6c-8ec0-fdf722aa1d33"
+								]
 							}
 						}
 					],
@@ -3965,8 +3863,7 @@
 									"",
 									"postman.clearEnvironmentVariable(\"passcode_encoded\");",
 									""
-								],
-								"id": "752abf2c-c5c8-42c0-b5af-437c030da9cc"
+								]
 							}
 						},
 						{
@@ -3976,8 +3873,7 @@
 								"exec": [
 									"var passcode_encoded = btoa(environment[\"merchant_id\"] + \":\" + environment[\"profile_passcode\"]);",
 									"postman.setEnvironmentVariable(\"passcode_encoded\", passcode_encoded);"
-								],
-								"id": "416b6706-1508-41f6-9093-b9ddf91b29d6"
+								]
 							}
 						}
 					],
@@ -4032,8 +3928,7 @@
 									"    postman.setEnvironmentVariable(\"profileId\", responseJson.customerCode);",
 									"}",
 									""
-								],
-								"id": "52a03d8a-d713-4b62-b6d5-de1d34623faf"
+								]
 							}
 						}
 					],
@@ -4141,8 +4036,7 @@
 									"    postman.setEnvironmentVariable(\"profileId\", responseJson.customerCode);",
 									"}",
 									""
-								],
-								"id": "e33d578e-e41f-40ff-9a1c-8ae7376f5761"
+								]
 							}
 						}
 					],
@@ -4202,8 +4096,7 @@
 									"    postman.setEnvironmentVariable(\"profileId\", responseJson.customerCode);",
 									"}",
 									""
-								],
-								"id": "4f36baca-9d70-42c7-a461-6f98dc9df930"
+								]
 							}
 						}
 					],
@@ -4328,8 +4221,7 @@
 									"",
 									"postman.clearEnvironmentVariable(\"passcode_encoded\");",
 									""
-								],
-								"id": "a2e0eca1-742b-4061-a3e9-e932f7a3b317"
+								]
 							}
 						},
 						{
@@ -4339,8 +4231,7 @@
 								"exec": [
 									"var passcode_encoded = btoa(environment[\"partner_id\"] + \":\" + environment[\"partner_profile_passcode\"]);",
 									"postman.setEnvironmentVariable(\"passcode_encoded\", passcode_encoded);"
-								],
-								"id": "cbb350f5-8dd3-43f5-813d-969499ab58f1"
+								]
 							}
 						}
 					],
@@ -4377,8 +4268,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Recurring Payment",
@@ -4392,8 +4282,7 @@
 								"type": "text/javascript",
 								"exec": [
 									"tests[\"Body matches string\"] = responseBody.has(\"Request successful\");"
-								],
-								"id": "e40d6e57-83b6-42dd-af11-42454e1890e1"
+								]
 							}
 						}
 					],
@@ -4473,8 +4362,7 @@
 									"    postman.setEnvironmentVariable(\"recurringAccountId\", getQueryVariable(responseBody, \"rbAccountId\"));",
 									"}",
 									""
-								],
-								"id": "6f48c42b-2ee6-46da-b035-70964dba91f9"
+								]
 							}
 						}
 					],
@@ -4602,8 +4490,7 @@
 									"    postman.setEnvironmentVariable(\"recurringAccountId\", getQueryVariable(responseBody, \"rbAccountId\"));",
 									"}",
 									""
-								],
-								"id": "e99fd63d-e83c-43d0-9614-04bbc6504405"
+								]
 							}
 						}
 					],
@@ -4670,8 +4557,7 @@
 								"type": "text/javascript",
 								"exec": [
 									"tests[\"Body matches string\"] = responseBody.has(\"Request successful\");"
-								],
-								"id": "5a09ee22-4679-4826-a184-7716d9060821"
+								]
 							}
 						}
 					],
@@ -4749,8 +4635,7 @@
 									"",
 									"    postman.setEnvironmentVariable(\"currentOrderNumber\", parseInt(jsonData.order_number)+1);",
 									""
-								],
-								"id": "b05e4ee1-b919-4da2-9c8c-b28e88b7375d"
+								]
 							}
 						}
 					],
@@ -4852,8 +4737,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Report",
@@ -4869,8 +4753,7 @@
 									"postman.clearEnvironmentVariable(\"passcode_encoded\");",
 									"",
 									"tests[\"Status code is 200\"] = responseCode.code === 200;"
-								],
-								"id": "a2aa6e87-cf1d-4249-9279-94f0d70e2ccc"
+								]
 							}
 						},
 						{
@@ -4880,8 +4763,7 @@
 								"exec": [
 									"var passcode_encoded = btoa(environment[\"merchant_id\"] + \":\" + environment[\"reporting_passcode\"]);",
 									"postman.setEnvironmentVariable(\"passcode_encoded\", passcode_encoded);"
-								],
-								"id": "9930f3fb-3084-4408-a8e7-0dde8e662876"
+								]
 							}
 						}
 					],
@@ -4926,8 +4808,7 @@
 									"postman.clearEnvironmentVariable(\"passcode_encoded\");",
 									"",
 									"tests[\"Status code is 200\"] = responseCode.code === 200;"
-								],
-								"id": "b7ff563a-ebf2-43c7-b30f-2055443a3ac1"
+								]
 							}
 						},
 						{
@@ -4937,8 +4818,7 @@
 								"exec": [
 									"var passcode_encoded = btoa(environment[\"merchant_id\"] + \":\" + environment[\"reporting_passcode\"]);",
 									"postman.setEnvironmentVariable(\"passcode_encoded\", passcode_encoded);"
-								],
-								"id": "b1b8627d-7fb4-4d71-97eb-84cc30c900c5"
+								]
 							}
 						}
 					],
@@ -4983,8 +4863,7 @@
 									"postman.clearEnvironmentVariable(\"passcode_encoded\");",
 									"",
 									"tests[\"Status code is 200\"] = responseCode.code === 200;"
-								],
-								"id": "f659d1c1-bb68-4466-9e5f-0c8ce1070328"
+								]
 							}
 						},
 						{
@@ -4994,8 +4873,7 @@
 								"exec": [
 									"var passcode_encoded = btoa(environment[\"merchant_id\"] + \":\" + environment[\"reporting_passcode\"]);",
 									"postman.setEnvironmentVariable(\"passcode_encoded\", passcode_encoded);"
-								],
-								"id": "bfd6e876-15dd-472a-878d-eee1092e212e"
+								]
 							}
 						}
 					],
@@ -5035,7 +4913,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "42aaade3-696f-423f-b4b8-01d99351b6f2",
 								"exec": [
 									"postman.clearEnvironmentVariable(\"passcode_encoded\");",
 									"",
@@ -5047,7 +4924,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "943470de-848b-4cb7-8447-b83f4e143f4b",
 								"exec": [
 									"var passcode_encoded = btoa(environment[\"merchant_id\"] + \":\" + environment[\"reporting_passcode\"]);",
 									"postman.setEnvironmentVariable(\"passcode_encoded\", passcode_encoded);"
@@ -5102,8 +4978,7 @@
 								"type": "text/javascript",
 								"exec": [
 									"tests[\"Status code is 200\"] = responseCode.code === 200;"
-								],
-								"id": "0027960b-a93b-481d-8c6c-2195df33d454"
+								]
 							}
 						}
 					],
@@ -5133,8 +5008,256 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
+		},
+		{
+			"name": "Processor Tokenization",
+			"item": [
+				{
+					"name": "Make Payment (raw card)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"postman.clearEnvironmentVariable(\"passcode_encoded\");",
+									"",
+									"if(responseCode.code === 200) {",
+									"    var jsonData = JSON.parse(responseBody);",
+									"",
+									"    // get payment token: ",
+									"    postman.setEnvironmentVariable(\"payment_token\", jsonData.card.processor_token.payment_token);",
+									"",
+									"    // get reporting token: ",
+									"    postman.setEnvironmentVariable(\"reporting_token\", jsonData.card.processor_token.reporting_token);",
+									"",
+									"    // transaction id used for refund: ",
+									"    postman.setEnvironmentVariable(\"transId\", jsonData.id);",
+									"    ",
+									"    // increment order num to keep unique: ",
+									"    postman.setEnvironmentVariable(\"currentOrderNumber\", parseInt(jsonData.order_number)+1);",
+									"}",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var passcode_encoded = btoa(environment[\"merchant_id\"] + \":\" + environment[\"payment_passcode\"]);",
+									"postman.setEnvironmentVariable(\"passcode_encoded\", passcode_encoded);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Passcode {{passcode_encoded}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"amount\": 100.00,\r\n  \"payment_method\":\"card\",\r\n  \"card\":{\r\n    \"name\":\"John Doe\",\r\n    \"number\":\"4030000010001234\",\r\n    \"expiry_month\":\"02\",\r\n    \"expiry_year\":\"14\",\r\n    \"cvd\":\"123\"\r\n  }\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/v1/payments",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"payments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Make Payment (processor token)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"postman.clearEnvironmentVariable(\"passcode_encoded\");",
+									"",
+									"if(responseCode.code === 200) {",
+									"    var jsonData = JSON.parse(responseBody);",
+									"",
+									"    // transaction id used for refund: ",
+									"    postman.setEnvironmentVariable(\"transId\", jsonData.id);",
+									"    ",
+									"    // increment order num to keep unique: ",
+									"    postman.setEnvironmentVariable(\"currentOrderNumber\", parseInt(jsonData.order_number)+1);",
+									"}",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var passcode_encoded = btoa(environment[\"merchant_id\"] + \":\" + environment[\"payment_passcode\"]);",
+									"postman.setEnvironmentVariable(\"passcode_encoded\", passcode_encoded);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Passcode {{passcode_encoded}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"amount\": 100.00,\r\n  \"payment_method\":\"processor_token\",\r\n  \"processor_token\":{\r\n    \"name\":\"John Doe\",\r\n    \"payment_token\":\"{{payment_token}}\",\r\n    \"expiry_month\":\"02\",\r\n    \"expiry_year\":\"14\"\r\n  }\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/v1/payments",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"payments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Query (payment token)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"postman.clearEnvironmentVariable(\"passcode_encoded\");",
+									"",
+									"tests[\"Status code is 200\"] = responseCode.code === 200;"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var passcode_encoded = btoa(environment[\"merchant_id\"] + \":\" + environment[\"reporting_passcode\"]);",
+									"postman.setEnvironmentVariable(\"passcode_encoded\", passcode_encoded);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Passcode {{passcode_encoded}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Search\",\r\n    \"start_date\": \"2023-01-01T01:01:03\",\r\n    \"end_date\": \"2023-06-05T16:05:00\",   \r\n    \"start_row\": \"1\",\r\n    \"end_row\": \"1\",\r\n    \"criteria\": [\r\n      {\r\n        \"field\": \"26\",\r\n        \"operator\": \"%3D\",\r\n        \"value\": \"{{payment_token}}\"\r\n      }\r\n    ]\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/v1/reports",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"reports"
+							]
+						},
+						"description": "Query for transactions using a date range and optional search criteria. "
+					},
+					"response": []
+				},
+				{
+					"name": "Search Query (reporting token)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"postman.clearEnvironmentVariable(\"passcode_encoded\");",
+									"",
+									"tests[\"Status code is 200\"] = responseCode.code === 200;"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var passcode_encoded = btoa(environment[\"merchant_id\"] + \":\" + environment[\"reporting_passcode\"]);",
+									"postman.setEnvironmentVariable(\"passcode_encoded\", passcode_encoded);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Passcode {{passcode_encoded}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Search\",\r\n    \"start_date\": \"2023-01-01T01:01:03\",\r\n    \"end_date\": \"2023-06-05T16:05:00\",   \r\n    \"start_row\": \"1\",\r\n    \"end_row\": \"1\",\r\n    \"criteria\": [\r\n      {\r\n        \"field\": \"27\",\r\n        \"operator\": \"%3D\",\r\n        \"value\": \"{{reporting_token}}\"\r\n      }\r\n    ]\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/v1/reports",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"reports"
+							]
+						},
+						"description": "Query for transactions using a date range and optional search criteria. "
+					},
+					"response": []
+				}
+			]
 		},
 		{
 			"name": "Token",
@@ -5153,8 +5276,7 @@
 									"    var jsonData = JSON.parse(responseBody);",
 									"    postman.setEnvironmentVariable(\"tokenizedCC\", jsonData.token);",
 									"}"
-								],
-								"id": "a8716623-15c9-4ace-a3e6-7a998bcbcb40"
+								]
 							}
 						}
 					],
@@ -5185,9 +5307,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }

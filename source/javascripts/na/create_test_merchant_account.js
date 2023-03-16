@@ -102,13 +102,13 @@ $(function() {
         // if account was created successfully: 
         if(urlStatus === '1') { 
             $statusParagraph.html("<strong>Account successfully created!</strong>");
-            $statusParagraph.append("<br> Merchant ID: " + getUrlParameter('merchant_id'));
+            $statusParagraph.append("<br> Merchant ID: " + stripHtmlTags(getUrlParameter('merchant_id')));
             $statusDiv.removeClass('hidden notice error');
             $statusDiv.addClass('success');
             $currentForm.find(":input").not(".btn").val("");
         // if account creation failed validation: 
         } else if(urlStatus === '0') {
-            var errorMessage = decodeURIComponent(getUrlParameter('error_message'));
+            var errorMessage = stripHtmlTags(decodeURIComponent(getUrlParameter('error_message')));
             var errorFields = decodeURIComponent(getUrlParameter('error_fields'));
 
             // Repopulate fields in form:

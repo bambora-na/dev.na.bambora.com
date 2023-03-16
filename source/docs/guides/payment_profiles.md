@@ -33,7 +33,7 @@ curl -X POST https://api.na.bambora.com/v1/profiles
 -H "Content-Type: application/json"
 -H "Authorization: Passcode bWVyY2hhbnRfaWQ6cGFzc2NvZGU="
 -d '{
-      "language":"en",
+      "language":"eng",
       "comments":"hello",
       "token": {  
         "name":"Bill Smith",
@@ -51,7 +51,7 @@ curl -X POST https://api.na.bambora.com/v1/profiles
 -H "Content-Type: application/json"
 -H "Authorization: Passcode bWVyY2hhbnRfaWQ6cGFzc2NvZGU="
 -d '{
-      "language":"en",
+      "language":"eng",
       "comments":"hello",
       "card":{  
         "name":"Bill Smith",
@@ -72,7 +72,7 @@ curl -X POST https://api.na.bambora.com/v1/profiles
 -H "Content-Type: application/json"
 -H "Authorization: Passcode bWVyY2hhbnRfaWQ6cGFzc2NvZGU="
 -d '{
-      "language":"en",
+      "language":"eng",
       "comments":"hello",
       "bank_account":{
         "bank_account_holder":"Bill Smith",
@@ -93,7 +93,7 @@ curl -X POST https://api.na.bambora.com/v1/profiles
 -H "Content-Type: application/json"
 -H "Authorization: Passcode bWVyY2hhbnRfaWQ6cGFzc2NvZGU="
 -d '{
-      "language":"en",
+      "language":"eng",
       "comments":"hello",
       "create_from_id":10000000
     }'
@@ -209,7 +209,7 @@ curl -X PUT https://api.na.bambora.com/v1/profiles/{id}
 -H "Content-Type: application/json"
 -H "Authorization: Passcode bWVyY2hhbnRfaWQ6cGFzc2NvZGU="
 -d '{
-      "language":"en",
+      "language":"eng",
       "comments":"hello",
       "bank_account":{
         "bank_account_holder":"Bill Smith",
@@ -230,7 +230,7 @@ curl -X PUT https://api.na.bambora.com/v1/profiles/{id}
 -H "Content-Type: application/json"
 -H "Authorization: Passcode bWVyY2hhbnRfaWQ6cGFzc2NvZGU="
 -d '{
-      "language":"en",
+      "language":"eng",
       "comments":"hello",
       "bank_account":{
         "bank_account_holder":"Bill Smith",
