@@ -45,7 +45,7 @@ Filters are assembled as in groups containing a column name (`rptFilterBy`), and
 - **rptVersion** - API version. Current version: "1.0" [Numeric String]
 - **rptFilterBy**
   - **status** - Status of a custom commissions payout record.
-- **rptFilterValue** - Valid values for 'status' filter are (case sensetive)
+- **rptFilterValue** - Valid values for 'status' filter are (case insensitive)
   - **Scheduled**
   - **On Hold**
   - **Superseded**
