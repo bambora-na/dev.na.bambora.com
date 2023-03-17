@@ -32,8 +32,6 @@
   title: 'Statement Report'
 - file: '/docs/guides/merchant_report'
   title: 'Merchant Report'
-- file: '/docs/guides/custom_commission_report'
-  title: 'Custom Commission Report'
 - file: '/docs/guides/SSL'
   title: 'SSL'
 - file: '/docs/guides/visa_checkout'
