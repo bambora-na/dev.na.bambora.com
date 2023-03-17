@@ -114,13 +114,6 @@ cards:
         icon: creditcard-outline
         link: /docs/guides/merchant_report
     -
-        title: Custom Commission Report
-        description: >
-            <TODO: UPDATE THIS FOR CUSTOM COMMISSION REPORT>
-            Query for information on fees charged to your monthly statement.  For partners this will also include sub merchant fees and assocaited commissions.
-        icon: creditcard-outline
-        link: /docs/guides/custom_commission_report
-    -
         title: SSL
         description: >
             Encrypt information and provide computer to computer authentication.
