@@ -1581,7 +1581,11 @@ definitions:
         format:  double
         description: 'The commission amount collected against the fee. This field is only returned for channel partner accounts.'
   MerchantReport:
-    $ref: '#/definitions/MerchantRecord'
+    properties:
+      data:
+        type: array
+        items:
+          $ref: '#/definitions/MerchantRecord'
   MerchantRecord:
     properties:
       merchant_id:
@@ -2243,6 +2247,8 @@ definitions:
       reference:
         type: string
         description: Not used. Always returns an empty string.
+      card:
+        $ref: '#/definitions/CardPurchaseResponse'
       details:
         type: array
         items:
