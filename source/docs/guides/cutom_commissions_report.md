@@ -16,8 +16,8 @@ navigation:
 
 ## Report Overview
 
-The Commissions Report is intended for our Partners to obtain an overview of their merchants as they progress through the boarding process. 
-Partners can get information relating to merchants in their portfolio, including the account status, batch limits, as well as cards and features enabled. 
+The Commissions Report is intended for our Partners to obtain an overview of their custom commission payouts. 
+Partners can get information relating to commissions being paid or that have been paid. 
 
 ## Report Columns
 
