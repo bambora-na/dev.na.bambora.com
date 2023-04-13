@@ -470,9 +470,9 @@ paths:
           format: integer
       responses:
         200:
-          description: A statement object.
+          description: A commission object.
           schema:
-            $ref: '#/definitions/StatementReport'
+            $ref: '#/definitions/CommissionsReport'
         400:
           $ref: '#/responses/BadRequest'
         401:
