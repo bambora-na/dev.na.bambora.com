@@ -133,7 +133,7 @@ curl --location --request GET 'https://api.na.bambora.com/v1/reports/commissions
             {
                 "row_id": 1,
                 "payout_id": 26,
-                "amount": 0.0,
+                "amount": 1.15,
                 "start_datetime": "2022-01-08T08:00:00",
                 "end_datetime": "2022-11-28T07:59:59",
                 "expected_settlement_date": "2022-12-08T00:00:00",
@@ -143,7 +143,7 @@ curl --location --request GET 'https://api.na.bambora.com/v1/reports/commissions
             {
                 "row_id": 2,
                 "payout_id": 28,
-                "amount": 0.0,
+                "amount": 2.25,
                 "start_datetime": "2022-11-28T08:00:00",
                 "end_datetime": "2022-12-02T07:59:59",
                 "expected_settlement_date": "2022-12-09T00:00:00",

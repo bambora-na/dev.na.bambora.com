@@ -434,7 +434,7 @@ paths:
           format: date
         - name: report_days
           in: query
-          description: "Number of days to get the report for"
+          description: "Number of days from today to generate the report for"
           required: false
           type: integer
           format: integer
