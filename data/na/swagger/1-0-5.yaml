@@ -464,7 +464,7 @@ paths:
           format: integer
         - name: version
           in: query
-          description: "API version. Current version: "1.0""
+          description: "API version. Current version: 1.0"
           required: false
           type: integer
           format: integer
