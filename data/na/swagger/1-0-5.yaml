@@ -1658,7 +1658,7 @@ definitions:
       data:
         type: array
         items:
-          $ref: '#/definitions/CommissionsReport'
+          $ref: '#/definitions/CommissionsRecord'
   CommissionsRecord:
     properties:
       row_id:
