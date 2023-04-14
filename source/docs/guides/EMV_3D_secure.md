@@ -956,7 +956,7 @@ curl --location --request POST 'https://api.na.bambora.com/v1/payments' \
         - user_agent, string (1-2048), required
         - javascript_enabled, optional Boolean true/false, default true.
     - Additional 3D Secure parameters
-        - version, Optional and will default to what is configured in the merchant's account
+        - version, if 3d_secure is set to true, version is required, and must set to 2. We do not support version 1 any longer.
         - auth_required (If set to true the transaction will not continue processing unless 3DS authentication is successful)
 
 - Payment API response:
