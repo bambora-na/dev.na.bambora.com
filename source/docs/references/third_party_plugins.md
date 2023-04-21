@@ -15,7 +15,7 @@ navigation:
 # Third Party Plugins
 Here is an ever-growing list of plugins and tools used for taking payments with us. There are plugins for shopping carts, CMS suites, and programming language libraries. If you know of one that isn’t listed let us know!
 
-For a comprehensive list of our partners please visit our [marketplace](https://marketplace.na.bambora.com/).
+For a comprehensive list of our partners please visit our [marketplace](https://www.bambora.com/en/us/partner-listing/).
 
 | Platform                                | Plugin                                    |
 | --------------------------------------- | ----------------------------------------- |
