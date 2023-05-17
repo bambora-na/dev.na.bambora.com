@@ -27,7 +27,7 @@ environment that integrates our sandbox, and have it approved by our Onboarding
 Team.
 
 To begin, make sure you're [signed up for a partner
-account](/docs/forms/request_partner_account/). After you're accepted, we'll
+account](/docs/forms/create_test_merchant_account/). After you're accepted, we'll
 email you an API access token for our sandbox environment along with a Pricing
 Package ID.
 

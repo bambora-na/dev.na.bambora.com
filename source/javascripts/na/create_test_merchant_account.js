@@ -97,11 +97,11 @@ $(function() {
        
         var $currentForm = $('#createTestAccount_form');
         var $statusDiv = $currentForm.next('.block-highlight');
-        var $statusParagraph = $statusDiv.find('p');         
+        var $statusParagraph = $statusDiv.find('p');
 
         // if account was created successfully: 
         if(urlStatus === '1') { 
-            $statusParagraph.html("<strong>Account successfully created!</strong>");
+            $statusParagraph.html("<strong style='color:#45beaa'>Merchant test account successfully created!</strong>");
             $statusParagraph.append("<br> Merchant ID: " + stripHtmlTags(getUrlParameter('merchant_id')));
             $statusDiv.removeClass('hidden notice error');
             $statusDiv.addClass('success');
@@ -114,6 +114,7 @@ $(function() {
             // Repopulate fields in form:
             $currentForm.find('input[name="user_login"]').val(getUrlParameter('user_login'));
             $currentForm.find('input[name="company_login"]').val(getUrlParameter('company_login'));
+            $currentForm.find('input[name="user_user_kindofbusiness"]').val(getUrlParameter('user_user_kindofbusiness'));
             $currentForm.find('input[name="user_email"]').val(getUrlParameter('user_email'));
             $currentForm.find('input[name="merchant_country"]').val(getUrlParameter('merchant_country'));
             $currentForm.find('input[name="merchant_currency"]').val(getUrlParameter('merchant_currency'));
