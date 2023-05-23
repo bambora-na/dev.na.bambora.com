@@ -2,6 +2,8 @@ $(function() {
 
     // Update the value for error_page_url and success_page_url 
     var current_url = $(location).attr('href');
+    console.log("current_url", current_url);
+    
     current_url = current_url.split("create_test_merchant_account")[0] + "create_test_merchant_account/";
     $("input[name='error_page_url']").val(current_url);
     $("input[name='success_page_url']").val(current_url);
@@ -13,7 +15,7 @@ $(function() {
             sURLVariables = sPageURL.split('&'),
             sParameterName,
             i;
-
+        console.log("sURLVariables: ", sURLVariables);
         for (i = 0; i < sURLVariables.length; i++) {
             sParameterName = sURLVariables[i].split('=');
 
@@ -93,16 +95,37 @@ $(function() {
     // Handle display of error or success after submitting 
     // a Test Merchant Account creation. 
     var urlStatus = getUrlParameter('status');
+    console.log("urlStatus: ", urlStatus);
+    
+    
+    var skindofbusiness = getUrlParameter('kindofbusiness');
+    console.log("skindofbusiness: ", skindofbusiness);
+
     if(getUrlParameter('status')) {  // (i.e. if there is a response in the url)
-       
+        var combovalue = getUrlParameter('kind_of_business');
+        console.log("kind_of_business combovalue: ", combovalue);
+   
         var $currentForm = $('#createTestAccount_form');
         var $statusDiv = $currentForm.next('.block-highlight');
         var $statusParagraph = $statusDiv.find('p');
+        var providerResellerMessage = `<p>If you are a software provider or reseller, you can
+        expect an email from our sales team to discuss our
+        Test Partner Account options that work alongside
+        your Test Merchant Account. You have received
+        your Test Merchant Account credentials above.</p>
+        </br>
+        <p>We recommend testing things out on both the
+        partner and merchant level, and will be happy to
+        guide you through how to get the most out of your
+        accounts. In the meantime, please contact us if you
+        have any questions at sales.na@worldline.com or
+        1-888-472-2072.</p>`;
 
         // if account was created successfully: 
         if(urlStatus === '1') { 
             $statusParagraph.html("<strong style='color:#45beaa'>Merchant test account successfully created!</strong>");
             $statusParagraph.append("<br> Merchant ID: " + stripHtmlTags(getUrlParameter('merchant_id')));
+            // $statusParagraph.append("<br/>" + providerResellerMessage);
             $statusDiv.removeClass('hidden notice error');
             $statusDiv.addClass('success');
             $currentForm.find(":input").not(".btn").val("");
@@ -114,7 +137,8 @@ $(function() {
             // Repopulate fields in form:
             $currentForm.find('input[name="user_login"]').val(getUrlParameter('user_login'));
             $currentForm.find('input[name="company_login"]').val(getUrlParameter('company_login'));
-            $currentForm.find('input[name="user_user_kindofbusiness"]').val(getUrlParameter('user_user_kindofbusiness'));
+            $currentForm.find('input[name="kind_of_business"]').val(getUrlParameter('kind_of_business'));
+            $currentForm.find('input[name="kindofbusiness"]').val(getUrlParameter('kindofbusiness'));
             $currentForm.find('input[name="user_email"]').val(getUrlParameter('user_email'));
             $currentForm.find('input[name="merchant_country"]').val(getUrlParameter('merchant_country'));
             $currentForm.find('input[name="merchant_currency"]').val(getUrlParameter('merchant_currency'));
@@ -139,5 +163,27 @@ $(function() {
             $statusDiv.removeClass('hidden success notice');
             $statusDiv.addClass('error');
         }
-    } 
+    }
+    
+    window.onload = function() {
+        console.log('Cargando funcion en el onload...') 
+        BindEvent(); 
+    }
+
+    function BindEvent()
+    {
+        console.log("binding event...");
+        var elemToBind = document.getElementById ( "kind_of_business" );
+        elemToBind.onchange = function () { setComboOnChange ( this ); }
+    }
+
+    function setComboOnChange(elem)
+    {
+        console.log("This is the combo on change function for: ", elem.value);
+        alert("This is the combo on change function for: " + elem.value);
+
+        // var secondCombo = document.getElementById ( "cmb2" );
+        // secondCombo.value = elem.value;   
+    }
+
 });
