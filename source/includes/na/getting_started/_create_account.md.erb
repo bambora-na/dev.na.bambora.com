@@ -17,6 +17,22 @@
   <%= label_tag :company_login, :caption => '6-32 chars. alphanumeric, hyphens, underscores, not spaces' %>
   <%= text_field_tag :company_login, :placeholder => 'Your company', :id => 'company_login', :required => true %>
 
+  # <%= label_tag :kind_of_business %>
+  # <div class='mdl-selectfield'>
+  #   <% opts = [ ['Kind of business', '', {:disabled => false}],
+  #   ['Software Provider or Reseller', '1'],
+  #   ['Merchant', '2'], 
+  #   ['Other', '3']] %>
+
+  #   <%= select_tag :kind_of_business, 
+  #   :options => opts, 
+  #   :selected => '', 
+  #   :id => 'kind_of_business', 
+  #   :required => true %>
+  # </div>
+
+  # <%= hidden_field_tag :kindofbusiness, :value => '' %>
+
   <%= label_tag :user_email, :caption => 'Email: ' %>
   <%= email_field_tag :user_email, :placeholder => 'Your email', :id => 'user_email', :required => true %>
 
