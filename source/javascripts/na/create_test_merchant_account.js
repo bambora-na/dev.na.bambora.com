@@ -108,24 +108,11 @@ $(function() {
         var $currentForm = $('#createTestAccount_form');
         var $statusDiv = $currentForm.next('.block-highlight');
         var $statusParagraph = $statusDiv.find('p');
-        var providerResellerMessage = `<p>If you are a software provider or reseller, you can
-        expect an email from our sales team to discuss our
-        Test Partner Account options that work alongside
-        your Test Merchant Account. You have received
-        your Test Merchant Account credentials above.</p>
-        </br>
-        <p>We recommend testing things out on both the
-        partner and merchant level, and will be happy to
-        guide you through how to get the most out of your
-        accounts. In the meantime, please contact us if you
-        have any questions at sales.na@worldline.com or
-        1-888-472-2072.</p>`;
 
         // if account was created successfully: 
         if(urlStatus === '1') { 
             $statusParagraph.html("<strong style='color:#45beaa'>Merchant test account successfully created!</strong>");
             $statusParagraph.append("<br> Merchant ID: " + stripHtmlTags(getUrlParameter('merchant_id')));
-            // $statusParagraph.append("<br/>" + providerResellerMessage);
             $statusDiv.removeClass('hidden notice error');
             $statusDiv.addClass('success');
             $currentForm.find(":input").not(".btn").val("");
