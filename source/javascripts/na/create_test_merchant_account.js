@@ -1,9 +1,7 @@
 $(function() {
 
     // Update the value for error_page_url and success_page_url 
-    var current_url = $(location).attr('href');
-    console.log("current_url", current_url);
-    
+    var current_url = $(location).attr('href');    
     current_url = current_url.split("create_test_merchant_account")[0] + "create_test_merchant_account/";
     $("input[name='error_page_url']").val(current_url);
     $("input[name='success_page_url']").val(current_url);
@@ -15,7 +13,6 @@ $(function() {
             sURLVariables = sPageURL.split('&'),
             sParameterName,
             i;
-        console.log("sURLVariables: ", sURLVariables);
         for (i = 0; i < sURLVariables.length; i++) {
             sParameterName = sURLVariables[i].split('=');
 
@@ -91,20 +88,10 @@ $(function() {
         }
     });
 
-
     // Handle display of error or success after submitting 
     // a Test Merchant Account creation. 
     var urlStatus = getUrlParameter('status');
-    console.log("urlStatus: ", urlStatus);
-    
-    
-    var skindofbusiness = getUrlParameter('kindofbusiness');
-    console.log("skindofbusiness: ", skindofbusiness);
-
-    if(getUrlParameter('status')) {  // (i.e. if there is a response in the url)
-        var combovalue = getUrlParameter('kind_of_business');
-        console.log("kind_of_business combovalue: ", combovalue);
-   
+    if(getUrlParameter('status')) {  // (i.e. if there is a response in the url)   
         var $currentForm = $('#createTestAccount_form');
         var $statusDiv = $currentForm.next('.block-highlight');
         var $statusParagraph = $statusDiv.find('p');
@@ -124,8 +111,6 @@ $(function() {
             // Repopulate fields in form:
             $currentForm.find('input[name="user_login"]').val(getUrlParameter('user_login'));
             $currentForm.find('input[name="company_login"]').val(getUrlParameter('company_login'));
-            $currentForm.find('input[name="kind_of_business"]').val(getUrlParameter('kind_of_business'));
-            $currentForm.find('input[name="kindofbusiness"]').val(getUrlParameter('kindofbusiness'));
             $currentForm.find('input[name="user_email"]').val(getUrlParameter('user_email'));
             $currentForm.find('input[name="merchant_country"]').val(getUrlParameter('merchant_country'));
             $currentForm.find('input[name="merchant_currency"]').val(getUrlParameter('merchant_currency'));
@@ -150,27 +135,6 @@ $(function() {
             $statusDiv.removeClass('hidden success notice');
             $statusDiv.addClass('error');
         }
-    }
-    
-    window.onload = function() {
-        console.log('Cargando funcion en el onload...') 
-        BindEvent(); 
-    }
-
-    function BindEvent()
-    {
-        console.log("binding event...");
-        var elemToBind = document.getElementById ( "kind_of_business" );
-        elemToBind.onchange = function () { setComboOnChange ( this ); }
-    }
-
-    function setComboOnChange(elem)
-    {
-        console.log("This is the combo on change function for: ", elem.value);
-        alert("This is the combo on change function for: " + elem.value);
-
-        // var secondCombo = document.getElementById ( "cmb2" );
-        // secondCombo.value = elem.value;   
     }
 
 });
