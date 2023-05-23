@@ -1,5 +1,5 @@
 ---
-title: EMV 3D Secure
+title: EMV 3D Secure 2.0
 layout: tutorial
 
 summary: >
@@ -15,7 +15,7 @@ navigation:
   header_active: Guides
 ---
 
-# EMV 3D Secure
+# EMV 3D Secure 2.0
 
 If you are currently using our legacy 3D Secure functionality, the documentation is [here](/docs/guides/3D_secure/)
 
@@ -577,7 +577,7 @@ For Merchant Initiated transactions this would be the case where the merchant ha
 |Subsequent Unscheduled|Merchant|No|
 
 
-## EMV 3D Secure API
+## EMV 3D Secure 2.0 API
 
 The EMV 3D Secure API provides a set of end points where you may want to utilize to perform 3D Secure authentication without immediately processing a payment.  This can be useful in instances where may want to authenticate a card holder before storing their credentials to a customer profile, or for authenticating a transaction that may be processed at a later time.  Our Payments API supports accepting the 3DS Session Data token of a previously authenticated 3D Secure transaction as a reference to the card data, and 3D Secure authentication results.
 

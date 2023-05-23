@@ -42,7 +42,7 @@ cards:
         icon: list
         link: /docs/guides/3D_secure
     -
-        title: EMV 3D Secure
+        title: EMV 3D Secure 2.0
         description: >
             Learn about implementing EMV 3D Secure based payments.
         icon: list
