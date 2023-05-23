@@ -42,19 +42,6 @@ for more information on using your test account. </p>
   <%= text_field_tag :company_login, :placeholder => 'Your company', :id => 'company_login', :required => true %>
   </div>
 
-  <div class="form-group" style="display: none">
-  <%= label_tag :kind_of_business, :caption => ' What kind of business are you? : ' %>
-  <% opts = [ ['Kind of business', '', {:disabled => false}],
-              ['Software Provider or Reseller', '1'],
-              ['Merchant', '2'], 
-              ['Other', '3']] %>
-  <%= select_tag :kind_of_business, :options => opts, 
-    :class => "dropdown dropdown-open-on-hover", :role=>"listbox",
-    :selected => '', 
-    :id => 'kind_of_business', 
-    :required => true %>
-  </div>
-
   <div class="form-group">
   <%= label_tag :user_email, :caption => 'Email: ' %>
   <%= email_field_tag :user_email, :placeholder => 'Your email', :id => 'user_email', :required => true %>
