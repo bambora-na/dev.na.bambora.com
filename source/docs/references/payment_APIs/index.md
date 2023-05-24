@@ -18,7 +18,7 @@ Our Payment APIs are the RESTful interface to our payment gateway. It allows you
 
 You can either interact with the API directly or through an SDK (a library of helper functions to simplify your integration with the SDK).
 
-Note: this doc is limited to the Payments, Reporting, Payment Profile, and Tokenization APIs. You may also be interested in the Onboarding API.
+Note: this doc is limited to the Payments, Reporting, Payment Profile, and Tokenization APIs. Only two languages are accepted, english and french.  You may also be interested in the Onboarding API.
 
 ## v1.0.5
 

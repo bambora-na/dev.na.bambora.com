@@ -60,6 +60,12 @@ cards:
             Risk Thresholds can be used by merchants to block certain high risk transactions.
         icon: creditcard-outline
         link: /docs/references/risk_thresholds/
+    -
+        title: Custom Commissions
+        description: >
+            Custom Commissions Report API provides partners an overview of their custom commissions payout as they are being processed.
+        icon: creditcard-outline
+        link: /docs/references/custom_commissions/
 
 
 

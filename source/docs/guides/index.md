@@ -114,6 +114,12 @@ cards:
         icon: creditcard-outline
         link: /docs/guides/merchant_report
     -
+        title: Custom Commissions Report
+        description: >
+            Query for custom commission payout information.
+        icon: creditcard-outline
+        link: /docs/guides/custom_commissions_report
+    -
         title: SSL
         description: >
             Encrypt information and provide computer to computer authentication.

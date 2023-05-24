@@ -19,7 +19,7 @@ navigation:
 
 If you are currently using our legacy 3D Secure functionality, the documentation is [here](/docs/guides/3D_secure/)
 
-Note: EMV 3DS is currently only available for merchants who process payments through TD Bank. 
+Note: EMV 3DS is currently available for merchants who process payments through TD Bank, Fiserv, and Global payments. If you have questions on availablility of 3ds2 on other processors/banks please reach out to your Worldline sales representative. 
 
 EMV 3D Secure (3DS2), also known as Visa Secure (formerly Verified by Visa), MasterCard Identity Check (formerly SecureCode), and AMEX SafeKey, is a security standard used to authenticate card-not-present payments. This upgrade from 3DS 1 reduces friction for the cardholder. Merchants that want to integrate 3DS2 must have signed up for the service through their bank merchant account issuer. This service must also be enabled by our Customer Care team.
 
@@ -956,7 +956,7 @@ curl --location --request POST 'https://api.na.bambora.com/v1/payments' \
         - user_agent, string (1-2048), required
         - javascript_enabled, optional Boolean true/false, default true.
     - Additional 3D Secure parameters
-        - version, Optional and will default to what is configured in the merchant's account
+        - version, if 3d_secure is set to true, version is required, and must set to 2. We do not support version 1 any longer.
         - auth_required (If set to true the transaction will not continue processing unless 3DS authentication is successful)
 
 - Payment API response:
