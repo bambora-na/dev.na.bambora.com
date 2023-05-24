@@ -15,13 +15,13 @@ navigation:
   header_active: Guides
 ---
 
-# EMV 3D Secure 2.0
+# 3D Secure 2.0
 
 If you are currently using our legacy 3D Secure functionality, the documentation is [here](/docs/guides/3D_secure/)
 
-Note: EMV 3DS is currently available for merchants who process payments through TD Bank, Fiserv, and Global payments. If you have questions on availablility of 3ds2 on other processors/banks please reach out to your Worldline sales representative. 
+Note: 3D Secure 2.0 is currently available for merchants who process payments through TD Bank, Fiserv, and Global payments. If you have questions on availablility of 3ds2 on other processors/banks please reach out to your Worldline sales representative. 
 
-EMV 3D Secure (3DS2), also known as Visa Secure (formerly Verified by Visa), MasterCard Identity Check (formerly SecureCode), and AMEX SafeKey, is a security standard used to authenticate card-not-present payments. This upgrade from 3DS 1 reduces friction for the cardholder. Merchants that want to integrate 3DS2 must have signed up for the service through their bank merchant account issuer. This service must also be enabled by our Customer Care team.
+3D Secure 2.0 (3DS2), also known as Visa Secure (formerly Verified by Visa), MasterCard Identity Check (formerly SecureCode), and AMEX SafeKey, is a security standard used to authenticate card-not-present payments. This upgrade from 3DS 1 reduces friction for the cardholder. Merchants that want to integrate 3DS2 must have signed up for the service through their bank merchant account issuer. This service must also be enabled by our Customer Care team.
 
 For assistance with integrations and any questions you may have about 3DS2, you may <a href="https://help.na.bambora.com/hc/en-us/requests/new" target="_blank">submit a request</a> to Customer Care or call 1-833-226-2672.
 
@@ -577,19 +577,19 @@ For Merchant Initiated transactions this would be the case where the merchant ha
 |Subsequent Unscheduled|Merchant|No|
 
 
-## EMV 3D Secure 2.0 API
+## 3D Secure 2.0 API
 
-The EMV 3D Secure API provides a set of end points where you may want to utilize to perform 3D Secure authentication without immediately processing a payment.  This can be useful in instances where may want to authenticate a card holder before storing their credentials to a customer profile, or for authenticating a transaction that may be processed at a later time.  Our Payments API supports accepting the 3DS Session Data token of a previously authenticated 3D Secure transaction as a reference to the card data, and 3D Secure authentication results.
+The 3D Secure 2.0 API provides a set of end points where you may want to utilize to perform 3D Secure authentication without immediately processing a payment.  This can be useful in instances where may want to authenticate a card holder before storing their credentials to a customer profile, or for authenticating a transaction that may be processed at a later time.  Our Payments API supports accepting the 3DS Session Data token of a previously authenticated 3D Secure transaction as a reference to the card data, and 3D Secure authentication results.
 
-A passcode must be passed in the authorization header when making a request to the EMV 3DS API.  This API shares the same passcode as the Payment API.
+A passcode must be passed in the authorization header when making a request to the 3D Secure 2.0 API.  This API shares the same passcode as the Payment API.
 
 Access to this API must be enabled by a member of our support team.  For assistance, you can send a message to Client Services or call 1-888-472-0811.
 
 ### /POST /V1/EMV3DS/AuthRequst
 
-This endpoint is your first touchpoint for validating a card via the EMV 3D Secure process; all new requests must start here.
+This endpoint is your first touchpoint for validating a card via the 3D Secure 2.0 process; all new requests must start here.
 
-One of the primary components of EMV 3D Secure is the requirement for card holder browser data. This data improves the chances for a frictionless flow, but also enables a customized challenge flow experience for the card holder (if required); one that is tailored to their language and device.
+One of the primary components of 3D Secure 2.0 is the requirement for card holder browser data. This data improves the chances for a frictionless flow, but also enables a customized challenge flow experience for the card holder (if required); one that is tailored to their language and device.
 
 All the browser values can be collected via JavaScript, unless of course they have JavaScript disabled.  For reference on how to use JavaScript to collect the required browser data, use or refer to the following mini-library.  https://web.na.bambora.com/admin/assets/js/Bambora3DS2.js
 
