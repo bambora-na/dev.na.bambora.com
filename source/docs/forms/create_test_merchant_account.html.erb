@@ -11,6 +11,15 @@ navigation:
 
 breadcrumbs: false
 ---
+<style>
+.btn-create-account {
+  background-color: #45beaa; 
+  color: #FFFFFF; 
+  border-style: solid; 
+  border-color: #45beaa; 
+  border-width: 1px; 
+}
+</style>
 
 <div class="col-md-6 col-md-offset-3">
 
@@ -80,8 +89,8 @@ for more information on using your test account. </p>
   <%= hidden_field_tag :merchant_country, :value => 'CA' %>
   <%= hidden_field_tag :merchant_currency, :value => '1' %>
 
-  <%= submit_tag 'Create test account', :class => "btn", 
-  :style => "background-color: #45beaa; color: #FFFFFF; border-style: solid; border-color: #45beaa; border-width: 1px;", 
+  <%= submit_tag 'Create test account', 
+  :class => "btn btn-create-account", 
   :onMouseOver=>"this.style.background='#FFFFFF'; this.style.color='#45beaa';", 
   :onMouseout=>"this.style.background='#45beaa'; this.style.color='#FFFFFF';" %>
 <% end %>
