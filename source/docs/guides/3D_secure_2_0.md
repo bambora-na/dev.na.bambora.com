@@ -719,13 +719,13 @@ curl --location --request POST 'https://api.na.bambora.com/v1/EMV3DS/AuthRequest
 |Parameter|Data Type|Description|
 |---:|---:|---|
 |threeDS_session_data|String|Unique identifier for this 3DSv2 session. This value is used when completing a challenge flow or future payment request if needed.|
-|redirection.url|String|The URL to redirect the card holder to complete their EMV 3DS challenge.|
+|redirection.url|String|The URL to redirect the card holder to complete their 3D Secure 2.0 challenge.|
 |redirection.values|Dictionary|This is a dictionary of name/value pairs of parameters to submit in the challenge redirection.|
 |authorization.eci|String|Two digit Electronic Commerce Indicator.  This will be set to a value of either 01, 02, 05, or 06.  The ECI code is related to the card brand and authentication status.|
-|authorization.cavv|String|The Cardholder Authentication Verification Value (CAVV), the Accountholder Authentication Value (AAV), and the American Express Verification Value (AEVV), are the values returned by the card brand issuer for an authenticated EMV 3DS transaction.|
-|authorization.xid|Numeric|The EMV 3DS transaction id.|
+|authorization.cavv|String|The Cardholder Authentication Verification Value (CAVV), the Accountholder Authentication Value (AAV), and the American Express Verification Value (AEVV), are the values returned by the card brand issuer for an authenticated 3D Secure 2.0 transaction.|
+|authorization.xid|Numeric|The 3D Secure 2.0 transaction id.|
 |authorization.ds_transaction_id|String|Directory server transaction id.|
-|authorization.protocol_version|String|EMV 3DS protocol version|
+|authorization.protocol_version|String|3D Secure 2.0 protocol version|
 |status|String|The status of the authentication set to a value of either 'Succeeded', 'Attempted', 'Rejected', 'Failed', 'Unavailable', or 'Error'.|
 |type|String|If the request resulted in an error this will contain the error type identifier. Possible values are Validation, Account, Unavailable, Processor, TransactionNotFound, Internal, and Unknown|
 |message|String|In the case of an error, this field will contain a descriptive message indicating the reason the request was rejected.|
@@ -920,7 +920,7 @@ curl --location --request GET 'https://api.na.bambora.com/v1/EMV3DS/MDBiYmI5NTYt
 
 ### Processing a Payment Using a 3DS Session Data Token
 
-A credit card that has been successfully authenticated through the EMV 3DS API can be later referenced to complete a payment, without needing to resubmit the credit card number and expiry. The value of the 'threeDS_session_data' parameter returned in the authentication response can be used as a token to the card data and 3D Secure results, when submitting a request to the Payment API.
+A credit card that has been successfully authenticated through the 3D Secure 2.0 API can be later referenced to complete a payment, without needing to resubmit the credit card number and expiry. The value of the 'threeDS_session_data' parameter returned in the authentication response can be used as a token to the card data and 3D Secure results, when submitting a request to the Payment API.
 
 In the payment request we must set the 'payment_method' to a value of '3d_secure_token', then pass a '3d_secure' object containing the 'threeDS_session_data' as the token to the card data and 3D Secure results.
 
