@@ -44,7 +44,7 @@ cards:
     -
         title: 3D Secure 2.0
         description: >
-            Learn about implementing EMV 3D Secure based payments.
+            Learn about implementing 3D Secure 2.0 based payments.
         icon: list
         link: /docs/guides/3D_secure_2_0
     -

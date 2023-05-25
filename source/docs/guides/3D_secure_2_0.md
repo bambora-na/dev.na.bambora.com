@@ -1,5 +1,5 @@
 ---
-title: EMV 3D Secure 2.0
+title: 3D Secure 2.0
 layout: tutorial
 
 summary: >
