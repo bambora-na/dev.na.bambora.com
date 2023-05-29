@@ -1,7 +1,7 @@
 $(function() {
 
     // Update the value for error_page_url and success_page_url 
-    var current_url = $(location).attr('href');
+    var current_url = $(location).attr('href');    
     current_url = current_url.split("create_test_merchant_account")[0] + "create_test_merchant_account/";
     $("input[name='error_page_url']").val(current_url);
     $("input[name='success_page_url']").val(current_url);
@@ -13,7 +13,6 @@ $(function() {
             sURLVariables = sPageURL.split('&'),
             sParameterName,
             i;
-
         for (i = 0; i < sURLVariables.length; i++) {
             sParameterName = sURLVariables[i].split('=');
 
@@ -89,19 +88,17 @@ $(function() {
         }
     });
 
-
     // Handle display of error or success after submitting 
     // a Test Merchant Account creation. 
     var urlStatus = getUrlParameter('status');
-    if(getUrlParameter('status')) {  // (i.e. if there is a response in the url)
-       
+    if(getUrlParameter('status')) {  // (i.e. if there is a response in the url)   
         var $currentForm = $('#createTestAccount_form');
         var $statusDiv = $currentForm.next('.block-highlight');
-        var $statusParagraph = $statusDiv.find('p');         
+        var $statusParagraph = $statusDiv.find('p');
 
         // if account was created successfully: 
         if(urlStatus === '1') { 
-            $statusParagraph.html("<strong>Account successfully created!</strong>");
+            $statusParagraph.html("<strong style='color:#45beaa'>Merchant test account successfully created!</strong>");
             $statusParagraph.append("<br> Merchant ID: " + stripHtmlTags(getUrlParameter('merchant_id')));
             $statusDiv.removeClass('hidden notice error');
             $statusDiv.addClass('success');
@@ -138,5 +135,6 @@ $(function() {
             $statusDiv.removeClass('hidden success notice');
             $statusDiv.addClass('error');
         }
-    } 
+    }
+
 });
