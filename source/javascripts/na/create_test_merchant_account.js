@@ -24,7 +24,7 @@ $(function() {
 
     // https://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript/901144#901144
     // get query variable value by name
-    var getParameterByName = function getParameterByName(name, url = window.location.href) {
+    function getParameterByName(name, url = window.location.href) {
         name = name.replace(/[[]]/g, '$&');  
             var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
                 results = regex.exec(url);
