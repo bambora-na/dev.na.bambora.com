@@ -22,6 +22,17 @@ $(function() {
         }
     };
 
+    // https://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript/901144#901144
+    // get query variable value by name
+    function getParameterByName(name, url = window.location.href) {
+        name = name.replace(/[[]]/g, '$&');  
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/+/g, ' '));
+    };
+
     // Use div dropdown as <select>
     var val = $('.form-group .dropdown-open-on-hover .value');
     var options = $('.form-group .dropdown-open-on-hover ul');
@@ -99,7 +110,7 @@ $(function() {
         // if account was created successfully: 
         if(urlStatus === '1') { 
             $statusParagraph.html("<strong style='color:#45beaa'>Merchant test account successfully created!</strong>");
-            $statusParagraph.append("<br> Merchant ID: " + stripHtmlTags(getUrlParameter('merchant_id')));
+            $statusParagraph.append("<br> Merchant ID: " + getParameterByName('merchant_id'));
             $statusDiv.removeClass('hidden notice error');
             $statusDiv.addClass('success');
             $currentForm.find(":input").not(".btn").val("");
