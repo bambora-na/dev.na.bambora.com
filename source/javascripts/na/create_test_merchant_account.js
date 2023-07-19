@@ -1,7 +1,7 @@
 $(function() {
 
     // Update the value for error_page_url and success_page_url 
-    var current_url = $(location).attr('href');
+    var current_url = $(location).attr('href');    
     current_url = current_url.split("create_test_merchant_account")[0] + "create_test_merchant_account/";
     $("input[name='error_page_url']").val(current_url);
     $("input[name='success_page_url']").val(current_url);
@@ -13,7 +13,6 @@ $(function() {
             sURLVariables = sPageURL.split('&'),
             sParameterName,
             i;
-
         for (i = 0; i < sURLVariables.length; i++) {
             sParameterName = sURLVariables[i].split('=');
 
@@ -21,6 +20,17 @@ $(function() {
                 return sParameterName[1] === undefined ? true : sParameterName[1];
             }
         }
+    };
+
+    // https://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript/901144#901144
+    // get query variable value by name
+    function getParameterByName(name, url = window.location.href) {
+        name = name.replace(/[[]]/g, '$&');  
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/+/g, ' '));
     };
 
     // Use div dropdown as <select>
@@ -89,20 +99,18 @@ $(function() {
         }
     });
 
-
     // Handle display of error or success after submitting 
     // a Test Merchant Account creation. 
     var urlStatus = getUrlParameter('status');
-    if(getUrlParameter('status')) {  // (i.e. if there is a response in the url)
-       
+    if(getUrlParameter('status')) {  // (i.e. if there is a response in the url)   
         var $currentForm = $('#createTestAccount_form');
         var $statusDiv = $currentForm.next('.block-highlight');
-        var $statusParagraph = $statusDiv.find('p');         
+        var $statusParagraph = $statusDiv.find('p');
 
         // if account was created successfully: 
         if(urlStatus === '1') { 
-            $statusParagraph.html("<strong>Account successfully created!</strong>");
-            $statusParagraph.append("<br> Merchant ID: " + stripHtmlTags(getUrlParameter('merchant_id')));
+            $statusParagraph.html("<strong style='color:#45beaa'>Merchant test account successfully created!</strong>");
+            $statusParagraph.append("<br> Merchant ID: " + getParameterByName('merchant_id'));
             $statusDiv.removeClass('hidden notice error');
             $statusDiv.addClass('success');
             $currentForm.find(":input").not(".btn").val("");
@@ -138,5 +146,6 @@ $(function() {
             $statusDiv.removeClass('hidden success notice');
             $statusDiv.addClass('error');
         }
-    } 
+    }
+
 });
