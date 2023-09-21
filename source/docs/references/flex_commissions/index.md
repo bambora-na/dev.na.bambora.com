@@ -38,7 +38,7 @@ Filters are assembled as in groups containing a column name (`rptFilterBy`), and
 - **merchantId** - The authorizing partner ID. Length: 9 chars. [Numeric string]
 - **passCode** - The reporting passcode for the authorizing merchant. Max length: 64 chars. [Alphanumeric string]
 - **serviceName** - Type of report
-  - **flex_commission_payout**
+  - **flex_commission_payouts**
 - **rptFormat** - Format of the response, valid values are
   - **JSON**
   - **XML**
