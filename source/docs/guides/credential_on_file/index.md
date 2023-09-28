@@ -51,6 +51,7 @@ The following is a list of all possible Credential-on-File types that can be use
 - first_recurring
 - subsequent_recurring
 - subsequent_customer_initiated
+- first_unscheduled
 - subsequent_unscheduled
 
 ### first_installment:
@@ -483,6 +484,87 @@ curl -X POST https://api.na.bambora.com/v1/payments
 }
 ```
 
+### first_unscheduled:
+
+The `first_unscheduled` Credential-on-File type is used for the first transaction being processed where the cardholder has authorized the merchant to store the cardholder's payment credentials for the purpose of charging the cardholder again with no regularly scheduled period of time.  An example of this type is when the cardholder purchases a prepaid cash card that auto-reloads once the cash balance goes below a predetermined threshold amount.  This type will be used for that initial purchase of the prepaid cash card, and it can be either a purchase or a pre-auth transaction.  Additionally, any transaction that is processed for the purpose of verifying the cardholder's payment credentials before storing it for later use by the merchant will have the 'first_unscheduled' Credential-on-File type.
+
+Since this is the first transaction in a set of transactions, a series ID should not be specified when calling the Payment Api to process the transaction.  The transaction response will contain the series ID that should be used for future related payments in the series.
+
+#### Request 6
+
+```curl
+curl -X POST https://api.na.bambora.com/v1/payments
+-H "Content-Type: application/json"
+-H "Authorization: Passcode MTAwMDAwMDAwOmJhbWJvcmE="
+-d '{
+        "amount": 5.00,
+        "payment_method": "card",
+        "card": {
+            "name": "Mr. Card On file",
+            "number": "4520016000023001",
+            "expiry_month": "12",
+            "expiry_year": "22"
+        },
+        "card_on_file": {
+            "type": "first_unscheduled",
+        }
+    }'
+```
+
+#### Response 6
+
+```
+{
+    "id": "10000590",
+    "authorizing_merchant_id": 372930000,
+    "approved": "1",
+    "message_id": "1",
+    "message": "Approved",
+    "auth_code": "832374",
+    "created": "2018-09-06T15:57:20",
+    "order_number": "10000590",
+    "type": "P",
+    "payment_method": "CC",
+    "risk_score": 0,
+    "amount": 5,
+    "custom": {
+        "ref1": "",
+        "ref2": "",
+        "ref3": "",
+        "ref4": "",
+        "ref5": ""
+    },
+    "card": {
+        "card_type": "VI",
+        "last_four": "3001",
+        "address_match": 0,
+        "postal_result": 0,
+        "avs_result": "0",
+        "cvd_result": "2",
+        "avs": {
+            "id": "0",
+            "message": "Address Verification not performed for this transaction.",
+            "processed": false
+        }
+    },
+    "links": [
+        {
+            "rel": "void",
+            "href": "https://api.na.bambora.com/v1/payments/10000589/void",
+            "method": "POST"
+        },
+        {
+            "rel": "return",
+            "href": "https://api.na.bambora.com/v1/payments/10000589/returns",
+            "method": "POST"
+        }
+    ],
+    "card_on_file": {
+        "type": "first_unscheduled",
+        "series_id": 2414
+    }
+}
+```
 ### subsequent_unscheduled:
 
 The `subsequent_unscheduled` Credential-on-File type is used for any transaction that is triggered by the merchant, and charges a cardholder 
@@ -494,7 +576,7 @@ Even though the transactions are not charged on a regular interval, the merchant
 over time.  Therefore, these transactions are considered to belong to the same set of transactions, and so the series ID for the set is required to 
 be passed in the request message.
 
-#### Request 6
+#### Request 7
 
 ```curl
 curl -X POST https://api.na.bambora.com/v1/payments
@@ -516,7 +598,7 @@ curl -X POST https://api.na.bambora.com/v1/payments
     }'
 ```
 
-#### Response 6
+#### Response 7
 
 ```
 {
@@ -591,7 +673,7 @@ Credential-on-File indicator.  In order to remain compliant with the Credential-
 assign a default Credential-on-File indicator based on the following rules:
 
 - If the transaction is processed for the purpose of verifying a cardholder's payment credentials before storing it for later use, then the transaction 
-  is assigned the `first_recurring` Credential-on-File type.
+  is assigned the `first_unscheduled` Credential-on-File type.
 - If the transaction is flagged as recurring and there is no specified end date, then the transaction is assigned the `subsequent_recurring` Credential-on-File 
   type. If there is a specified end date (which is only possible from the Recurring Billing service), then the transaction is assigned the `subsequent_installment` Credential-on-File type.
 - If the above rules do not apply, and the transaction is using a payment profile, or the transaction is from a batch, then the transaction is assigned the 
