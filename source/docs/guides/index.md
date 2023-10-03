@@ -42,11 +42,11 @@ cards:
         icon: list
         link: /docs/guides/3D_secure
     -
-        title: EMV 3D Secure
+        title: 3D Secure 2.0
         description: >
-            Learn about implementing EMV 3D Secure based payments.
+            Learn about implementing 3D Secure 2.0 based payments.
         icon: list
-        link: /docs/guides/EMV_3D_secure
+        link: /docs/guides/3D_secure_2_0
     -
         title: Apple Pay
         description: >
