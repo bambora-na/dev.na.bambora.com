@@ -14,5 +14,5 @@
   title: 'Address Verification System (AVS)'
 - file: '/docs/references/risk_thresholds/'
   title: 'Risk Thresholds'
-- file: '/docs/references/flexcommissions/'
+- file: '/docs/references/FlexCommissions/'
   title: 'FlexCommissions'

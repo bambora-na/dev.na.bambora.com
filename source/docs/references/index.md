@@ -65,7 +65,7 @@ cards:
         description: >
             FlexCommissions Report API provides partners an overview of their FlexCommissions payouts as they are being processed.
         icon: creditcard-outline
-        link: /docs/references/flexcommissions/
+        link: /docs/references/FlexCommissions/
 
 
 
