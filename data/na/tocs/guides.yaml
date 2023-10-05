@@ -32,7 +32,7 @@
   title: 'Statement Report'
 - file: '/docs/guides/merchant_report'
   title: 'Merchant Report'
-- file: '/docs/guides/flexcommissions_report'
+- file: '/docs/guides/FlexCommissions_report'
   title: 'FlexCommissions Report'
 - file: '/docs/guides/SSL'
   title: 'SSL'

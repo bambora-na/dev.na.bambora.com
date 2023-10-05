@@ -118,7 +118,7 @@ cards:
         description: >
             Query for FlexCommissions payout information.
         icon: creditcard-outline
-        link: /docs/guides/flexcommissions_report
+        link: /docs/guides/FlexCommissions_report
     -
         title: SSL
         description: >
