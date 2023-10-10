@@ -17,7 +17,7 @@ navigation:
 
 You can get individual transactions by ID using the `/payments/{transId}` endpoint, or you can retrieve multiple transactions using the `/reports` endpoint.
 
-You can report on batches of funds transfers and flex commission payouts using the `/scripts/reporting/report.aspx` endpoint. This is covered in a separate document.
+You can report on batches of funds transfers and FlexCommissions payouts using the `/scripts/reporting/report.aspx` endpoint. This is covered in a separate document.
 
 ## Authorizing requests
 

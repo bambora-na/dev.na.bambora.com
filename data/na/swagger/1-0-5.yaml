@@ -414,7 +414,7 @@ paths:
     get:
       summary: Commissions Report
       description: |
-        This report provides details on fees applied to your flex commission payouts.
+        This report provides details on fees applied to your FlexCommissions payouts.
 
       tags:
         - Reports
