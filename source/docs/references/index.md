@@ -61,11 +61,11 @@ cards:
         icon: creditcard-outline
         link: /docs/references/risk_thresholds/
     -
-        title: Custom Commissions
+        title: FlexCommissions
         description: >
-            Custom Commissions Report API provides partners an overview of their custom commissions payout as they are being processed.
+            FlexCommissions Report API provides partners an overview of their FlexCommissions payouts as they are being processed.
         icon: creditcard-outline
-        link: /docs/references/custom_commissions/
+        link: /docs/references/FlexCommissions/
 
 
 
