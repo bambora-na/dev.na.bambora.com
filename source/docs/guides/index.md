@@ -118,13 +118,13 @@ cards:
         description: >
             Query for merchant account status and features information.
         icon: creditcard-outline
-        link: /docs/guides/custom_commissions_report
+        link: /docs/guides/merchant_report
     -
         title: Custom Commissions Report
         description: >
             Query for custom commission payout information.
         icon: creditcard-outline
-        link: /docs/guides/FlexCommissions_report
+        link: /docs/guides/custom_commissions_report
     -
         title: SSL
         description: >
