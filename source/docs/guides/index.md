@@ -54,6 +54,12 @@ cards:
         icon: list
         link: /docs/guides/apple_pay
     -
+        title: Google Pay
+        description: >
+            Work with Google Pay payments from mobile devices and the Web.
+        icon: list
+        link: /docs/guides/google_pay
+    -
         title: Batch Payment
         description: >
             Batch credit card, EFT and ACH transactions.
@@ -114,11 +120,11 @@ cards:
         icon: creditcard-outline
         link: /docs/guides/merchant_report
     -
-        title: Custom Commissions Report
+        title: FlexCommissions Report
         description: >
-            Query for custom commission payout information.
+            Query for FlexCommissions payout information.
         icon: creditcard-outline
-        link: /docs/guides/custom_commissions_report
+        link: /docs/guides/FlexCommissions_report
     -
         title: SSL
         description: >
