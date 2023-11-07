@@ -12,6 +12,7 @@ COPY Gemfile.lock /usr/src/app/
 COPY version.json /usr/src/app/
 
 RUN ls /usr/src/app/*
+RUN cat /usr/src/app/version.json
 
 RUN echo "Branch in dockerfile: "
 RUN echo $BRANCH
@@ -27,6 +28,9 @@ RUN bundle install
 
 #RUN echo version.json
 COPY . /usr/src/app
+RUN ls /usr/src/app/*
+RUN cat /usr/src/app/version.json
+
 
 #RUN sed -i 's|BRANCH|$BRANCH|g' version.json
 
