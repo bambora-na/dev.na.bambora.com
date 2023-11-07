@@ -13,7 +13,7 @@ COPY version.json /user/src/app
 
 RUN echo "Branch in dockerfile: "
 RUN $BRANCH
-RUN sed -i 's|BRANCH|$BRANCH|g' version.json
+#RUN sed -i 's|BRANCH|$BRANCH|g' version.json
 RUN sed -i 's|BRANCH|$BRANCH|g' /user/src/app/version.json
 
 #Specify bundler version to prevent Windows build error
