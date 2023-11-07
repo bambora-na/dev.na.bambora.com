@@ -15,6 +15,9 @@ RUN bundle install
 
 COPY . /usr/src/app
 
+RUN sed -i 's|BRANCH|$BRANCH|g' /usr/src/app/version.json
+
+
 ENTRYPOINT ["rake"]
 CMD ["dev"]
 
