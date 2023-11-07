@@ -60,7 +60,7 @@ echo "Start build--"
 
 #BRANCH="${bamboo.shortPlanName}" APP_HOME=${bamboo.build.working.directory} BUILD_NUMBER=${bamboo.buildNumber} BUILD_TIME=${bamboo.buildTimeStamp} REVISION=${bamboo.planRepository.revision}
 
-docker build -t devbamboracom
+#docker build -t devbamboracom
 
 echo "ONBOARDING_HOST is $ONBOARDING_HOST"
 mkdir -p build
