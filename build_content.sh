@@ -36,18 +36,6 @@ fi
 #BUILD_TIME=$BUILD_TIME
 #REVISION=$REVISION
 
-# Generate the JSON file
-echo '{
-    "bic": {
-        "branch": "'"$BRANCH"'",
-        "revision": "'"$REVISION"'",
-        "buildtime": "'"$BUILD_TIME"'"
-    },
-    "build": {
-        "buildNumber": "'"$BUILD_NUMBER"'"
-    }
-}' > version.json
-
 echo "ONBOARDING_HOST is $ONBOARDING_HOST"
 mkdir -p build
 docker run -e ONBOARDING_HOST=${ONBOARDING_HOST} -v $APP_HOME/build:/usr/src/app/build dev.bambora.com static
