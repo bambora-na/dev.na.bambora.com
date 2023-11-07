@@ -26,7 +26,8 @@ else
     ONBOARDING_HOST='onboardingapi'
 fi
 
-ls /usr/src/app/*
+#ls /usr/src/app/*
+echo $APP_HOME
 
 
 echo "ONBOARDING_HOST is $ONBOARDING_HOST"
