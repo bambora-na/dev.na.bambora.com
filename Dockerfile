@@ -17,7 +17,7 @@ RUN bundle install
 COPY . /usr/src/app
 
 #RUN sed -i 's|BRANCH|$BRANCH|g' version.json
-RUN "Branch in dockerfile: $BRANCH"
+RUN echo "Branch in dockerfile: $BRANCH"
 
 #COPY version_1.json /usr/src/app/
 
