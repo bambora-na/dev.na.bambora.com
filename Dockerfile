@@ -18,6 +18,7 @@ COPY . /usr/src/app
 #RUN sed -i 's|BRANCH|$BRANCH|g' version.json
 RUN echo '{ "version": "1.0", "author": "John Doe" }' > version_1.json
 
+COPY version_1.json /usr/src/app/
 
 ENTRYPOINT ["rake"]
 CMD ["dev"]
