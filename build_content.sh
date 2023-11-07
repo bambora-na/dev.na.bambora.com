@@ -30,7 +30,7 @@ fi
 
 echo "Start echoing--"
 
-ls $APP_HOME/*
+ls $APP_HOME/build/*
 #echo $APP_HOME
 cat $APP_HOME/build/version.json
 
