@@ -9,7 +9,7 @@ RUN apt-get install -y nodejs --force-yes
 
 COPY Gemfile /usr/src/app/
 COPY Gemfile.lock /usr/src/app/
-#COPY version.json /usr/src/app/
+COPY version.json /usr/src/app/
 
 RUN ls /usr/src/app/
 
