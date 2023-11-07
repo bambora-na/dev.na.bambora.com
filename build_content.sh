@@ -26,6 +26,10 @@ else
     ONBOARDING_HOST='onboardingapi'
 fi
 
+ls /usr/src/app/build/*
+ls /usr/src/app/*
+
+
 echo "ONBOARDING_HOST is $ONBOARDING_HOST"
 mkdir -p build
 docker run -e ONBOARDING_HOST=${ONBOARDING_HOST} -v $APP_HOME/build:/usr/src/app/build dev.bambora.com static
