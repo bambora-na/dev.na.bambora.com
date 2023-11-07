@@ -14,7 +14,7 @@ COPY version.json /user/src/app/
 RUN ls /usr/src/app/*
 
 RUN echo "Branch in dockerfile: "
-RUN $BRANCH
+RUN echo $BRANCH
 #RUN sed -i 's|BRANCH|$BRANCH|g' version.json
 RUN sed -i 's|BRANCH|$BRANCH|g' /user/src/app/version.json
 
