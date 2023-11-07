@@ -7,7 +7,7 @@ set -e
 echo "BRANCH is $BRANCH yo"
 echo "APP_HOME is $APP_HOME yo"
 
-FILE_VERSION_PATH = $APP_HOME/source/version.json
+#FILE_VERSION_PATH = $APP_HOME/source/version.json
 
 if [ "$BRANCH" = "careless-whisper" ]
 then
@@ -31,7 +31,7 @@ fi
 ls $APP_HOME/source/*
 #echo $APP_HOME
 
-sed -i 's|BRANCH|$BRANCH|g' FILE_VERSION_PATH
+sed -i 's|BRANCH|$BRANCH|g' $APP_HOME/source/version.json
 
 echo "ONBOARDING_HOST is $ONBOARDING_HOST"
 mkdir -p build
