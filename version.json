@@ -1,6 +1,6 @@
 {
     "bic": {
-        "branch": "BRANCH_XXX",
+        "branch": "BRANCH",
         "revision": "REVISION",
         "buildtime": "BUILD_TIME"
     },
