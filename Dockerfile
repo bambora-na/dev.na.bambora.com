@@ -9,15 +9,15 @@ RUN apt-get install -y nodejs --force-yes
 
 COPY Gemfile /usr/src/app/
 COPY Gemfile.lock /usr/src/app/
-COPY version.json /usr/src/app/
+#COPY version.json /usr/src/app/
 
-RUN ls /usr/src/app/*
-RUN cat /usr/src/app/version.json
+#RUN ls /usr/src/app/*
+#RUN cat /usr/src/app/version.json
 
-RUN echo "Branch in dockerfile: "
-RUN echo $BRANCH
+#RUN echo "Branch in dockerfile: "
+#RUN echo $BRANCH
 #RUN sed -i 's|BRANCH|$BRANCH|g' version.json
-RUN sed -i 's|BRANCH|$BRANCH|g' /usr/src/app/version.json
+#RUN sed -i 's|BRANCH|$BRANCH|g' /usr/src/app/version.json
 
 #Specify bundler version to prevent Windows build error
 ENV BUNDLER_VERSION='1.17.3'
@@ -29,7 +29,7 @@ RUN bundle install
 #RUN echo version.json
 COPY . /usr/src/app
 RUN ls /usr/src/app/*
-RUN cat /usr/src/app/version.json
+#RUN cat /usr/src/app/version.json
 
 
 #RUN sed -i 's|BRANCH|$BRANCH|g' version.json
