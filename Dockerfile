@@ -17,12 +17,14 @@ RUN bundle install
 COPY . /usr/src/app
 
 #RUN sed -i 's|BRANCH|$BRANCH|g' version.json
-###RUN echo '{ "version": "1.0", "author": "John Doe" }' > version_1.json
+RUN "Branch in dockerfile: $BRANCH"
 
 #COPY version_1.json /usr/src/app/
 
 ENTRYPOINT ["rake"]
 CMD ["dev"]
+
+RUN sed -i 's|BRANCH|$BRANCH|g' version.json
 
 # 1) Build: docker build -t devbamboracom .
 # 2) Run:   docker run -v `pwd`/source:/usr/src/app/source -w /usr/src/app -p 4567:4567 devbamboracom
