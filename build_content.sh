@@ -32,16 +32,14 @@ echo "Start echoing--"
 
 ls $APP_HOME/*
 #echo $APP_HOME
-cat $APP_HOME/source/version.json
+cat $APP_HOME/build/version.json
 
+sed -i 's|BRANCH|'$BRANCH'|g' $APP_HOME/build/version.json
+sed -i 's|REVISION|'$REVISION'|g' $APP_HOME/build/version.json
+sed -i 's|BUILD_TIME|'$BUILD_TIME'|g' $APP_HOME/build/version.json
+sed -i 's|BUILD_NUMBER|'$BUILD_NUMBER'|g' $APP_HOME/build/version.json
 
-
-sed -i 's|BRANCH|'$BRANCH'|g' $APP_HOME/source/version.json
-sed -i 's|REVISION|'$REVISION'|g' $APP_HOME/source/version.json
-sed -i 's|BUILD_TIME|'$BUILD_TIME'|g' $APP_HOME/source/version.json
-sed -i 's|BUILD_NUMBER|'$BUILD_NUMBER'|g' $APP_HOME/source/version.json
-
-cat $APP_HOME/source/version.json
+cat $APP_HOME/build/version.json
 
 echo "End echoing--"
 #BRANCH="${bamboo.shortPlanName}" APP_HOME=${bamboo.build.working.directory} BUILD_NUMBER=${bamboo.buildNumber} BUILD_TIME=${bamboo.buildTimeStamp} REVISION=${bamboo.planRepository.revision}
