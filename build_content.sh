@@ -25,6 +25,28 @@ then
 else
     ONBOARDING_HOST='onboardingapi'
 fi
+# BRANCH="${bamboo.shortPlanName}" APP_HOME=${bamboo.build.working.directory} 
+#BUILD_NUMBER=${bamboo.buildNumber} 
+#BUILD_TIME=${bamboo.buildTimeStamp} 
+#REVISION=${bamboo.planRepository.revision}
+
+# Set your variables
+#BRANCH_NAME=$BRANCH
+#BUILD_NUMBER=$BUILD_NUMBER
+#BUILD_TIME=$BUILD_TIME
+#REVISION=$REVISION
+
+# Generate the JSON file
+echo '{
+    "bic": {
+        "branch": "'"$BRANCH"'",
+        "revision": "'"$REVISION"'",
+        "buildtime": "'"$BUILD_TIME"'"
+    },
+    "build": {
+        "buildNumber": "'"$BUILD_NUMBER"'"
+    }
+}' > version.json
 
 echo "ONBOARDING_HOST is $ONBOARDING_HOST"
 mkdir -p build
