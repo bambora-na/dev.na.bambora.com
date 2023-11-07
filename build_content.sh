@@ -31,8 +31,10 @@ fi
 
 sed -i 's|BRANCH|'$BRANCH'|g' $APP_HOME/version.json
 sed -i 's|REVISION|'$REVISION'|g' $APP_HOME/version.json
-sed -i 's|BUILD_TIME|'$BUILD_TIME'|g' $APP_HOME/version.json
+sed -i 's|BUILD_TIME|'$(date -d $BUILD_TIME -u "+%Y-%m-%d %H:%M:%S")'|g' $APP_HOME/version.json
 sed -i 's|BUILD_NUMBER|'$BUILD_NUMBER'|g' $APP_HOME/version.json
+
+$(date -d "${input_time/T/ }" -u "+%Y-%m-%d %H:%M:%S")
 
 cp $APP_HOME/version.json $APP_HOME/source/
 #cp $APP_HOME/version.json $APP_HOME/build/
