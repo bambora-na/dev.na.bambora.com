@@ -42,9 +42,20 @@ fi
 
 echo "ONBOARDING_HOST is $ONBOARDING_HOST"
 mkdir -p build
+echo "APP_HOME PATH: $APP_HOME" 
+
+echo "sed BRANCH: $BRANCH"
+sed -i 's|BRANCH|$BRANCH|g' $APP_HOME/version.json
+
+echo "sed APP_HOME: $APP_HOME"
+sed -i 's|REVISION|$REVISION|g' $APP_HOME/version.json
+
+echo "sed BUILD_TIME: $BUILD_TIME"
+sed -i 's|BUILD_TIME|$BUILD_TIME|g' $APP_HOME/version.json
+
+echo "sed BUILD_NUMBER: $BUILD_NUMBER"
+sed -i 's|BUILD_NUMBER|$BUILD_NUMBER|g' $APP_HOME/version.json
+
 docker run -e ONBOARDING_HOST=${ONBOARDING_HOST} -v $APP_HOME/build:/usr/src/app/build dev.bambora.com static
 
-sed -i 's|BRANCH|$BRANCH|g' $APP_HOME/version.json
-sed -i 's|REVISION|$REVISION|g' $APP_HOME/version.json
-sed -i 's|BUILD_TIME|$BUILD_TIME|g' $APP_HOME/version.json
-sed -i 's|BUILD_NUMBER|$BUILD_NUMBER|g' $APP_HOME/version.json
+
