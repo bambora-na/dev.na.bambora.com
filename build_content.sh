@@ -32,18 +32,30 @@ echo "Start echoing--"
 
 ls $APP_HOME/build/*
 #echo $APP_HOME
-cat $APP_HOME/build/version.json
 
+echo "Start resource--"
+cat $APP_HOME/resource/version.json
+
+sed -i 's|BRANCH|'$BRANCH'|g' $APP_HOME/resource/version.json
+sed -i 's|REVISION|'$REVISION'|g' $APP_HOME/resource/version.json
+sed -i 's|BUILD_TIME|'$BUILD_TIME'|g' $APP_HOME/resource/version.json
+sed -i 's|BUILD_NUMBER|'$BUILD_NUMBER'|g' $APP_HOME/resource/version.json
+
+cat $APP_HOME/resource/version.json
+
+echo "End resource--"
+
+echo "Start build--"
+cat $APP_HOME/build/version.json
 sed -i 's|BRANCH|'$BRANCH'|g' $APP_HOME/build/version.json
 sed -i 's|REVISION|'$REVISION'|g' $APP_HOME/build/version.json
 sed -i 's|BUILD_TIME|'$BUILD_TIME'|g' $APP_HOME/build/version.json
 sed -i 's|BUILD_NUMBER|'$BUILD_NUMBER'|g' $APP_HOME/build/version.json
 
 cat $APP_HOME/build/version.json
+echo "Start build--"
 
-echo "End echoing--"
 #BRANCH="${bamboo.shortPlanName}" APP_HOME=${bamboo.build.working.directory} BUILD_NUMBER=${bamboo.buildNumber} BUILD_TIME=${bamboo.buildTimeStamp} REVISION=${bamboo.planRepository.revision}
-
 
 echo "ONBOARDING_HOST is $ONBOARDING_HOST"
 mkdir -p build
