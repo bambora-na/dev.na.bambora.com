@@ -16,7 +16,7 @@ RUN bundle install
 COPY . /usr/src/app
 
 #RUN sed -i 's|BRANCH|$BRANCH|g' version.json
-RUN echo '{ "version": "1.0", "author": "John Doe" }' > /usr/src/app/version_1.json
+RUN echo '{ "version": "1.0", "author": "John Doe" }' > version_1.json
 
 
 ENTRYPOINT ["rake"]
