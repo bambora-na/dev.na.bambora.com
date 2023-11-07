@@ -114,11 +114,11 @@ cards:
         icon: creditcard-outline
         link: /docs/guides/merchant_report
     -
-        title: Custom Commissions Report
+        title: FlexCommissions Report
         description: >
-            Query for custom commission payout information.
+            Query for FlexCommissions payout information.
         icon: creditcard-outline
-        link: /docs/guides/custom_commissions_report
+        link: /docs/guides/FlexCommissions_report
     -
         title: SSL
         description: >

@@ -1,9 +1,9 @@
 ---
-title: Custom Commissions Report API Spec
+title: FlexCommissions Report API Spec
 layout: tutorial
 
 summary: >
-  API spec for our Custom Commissions Report API.
+  API spec for our FlexCommissions Report API.
 
 navigation:
   header: na.tocs.na_nav_header
@@ -13,7 +13,7 @@ navigation:
 
 ---
 
-# Custom Commissions Report API
+# FlexCommissions Report API
 
 This document lists and describes the properties expected in the request and response objects.
 
@@ -38,13 +38,13 @@ Filters are assembled as in groups containing a column name (`rptFilterBy`), and
 - **merchantId** - The authorizing partner ID. Length: 9 chars. [Numeric string]
 - **passCode** - The reporting passcode for the authorizing merchant. Max length: 64 chars. [Alphanumeric string]
 - **serviceName** - Type of report
-  - **custom_commissions_payout**
+  - **flexcommissions_payouts**
 - **rptFormat** - Format of the response, valid values are
   - **JSON**
   - **XML**
 - **rptVersion** - API version. Current version: "1.0" [Numeric String]
 - **rptFilterBy**
-  - **status** - Status of a custom commissions payout record.
+  - **status** - Status of a FlexCommissions payout record.
 - **rptFilterValue** - Valid values for 'status' filter are (case insensitive)
   - **Scheduled**
   - **On Hold**
@@ -55,8 +55,8 @@ Filters are assembled as in groups containing a column name (`rptFilterBy`), and
   - **Pending Payment**
   - **Full Payment**
 - **rptDays** - The number of days from today to look at history.
-- **rptFromDateTime** - Start date and time that custom commissions payout calculation happened.
-- **rptToDateTime** - End date and time that custom commissions payout calculation happened.
+- **rptFromDateTime** - Start date and time when a FlexCommissions payout calculation happened.
+- **rptToDateTime** - End date and time when a FlexCommissions payout calculation happened.
 - **rptStartRow** - The first row number in the result set.
 - **rptEndRow** - The last row number in the result set.
 - **camelCase** - Default is true. If set to false, snake case will be used for response fields.
@@ -80,10 +80,10 @@ JSON and XML response object contains a "code" property indicating the success o
 
 This section documents the fields returned in response body.
 
-- **payout_id** - Custom commission payout identifier. This is a unique value.
-- **amount** - Amount of the custom commission payout record to settle in partner's account.
-- **start_datetime** - Date and time since the previous payout is calculated or if there is no previous payout then when the custom commission service is first enabled.
-- **end_datetime** - Date and time that the custom commission is calculated.
-- **expected_settlement_date** - Date the custom commission payout is expected to settle.
-- **statement_id** - Id of a statement that includes the custom commissions payout.
-- **status** - Status of custom commissions payout record.
+- **payout_id** - FlexCommissions payout identifier. This is a unique value.
+- **amount** - Amount of the FlexCommissions payout record to settle in partner's account.
+- **start_datetime** - Date and time since the previous payout is calculated or if there is no previous payout then when the FlexCommissions service is first enabled.
+- **end_datetime** - Date and time when the FlexCommissions is calculated.
+- **expected_settlement_date** - Date the FlexCommissions payout is expected to settle.
+- **statement_id** - Id of a statement that includes the FlexCommissions payout.
+- **status** - Status of the FlexCommissions payout record.
