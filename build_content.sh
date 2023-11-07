@@ -34,12 +34,15 @@ ls $APP_HOME/*
 #echo $APP_HOME
 
 echo "Start source--"
-cat $APP_HOME/source/version.json
+cat $APP_HOME/version.json
 
-sed -i 's|BRANCH|'$BRANCH'|g' $APP_HOME/source/version.json
-sed -i 's|REVISION|'$REVISION'|g' $APP_HOME/source/version.json
-sed -i 's|BUILD_TIME|'$BUILD_TIME'|g' $APP_HOME/source/version.json
-sed -i 's|BUILD_NUMBER|'$BUILD_NUMBER'|g' $APP_HOME/source/version.json
+sed -i 's|BRANCH|'$BRANCH'|g' $APP_HOME/version.json
+sed -i 's|REVISION|'$REVISION'|g' $APP_HOME/version.json
+sed -i 's|BUILD_TIME|'$BUILD_TIME'|g' $APP_HOME/version.json
+sed -i 's|BUILD_NUMBER|'$BUILD_NUMBER'|g' $APP_HOME/version.json
+
+cp $APP_HOME/version.json $APP_HOME/source/version.json
+
 
 cat $APP_HOME/source/version.json
 
