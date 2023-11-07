@@ -29,8 +29,8 @@ else
 fi
 
 echo "Start echoing--"
-ls $APP_HOME/source/b*
-ls $APP_HOME/source/*
+
+ls $APP_HOME/*
 #echo $APP_HOME
 cat $APP_HOME/source/version.json
 
