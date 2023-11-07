@@ -61,5 +61,5 @@ echo "ONBOARDING_HOST is $ONBOARDING_HOST"
 mkdir -p build
 docker run -e ONBOARDING_HOST=${ONBOARDING_HOST} -v $APP_HOME/build:/usr/src/app/build dev.bambora.com static
 
-docker exec dev.bambora.com sed -i 's|BRANCH|XXXXXX|g' /usr/src/app/build/version.json
+docker exec ${ONBOARDING_HOST} sed -i 's|BRANCH|XXXXXX|g' /usr/src/app/build/version.json
 
