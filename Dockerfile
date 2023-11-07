@@ -11,6 +11,8 @@ COPY Gemfile /usr/src/app/
 COPY Gemfile.lock /usr/src/app/
 #COPY version.json /usr/src/app/
 
+RUN ls /usr/src/app/
+
 #RUN ls /usr/src/app/*
 #RUN cat /usr/src/app/version.json
 
