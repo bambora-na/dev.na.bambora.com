@@ -30,7 +30,7 @@ fi
 
 echo "Start echoing--"
 
-ls $APP_HOME/build/*
+ls $APP_HOME/*
 #echo $APP_HOME
 
 echo "Start source--"
