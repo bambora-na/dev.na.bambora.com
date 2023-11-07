@@ -28,11 +28,11 @@ else
     ONBOARDING_HOST='onboardingapi'
 fi
 
-formated_date=date -d $BUILD_TIME -u "+%Y-%m-%d %H:%M:%S"
+#formated_date=date -d $BUILD_TIME -u "+%Y-%m-%d %H:%M:%S"
 
 sed -i 's|BRANCH|'$BRANCH'|g' $APP_HOME/version.json
 sed -i 's|REVISION|'$REVISION'|g' $APP_HOME/version.json
-sed -i 's|BUILD_TIME|'$formated_date'|g' $APP_HOME/version.json
+sed -i 's|BUILD_TIME|'$BUILD_TIME'|g' $APP_HOME/version.json
 sed -i 's|BUILD_NUMBER|'$BUILD_NUMBER'|g' $APP_HOME/version.json
 
 
