@@ -36,6 +36,9 @@ fi
 #BUILD_TIME=$BUILD_TIME
 #REVISION=$REVISION
 
+cat version.json | sed "s/\BRANCH/$BRANCH/g; s/\REVISION/$REVISION/g; s/\BUILD_TIME/$BUILD_TIME/g; s/\BUILD_NUMBER/$BUILD_NUMBER/g" > version.json
+
+
 echo "ONBOARDING_HOST is $ONBOARDING_HOST"
 mkdir -p build
 docker run -e ONBOARDING_HOST=${ONBOARDING_HOST} -v $APP_HOME/build:/usr/src/app/build dev.bambora.com static
