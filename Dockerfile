@@ -13,6 +13,9 @@ WORKDIR /usr/src/app
 RUN gem install bundler -v 2.3.26
 RUN bundle install
 
+RUN echo version.json
+
+
 COPY . /usr/src/app
 
 #RUN sed -i 's|BRANCH|$BRANCH|g' version.json
