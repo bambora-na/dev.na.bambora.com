@@ -35,7 +35,7 @@ sed -i 's|BUILD_TIME|'$BUILD_TIME'|g' $APP_HOME/version.json
 sed -i 's|BUILD_NUMBER|'$BUILD_NUMBER'|g' $APP_HOME/version.json
 
 cp $APP_HOME/version.json $APP_HOME/source/
-cp $APP_HOME/version.json $APP_HOME/build/
+#cp $APP_HOME/version.json $APP_HOME/build/
 
 #cat $APP_HOME/build/version.json
 #sed -i 's|BRANCH|'$BRANCH'|g' $APP_HOME/build/version.json
