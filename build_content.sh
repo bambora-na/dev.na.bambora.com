@@ -47,7 +47,7 @@ echo "APP_HOME PATH: $APP_HOME"
 echo "sed BRANCH: $BRANCH"
 sed -i 's|BRANCH|$BRANCH|g' $APP_HOME/version.json
 
-echo "sed APP_HOME: $APP_HOME"
+echo "sed REVISION: $REVISION"
 sed -i 's|REVISION|$REVISION|g' $APP_HOME/version.json
 
 echo "sed BUILD_TIME: $BUILD_TIME"
