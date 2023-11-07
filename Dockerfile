@@ -41,6 +41,5 @@ ENTRYPOINT ["rake"]
 CMD ["dev"]
 
 
-
 # 1) Build: docker build -t devbamboracom .
 # 2) Run:   docker run -v `pwd`/source:/usr/src/app/source -w /usr/src/app -p 4567:4567 devbamboracom
