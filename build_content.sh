@@ -26,7 +26,6 @@ else
     ONBOARDING_HOST='onboardingapi'
 fi
 
-ls /usr/src/app/build/*
 ls /usr/src/app/*
 
 
