@@ -33,17 +33,17 @@ echo "Start echoing--"
 ls $APP_HOME/build/*
 #echo $APP_HOME
 
-echo "Start resource--"
-cat $APP_HOME/resource/version.json
+echo "Start source--"
+cat $APP_HOME/source/version.json
 
-sed -i 's|BRANCH|'$BRANCH'|g' $APP_HOME/resource/version.json
-sed -i 's|REVISION|'$REVISION'|g' $APP_HOME/resource/version.json
-sed -i 's|BUILD_TIME|'$BUILD_TIME'|g' $APP_HOME/resource/version.json
-sed -i 's|BUILD_NUMBER|'$BUILD_NUMBER'|g' $APP_HOME/resource/version.json
+sed -i 's|BRANCH|'$BRANCH'|g' $APP_HOME/source/version.json
+sed -i 's|REVISION|'$REVISION'|g' $APP_HOME/source/version.json
+sed -i 's|BUILD_TIME|'$BUILD_TIME'|g' $APP_HOME/source/version.json
+sed -i 's|BUILD_NUMBER|'$BUILD_NUMBER'|g' $APP_HOME/source/version.json
 
-cat $APP_HOME/resource/version.json
+cat $APP_HOME/source/version.json
 
-echo "End resource--"
+echo "End source--"
 
 echo "Start build--"
 cat $APP_HOME/build/version.json
