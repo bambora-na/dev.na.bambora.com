@@ -32,7 +32,7 @@ ls $APP_HOME/source/*
 #echo $APP_HOME
 cat $APP_HOME/source/version.json
 
-sed -i 's|BRANCH|$BRANCH|g' $APP_HOME/source/version.json
+sed -i 's|BRANCH|"'"$BRANCH"'"|g' $APP_HOME/source/version.json
 
 cat $APP_HOME/source/version.json
 
