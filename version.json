@@ -1,5 +1,5 @@
 {
-    "bic": {
+    "devDocs": {
         "branch": "BRANCH",
         "revision": "REVISION",
         "buildtime": "BUILD_TIME"
