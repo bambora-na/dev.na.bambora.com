@@ -9,7 +9,7 @@ COPY Gemfile.lock /usr/src/app/
 COPY version.json /usr/src/app/
 
 RUN echo "echo branch: "
-RUN echo $BRANCH
+RUN echo ${BRANCH}
 RUN echo "end echo branch: "
 
 #RUN ls /usr/src/app/
