@@ -32,6 +32,9 @@ RUN sed -i 's|REVISION|'${REVISION}'|g' /usr/src/app//version.json
 RUN sed -i 's|BUILD_TIME|'${BUILD_TIME}'|g' /usr/src/app/version.json
 RUN sed -i 's|BUILD_NUMBER|'${BUILD_NUMBER}'|g' /usr/src/app/version.json
 
+RUN cp /usr/src/app/version.json ${APP_HOME}/build/
+
+
 #Specify bundler version to prevent Windows build error
 ENV BUNDLER_VERSION='1.17.3'
 COPY Rakefile /usr/src/app/
