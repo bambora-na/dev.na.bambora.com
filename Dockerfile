@@ -19,7 +19,7 @@ RUN echo "branch: ${BRANCH}"
 RUN echo "Revision: ${REVISION}"
 RUN echo "Build time ${BUILD_TIME}"
 RUN echo "Build Number${BUILD_NUMBER}"
-RUN ls ${APP_HOME}/*
+#RUN ls ${APP_HOME}/*
 
 #RUN ls /usr/src/app/
 
@@ -33,7 +33,7 @@ RUN sed -i 's|REVISION|'${REVISION}'|g' /usr/src/app//version.json
 RUN sed -i 's|BUILD_TIME|'${BUILD_TIME}'|g' /usr/src/app/version.json
 RUN sed -i 's|BUILD_NUMBER|'${BUILD_NUMBER}'|g' /usr/src/app/version.json
 
-RUN cp /usr/src/app/version.json ${APP_HOME}/build/
+#RUN cp /usr/src/app/version.json ${APP_HOME}/build/
 
 
 #Specify bundler version to prevent Windows build error
