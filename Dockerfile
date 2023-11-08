@@ -49,6 +49,9 @@ COPY . /usr/src/app
 #RUN ls /usr/src/app/*
 #RUN cat /usr/src/app/version.json
 RUN ls /usr/src/app/*
+RUN echo "Source and Build folders"
+RUN cat /usr/src/app/build/version.json
+RUN cat /usr/src/app/source/version.json
 
 
 #RUN sed -i 's|BRANCH|$BRANCH|g' version.json
