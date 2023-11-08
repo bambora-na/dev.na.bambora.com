@@ -48,6 +48,7 @@ RUN bundle install
 COPY . /usr/src/app
 #RUN ls /usr/src/app/*
 #RUN cat /usr/src/app/version.json
+RUN ls /usr/src/app/*
 
 
 #RUN sed -i 's|BRANCH|$BRANCH|g' version.json
