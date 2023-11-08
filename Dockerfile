@@ -34,7 +34,8 @@ RUN sed -i 's|BUILD_TIME|'${BUILD_TIME}'|g' /usr/src/app/version.json
 RUN sed -i 's|BUILD_NUMBER|'${BUILD_NUMBER}'|g' /usr/src/app/version.json
 
 #RUN cp /usr/src/app/version.json ${APP_HOME}/build/
-
+RUN ls /usr/src/app/*
+RUN cat /usr/src/app/version.json
 
 #Specify bundler version to prevent Windows build error
 ENV BUNDLER_VERSION='1.17.3'
