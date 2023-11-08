@@ -12,7 +12,7 @@ ARG APP_HOME=""
 
 COPY Gemfile /usr/src/app/
 COPY Gemfile.lock /usr/src/app/
-
+COPY version.json /usr/src/app/
 
 RUN echo "Revision: ${APP_HOME}"
 RUN echo "branch: ${BRANCH}"
@@ -28,13 +28,10 @@ RUN echo "Build Number${BUILD_NUMBER}"
 
 #RUN echo "Branch in dockerfile: "
 #RUN echo $BRANCH
-RUN sed -i 's|BRANCH|'${BRANCH}'|g' version.json
-RUN sed -i 's|REVISION|'${REVISION}'|g' version.json
-RUN sed -i 's|BUILD_TIME|'${BUILD_TIME}'|g' version.json
-RUN sed -i 's|BUILD_NUMBER|'${BUILD_NUMBER}'|g' version.json
-
-ADD version.json /usr/src/app/
-
+RUN sed -i 's|BRANCH|'${BRANCH}'|g' /usr/src/app/version.json
+RUN sed -i 's|REVISION|'${REVISION}'|g' /usr/src/app/version.json
+RUN sed -i 's|BUILD_TIME|'${BUILD_TIME}'|g' /usr/src/app/version.json
+RUN sed -i 's|BUILD_NUMBER|'${BUILD_NUMBER}'|g' /usr/src/app/version.json
 
 #RUN cp /usr/src/app/version.json ${APP_HOME}/build/
 RUN ls /usr/src/app/*
