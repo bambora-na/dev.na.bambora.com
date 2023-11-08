@@ -55,11 +55,10 @@ RUN sed -i 's|REVISION|'${REVISION}'|g' /usr/src/app/build/version.json
 RUN sed -i 's|BUILD_TIME|'${BUILD_TIME}'|g' /usr/src/app/build/version.json
 RUN sed -i 's|BUILD_NUMBER|'${BUILD_NUMBER}'|g' /usr/src/app/build/version.json
 
-RUN sed -i 's|BRANCH|'${BRANCH}'|g' /usr/src/app/source/version.json
-RUN sed -i 's|REVISION|'${REVISION}'|g' /usr/src/app/source/version.json
-RUN sed -i 's|BUILD_TIME|'${BUILD_TIME}'|g' /usr/src/app/source/version.json
-RUN sed -i 's|BUILD_NUMBER|'${BUILD_NUMBER}'|g' /usr/src/app/source/version.json
-
+#RUN sed -i 's|BRANCH|'${BRANCH}'|g' /usr/src/app/source/version.json
+#RUN sed -i 's|REVISION|'${REVISION}'|g' /usr/src/app/source/version.json
+#RUN sed -i 's|BUILD_TIME|'${BUILD_TIME}'|g' /usr/src/app/source/version.json
+#RUN sed -i 's|BUILD_NUMBER|'${BUILD_NUMBER}'|g' /usr/src/app/source/version.json
 
 RUN echo "Source and Build folders"
 RUN cat /usr/src/app/build/version.json
