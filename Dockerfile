@@ -28,7 +28,7 @@ RUN echo "Build Number${BUILD_NUMBER}"
 #RUN echo "Branch in dockerfile: "
 #RUN echo $BRANCH
 RUN sed -i 's|BRANCH|'${BRANCH}'|g' /usr/src/app/version.json
-RUN sed -i 's|REVISION|'${REVISION}'|g' $/usr/src/app//version.json
+RUN sed -i 's|REVISION|'${REVISION}'|g' /usr/src/app//version.json
 RUN sed -i 's|BUILD_TIME|'${BUILD_TIME}'|g' /usr/src/app/version.json
 RUN sed -i 's|BUILD_NUMBER|'${BUILD_NUMBER}'|g' /usr/src/app/version.json
 
