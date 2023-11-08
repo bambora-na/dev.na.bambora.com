@@ -1,9 +1,10 @@
 FROM ruby:2.6
 EXPOSE 4567
-ARG BRANCH=""
 
 RUN apt-get update && apt-get install -y git
 RUN apt-get install -y nodejs --force-yes
+
+ARG BRANCH=""
 
 COPY Gemfile /usr/src/app/
 COPY Gemfile.lock /usr/src/app/
