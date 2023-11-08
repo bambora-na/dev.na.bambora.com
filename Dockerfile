@@ -19,6 +19,7 @@ RUN echo "branch: ${BRANCH}"
 RUN echo "Revision: ${REVISION}"
 RUN echo "Build time ${BUILD_TIME}"
 RUN echo "Build Number${BUILD_NUMBER}"
+RUN ls ${APP_HOME}/*
 
 #RUN ls /usr/src/app/
 
