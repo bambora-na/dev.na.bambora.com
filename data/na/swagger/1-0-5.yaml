@@ -2076,7 +2076,7 @@ definitions:
         type: string
         maxLength: 1
         description: 'How the transaction was initiated. N = Standard Entry, A = Apple Pay, G = Android Pay, P = Google Pay, S = EMV Swipe, V = Visa Checkout, Y = Unimag Card Swiper, T = EMV Chip Tap, E = EMV Chip Dip'
-        enum: ['N','A','G','S','V','Y','T','E']
+        enum: ['N','A','G','P','S','V','Y','T','E']
       authorizing_merchant_id:
         type: integer
         description: 'The id of the merchant that authorized this transaction.'
