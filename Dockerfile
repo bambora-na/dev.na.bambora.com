@@ -21,13 +21,13 @@ WORKDIR /usr/src/app
 RUN gem install bundler -v 2.3.26
 RUN bundle install
 
+COPY . /usr/src/app
+
 # Set values read from command line arguments 
 RUN sed -i 's|BRANCH|'${BRANCH}'|g' /usr/src/app/source/version.json
 RUN sed -i 's|REVISION|'${REVISION}'|g' /usr/src/app/source/version.json
 RUN sed -i 's|BUILD_TIME|'${BUILD_TIME}'|g' /usr/src/app/source/version.json
 RUN sed -i 's|BUILD_NUMBER|'${BUILD_NUMBER}'|g' /usr/src/app/source/version.json
-
-COPY . /usr/src/app
 
 ENTRYPOINT ["rake"]
 CMD ["dev"]
