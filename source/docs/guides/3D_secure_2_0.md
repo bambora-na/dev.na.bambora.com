@@ -935,7 +935,7 @@ curl --location --request POST 'https://api.na.bambora.com/v1/payments' \
    "payment_method": "3d_secure_token",
    "customer_ip": "123.123.123.123",
    "amount": 41.99,
-   "3d_secure": {
+   "3d_secure_token": {
        "threeDS_session_data": "OGE5OWYzYTgtZDIwMi00MTFiLWFiNjctYjJmNTU1ODJjNTAy",
        "complete": true
    }

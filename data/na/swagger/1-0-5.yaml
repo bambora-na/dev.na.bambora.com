@@ -879,7 +879,7 @@ definitions:
       token:
         $ref: '#/definitions/TokenPurchase'
       3d_secure:
-        $ref: '#/definitions/3d_secure'
+        $ref: '#/definitions/3d_secure_token'
       recurring_payment:
         type: boolean
         description: |
@@ -1084,7 +1084,7 @@ definitions:
         type: string
         maxLength: 20
         description: 'The Visa Checkout payment request ID.'
-  3d_secure:
+  3d_secure_token:
     description: "Payment with a 3D Secure Session Data token.  Reference a previously processed 3D Secure transaction 
       processed through the 3D Secure 2.0 API.  This will apply the associated card number, card expiry, and 3D Secure results 
       to your payment request. The payment_method must be '3d_secure'"
