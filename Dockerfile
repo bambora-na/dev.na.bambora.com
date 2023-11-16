@@ -15,12 +15,6 @@ COPY Gemfile /usr/src/app/
 COPY Gemfile.lock /usr/src/app/
 COPY version.json /usr/src/app/
 
-RUN echo "Revision: ${APP_HOME}"
-RUN echo "branch: ${BRANCH}"
-RUN echo "Revision: ${REVISION}"
-RUN echo "Build time ${BUILD_TIME}"
-RUN echo "Build Number${BUILD_NUMBER}"
-
 #Specify bundler version to prevent Windows build error
 ENV BUNDLER_VERSION='1.17.3'
 COPY Rakefile /usr/src/app/
