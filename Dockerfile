@@ -35,22 +35,24 @@ COPY . /usr/src/app
 RUN ls /usr/src/app/*
 
 RUN echo "Source and Build folders"
-RUN cat /usr/src/app/build/version.json
-RUN cat /usr/src/app/source/version.json
+#RUN cat /usr/src/app/build/version.json
+
 
 # Set values read from command line arguments 
 
-RUN sed -i 's|BRANCH|'${BRANCH}'|g' /usr/src/app/build/version.json
-RUN sed -i 's|REVISION|'${REVISION}'|g' /usr/src/app/build/version.json
-RUN sed -i 's|BUILD_TIME|'${BUILD_TIME}'|g' /usr/src/app/build/version.json
-RUN sed -i 's|BUILD_NUMBER|'${BUILD_NUMBER}'|g' /usr/src/app/build/version.json
+RUN cp /usr/src/app/version.json /usr/src/app/source/
+
+#RUN sed -i 's|BRANCH|'${BRANCH}'|g' /usr/src/app/build/version.json
+#RUN sed -i 's|REVISION|'${REVISION}'|g' /usr/src/app/build/version.json
+#RUN sed -i 's|BUILD_TIME|'${BUILD_TIME}'|g' /usr/src/app/build/version.json
+#RUN sed -i 's|BUILD_NUMBER|'${BUILD_NUMBER}'|g' /usr/src/app/build/version.json
 
 RUN sed -i 's|BRANCH|'${BRANCH}'|g' /usr/src/app/source/version.json
 RUN sed -i 's|REVISION|'${REVISION}'|g' /usr/src/app/source/version.json
 RUN sed -i 's|BUILD_TIME|'${BUILD_TIME}'|g' /usr/src/app/source/version.json
 RUN sed -i 's|BUILD_NUMBER|'${BUILD_NUMBER}'|g' /usr/src/app/source/version.json
 
-
+RUN cat /usr/src/app/source/version.json
 
 ENTRYPOINT ["rake"]
 CMD ["dev"]
