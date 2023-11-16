@@ -197,5 +197,7 @@ You can add the test cards listed below to your Apple Wallet and use them to tri
 
 | Brand                     | Card number         | CVV   | Expiry  |
 |:--------------------------|:--------------------|:------|:--------|
+| Visa Card                 | 4030 0000 1000 1234 | 111   | 11/2022 |
 | Mastercard                | 5204 2477 5000 1471 | 111   | 11/2022 |
 | American Express          | 3499 569590 41362   | 1111  | 12/2022 |
+Notes: The Expiry can be any date in the future
