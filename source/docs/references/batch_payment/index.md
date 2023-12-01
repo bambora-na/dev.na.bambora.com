@@ -52,6 +52,7 @@ For batches of EFT transactions, the API expects the following columns:
 - **Reference number** - An optional reference number of up to 19 digits. If you don't want a reference number, enter "0" (zero).
 - **Recipient name** - Full name of the bank account holder
 - **Customer code** - The 32-character customer code located in the Payment Profile. Do not populate bank account fields in the file when processing against a Payment Profile.
+- **Dynamic descriptor** - By default the Bambora merchant company name will show on your customer's bank statement. You can override this default by populating the Dynamic Descriptor field.
 - **Address1** - Address line 1 for the recipient. This field is optional, with a maximum length of 64 characters.
 - **Address2** - Address line 2 for the recipient. This field is optional, with a maximum length of 64 characters.
 - **City** - City for the recipient. This field is optional, with a maximum length of 32 characters.
