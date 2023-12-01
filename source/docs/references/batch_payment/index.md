@@ -64,6 +64,7 @@ For batches of EFT transactions, the API expects the following columns:
     -  US - United States
 - **Postal Code** - Postal Code for the recipient. This field is optional, with a maximum length of 16 characters.
   
+  
 #### American funds transfer (ACH)
 
 For batches of ACH transactions, the API expects the following columns:
