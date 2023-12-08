@@ -32,9 +32,8 @@ The following parameters are passed as a JSON object on a Content-Disposition he
 
 ### Format of data in file
 
-The API expects a single CSV file with one transaction per row. It does not expect a header row.
-
-The expected format for the data varies according to the transaction type.
+The API expects a single CSV file with one transaction per row. It does not except a header row and does not allow commas, unless the name and address are in a payment profile.
+The expected format for the data varies according to the transaction type. 
 
 #### Canadian funds transfer (EFT)
 
