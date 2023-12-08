@@ -163,6 +163,14 @@ Code | Message
 21   | Transmitting merchant account is inactive
 22   | Submitted sub-merchant account is inactive
 23   | Transmitting merchant account is invalid  
+24   | Active mandate required
+25   | Account not setup to process batch files. Please contact Support.
+26   | Invalid country and/or province/state
+27   | Address1 has been truncated to 64 characters
+28   | Address2 has been truncated to 64 characters
+29   | City has been truncated to 32 characters
+30   | Postal code has been truncated to 16 characters
+
 
 ## Response Categories
 Category | Description
