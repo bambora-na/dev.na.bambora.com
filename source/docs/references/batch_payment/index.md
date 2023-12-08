@@ -171,7 +171,6 @@ Code | Message
 29   | City has been truncated to 32 characters
 30   | Postal code has been truncated to 16 characters
 
-
 ## Response Categories
 Category | Description
 ---------|-----
