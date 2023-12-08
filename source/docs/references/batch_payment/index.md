@@ -59,9 +59,7 @@ For batches of EFT transactions, the API expects the following columns:
 - **Province** - Province ID for the recipient. This field is optional, with a maximum length of 2 letters.
     - If the country ID is CA or US, the province ID must be populated with a valid province ID for the respective country.
     - If the country ID is provided and not set to a value of 'CA' or 'US' then Province Id must be empty.
-- **Country** - Country ID for the recipient. This field is optional, with a maximum length of 2 letters.
-    -  CA - Canada
-    -  US - United States
+- **Country** - Country ID for the recipient. This field is optional and accepts two-letter ISO country codes. For guidance, please refer to https://en.wikipedia.org/wiki/ISO_3166-2.
 - **Postal Code** - Postal Code for the recipient. This field is optional, with a maximum length of 16 characters.
   
   
