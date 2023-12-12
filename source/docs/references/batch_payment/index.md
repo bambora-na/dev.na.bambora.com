@@ -32,7 +32,7 @@ The following parameters are passed as a JSON object on a Content-Disposition he
 
 ### Format of data in file
 
-The API expects a single CSV file with one transaction per row. It does not expect a header row.
+The API expects a single CSV file with one transaction per row. It does not expect a header row. None of the fields in the file may contain a comma including the address fields. If the transaction is referencing a Payment Profile through populating the Customer Code field in the uploading file, commas in the profile name and address are supported.
 
 The expected format for the data varies according to the transaction type.
 
@@ -59,9 +59,7 @@ For batches of EFT transactions, the API expects the following columns:
 - **Province** - Province ID for the recipient. This field is optional, with a maximum length of 2 letters.
     - If the country ID is CA or US, the province ID must be populated with a valid province ID for the respective country.
     - If the country ID is provided and not set to a value of 'CA' or 'US' then Province Id must be empty.
-- **Country** - Country ID for the recipient. This field is optional, with a maximum length of 2 letters.
-    -  CA - Canada
-    -  US - United States
+- **Country** - Country ID for the recipient. This field is optional and accepts two-letter ISO country codes. For guidance, please refer to https://en.wikipedia.org/wiki/ISO_3166-2.
 - **Postal Code** - Postal Code for the recipient. This field is optional, with a maximum length of 16 characters.
   
   
@@ -165,6 +163,11 @@ Code | Message
 21   | Transmitting merchant account is inactive
 22   | Submitted sub-merchant account is inactive
 23   | Transmitting merchant account is invalid  
+26   | Invalid country and/or province/state
+27   | Address1 has been truncated to 64 characters
+28   | Address2 has been truncated to 64 characters
+29   | City has been truncated to 32 characters
+30   | Postal code has been truncated to 16 characters
 
 ## Response Categories
 Category | Description
