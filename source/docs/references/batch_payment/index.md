@@ -32,7 +32,7 @@ The following parameters are passed as a JSON object on a Content-Disposition he
 
 ### Format of data in file
 
-The API expects a single CSV file with one transaction per row. It does not expect a header row and does not allow commas, unless the name and address are in a payment profile.
+The API expects a single CSV file with one transaction per row. It does not expect a header row. None of the fields in the file may contain a comma including the address fields. If the transaction is referencing a Payment Profile through populating the Customer Code field in the uploading file, commas in the profile name and address are supported.
 
 The expected format for the data varies according to the transaction type.
 
