@@ -320,7 +320,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "--CHEESE\r\nContent-Disposition: form-data; name=\"criteria\"\r\nContent-Type: application/json\r\n\r\n{\r\n    \"process_date\": 20200101\r\n}\r\n--CHEESE\r\nContent-Disposition: form-data; name=\"testdata\"; filename=\"in-future-{{id}}.txt\"\r\nContent-Type: text/plain\r\n\r\nC,P,,4030000010001234,0619,1000,reference_01,Daffy Duck,daffy@example.com,0\r\nC,P,,4030000010001234,0520,2000,reference_01,Bugs Bunny,bugs@example.com,0\r\nC,P,,4030000010001234,0421,3000,reference_01,Porky Pig,porky@example.com,0\r\n--CHEESE--\r\n"
+							"raw": "--CHEESE\r\nContent-Disposition: form-data; name=\"criteria\"\r\nContent-Type: application/json\r\n\r\n{\r\n    \"process_date\": 20231215\r\n}\r\n--CHEESE\r\nContent-Disposition: form-data; name=\"testdata\"; filename=\"in-future-{{id}}.txt\"\r\nContent-Type: text/plain\r\n\r\nC,P,,4030000010001234,0619,1000,reference_01,Daffy Duck,daffy@example.com,0\r\nC,P,,4030000010001234,0520,2000,reference_01,Bugs Bunny,bugs@example.com,0\r\nC,P,,4030000010001234,0421,3000,reference_01,Porky Pig,porky@example.com,0\r\n--CHEESE--\r\n"
 						},
 						"url": {
 							"raw": "{{url}}/v1/batchpayments",
@@ -2563,7 +2563,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"amount\": 100.00,\r\n  \"payment_method\":\"card\",\r\n  \"card\":{\r\n    \"name\":\"John Doe\",\r\n      \"number\":\"4030000010001234\",\r\n      \"expiry_month\":\"02\",\r\n      \"expiry_year\":\"14\",\r\n       \"cvd\":\"123\"\r\n  }\r\n}"
+							"raw": "{\r\n    \"amount\": 120.45,\r\n    \"payment_method\":\"card\",\r\n    \"customer_ip\": \"123.123.123.123\",\r\n    \"term_url\":\"https://test01-web.na.bambora.com\",\r\n    \"billing\":{\r\n        \"name\": \"Test User\",\r\n        \"address_line1\": \"1755 W. BROADWAY SUITE 105\",\r\n        \"address_line2\": \"\",\r\n        \"city\": \"Victoria\",\r\n        \"province\": \"BC\",\r\n        \"country\": \"CA\",\r\n        \"postal_code\": \"J0L1T0\",\r\n        \"phone_number\": \"1234567890\",\r\n        \"email_address\": \"tester@test.com\"\r\n    },\r\n    \"card\":{\r\n        \"name\":\"John Doe\",\r\n        \"number\":\"4012000033330026\",\r\n        \"expiry_month\":\"02\",\r\n        \"expiry_year\":\"27\",\r\n        \"cvd\":\"123\",\r\n        \"3d_secure\": {\r\n            \"browser\": {\r\n            \"accept_header\": \"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3\",\r\n            \"java_enabled\": \"false\",\r\n            \"language\": \"en-US\",\r\n            \"color_depth\": \"24\",\r\n            \"screen_height\": 1080,\r\n            \"screen_width\": 1920,\r\n            \"time_zone\": -120,\r\n            \"user_agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36\",\r\n            \"Javascript_enabled\": true\r\n            },\r\n            \"enabled\": true,\r\n            \"version\": 2,\r\n            \"auth_required\": false\r\n        }\r\n\r\n    }\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/v1/payments",
@@ -2688,7 +2688,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"order_number\":\"{{currentOrderNumber}}\",\r\n  \"amount\": 100.00,\r\n  \"payment_method\":\"token\",\r\n  \"token\": {\r\n    \"name\":\"John Doe\", \r\n    \"code\":\"{{tokenizedCC}}\",\r\n    \"complete\": true\r\n  }\r\n}"
+							"raw": "{\r\n    \"order_number\":\"{{currentOrderNumber}}\",\r\n    \"amount\": 100.00,\r\n    \"payment_method\":\"token\",\r\n    \"customer_ip\": \"123.123.123.123\",\r\n    \"term_url\":\"https://test01-web.na.bambora.com\",\r\n    \"billing\":{\r\n        \"name\": \"Test User\",\r\n        \"address_line1\": \"1755 W. BROADWAY SUITE 105\",\r\n        \"address_line2\": \"\",\r\n        \"city\": \"Victoria\",\r\n        \"province\": \"BC\",\r\n        \"country\": \"CA\",\r\n        \"postal_code\": \"J0L1T0\",\r\n        \"phone_number\": \"1234567890\",\r\n        \"email_address\": \"tester@test.com\"\r\n    },\r\n    \"token\": { \r\n        \"name\":\"John Doe\", \r\n        \"code\":\"{{tokenizedCC}}\",\r\n        \"complete\": true,\r\n        \"3d_secure\": {\r\n            \"browser\": {\r\n            \"accept_header\": \"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3\",\r\n            \"java_enabled\": \"false\",\r\n            \"language\": \"en-US\",\r\n            \"color_depth\": \"24\",\r\n            \"screen_height\": 1080,\r\n            \"screen_width\": 1920,\r\n            \"time_zone\": -120,\r\n            \"user_agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36\",\r\n            \"Javascript_enabled\": true\r\n            },\r\n            \"enabled\": true,\r\n            \"version\": 2,\r\n            \"auth_required\": false\r\n        }\r\n    }\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/v1/payments",
@@ -2808,7 +2808,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"order_number\":{{currentOrderNumber}},\r\n     \"amount\":100.00,\r\n     \"payment_method\":\"card\",\r\n     \"card\":{\r\n      \"name\":\"John Doe\",\r\n        \"number\":\"5100000010001004\",\r\n        \"expiry_month\":\"02\",\r\n        \"expiry_year\":\"24\",\r\n        \"cvd\":\"123\",\r\n        \"complete\":false\r\n  }\r\n}"
+							"raw": "{\r\n    \"order_number\":{{currentOrderNumber}},\r\n     \"amount\":100.00,\r\n     \"payment_method\":\"card\",\r\n    \"customer_ip\": \"123.123.123.123\",\r\n    \"term_url\":\"https://test01-web.na.bambora.com\",\r\n    \"billing\":{\r\n        \"name\": \"Test User\",\r\n        \"address_line1\": \"1755 W. BROADWAY SUITE 105\",\r\n        \"address_line2\": \"\",\r\n        \"city\": \"Victoria\",\r\n        \"province\": \"BC\",\r\n        \"country\": \"CA\",\r\n        \"postal_code\": \"J0L1T0\",\r\n        \"phone_number\": \"1234567890\",\r\n        \"email_address\": \"tester@test.com\"\r\n    },\r\n    \"card\":{\r\n        \"name\":\"John Doe\",\r\n        \"number\":\"4012000033330026\",\r\n        \"expiry_month\":\"02\",\r\n        \"expiry_year\":\"27\",\r\n        \"cvd\":\"123\",\r\n        \"complete\":false,\r\n        \"3d_secure\": {\r\n            \"browser\": {\r\n            \"accept_header\": \"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3\",\r\n            \"java_enabled\": \"false\",\r\n            \"language\": \"en-US\",\r\n            \"color_depth\": \"24\",\r\n            \"screen_height\": 1080,\r\n            \"screen_width\": 1920,\r\n            \"time_zone\": -120,\r\n            \"user_agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36\",\r\n            \"Javascript_enabled\": true\r\n            },\r\n            \"enabled\": true,\r\n            \"version\": 2,\r\n            \"auth_required\": false\r\n        }\r\n    }\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/v1/payments",
@@ -2987,7 +2987,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"order_number\":\"{{currentOrderNumber}}\",\r\n  \"amount\": 100.00,\r\n  \"payment_method\":\"payment_profile\",\r\n  \"payment_profile\": { \r\n    \"customer_code\": \"{{profileId}}\", \r\n    \"card_id\": \"{{cardId}}\",\r\n    \"complete\": true\r\n  }\r\n}"
+							"raw": "{\r\n    \"order_number\":\"{{currentOrderNumber}}\",\r\n    \"amount\": 123.45,\r\n    \"customer_ip\": \"123.123.123.123\",\r\n    \"term_url\":\"https://test01-web.na.bambora.com\",\r\n    \"payment_method\":\"payment_profile\",\r\n    \"payment_profile\": { \r\n        \"customer_code\": \"{{profileId}}\", \r\n        \"card_id\": \"{{cardId}}\",\r\n        \"complete\": true,\r\n        \"3d_secure\": {\r\n            \"browser\": {\r\n            \"accept_header\": \"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3\",\r\n            \"java_enabled\": \"false\",\r\n            \"language\": \"en-US\",\r\n            \"color_depth\": \"24\",\r\n            \"screen_height\": 1080,\r\n            \"screen_width\": 1920,\r\n            \"time_zone\": -120,\r\n            \"user_agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36\",\r\n            \"Javascript_enabled\": true\r\n            },\r\n            \"enabled\": true,\r\n            \"version\": 2,\r\n            \"auth_required\": false\r\n        }\r\n    }\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/v1/payments",
@@ -3185,7 +3185,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"order_number\":\"{{currentOrderNumber}}\",\r\n  \"amount\": 100.00,\r\n  \"payment_method\":\"payment_profile\",\r\n  \"payment_profile\": { \r\n    \"customer_code\": \"{{profileId}}\", \r\n    \"card_id\": \"{{cardId}}\",\r\n    \"complete\": false\r\n  }\r\n}"
+							"raw": "{\r\n    \"order_number\":\"{{currentOrderNumber}}\",\r\n    \"amount\": 100.00,\r\n    \"payment_method\":\"payment_profile\",\r\n    \"customer_ip\": \"123.123.123.123\",\r\n    \"term_url\":\"https://test01-web.na.bambora.com\",\r\n    \"billing\":{\r\n        \"name\": \"Test User\",\r\n        \"address_line1\": \"1755 W. BROADWAY SUITE 105\",\r\n        \"address_line2\": \"\",\r\n        \"city\": \"Victoria\",\r\n        \"province\": \"BC\",\r\n        \"country\": \"CA\",\r\n        \"postal_code\": \"J0L1T0\",\r\n        \"phone_number\": \"1234567890\",\r\n        \"email_address\": \"tester@test.com\"\r\n    },\r\n    \"payment_profile\": { \r\n        \"customer_code\": \"{{profileId}}\", \r\n        \"card_id\": \"{{cardId}}\",\r\n        \"complete\": false,\r\n        \"3d_secure\": {\r\n            \"browser\": {\r\n            \"accept_header\": \"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3\",\r\n            \"java_enabled\": \"false\",\r\n            \"language\": \"en-US\",\r\n            \"color_depth\": \"24\",\r\n            \"screen_height\": 1080,\r\n            \"screen_width\": 1920,\r\n            \"time_zone\": -120,\r\n            \"user_agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36\",\r\n            \"Javascript_enabled\": true\r\n            },\r\n            \"enabled\": true,\r\n            \"version\": 2,\r\n            \"auth_required\": false\r\n        }\r\n    }\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/v1/payments",
@@ -3248,7 +3248,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"order_number\":\"{{currentOrderNumber}}\",\r\n  \"amount\": 100.00,\r\n  \"payment_method\":\"token\",\r\n  \"token\": {\r\n    \"name\":\"Jo\", \r\n    \"code\":\"{{tokenizedCC}}\",\r\n    \"complete\": false\r\n  }\r\n}"
+							"raw": "{\r\n    \"order_number\":\"{{currentOrderNumber}}\",\r\n    \"amount\": 100.00,\r\n    \"payment_method\":\"token\",\r\n    \"customer_ip\": \"123.123.123.123\",\r\n    \"term_url\":\"https://test01-web.na.bambora.com\",\r\n    \"billing\":{\r\n        \"name\": \"Test User\",\r\n        \"address_line1\": \"1755 W. BROADWAY SUITE 105\",\r\n        \"address_line2\": \"\",\r\n        \"city\": \"Victoria\",\r\n        \"province\": \"BC\",\r\n        \"country\": \"CA\",\r\n        \"postal_code\": \"J0L1T0\",\r\n        \"phone_number\": \"1234567890\",\r\n        \"email_address\": \"tester@test.com\"\r\n    },\r\n    \"token\": { \r\n        \"name\":\"John Doe\", \r\n        \"code\":\"{{tokenizedCC}}\",\r\n        \"complete\": false,\r\n        \"3d_secure\": {\r\n            \"browser\": {\r\n            \"accept_header\": \"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3\",\r\n            \"java_enabled\": \"false\",\r\n            \"language\": \"en-US\",\r\n            \"color_depth\": \"24\",\r\n            \"screen_height\": 1080,\r\n            \"screen_width\": 1920,\r\n            \"time_zone\": -120,\r\n            \"user_agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36\",\r\n            \"Javascript_enabled\": true\r\n            },\r\n            \"enabled\": true,\r\n            \"version\": 2,\r\n            \"auth_required\": false\r\n        }\r\n    }\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/v1/payments",
@@ -3540,7 +3540,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"billing\": {\r\n    \"name\": \"New Name\",\r\n  }\r\n}"
+							"raw": "{\r\n  \"billing\": {\r\n    \"name\": \"New Name\"\r\n  }\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/v1/profiles/{{profileId}}",
@@ -3774,7 +3774,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"token\":{  \r\n    \"name\":\"John Doe\",\r\n    \"code\":\"{{tokenizedCC}}\",\r\n  }"
+							"raw": "{\r\n  \"token\":{  \r\n    \"name\":\"John Doe\",\r\n    \"code\":\"{{tokenizedCC}}\"\r\n  }"
 						},
 						"url": {
 							"raw": "{{url}}/v1/profiles/{{profileId}}/cards",
@@ -3891,7 +3891,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"token\":{  \r\n    \"name\":\"John Doe\",\r\n    \"code\":\"{{tokenizedCC}}\",\r\n  }"
+							"raw": "{\r\n  \"token\":{  \r\n    \"name\":\"John Doe\",\r\n    \"code\":\"{{tokenizedCC}}\"\r\n  }"
 						},
 						"url": {
 							"raw": "{{url}}/v1/profiles/{{profileId}}/cards/{{cardId}}",
@@ -4044,7 +4044,7 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "{{querystring_url}}/scripts/payment_profile.asp?merchantId={{merchant_id}}&passCode={{profile_passcode}}&serviceVersion=1.0&operationType=N&customerCode=maryfrom accounting",
+							"raw": "{{querystring_url}}/scripts/payment_profile.asp?merchantId={{merchant_id}}&passCode={{profile_passcode}}&serviceVersion=1.0&operationType=N&customerCode=maryfromaccounting",
 							"host": [
 								"{{querystring_url}}"
 							],
@@ -4071,7 +4071,7 @@
 								},
 								{
 									"key": "customerCode",
-									"value": "maryfrom accounting"
+									"value": "maryfromaccounting"
 								}
 							]
 						}
@@ -5068,7 +5068,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"amount\": 100.00,\r\n  \"payment_method\":\"card\",\r\n  \"card\":{\r\n    \"name\":\"John Doe\",\r\n    \"number\":\"4030000010001234\",\r\n    \"expiry_month\":\"02\",\r\n    \"expiry_year\":\"14\",\r\n    \"cvd\":\"123\"\r\n  }\r\n}"
+							"raw": "{\r\n    \"amount\": 100.00,\r\n    \"payment_method\":\"card\",\r\n    \"customer_ip\": \"123.123.123.123\",\r\n    \"term_url\":\"https://test01-web.na.bambora.com\",\r\n    \"billing\":{\r\n        \"name\": \"Test User\",\r\n        \"address_line1\": \"1755 W. BROADWAY SUITE 105\",\r\n        \"address_line2\": \"\",\r\n        \"city\": \"Victoria\",\r\n        \"province\": \"BC\",\r\n        \"country\": \"CA\",\r\n        \"postal_code\": \"J0L1T0\",\r\n        \"phone_number\": \"1234567890\",\r\n        \"email_address\": \"tester@test.com\"\r\n    },\r\n    \"card\":{\r\n        \"name\":\"John Doe\",\r\n        \"number\":\"4030000010001234\",\r\n        \"expiry_month\":\"02\",\r\n        \"expiry_year\":\"27\",\r\n        \"cvd\":\"123\",\r\n        \"3d_secure\": {\r\n            \"browser\": {\r\n            \"accept_header\": \"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3\",\r\n            \"java_enabled\": \"false\",\r\n            \"language\": \"en-US\",\r\n            \"color_depth\": \"24\",\r\n            \"screen_height\": 1080,\r\n            \"screen_width\": 1920,\r\n            \"time_zone\": -120,\r\n            \"user_agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36\",\r\n            \"Javascript_enabled\": true\r\n            },\r\n            \"enabled\": true,\r\n            \"version\": 2,\r\n            \"auth_required\": false\r\n        }\r\n\r\n    }\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/v1/payments",
@@ -5290,7 +5290,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"number\":\"4030000010001234\",\r\n  \"expiry_month\":\"06\",\r\n  \"expiry_year\":\"19\",\r\n  \"cvd\":\"123\"\r\n}"
+							"raw": "{\r\n  \"number\":\"4012000033330026\",\r\n  \"expiry_month\":\"06\",\r\n  \"expiry_year\":\"25\",\r\n  \"cvd\":\"123\"\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/scripts/tokenization/tokens",
