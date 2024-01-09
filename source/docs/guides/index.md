@@ -54,7 +54,7 @@ cards:
         icon: list
         link: /docs/guides/apple_pay
     -
-        title: Google Pay
+        title: Google Pay™
         description: >
             Work with Google Pay payments from mobile devices and the Web.
         icon: list
