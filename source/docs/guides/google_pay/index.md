@@ -148,4 +148,5 @@ Once the Google Pay payload is received and you make a `google_pay` request to o
 For more information about testing with Google Pay:
 
 [Test Card Suite](https://developers.google.com/pay/api/web/guides/resources/test-card-suite)
+
 [Sample Tokens](https://developers.google.com/pay/api/web/guides/resources/sample-tokens)
