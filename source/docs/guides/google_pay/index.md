@@ -76,7 +76,7 @@ For more info on the registration process for merchants, visit:
 
 #### 2.	API Parameters for Worldline processors
 
-Merchants who choose to integrate with Google’s API and use Worldline as their gateway processor will need to pass the below parameters to Google’s API, as mentioned below.
+Merchants who choose to integrate with Google’s API and use Worldline as their gateway processor will need to pass the parameters mentioned below to Google’s API.
 
 ##### Register with Google
 
@@ -94,7 +94,13 @@ Merchants who choose to integrate with Google’s API and use Worldline as their
 
 ## API Requests
 
-Once the Google Pay payload is received and you make a `google_pay` request to our Payments API, it'll be formatted in JSON, calling to https://api.na.bambora.com/v1/payments/. Our solution currently uses passcode authorization as the authorization method.
+After you've received the Payment Data object, you'll need to extract the Google Pay transaction payload from it like so:
+
+```
+transactionPayload = paymentData.paymentMethodData.tokenizationData.token;
+```
+
+Once the Google Pay payload is received and you make a `google_pay` request to our Payments API, it'll be formatted in JSON, calling to https://api.na.bambora.com/v1/payments/.
 
 ```shell
   curl https://api.na.bambora.com/v1/payments \
@@ -133,17 +139,13 @@ Once the Google Pay payload is received and you make a `google_pay` request to o
 | payment_method | The method of payment for the transaction. For Google Pay, this will always be `google_pay` |
 | google_pay | The object needed to pass a Google Pay transaction payload. The remaining items in this list are the parameters of this object. |
 | name | The cardholder name. |
-| 3d_secure | The object containing info required for 3DS transactions (We accept both PAN_ONLY and CRYPTOGRAM_3DS). [Detailed info here.](https://dev.na.bambora.com/docs/guides/3D_secure_2_0/#request-parameters) |
-| transaction_payload | The unencrypted transaction payload, to be encrypted by the BIC system before being sent to Google. |
+| 3d_secure | The object containing info required for PAN_ONLY 3DS transactions. [Detailed info here.](https://dev.na.bambora.com/docs/guides/3D_secure_2_0/#request-parameters) |
+| transaction_payload | Payload string that contains the encrypted Google payment token (required to complete a transaction), along with other security information. |
 | complete | The type of transaction being performed. True indicates a Purchase, and false is a Pre-Authorization. |
 
-## Test Cards
+## Additional Info
 
-You can add the test cards listed below to your Google Pay App and use them to trigger approved responses from our gateway. You can use these test cards on your Bambora test accounts, but not on your live account. More info on using test cards within the Google Pay test environment is listed [here](https://developers.google.com/pay/api/android/guides/resources/test-card-suite).
+For more information about testing with Google Pay:
 
-| Brand                     | Card number         | CVV   |
-|:--------------------------|:--------------------|:------|
-| VISA | 4450 2132 7399 3630 | 123 |
-| Mastercard | 5123 3013 0618 1325 | 123 |
-| American Express | 3766 913901 82618 | 1234 |
-**Note:** The Expiry can be any date in the future
+[Test Card Suite](https://developers.google.com/pay/api/web/guides/resources/test-card-suite)
+[Sample Tokens](https://developers.google.com/pay/api/web/guides/resources/sample-tokens)
