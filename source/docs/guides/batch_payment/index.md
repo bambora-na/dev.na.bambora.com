@@ -67,6 +67,13 @@ Bank-to-bank transactions incur a flat fee. Payments are settled in full, and th
 
 Eg. For a batch with 5 debit transactions and 1 credit transaction, you will be charged for a total of 6 transactions.
 
+### FINTRAC Requirements
+Some batch bank transfer transactions require the address of the beneficiary of the funds transfer be submitted along with their name and bank account information. Refer to the following documentation to decide if this applies to your use case: [What is FINTRAC](https://help.na.bambora.com/hc/en-us/articles/22940725297555-What-is-FINTRAC-)
+
+In the case where you are required to provide the address of the beneficiary, you may do so using one of two methods:
+1. Store the beneficiary bank account information, name, and address in a Payment Profile, and use this Payment Profile Customer Code in the batch instruction. The beneficiary bank account information, name, and address fields from the Payment Profile will be used automatically, and are not required to be included in the batch file instruction.
+2. Include the beneficiary bank account account information, name, and address directly in the batch instruction.
+
 ## Supporting Services
 
 For repeat customers or payments, you can use our Payment Profiles solution to store their payment information on our servers securely. 
