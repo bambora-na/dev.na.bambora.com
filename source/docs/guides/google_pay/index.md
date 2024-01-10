@@ -109,6 +109,8 @@ Once the Google Pay payload is received and you make a `google_pay` request to o
     -d '{
           "amount": 1.00,
           "payment_method": "google_pay",
+          "customer_ip": "123.123.123.123",
+          "term_url": "https://www.beanstream.com/debug.asp",
           "google_pay": {
             "name": "name",
             "3d_secure": {
@@ -137,6 +139,8 @@ Once the Google Pay payload is received and you make a `google_pay` request to o
 | -------- | ----------- |
 | amount | The amount of the transaction. |
 | payment_method | The method of payment for the transaction. For Google Pay, this will always be `google_pay` |
+| customer_ip | **(Only required for 3DS-enabled merchants)** The IP Address of the cardholder's browser. |
+| term_url | **(Only required for 3DS-enabled merchants)** The URL that the customer will be redirected to after completing their 3DS challenge. Maximum length of 255 characters. |
 | google_pay | The object needed to pass a Google Pay transaction payload. The remaining items in this list are the parameters of this object. |
 | name | The cardholder name. |
 | 3d_secure | The object containing info required for PAN_ONLY 3DS transactions. [Detailed info here.](https://dev.na.bambora.com/docs/guides/3D_secure_2_0/#request-parameters) |
