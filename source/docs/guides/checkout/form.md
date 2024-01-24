@@ -28,6 +28,7 @@ Note: The font and color settings in the Member Area have been deprecated. Font 
 - **Include Invoice/Order** - Show and allow the user to edit the invoice/order number.
 - **Include Card Selection** - Allow the user to select their card brand. This field redundant. We recommend that it is excluded.
 - **Include comments** - Show the comments text field.
+- **Include Google Pay Button** - Show the Google Pay Button.
 
 Once you've finished customizing your form's fields, click **View Preview** at the bottom of the page to see your payment form. Click **Update Live** to confirm your changes and update your forms.
 

@@ -30,11 +30,11 @@ paths:
     post:
       summary: Make payment
       description: |
-        Make a payment using credit card, cash, cheque, profile, token, Apple Pay or Android Pay. Each payment type has its own json definition passed in the
+        Make a payment using credit card, cash, cheque, profile, token, Apple Pay, or Google Pay. Each payment type has its own json definition passed in the
         body. For all payments you have the standard Billing, Shipping, Comments, etc. fields that are optional. Only the amount is required along with the
         payment data for card, cash, cheque, profile, and token. You must change the payment&#95;method for each payment type. Credit Card - "card",
         Payment Profile - "payment&#95;profile", Single Use Token - "token", Cash - "cash", Cheque - "cheque", Interac - "interac", Apple Pay - "apple&#95;pay",
-        Android Pay - "android&#95;pay".
+        Google Pay - "google&#95;pay".
       tags:
         - Payments
       operationId: makePayment
@@ -845,7 +845,7 @@ definitions:
       payment_method:
         type: string
         description: 'The desired method of payment.'
-        enum: ['card', 'token', 'payment_profile', 'cash', 'cheque', 'interac', 'apple_pay', 'android_pay', '3d_secure','processor_token']
+        enum: ['card', 'token', 'payment_profile', 'cash', 'cheque', 'interac', 'apple_pay', 'google_pay', '3d_secure_token','processor_token']
       language:
         type: string
         maxLength: 3
@@ -872,14 +872,14 @@ definitions:
         $ref: '#/definitions/Card'
       apple_pay:
         $ref: '#/definitions/ApplePay'
-      android_pay:
-        $ref: '#/definitions/AndroidPay'
+      google_pay:
+        $ref: '#/definitions/GooglePay'
       payment_profile:
         $ref: '#/definitions/ProfilePurchase'
       token:
         $ref: '#/definitions/TokenPurchase'
       3d_secure:
-        $ref: '#/definitions/3d_secure'
+        $ref: '#/definitions/3d_secure_token'
       recurring_payment:
         type: boolean
         description: |
@@ -985,20 +985,20 @@ definitions:
         type: boolean
         default: true
         description: set to false for Pre-Authorize, and true to complete a payment
-  AndroidPay:
+  GooglePay:
     description: |
-      Android Pay Only - required when attempting to process android_pay transactions.
-      Note that the 'card' object returned in a successful response will have a 'last_four' property value that is based on the source Android Pay Wallet and its Device Account Number.
+      Google Pay Only - required when attempting to process google_pay transactions.
     required:
-      - android_pay_merchant_id
-      - payment_token
+      - transaction_payload
     properties:
-      android_pay_merchant_id:
+      name:
         type: string
-        description: The Android Pay merchant ID.
-      payment_token:
+        description: The cardholder name.
+      3d_secure:
+        $ref: '#/definitions/3DSecure'
+      transaction_payload:
         type: string
-        description: The encrypted token provided by Android Pay that you then Base64 encode.
+        description: Payload that contains the encrypted Google payment token (required to complete a transaction), along with other security information.
       complete:
         type: boolean
         default: true
@@ -1089,7 +1089,7 @@ definitions:
         type: string
         maxLength: 20
         description: 'The Visa Checkout payment request ID.'
-  3d_secure:
+  3d_secure_token:
     description: "Payment with a 3D Secure Session Data token.  Reference a previously processed 3D Secure transaction 
       processed through the 3D Secure 2.0 API.  This will apply the associated card number, card expiry, and 3D Secure results 
       to your payment request. The payment_method must be '3d_secure'"
@@ -1256,7 +1256,7 @@ definitions:
       payment_method:
         type: string
         description: 'Payment method'
-        enum: ['card', 'token', 'payment_profile', 'cash', 'cheque', 'interac', 'apple_pay', 'android_pay']
+        enum: ['card', 'token', 'payment_profile', 'cash', 'cheque', 'interac', 'apple_pay', 'google_pay']
       custom:
         $ref: '#/definitions/Custom'
       card:
@@ -2060,8 +2060,8 @@ definitions:
       entry_method:
         type: string
         maxLength: 1
-        description: 'How the transaction was initiated. N = Standard Entry, A = Apple Pay, G = Android Pay, S = EMV Swipe, V = Visa Checkout, Y = Unimag Card Swiper, T = EMV Chip Tap, E = EMV Chip Dip'
-        enum: ['N','A','G','S','V','Y','T','E']
+        description: 'How the transaction was initiated. N = Standard Entry, A = Apple Pay, P = Google Pay, S = EMV Swipe, V = Visa Checkout, Y = Unimag Card Swiper, T = EMV Chip Tap, E = EMV Chip Dip'
+        enum: ['N','A','P','S','V','Y','T','E']
       authorizing_merchant_id:
         type: integer
         description: 'The id of the merchant that authorized this transaction.'

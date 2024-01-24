@@ -123,3 +123,7 @@
 | 1135 | Amount in the request does not match the amount in the payment token. | Declined |
 | 1136 | Invalid or missing card-on-file request parameters | Invalid or missing card-on-file request parameters |
 | 1137 | You are not authorized to process card-on-file transactions through this account. | You are not authorized to process card-on-file transactions through this account. |
+| 1194 | Declined | Signature verification failed |
+| 1195 | Declined | Signature expired |
+| 1196 | Declined | Payment token expired |
+| 1197 | Declined | Merchant ID in the request does not match the merchant ID in the payment token. |
