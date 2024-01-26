@@ -30,7 +30,7 @@ Checkout is configured by the parameters passed in the URL of a GET request. The
 | Name | Description |
 | ---- | ----------- |
 | trnAmount | The total amount for the transaction including tax and additional fees. Max 2 decimal places. Max 9 digits total. |
-| trnOrderNumber | The invoice or order ID you want associated with the transaction. Up to 30 characters. |
+| trnOrderNumber | The invoice or order ID you want associated with the transaction. Up to 30 characters. Do not include spaces. |
 | trnType | **P** - Purchase. **PA** - Pre-Authorization. |
 | trnCardOwner| The name of the cardholder. 4-64 characters. |
 | trnLanguage| **eng** - English, **fre** - French. |
