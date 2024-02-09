@@ -127,3 +127,4 @@
 | 1195 | Declined | Signature expired |
 | 1196 | Declined | Payment token expired |
 | 1197 | Declined | Merchant ID in the request does not match the merchant ID in the payment token. |
+| 1198 | Declined | Invalid payment token |
