@@ -77,7 +77,7 @@ responseType=I&visaCheckoutCallID=6629877414595929001&cardLastFour=1234&
 trnCardOwner=Jane Doe&trnExpMonth=02&trnExpYear=20&ordName=Jane Doe
 &ordAddress1=123 Main St.&ordAddress2=&ordCity=Victoria&ordProvince=BC&
 ordCountry=CA&ordPostalCode=V8D 1A9&ordPhoneNumber=7789671234&
-ordEmailAddress=aengusbates@gmail.com&shipName=Jane Doe&
+ordEmailAddress=janedoe@bambora.com&shipName=Jane Doe&
 shipAddress1=123 Main St.&shipAddress2=&shipCity=Victoria&
 shipProvince=BC&shipCountry=CA&shipPostalCode=V8D 1A9&shipPhoneNumber=7789671234
 ```
