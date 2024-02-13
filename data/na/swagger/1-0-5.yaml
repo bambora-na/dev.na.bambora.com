@@ -975,12 +975,15 @@ definitions:
       - apple_pay_merchant_id
       - payment_token
     properties:
+      passthrough:
+        type: boolean
+        description: False or null indicates a regular (Worldline-decrypted) Apple Pay transaction. True indicates a passthrough (externally-decrypted) transaction.
       apple_pay_merchant_id:
         type: string
-        description: The Apple Pay merchant ID.
+        description: The Apple Pay merchant ID. Not required for passthrough transactions.
       payment_token:
         type: string
-        description: The encrypted token provided by Apple Pay that you then Base64 encode.
+        description: The encrypted payment token provided by Apple Pay, which you then base64-encode. For passthrough, decrypt the token before encoding it.
       complete:
         type: boolean
         default: true
@@ -2060,8 +2063,8 @@ definitions:
       entry_method:
         type: string
         maxLength: 1
-        description: 'How the transaction was initiated. N = Standard Entry, A = Apple Pay, P = Google Pay, S = EMV Swipe, V = Visa Checkout, Y = Unimag Card Swiper, T = EMV Chip Tap, E = EMV Chip Dip'
-        enum: ['N','A','P','S','V','Y','T','E']
+        description: 'How the transaction was initiated. N = Standard Entry, A = Apple Pay, D = Apple Pay (External Decryption), P = Google Pay, V = Visa Checkout, T = TD Token'
+        enum: ['N','A','D','P','V','T']
       authorizing_merchant_id:
         type: integer
         description: 'The id of the merchant that authorized this transaction.'
