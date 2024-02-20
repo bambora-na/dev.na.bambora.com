@@ -75,6 +75,7 @@ When you make an `apple_pay` request to our Payments API, it'll be formatted in 
           "amount": 1.00,
           "payment_method": "apple_pay",
           "apple_pay": {
+            "passthrough": false,
             "apple_pay_merchant_id": "<your_apple_pay_merchant_id>",
             "payment_token": "<apple_pay_base64_encoded_token>",
             "complete": true
@@ -87,9 +88,37 @@ When you make an `apple_pay` request to our Payments API, it'll be formatted in 
 | amount | The amount of the transaction. |
 | payment_method | The method of payment for the transaction. For Apple Pay, this will always be `apple_pay` |
 | apple_pay | The object needed to pass an Apple Pay token including the Apple Pay Merchant ID, and the base64 payment token. |
-| apple_pay_merchant_id | Your Apple Merchant ID provided in your Apple Developer Account. |
-| payment_token | The encrypted Apple Pay token containing card holder details, generated from within the iOS app. |
+| passthrough | Indicates whether the transaction uses Apple Pay passthrough. True indicates a passthrough (externally decrypted) transaction, false or null indicates a regular (Worldline decrypted) Apple Pay transaction. |
+| apple_pay_merchant_id | Your Apple Merchant ID provided in your Apple Developer Account. Not required if passthrough is set to true. |
+| payment_token | The Apple Pay token containing card holder details, generated from within the iOS app. For regular (Worldline decrypted) transaction requests - Apple Pay base64-encoded, encrypted payment token. For passthrough (externally decrypted) transaction requests - Apple Pay base64-encoded, decrypted payment token. |
 | complete | The type of transaction being performed. True indicates a Purchase, and false is a Pre-Authorisation. |
+
+## Apple Pay External Decryption*
+
+With Apple Pay External Decryption (passthrough), the decryption is performed by the merchant prior to making the request.
+
+### Making a request
+
+The major differences between a passthrough transaction request and a regular Apple Pay transaction request are that the "passthrough" field must be included and set to true, the "apple_pay_merchant_id" field must be omitted, and the payment token must be decrypted before being base64-encoded and passed. Other than that, a passthrough request will function the same as a regular Apple Pay request, formatting the data in JSON and calling https://api.na.bambora.com/v1/payments/.
+
+```shell
+  curl https://api.na.bambora.com/v1/payments \
+    -H "Authorization: Passcode XXX1XXx11Xxx1xX1XxxxXxXXXXx1XXX1XxX1XXXxXXXxXxxxX11XXXxX1" \
+    -H "Content-Type: application/json" \
+    -d '{
+          "amount": 1.00,
+          "payment_method": "apple_pay",
+          "apple_pay": {
+            "passthrough": true,
+            "payment_token": "<base64_encoded_decrypted_apple_pay_token>",
+            "complete": true
+          }
+        }'
+```
+
+For merchants not using external decryption, the passthrough parameter is optional, and omitting it will have the same effect as passing it as false. No changes are required for existing integrations using Worldline decryption for Apple Pay.
+
+*TD Support Only
 
 ## Additional Examples
 
@@ -197,7 +226,7 @@ You can add the test cards listed below to your Apple Wallet and use them to tri
 
 | Brand                     | Card number         | CVV   | Expiry  |
 |:--------------------------|:--------------------|:------|:--------|
-| Visa Card                 | 4030 0000 1000 1234 | 111   | 11/2027 |
+| Visa Card                 | 4030 0000 1000 1234 | 123   | 11/2027 |
 | Mastercard                | 5204 2477 5000 1471 | 111   | 11/2027 |
 | American Express          | 3499 569590 41362   | 1111  | 12/2027 |
 Notes: The Expiry can be any date in the future
