@@ -99,7 +99,7 @@ With Apple Pay External Decryption (passthrough), the decryption is performed by
 
 ### Making a request
 
-The major differences between a passthrough transaction request and a regular Apple Pay transaction request are that the "passthrough" field must be included and set to true, the "apple_pay_merchant_id" field must be omitted, and the payment token must be decrypted before being base64-encoded and passed. Other than that, a passthrough request will function the same as a regular Apple Pay request, formatting the data in JSON and calling https://api.na.bambora.com/v1/payments/.
+The major differences between a passthrough transaction request and a regular Apple Pay transaction request are that the "passthrough" field must be included and set to true, the "apple_pay_merchant_id" field can be omitted, and the payment token must be decrypted before being base64-encoded and passed. Other than that, a passthrough request will function the same as a regular Apple Pay request, formatting the data in JSON and calling https://api.na.bambora.com/v1/payments/.
 
 ```shell
   curl https://api.na.bambora.com/v1/payments \
