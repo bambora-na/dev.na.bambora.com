@@ -29,7 +29,7 @@
 | 85 | Declined | Declined |
 | 86 | PLEASE TRY AGAIN | Declined |
 | 87 | Declined | Declined ADJ NOT ALLOWED |
-| 88 | Declined Do Not Retry | Declined Do Not Retry |
+| 88 | Declined | Declined |
 | 89 | Declined | Declined INVALID TRAN DATE |
 | 90 | Declined | Declined |
 | 91 | PLEASE TRY AGAIN | Declined |
@@ -51,7 +51,7 @@
 | 107 | Declined | Declined |
 | 108 | Declined | Declined |
 | 109 | Declined | Declined MAX REFUND NUMBER |
-| 110 | Declined | Declined |
+| 110 | Declined Do Not Retry | Declined Do Not Retry |
 | 111 | Declined | Declined |
 | 112 | Declined | Declined |
 | 113 | Declined | Declined |
@@ -117,7 +117,7 @@
 | 173 | Declined | Declined |
 | 174 | Declined | Declined |
 | 175 | Declined | Declined |
-| 176 | Declined | Declined |
+| 176 | Declined Do Not Retry | Declined Do Not Retry |
 | 177 | Declined | Declined ADMIN CARD NOT FOUND |
 | 178 | Declined | Declined ADMIN CARD NOT ALLOWED |
 | 179 | Declined | Declined |
@@ -131,16 +131,6 @@
 | 187 | Declined | Declined |
 | 188 | Declined | Declined |
 | 189 | Declined | Declined |
-| 700 | Declined | Declined Do Not Retry |
-| 710 | PT Token Expired | PT Token Expired |
-| 711 | PT Token start date in the future, no active yet | PT Token start date in the future, no active yet |
-| 712 | PT Token and PAN are present in the request message | PT Token and PAN are present in the request message |
-| 713 | Invalid PT Token | Invalid PT Token |
-| 714 | Merchant does not subscribe to Merchant OMNI Tokenization | Merchant does not subscribe to Merchant OMNI Tokenization |
-| 715 | PT Token no present in request message | PT Token no present in request message |
-| 716 | PT Token is present, Expiry Date is not present | PT Token is present, Expiry Date is not present |
-| 717 | OMNI Tokenization is disabled | OMNI Tokenization is disabled |
-| 718 | Invalid API version | Invalid API version |
 | 771 | Declined | Declined |
 | 772 | Declined | Declined |
 | 773 | Declined | Declined |
@@ -159,4 +149,13 @@
 | 786 | Declined | Declined |
 | 787 | Declined | Declined |
 | 824 | Approved | Approved |
-| 909 | Declined Do Not Retry | Declined Do Not Retry |
+| 1178 | PT Token Expired | PT Token Expired |
+| 1179 | PT Token start date in the future, no active yet | PT Token start date in the future, no active yet |
+| 1180 | PT Token and PAN are present in the request message | PT Token and PAN are present in the request message |
+| 1181 | Invalid PT Token | Invalid PT Token |
+| 1182 | Merchant does not subscribe to Merchant OMNI Tokenization | Merchant does not subscribe to Merchant OMNI Tokenization |
+| 1183 | PT Token no present in request message | PT Token no present in request message |
+| 1184 | PT Token is present, Expiry Date is not present | PT Token is present, Expiry Date is not present |
+| 1185 | OMNI Tokenization is disabled | OMNI Tokenization is disabled |
+| 1186 | Invalid API version | Invalid API version |
+| 1193 | Declined | Declined Do Not Retry |
