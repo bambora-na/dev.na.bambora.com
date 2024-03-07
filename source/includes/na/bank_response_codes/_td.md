@@ -150,11 +150,11 @@
 | 787 | Declined | Declined |
 | 824 | Approved | Approved |
 | 1178 | PT Token Expired | PT Token Expired |
-| 1179 | PT Token start date in the future, no active yet | PT Token start date in the future, no active yet |
+| 1179 | PT Token start date in the future, not active yet | PT Token start date in the future, not active yet |
 | 1180 | PT Token and PAN are present in the request message | PT Token and PAN are present in the request message |
 | 1181 | Invalid PT Token | Invalid PT Token |
 | 1182 | Merchant does not subscribe to Merchant OMNI Tokenization | Merchant does not subscribe to Merchant OMNI Tokenization |
-| 1183 | PT Token no present in request message | PT Token no present in request message |
+| 1183 | PT Token not present in request message | PT Token not present in request message |
 | 1184 | PT Token is present, Expiry Date is not present | PT Token is present, Expiry Date is not present |
 | 1185 | OMNI Tokenization is disabled | OMNI Tokenization is disabled |
 | 1186 | Invalid API version | Invalid API version |
