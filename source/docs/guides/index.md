@@ -72,12 +72,6 @@ cards:
         icon: list
         link: /docs/guides/credential_on_file
     -
-        title: Interac Online
-        description: >
-            Process payments with Interac Online.
-        icon: creditcard-outline
-        link: /docs/guides/interac_online
-    -
         title: Masterpass
         description: >
             Deprecated Oct 5, 2021.

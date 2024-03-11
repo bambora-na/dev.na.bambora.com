@@ -141,25 +141,6 @@ You need to ensure that your TD merchant accounts are tied to a Bambora terminal
 
  - Merchant numbers for each accepted card type.
 
-<a name="interac-integration"></a>
-
-## Accepting Interac Online
-If you're interested in accepting Interac Online, you'll need to complete the Interac portion of the Bambora application, covering how you'll accept the payment online. if you're new to online debit and bank payment, you can find the definitions of the terms used [here](https://support.na.bambora.com/bic/w/properties/external_pdfs/IOC_Required_Data_Field_Definitions.pdf).
-
->If you're unsure of any definitions or fields in the Bambora application, feel free to leave them blank and our Onboarding Team will be happy to assist.
-
-### Setting up your website
-
-#### Interac Checklist
-
-After your application has been accepted, you will need to complete the [Merchant Checklist for Interac Online Certification Testing](https://support.na.bambora.com/bic/w/Properties/External_PDFs/IO_Guidelines_Checklist.pdf), ensuring each item meets the [standards outlined by Interac Online](https://support.na.bambora.com/bic/w/properties/external_pdfs/EMER_IO_Guidelines.pdf).
-
-If you're unsure about any steps in the process including the use of logos, process flow, or requirements, refer to our [Interac Online Integration Guide](https://support.na.bambora.com/bic/w/Properties/External_PDFs/bambora-interac-integration.pdf).
-
-#### Interac Online Certification
-
-After you've turned in your Merchant Checklist, we will perform a full test transaction on your account. After the test is successfully confirmed, we will contact our Interac partners to finalize the account setup.
-
 ## Integrating
 You can begin to test your system's integration using [these test cards](http://support.na.bambora.com/olm/w/docs/using-test-card-numbers.htm) in your sandbox environment. Each currency requires its own Merchant ID, so if you intend on accepting multiple currencies, you will need to create a new integration for each one.
 
