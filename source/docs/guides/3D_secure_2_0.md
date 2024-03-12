@@ -579,13 +579,13 @@ For Merchant Initiated transactions this would be the case where the merchant ha
 
 ## 3D Secure 2.0 API
 
-The 3D Secure 2.0 API provides a set of end points where you may want to utilize to perform 3D Secure authentication without immediately processing a payment.  This can be useful in instances where may want to authenticate a card holder before storing their credentials to a customer profile, or for authenticating a transaction that may be processed at a later time.  Our Payments API supports accepting the 3DS Session Data token of a previously authenticated 3D Secure transaction as a reference to the card data, and 3D Secure authentication results.
+The 3D Secure 2.0 API provides a set of end points where you may want to utilize to perform 3D Secure authentication without immediately processing a payment.  This can be useful in instances where you may want to authenticate a card holder before storing their credentials to a customer profile, or for authenticating a transaction that may be processed at a later time.  Our Payments API supports accepting the 3DS Session Data token of a previously authenticated 3D Secure transaction as a reference to the card data, and 3D Secure authentication results.
 
 A passcode must be passed in the authorization header when making a request to the 3D Secure 2.0 API.  This API shares the same passcode as the Payment API.
 
 Access to this API must be enabled by a member of our support team.  For assistance, you can send a message to Client Services or call 1-888-472-0811.
 
-### /POST /V1/EMV3DS/AuthRequst
+### /POST /V1/EMV3DS/AuthRequest
 
 This endpoint is your first touchpoint for validating a card via the 3D Secure 2.0 process; all new requests must start here.
 
@@ -935,7 +935,7 @@ curl --location --request POST 'https://api.na.bambora.com/v1/payments' \
    "payment_method": "3d_secure_token",
    "customer_ip": "123.123.123.123",
    "amount": 41.99,
-   "3d_secure": {
+   "3d_secure_token": {
        "threeDS_session_data": "OGE5OWYzYTgtZDIwMi00MTFiLWFiNjctYjJmNTU1ODJjNTAy",
        "complete": true
    }

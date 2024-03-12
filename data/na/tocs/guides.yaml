@@ -12,6 +12,8 @@
   title: '3D Secure - Legacy'
 - file: '/docs/guides/apple_pay'
   title: 'Apple Pay'
+- file: '/docs/guides/google_pay'
+  title: 'Google Pay'
 - file: '/docs/guides/batch_payment'
   title: 'Batch Payment'
 - file: '/docs/guides/credential_on_file'
