@@ -2406,7 +2406,7 @@ definitions:
       language:
         type: string
         maxLength: 3
-        description: 'Account's billing language'
+        description: "Account's billing language"
       payment:
         $ref: '#/definitions/RecurringPaymentDetails'
       billing:
