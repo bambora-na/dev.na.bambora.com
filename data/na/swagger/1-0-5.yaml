@@ -792,7 +792,7 @@ paths:
       summary: Get account
       description: 'Get a Recurring Payment Profile using account ID, also known as ID.'
       tags:
-        - Recurring Payment Account
+        - 'Recurring Payment Account'
       operationId: getAccount
       parameters:
         - name: accountId
