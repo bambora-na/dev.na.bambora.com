@@ -2461,27 +2461,32 @@ definitions:
       comments:
         type: string
         maxLength: 2000
-        description: alphanumeric
+        description: 'Comment regarding Recurring Payment account'
       ref1:
         type: string
         maxLength: 256
+        description: 'custom reference field 1'
       ref2:
         type: string
         maxLength: 256
+        description: 'custom reference field 2'
       ref3:
         type: string
         maxLength: 256
+        description: 'custom reference field 3'
       ref4:
         type: string
         maxLength: 256
+        description: 'custom reference field 4'
       ref5:
         type: string
         maxLength: 256
+        description: 'custom reference field 5'
   RecurringPaymentSchedule:
     properties:
       period:
         type: string
-        description: 'The billing period is the regular interval at which credit card transactions are charged'
+        description: 'The period is unit of measurement for the frequency of the payment: day, week, month or year.'
       increment:
         type: integer
         description: 'The frequency of the transactions'
