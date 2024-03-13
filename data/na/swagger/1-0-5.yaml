@@ -799,7 +799,7 @@ paths:
           in: path
           description: The account id. (aka ID)
           required: true
-          type: string
+          type: integer
       responses:
         200:
           description: The Account.
