@@ -786,7 +786,6 @@ paths:
           $ref: '#/responses/MethodNotAllowed'
         500:
           $ref: '#/responses/InternalServerError'
-  /recurringPayment:
   '/recurring/{accountId}':
     get:
       summary: Get account
@@ -2490,7 +2489,7 @@ definitions:
         description: 'Initial card charge date'
       second_billing:
         type: string
-        description: 'Card's second charge date'
+        description: "Card's second charge date"
       expiry_date:
         type: string
         description: 'The last date of the billing cycle'
