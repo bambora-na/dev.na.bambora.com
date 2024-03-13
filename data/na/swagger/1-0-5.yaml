@@ -792,7 +792,7 @@ paths:
       summary: Get account
       description: 'Get a Recurring Payment Profile using account ID, also known as ID.'
       tags:
-        - RecurringPaymentAccount
+        - 'Recurring Payment Account'
       operationId: getAccount
       parameters:
         - name: accountId
@@ -2507,6 +2507,7 @@ definitions:
         description: 'Card will be charged at the end of the month'
       upcoming_transactions:
         type: array
+        maxLength: 3
         items:
           $ref: '#/definitions/UpcomingTransactionRecord'
   UpcomingTransactionRecord:
