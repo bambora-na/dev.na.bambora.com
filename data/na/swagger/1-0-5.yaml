@@ -786,6 +786,33 @@ paths:
           $ref: '#/responses/MethodNotAllowed'
         500:
           $ref: '#/responses/InternalServerError'
+  '/recurring/{accountId}':
+    get:
+      summary: Get account
+      description: 'Get a Recurring Payment Profile using account ID, also known as ID.'
+      tags:
+        - Recurring Payment Account
+      operationId: getAccount
+      parameters:
+        - name: accountId
+          in: path
+          description: The account id. (aka ID)
+          required: true
+          type: string
+      responses:
+        200:
+          description: The Account.
+          schema:
+            $ref: '#/definitions/RecurringPaymentResponse'
+        400:
+          $ref: '#/responses/RecurringPaymentBadRequest'
+        401:
+          $ref: '#/responses/RecurringPaymentUnauthorized'
+        404:
+          $ref: '#/responses/RecurringPaymentInvalidId'
+        500:
+          $ref: '#/responses/RecurringPaymentInternalServerError'  
+     
   /scripts/tokenization/tokens:
     post:
       summary: Tokenize credit card
@@ -828,6 +855,22 @@ responses:
     description: Internal Server Error
     schema:
       $ref: '#/definitions/ErrorResponse'
+  RecurringPaymentBadRequest:
+    description: Bad Request
+    schema: 
+      $ref: '#/definitions/RecurringPaymentErrorResponse'
+  RecurringPaymentUnauthorized:
+    description: Authentication Failure
+    schema: 
+      $ref: '#/definitions/RecurringPaymentErrorResponse'
+  RecurringPaymentInvalidId:
+    description: Invalid Account ID
+    schema: 
+      $ref: '#/definitions/RecurringPaymentErrorResponse'
+  RecurringPaymentInternalServerError:
+    description: Internal Server Error
+    schema: 
+      $ref: '#/definitions/RecurringPaymentErrorResponse'
 definitions:
   PaymentRequest:
     required:
@@ -2349,6 +2392,142 @@ definitions:
         description: the ID of the payment profile. You need to keep track of this value.
       card:
         $ref: '#/definitions/ProfileCards'
+  RecurringPaymentResponse:
+    properties:
+      account_id:
+        type: number
+        format: integer
+        description: 'Unique account ID'
+      state:
+        type: string
+        maxLength: 6
+        description: 'The state of the Recurring Payment account'
+      language:
+        type: string
+        maxLength: 3
+        description: "Account's billing language"
+      payment:
+        $ref: '#/definitions/RecurringPaymentDetails'
+      billing:
+        $ref: '#/definitions/Address'
+      card:
+        $ref: '#/definitions/RecurringPaymentCard'
+      custom:
+        $ref: '#/definitions/RecurringPaymentCustom'
+      schedule:
+        $ref: '#/definitions/RecurringPaymentSchedule'    
+  RecurringPaymentDetails:
+    properties:
+      amount:
+        type: number
+        format: double
+        description: 'A decimal value in dollars. Uses up to two decimal places.'
+      disable_tax1:
+        type: boolean
+        description: 'Tax included or not'
+      disable_tax2:
+        type: boolean
+        description: 'Tax included or not'
+      process_back_payments:
+        type: boolean
+        description: 'If a recurring payment is disabled and later reactivated back, payments will be charged if enabled.'
+  RecurringPaymentCard:
+    properties:
+      card_type:
+        type: string
+        maxLength: 2
+        description: 'The type of card used in the transaction. AM = American Express, DI = Diners, JB = JCB, MC = MasterCard, NN = Discover, VI = Visa, PV = Visa Debit, MD = Debit Mastercard'
+        enum: ['AM','DI','JB','MC','NN','VI','PV','MD']
+      name:
+        type: string
+        minLength: 1
+        maxLength: 64
+        description: Card holder name.
+      expiry_year:
+        type: string
+        maxLength: 2
+        description: eg. 25 for 2025.
+      expiry_month:
+        type: string
+        maxLength: 2
+        description: eg. 02 for February.
+  RecurringPaymentCustom:
+    properties:
+      order_number:
+        type: string
+        maxLength: 30
+        description: 'Order number'
+      comments:
+        type: string
+        maxLength: 2000
+        description: alphanumeric
+      ref1:
+        type: string
+        maxLength: 256
+      ref2:
+        type: string
+        maxLength: 256
+      ref3:
+        type: string
+        maxLength: 256
+      ref4:
+        type: string
+        maxLength: 256
+      ref5:
+        type: string
+        maxLength: 256
+  RecurringPaymentSchedule:
+    properties:
+      period:
+        type: string
+        description: 'The billing period is the regular interval at which credit card transactions are charged'
+      increment:
+        type: integer
+        description: 'The frequency of the transactions'
+      start_date:
+        type: string
+        description: 'Initial card charge date'
+      second_billing:
+        type: string
+        description: "Card's second charge date"
+      expiry_date:
+        type: string
+        description: 'The last date of the billing cycle'
+      never_expires:
+        type: boolean
+        description: 'Card incurs charges with no end date'
+      bill_at_end_of_month:
+        type: boolean
+        description: 'Card will be charged at the end of the month'
+      upcoming_transactions:
+        type: array
+        maxLength: 3
+        items:
+          $ref: '#/definitions/UpcomingTransactionRecord'
+  UpcomingTransactionRecord:
+    properties:
+      billing_date:
+        type: string
+        description: 'Start date of the billing cycle'
+      billing_end:
+        type: string
+        description: 'Last date of the billing cycle'
+      amount:
+        type: number
+        format: double
+        description: 'A decimal value in dollars. Uses up to two decimal places.'
+      total_amount:
+        type: number
+        format: double
+        description: 'Total amount of transaction in dollars and cents'
+      tax1:
+        type: number
+        format: double
+        description: 'Total amount of tax1 in dollars and cents'
+      tax2:
+        type: number
+        format: double
+        description: 'Total amount of tax2 in dollars and cents'
   ErrorResponse:
     properties:
       code:
@@ -2370,6 +2549,18 @@ definitions:
           $ref: '#/definitions/Detail'
       validation:
         $ref: '#/definitions/CardValidation'
+  RecurringPaymentErrorResponse:
+    properties:
+      code:
+        type: integer
+        format: int32
+      category:
+        type: integer
+        format: int32
+      category_name:
+        type: string
+      message:
+        type: string
   CardValidation:
     properties:
       id:
