@@ -796,9 +796,9 @@ paths:
       parameters:
         - name: accountId
           in: path
-          description: The account id. (aka ID)
+          description: The account id.
           required: true
-          type: string
+          type: integer
       responses:
         200:
           description: The Account.
@@ -810,6 +810,8 @@ paths:
           $ref: '#/responses/RecurringPaymentUnauthorized'
         404:
           $ref: '#/responses/RecurringPaymentInvalidId'
+        415:
+          $ref: '#/response/RecurringPaymentInvalidContentType'
         500:
           $ref: '#/responses/RecurringPaymentInternalServerError'  
      
@@ -869,6 +871,10 @@ responses:
       $ref: '#/definitions/RecurringPaymentErrorResponse'
   RecurringPaymentInternalServerError:
     description: Internal Server Error
+    schema: 
+      $ref: '#/definitions/RecurringPaymentErrorResponse'
+  RecurringPaymentInvalidContentType:
+    description: Invalid Content Type
     schema: 
       $ref: '#/definitions/RecurringPaymentErrorResponse'
 definitions:
@@ -2402,6 +2408,7 @@ definitions:
         type: string
         maxLength: 6
         description: 'The state of the Recurring Payment account'
+        enum: ['Active', 'OnHold', 'Closed']
       language:
         type: string
         maxLength: 3
@@ -2430,7 +2437,7 @@ definitions:
         description: 'Tax included or not'
       process_back_payments:
         type: boolean
-        description: 'If a recurring payment is disabled and later reactivated back, payments will be charged if enabled.'
+        description: 'If a recurring payment is disabled and later reactivated, back payments will be charged if enabled.'
   RecurringPaymentCard:
     properties:
       card_type:
@@ -2486,13 +2493,16 @@ definitions:
         description: 'The frequency of the transactions'
       start_date:
         type: string
-        description: 'Initial card charge date'
+        format: date-time
+        description: 'Initial card charge date. Format: 2024-01-01T00:00:00'
       second_billing:
         type: string
-        description: "Card's second charge date"
+        format: date-time
+        description: "Card's second charge date. Format: 2024-01-01T00:00:00"
       expiry_date:
         type: string
-        description: 'The last date of the billing cycle'
+        format: date-time
+        description: 'The last date of the billing cycle. If never_expires is true, default expiry date is returned i.e. 1900-01-01T00:00:00. Format: 2024-01-01T00:00:00'
       never_expires:
         type: boolean
         description: 'Card incurs charges with no end date'
