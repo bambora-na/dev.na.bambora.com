@@ -2518,10 +2518,12 @@ definitions:
     properties:
       billing_date:
         type: string
-        description: 'Start date of the billing cycle'
+        format: date-time
+        description: 'Start date of the billing cycle. Format: 2024-01-01T00:00:00'
       billing_end:
         type: string
-        description: 'Last date of the billing cycle'
+        format: date-time
+        description: 'Last date of the billing cycle. Format: 2024-01-01T00:00:00'
       amount:
         type: number
         format: double
