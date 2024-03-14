@@ -796,7 +796,7 @@ paths:
       parameters:
         - name: accountId
           in: path
-          description: The account id. (aka ID)
+          description: The account id.
           required: true
           type: integer
       responses:
@@ -810,6 +810,8 @@ paths:
           $ref: '#/responses/RecurringPaymentUnauthorized'
         404:
           $ref: '#/responses/RecurringPaymentInvalidId'
+        415:
+          $ref: '#/response/RecurringPaymentInvalidContentType'
         500:
           $ref: '#/responses/RecurringPaymentInternalServerError'  
      
@@ -869,6 +871,10 @@ responses:
       $ref: '#/definitions/RecurringPaymentErrorResponse'
   RecurringPaymentInternalServerError:
     description: Internal Server Error
+    schema: 
+      $ref: '#/definitions/RecurringPaymentErrorResponse'
+  RecurringPaymentInvalidContentType:
+    description: Invalid Content Type
     schema: 
       $ref: '#/definitions/RecurringPaymentErrorResponse'
 definitions:
