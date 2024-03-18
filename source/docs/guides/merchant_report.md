@@ -61,6 +61,7 @@ summarized in the table below.
 | `recurring_billing_enabled` | Does the merchant have recurring billing enabled |
 | `credit_card_batch_enabled` | Does the merchant have credit card batch enabled |
 | `eft/ach_batch_enabled` | Does the merchant have eft/ach batch enabled |
+| `interac_online_enabled` | The Interac Online feature has been decommissioned. The field is included in the response for backwards compatibility. |
 | `visa_src_enabled` | Does the merchant have visa checkout enabled |
 
 
@@ -207,6 +208,7 @@ curl --location --request GET 'https://api.na.bambora.com/v1/reports/merchants' 
                     "recurring_billing_enabled": false,
                     "credit_card_batch_enabled": true,
                     "eft_ach_enabled": true,
+                    "interac_online_enabled": false,
                     "visa_src_enabled": false
                 }
             }
