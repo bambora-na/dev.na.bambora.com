@@ -78,12 +78,6 @@ cards:
         icon: creditcard-outline
         link: /docs/guides/interac_online
     -
-        title: Masterpass
-        description: >
-            Deprecated Oct 5, 2021.
-        icon: creditcard-outline
-        link: /docs/guides/masterpass
-    -
         title: Onboarding
         description: >
             Get up to speed on our Onboarding API in minutes.
