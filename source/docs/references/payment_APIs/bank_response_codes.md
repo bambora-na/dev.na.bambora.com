@@ -29,7 +29,7 @@ includes:
 
 This document lists the bank related response codes returned from the Payment API. The "Message ID" and "Cardholder message" columns correspond to the response.message and response.message_id properties returned by the API response object. The "Merchant message" column contains an additional detailed message that is not returned by the API.
 
-Responses are broken into 3 groups: gateway, credit card and Interac Online.
+Responses are broken into 3 groups: gateway and credit card.
 Responses related to credit card transactions are sub-grouped by processor (Chase Paymentech, Desjardins, First Data, Global, TD, Vital). If you are processing transactions against a test account you will receive responses from our emulator, rather than a processor.
 
 You should only map your responses handlers against message IDs as message strings are not guaranteed to be consistent over time.
