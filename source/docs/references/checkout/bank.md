@@ -20,7 +20,6 @@ includes:
   - na/bank_response_codes/td
   - na/bank_response_codes/vital
   - na/bank_response_codes/emulator
-  - na/bank_response_codes/iop
 
 ---
 
