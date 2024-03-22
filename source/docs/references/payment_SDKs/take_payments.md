@@ -15,7 +15,6 @@ includes:
     - na/take_payments/payment_card
     - na/take_payments/payment_token
     - na/take_payments/payment_profile
-    - na/take_payments/payment_interac
     - na/take_payments/payment_3d_secure
     - na/take_payments/payment_cash_and_cheque
     - na/take_payments/voids_and_returns

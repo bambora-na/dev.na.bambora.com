@@ -33,7 +33,7 @@ paths:
         Make a payment using credit card, cash, cheque, profile, token, Apple Pay, or Google Pay. Each payment type has its own json definition passed in the
         body. For all payments you have the standard Billing, Shipping, Comments, etc. fields that are optional. Only the amount is required along with the
         payment data for card, cash, cheque, profile, and token. You must change the payment&#95;method for each payment type. Credit Card - "card",
-        Payment Profile - "payment&#95;profile", Single Use Token - "token", Cash - "cash", Cheque - "cheque", Interac - "interac", Apple Pay - "apple&#95;pay",
+        Payment Profile - "payment&#95;profile", Single Use Token - "token", Cash - "cash", Cheque - "cheque", Apple Pay - "apple&#95;pay",
         Google Pay - "google&#95;pay".
       tags:
         - Payments
@@ -200,8 +200,8 @@ paths:
           $ref: '#/responses/InternalServerError'
   '/payments/{merchant_data}/continue':
     post:
-      summary: 3D Secure or Interac Online payments
-      description: Continues 3D Secure or Interac Online payment processing.
+      summary: 3D Secure payments
+      description: Continues 3D Secure payment processing.
       tags:
         - Payments
       operationId: continuePayment
@@ -894,7 +894,7 @@ definitions:
       payment_method:
         type: string
         description: 'The desired method of payment.'
-        enum: ['card', 'token', 'payment_profile', 'cash', 'cheque', 'interac', 'apple_pay', 'google_pay', '3d_secure_token','processor_token']
+        enum: ['card', 'token', 'payment_profile', 'cash', 'cheque', 'apple_pay', 'google_pay', '3d_secure_token','processor_token']
       language:
         type: string
         maxLength: 3
@@ -1308,7 +1308,7 @@ definitions:
       payment_method:
         type: string
         description: 'Payment method'
-        enum: ['card', 'token', 'payment_profile', 'cash', 'cheque', 'interac', 'apple_pay', 'google_pay']
+        enum: ['card', 'token', 'payment_profile', 'cash', 'cheque', 'apple_pay', 'google_pay']
       custom:
         $ref: '#/definitions/Custom'
       card:
@@ -1318,12 +1318,10 @@ definitions:
       merchant_data:
         type: string
         maxLength: 32
-        description: 'Returned only for ''interac'' or 3D Secure payment requests. This value can be used as the {id} value when creating your ''continue'' endpoint URL.'
+        description: 'Returned only for 3D Secure payment requests. This value can be used as the {id} value when creating your ''continue'' endpoint URL.'
       contents:
         type: string
-        description: 'Returned only for ''interac'' or 3D Secure payment requests. This should be embedded in the user''s browser client and this needs to be displayed to the customer to redirect them to the Interac login or 3D Secure processing page.'
-      interac_online:
-        $ref: '#/definitions/InteracOnlineResponse'
+        description: 'Returned only for 3D Secure payment requests. This should be embedded in the user''s browser client and this needs to be displayed to the customer to redirect them to the 3D Secure processing page.'
       links:
         type: array
         items:
@@ -1391,15 +1389,6 @@ definitions:
       processed:
         type: boolean
         description: 'Is true if the issuing bank has successfully processed an AVS check on the transaction. Is false if no AVS check was performed.'
-  InteracOnlineResponse:
-    description: 'Returned only in the final response from the ''continue'' endpoint.'
-    properties:
-      idebit_issconf:
-        type: string
-        description: 'A numeric confirmation code of the payment'
-      idebit_issname:
-        type: string
-        description: 'Name of the account holder''s financial institution'
   CardGetTransactionResponse:
     properties:
       card_type:
@@ -1852,10 +1841,6 @@ definitions:
         type: boolean
         default: false
         description: 'Whether the merchant is configured to use Eft/Ach.'
-      interac_online_enabled:
-        type: boolean
-        default: false
-        description: 'Whether the merchant is configured to use Interac Online.'
       visa_src_enabled:
         type: boolean
         default: false
@@ -2723,11 +2708,9 @@ definitions:
     properties:
       payment_method:
         type: string
-        description: 'For a 3D Secure payment process the value for this property will always be ''card''. For an Interac Online process the value for this property will always be ''interac''.'
+        description: 'For a 3D Secure payment process the value for this property will always be ''card''.
       card_response:
         $ref: '#/definitions/CardResponse'
-      interac_response:
-        $ref: '#/definitions/InteracResponse'
   CardResponse:
     description: 'For a 3D Secure payment process.'
     required:
@@ -2821,45 +2804,6 @@ definitions:
         type: boolean
         default: true
         description: 'True if the browser has JavaScript enabled.'
-  InteracResponse:
-    description: 'For an Interac Online payment process.'
-    required:
-      - idebit_track2
-      - idebit_isslang
-      - idebit_version
-      - idebit_issconf
-      - idebit_issname
-      - idebit_amount
-      - idebit_invoice
-    properties:
-      idebit_track2:
-        type: string
-        maxLength: 256
-        description: 'Assigned by financial institution. Contains PAN, Expiry Date, and Transaction ID.'
-      idebit_isslang:
-        type: string
-        maxLength: 2
-        description: 'The payments language code that is en or fr.'
-      idebit_version:
-        type: number
-        format: integer
-        description: 'Always 1. This value is in the redirect Bambora initially sends.'
-      idebit_issconf:
-        type: string
-        maxLength: 32
-        description: 'Issuer Confirmation Number from online banking to be displayed on the merchant''s confirmation page. Must be URL decoded.'
-      idebit_issname:
-        type: string
-        maxLength: 32
-        description: 'Financial institution''s name to be displayed on the merchant''s confirmation page. Must be URL decoded.'
-      idebit_amount:
-        type: number
-        format: integer
-        description: 'This is the amount of the transaction, in cents. For example, $13.25 would be represented by 1325.'
-      idebit_invoice:
-        type: string
-        maxLength: 32
-        description: 'The original trnOrderNumber you submitted to Bambora.'
   CardOnFileResponse:
     properties:
       type:

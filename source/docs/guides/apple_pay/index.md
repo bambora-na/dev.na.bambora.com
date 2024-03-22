@@ -229,4 +229,6 @@ You can add the test cards listed below to your Apple Wallet and use them to tri
 | Visa Card                 | 4030 0000 1000 1234 | 111   | 11/2027 |
 | Mastercard                | 5204 2477 5000 1471 | 111   | 11/2027 |
 | American Express          | 3499 569590 41362   | 1111  | 12/2027 |
+| Discover                  | 6011 0009 9091 1111 | 111   | 11/2027 |
+| JCB                       | 3569 9998 5006 0781 | 111   | 11/2027 |
 Notes: The Expiry can be any date in the future
