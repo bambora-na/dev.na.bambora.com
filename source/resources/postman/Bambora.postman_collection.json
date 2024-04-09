@@ -5308,6 +5308,135 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Apple Pay",
+			"item": [
+				{
+					"name": "Make Payment (Apple Pay)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var passcode_encoded = btoa(environment[\"merchant_id\"] + \":\" + environment[\"payment_passcode\"]);\r",
+									"postman.setEnvironmentVariable(\"passcode_encoded\", passcode_encoded);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+									"postman.clearEnvironmentVariable(\"passcode_encoded\");\r",
+									"\r",
+									"if(responseCode.code === 200) {\r",
+									"    var jsonData = JSON.parse(responseBody);\r",
+									"    // transaction id used for void: \r",
+									"    postman.setEnvironmentVariable(\"transId\", jsonData.id);\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Passcode {{passcode_encoded}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"amount\": 21,\r\n    \"payment_method\":\"apple_pay\",\r\n    \"apple_pay\": {\r\n        \"apple_pay_merchant_id\": \"{{apple_pay_merchant_id}}\",\r\n        \"complete\": true,\r\n        \"payment_token\": \"{{base64_encoded_encrypted_token}}\"\r\n    },\r\n    \"billing\":{\r\n        \"name\": \"Test User\",\r\n        \"address_line1\": \"1755 W. BROADWAY SUITE 105\",\r\n        \"address_line2\": \"\",\r\n        \"city\": \"Victoria\",\r\n        \"province\": \"BC\",\r\n        \"country\": \"CA\",\r\n        \"postal_code\": \"J0L1T0\",\r\n        \"phone_number\": \"1234567890\",\r\n        \"email_address\": \"tester@test.com\"\r\n    },\r\n    \"custom\": {\r\n        \"ref1\":\"123\"\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/v1/payments",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"payments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Make Payment (Apple Pay Passthrough)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var passcode_encoded = btoa(environment[\"merchant_id\"] + \":\" + environment[\"payment_passcode\"]);\r",
+									"postman.setEnvironmentVariable(\"passcode_encoded\", passcode_encoded);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;\r",
+									"postman.clearEnvironmentVariable(\"passcode_encoded\");\r",
+									"\r",
+									"if(responseCode.code === 200) {\r",
+									"    var jsonData = JSON.parse(responseBody);\r",
+									"    // transaction id used for void: \r",
+									"    postman.setEnvironmentVariable(\"transId\", jsonData.id);\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Passcode {{passcode_encoded}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"amount\": 21,\r\n    \"payment_method\":\"apple_pay\",\r\n    \"apple_pay\": {\r\n        \"passthrough\": true,\r\n        \"complete\": true,\r\n        \"payment_token\": \"{{base64_encoded_decrypted_token}}\"\r\n    },\r\n    \"billing\":{\r\n        \"name\": \"Test User\",\r\n        \"address_line1\": \"1755 W. BROADWAY SUITE 105\",\r\n        \"address_line2\": \"\",\r\n        \"city\": \"Victoria\",\r\n        \"province\": \"BC\",\r\n        \"country\": \"CA\",\r\n        \"postal_code\": \"J0L1T0\",\r\n        \"phone_number\": \"1234567890\",\r\n        \"email_address\": \"tester@test.com\"\r\n    },\r\n    \"custom\": {\r\n        \"ref1\":\"123\"\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "{{url}}/v1/payments",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"payments"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
