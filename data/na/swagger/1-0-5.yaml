@@ -1268,7 +1268,7 @@ definitions:
         type: integer
         description: 'The id of the merchant that authorized the transaction.'
       approved:
-        type: integer
+        type: string
         description: 'Approval status of payment transaction. 0 if the transaction is not approved. 1 if the transaction is approved.'
       message_id:
         type: integer
@@ -1406,7 +1406,7 @@ definitions:
         type: integer
         description: 'Result of Address verification. 0 if Adddress Verification Service(AVS) is disabled or AVS fails. 1 if AVS is enabled and address and postal/zip code match.'
       avs_result:
-        type: integer
+        type: string
         description: 'Result of street address and Postal/Zip match/mismatch. 0 in case of mismatch. 1 in case of match.'
       expiry_month:
         type: string
@@ -1467,7 +1467,7 @@ definitions:
         type: integer
         description: 'The id of the merchant that authorized the transaction.'
       approved:
-        type: boolean
+        type: integer
       message_id:
         type: number
         format: integer
