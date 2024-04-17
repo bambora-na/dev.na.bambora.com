@@ -2102,6 +2102,21 @@ definitions:
       authorizing_merchant_id:
         type: integer
         description: 'The id of the merchant that authorized this transaction.'
+      version_3ds:
+        type: integer
+        description: 'The version of 3D Secure being used.  This should return 2 since 1 is no longer supported.  0 is returned if not 3D Secure.'
+      flow_type_3ds:
+        type: string
+        description: 'The 3D Secure authenication flow type. F = Frictionless, C = Challenge'
+        enum: ['F','C']
+      status_3ds:
+        type: string
+        description: 'The result returned back from the 3D Secure authenication.'
+        enum: ['Success','Attempted','Rejected','Failed','Unavailable']
+      cof_type:
+        type: string
+        description: 'The type of credential-on-file transaction.'
+        enum: ['first_installment','subsequent_installment','first_recurring','subsequent_recurring','first_unscheduled','subsequent_customer_initiated','subsequent_unscheduled']
   PaymentProfileResponse:
     properties:
       code:
