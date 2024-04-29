@@ -156,3 +156,5 @@ For more information about testing with Google Pay:
 [Sample Tokens](https://developers.google.com/pay/api/web/guides/resources/sample-tokens)
 
 *TD Support Only
+
+If you are a TD customer and interested in Google Pay, please contact us at support@onlinemart.ca.
