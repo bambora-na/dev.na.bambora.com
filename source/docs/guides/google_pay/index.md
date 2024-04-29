@@ -157,4 +157,4 @@ For more information about testing with Google Pay:
 
 *TD Support Only
 
-If you are a TD customer and interested in Google Pay, please contact us at support@onlinemart.ca.
+If you are a TD customer and interested in Google Pay, please contact us at [support@onlinemart.ca](mailto:support@onlinemart.ca).
