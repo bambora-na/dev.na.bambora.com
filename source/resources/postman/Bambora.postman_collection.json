@@ -5348,11 +5348,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Passcode {{passcode_encoded}}"
+								"value": "Passcode {{passcode_encoded}}",
+								"type": "text"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json"
+								"value": "application/json",
+								"type": "text"
 							}
 						],
 						"body": {
@@ -5408,11 +5410,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "Passcode {{passcode_encoded}}"
+								"value": "Passcode {{passcode_encoded}}",
+								"type": "text"
 							},
 							{
 								"key": "Content-Type",
-								"value": "application/json"
+								"value": "application/json",
+								"type": "text"
 							}
 						],
 						"body": {
