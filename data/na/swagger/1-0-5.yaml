@@ -2556,7 +2556,7 @@ definitions:
     properties:
         status: 
             type: string
-            description: 'Status of 3D secure authentication for the transaction. One of: Success, Attempted, Rejected, Failed, Unavailable, or Error'
+            description: 'Status of 3D secure authentication for the transaction. One of: Succeeded, Attempted, Rejected, Failed, Unavailable, or Error'
   BrowserData:
     description: |
       Data collected about the cardholders browser, required for 3DS 2.0 transactions, optional for others.
