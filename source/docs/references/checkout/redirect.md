@@ -34,7 +34,7 @@ Transaction information is returned as key/value pairs of the query string passe
 | cvdID | Single digit | See table. |
 | cardType | 2 alpha chars | See table. |
 | trnType | Up to 3 alphanumeric characters | The type of transaction. See table. |
-| paymentMethod | 2 character alphanumeric | CC - credit card, IO - Interac Online. |
+| paymentMethod | 2 character alphanumeric | CC - credit card. |
 | ref1 | Up to 256 alphanumeric characters | Custom order reference. |
 | ref2 | Up to 256 alphanumeric characters | Custom order reference. |
 | ref3 | Up to 256 alphanumeric characters | Custom order reference. |
@@ -51,13 +51,6 @@ Transaction information is returned as key/value pairs of the query string passe
 | avsAddrMatch | Binary digit | Street address match. 1 is a match, 0 is different. |
 | avsPostalMatch | Binary digit |  Postal/ZIP code match. 1 is a match, 0 is different. |
 | avsMessage | Up to 128 alphanumeric characters | Description of the avsID. |
-
-####  Interac Online
-| Variable | Type | Description |
-| -------- | ---- | ----------- |
-| ioConfCode | Up to 15 alphanumeric characters | INTERAC Online confirmation
-code. |
-| ioInstName | Up to 30 alphanumeric characters | INTERAC Online financial institution. |
 
 ####  CAV
 | Variable | Type | Description |

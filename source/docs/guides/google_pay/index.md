@@ -12,7 +12,7 @@ navigation:
   header_active: Guides
 ---
 
-# Google Pay&#8482;
+# Google Pay&#8482;*
 
 ## About Google Pay
 
@@ -154,3 +154,7 @@ For more information about testing with Google Pay:
 [Test Card Suite](https://developers.google.com/pay/api/web/guides/resources/test-card-suite)
 
 [Sample Tokens](https://developers.google.com/pay/api/web/guides/resources/sample-tokens)
+
+*TD Support Only
+
+If you are a TD customer and interested in Google Pay, please contact us at [support@onlinemart.ca](mailto:support@onlinemart.ca).

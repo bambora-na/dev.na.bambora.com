@@ -33,7 +33,7 @@ paths:
         Make a payment using credit card, cash, cheque, profile, token, Apple Pay, or Google Pay. Each payment type has its own json definition passed in the
         body. For all payments you have the standard Billing, Shipping, Comments, etc. fields that are optional. Only the amount is required along with the
         payment data for card, cash, cheque, profile, and token. You must change the payment&#95;method for each payment type. Credit Card - "card",
-        Payment Profile - "payment&#95;profile", Single Use Token - "token", Cash - "cash", Cheque - "cheque", Interac - "interac", Apple Pay - "apple&#95;pay",
+        Payment Profile - "payment&#95;profile", Single Use Token - "token", Cash - "cash", Cheque - "cheque", Apple Pay - "apple&#95;pay",
         Google Pay - "google&#95;pay".
       tags:
         - Payments
@@ -200,8 +200,8 @@ paths:
           $ref: '#/responses/InternalServerError'
   '/payments/{merchant_data}/continue':
     post:
-      summary: 3D Secure or Interac Online payments
-      description: Continues 3D Secure or Interac Online payment processing.
+      summary: 3D Secure payments
+      description: Continues 3D Secure payment processing.
       tags:
         - Payments
       operationId: continuePayment
@@ -786,6 +786,35 @@ paths:
           $ref: '#/responses/MethodNotAllowed'
         500:
           $ref: '#/responses/InternalServerError'
+  '/recurring/{accountId}':
+    get:
+      summary: Get account
+      description: 'Get a Recurring Payment Profile using account ID, also known as ID.'
+      tags:
+        - Recurring Payment Account
+      operationId: getAccount
+      parameters:
+        - name: accountId
+          in: path
+          description: The account id.
+          required: true
+          type: integer
+      responses:
+        200:
+          description: The Account.
+          schema:
+            $ref: '#/definitions/RecurringPaymentResponse'
+        400:
+          $ref: '#/responses/RecurringPaymentBadRequest'
+        401:
+          $ref: '#/responses/RecurringPaymentUnauthorized'
+        404:
+          $ref: '#/responses/RecurringPaymentInvalidId'
+        415:
+          $ref: '#/response/RecurringPaymentInvalidContentType'
+        500:
+          $ref: '#/responses/RecurringPaymentInternalServerError'  
+     
   /scripts/tokenization/tokens:
     post:
       summary: Tokenize credit card
@@ -828,6 +857,26 @@ responses:
     description: Internal Server Error
     schema:
       $ref: '#/definitions/ErrorResponse'
+  RecurringPaymentBadRequest:
+    description: Bad Request
+    schema: 
+      $ref: '#/definitions/RecurringPaymentErrorResponse'
+  RecurringPaymentUnauthorized:
+    description: Authentication Failure
+    schema: 
+      $ref: '#/definitions/RecurringPaymentErrorResponse'
+  RecurringPaymentInvalidId:
+    description: Invalid Account ID
+    schema: 
+      $ref: '#/definitions/RecurringPaymentErrorResponse'
+  RecurringPaymentInternalServerError:
+    description: Internal Server Error
+    schema: 
+      $ref: '#/definitions/RecurringPaymentErrorResponse'
+  RecurringPaymentInvalidContentType:
+    description: Invalid Content Type
+    schema: 
+      $ref: '#/definitions/RecurringPaymentErrorResponse'
 definitions:
   PaymentRequest:
     required:
@@ -845,7 +894,7 @@ definitions:
       payment_method:
         type: string
         description: 'The desired method of payment.'
-        enum: ['card', 'token', 'payment_profile', 'cash', 'cheque', 'interac', 'apple_pay', 'google_pay', '3d_secure_token','processor_token']
+        enum: ['card', 'token', 'payment_profile', 'cash', 'cheque', 'apple_pay', 'google_pay', '3d_secure_token','processor_token']
       language:
         type: string
         maxLength: 3
@@ -975,12 +1024,15 @@ definitions:
       - apple_pay_merchant_id
       - payment_token
     properties:
+      passthrough:
+        type: boolean
+        description: False or null indicates a regular (Worldline-decrypted) Apple Pay transaction. True indicates a passthrough (externally-decrypted) transaction.
       apple_pay_merchant_id:
         type: string
-        description: The Apple Pay merchant ID.
+        description: The Apple Pay merchant ID. Not required for passthrough transactions.
       payment_token:
         type: string
-        description: The encrypted token provided by Apple Pay that you then Base64 encode.
+        description: The encrypted payment token provided by Apple Pay, which you then base64-encode. For passthrough, decrypt the token before encoding it.
       complete:
         type: boolean
         default: true
@@ -1216,7 +1268,7 @@ definitions:
         type: integer
         description: 'The id of the merchant that authorized the transaction.'
       approved:
-        type: integer
+        type: string
         description: 'Approval status of payment transaction. 0 if the transaction is not approved. 1 if the transaction is approved.'
       message_id:
         type: integer
@@ -1256,7 +1308,7 @@ definitions:
       payment_method:
         type: string
         description: 'Payment method'
-        enum: ['card', 'token', 'payment_profile', 'cash', 'cheque', 'interac', 'apple_pay', 'google_pay']
+        enum: ['card', 'token', 'payment_profile', 'cash', 'cheque', 'apple_pay', 'google_pay']
       custom:
         $ref: '#/definitions/Custom'
       card:
@@ -1266,12 +1318,10 @@ definitions:
       merchant_data:
         type: string
         maxLength: 32
-        description: 'Returned only for ''interac'' or 3D Secure payment requests. This value can be used as the {id} value when creating your ''continue'' endpoint URL.'
+        description: 'Returned only for 3D Secure payment requests. This value can be used as the {id} value when creating your ''continue'' endpoint URL.'
       contents:
         type: string
-        description: 'Returned only for ''interac'' or 3D Secure payment requests. This should be embedded in the user''s browser client and this needs to be displayed to the customer to redirect them to the Interac login or 3D Secure processing page.'
-      interac_online:
-        $ref: '#/definitions/InteracOnlineResponse'
+        description: 'Returned only for 3D Secure payment requests. This should be embedded in the user''s browser client and this needs to be displayed to the customer to redirect them to the 3D Secure processing page.'
       links:
         type: array
         items:
@@ -1339,15 +1389,6 @@ definitions:
       processed:
         type: boolean
         description: 'Is true if the issuing bank has successfully processed an AVS check on the transaction. Is false if no AVS check was performed.'
-  InteracOnlineResponse:
-    description: 'Returned only in the final response from the ''continue'' endpoint.'
-    properties:
-      idebit_issconf:
-        type: string
-        description: 'A numeric confirmation code of the payment'
-      idebit_issname:
-        type: string
-        description: 'Name of the account holder''s financial institution'
   CardGetTransactionResponse:
     properties:
       card_type:
@@ -1365,7 +1406,7 @@ definitions:
         type: integer
         description: 'Result of Address verification. 0 if Adddress Verification Service(AVS) is disabled or AVS fails. 1 if AVS is enabled and address and postal/zip code match.'
       avs_result:
-        type: integer
+        type: string
         description: 'Result of street address and Postal/Zip match/mismatch. 0 in case of mismatch. 1 in case of match.'
       expiry_month:
         type: string
@@ -1426,7 +1467,7 @@ definitions:
         type: integer
         description: 'The id of the merchant that authorized the transaction.'
       approved:
-        type: boolean
+        type: integer
       message_id:
         type: number
         format: integer
@@ -1800,10 +1841,6 @@ definitions:
         type: boolean
         default: false
         description: 'Whether the merchant is configured to use Eft/Ach.'
-      interac_online_enabled:
-        type: boolean
-        default: false
-        description: 'Whether the merchant is configured to use Interac Online.'
       visa_src_enabled:
         type: boolean
         default: false
@@ -2060,11 +2097,26 @@ definitions:
       entry_method:
         type: string
         maxLength: 1
-        description: 'How the transaction was initiated. N = Standard Entry, A = Apple Pay, P = Google Pay, S = EMV Swipe, V = Visa Checkout, Y = Unimag Card Swiper, T = EMV Chip Tap, E = EMV Chip Dip'
-        enum: ['N','A','P','S','V','Y','T','E']
+        description: 'How the transaction was initiated. N = Standard Entry, A = Apple Pay, D = Apple Pay (External Decryption), P = Google Pay, V = Visa Checkout, T = TD Token'
+        enum: ['N','A','D','P','V','T']
       authorizing_merchant_id:
         type: integer
         description: 'The id of the merchant that authorized this transaction.'
+      version_3ds:
+        type: integer
+        description: 'The version of 3D Secure being used.  This should return 2 since 1 is no longer supported.  0 is returned if not 3D Secure.'
+      flow_type_3ds:
+        type: string
+        description: 'The 3D Secure authenication flow type. F = Frictionless, C = Challenge'
+        enum: ['F','C']
+      status_3ds:
+        type: string
+        description: 'The result returned back from the 3D Secure authenication.'
+        enum: ['Success','Attempted','Rejected','Failed','Unavailable']
+      cof_type:
+        type: string
+        description: 'The type of credential-on-file transaction.'
+        enum: ['first_installment','subsequent_installment','first_recurring','subsequent_recurring','first_unscheduled','subsequent_customer_initiated','subsequent_unscheduled']
   PaymentProfileResponse:
     properties:
       code:
@@ -2346,6 +2398,148 @@ definitions:
         description: the ID of the payment profile. You need to keep track of this value.
       card:
         $ref: '#/definitions/ProfileCards'
+  RecurringPaymentResponse:
+    properties:
+      account_id:
+        type: number
+        format: integer
+        description: 'Unique account ID'
+      state:
+        type: string
+        maxLength: 6
+        description: 'The state of the Recurring Payment account'
+        enum: ['Active', 'OnHold', 'Closed']
+      language:
+        type: string
+        maxLength: 3
+        description: "Account's billing language"
+      payment:
+        $ref: '#/definitions/RecurringPaymentDetails'
+      billing:
+        $ref: '#/definitions/Address'
+      card:
+        $ref: '#/definitions/RecurringPaymentCard'
+      custom:
+        $ref: '#/definitions/RecurringPaymentCustom'
+      schedule:
+        $ref: '#/definitions/RecurringPaymentSchedule'    
+  RecurringPaymentDetails:
+    properties:
+      amount:
+        type: number
+        format: double
+        description: 'A decimal value in dollars. Uses up to two decimal places.'
+      disable_tax1:
+        type: boolean
+        description: 'Tax included or not'
+      disable_tax2:
+        type: boolean
+        description: 'Tax included or not'
+      process_back_payments:
+        type: boolean
+        description: 'If a recurring payment is disabled and later reactivated, back payments will be charged if enabled.'
+  RecurringPaymentCard:
+    properties:
+      card_type:
+        type: string
+        maxLength: 2
+        description: 'The type of card used in the transaction. AM = American Express, DI = Diners, JB = JCB, MC = MasterCard, NN = Discover, VI = Visa, PV = Visa Debit, MD = Debit Mastercard'
+        enum: ['AM','DI','JB','MC','NN','VI','PV','MD']
+      name:
+        type: string
+        minLength: 1
+        maxLength: 64
+        description: Card holder name.
+      expiry_year:
+        type: string
+        maxLength: 2
+        description: eg. 25 for 2025.
+      expiry_month:
+        type: string
+        maxLength: 2
+        description: eg. 02 for February.
+  RecurringPaymentCustom:
+    properties:
+      order_number:
+        type: string
+        maxLength: 30
+        description: 'Order number'
+      comments:
+        type: string
+        maxLength: 2000
+        description: alphanumeric
+      ref1:
+        type: string
+        maxLength: 256
+      ref2:
+        type: string
+        maxLength: 256
+      ref3:
+        type: string
+        maxLength: 256
+      ref4:
+        type: string
+        maxLength: 256
+      ref5:
+        type: string
+        maxLength: 256
+  RecurringPaymentSchedule:
+    properties:
+      period:
+        type: string
+        description: 'The billing period is the regular interval at which credit card transactions are charged'
+      increment:
+        type: integer
+        description: 'The frequency of the transactions'
+      start_date:
+        type: string
+        format: date-time
+        description: 'Initial card charge date. Format: 2024-01-01T00:00:00'
+      second_billing:
+        type: string
+        format: date-time
+        description: "Card's second charge date. Format: 2024-01-01T00:00:00"
+      expiry_date:
+        type: string
+        format: date-time
+        description: 'The last date of the billing cycle. If never_expires is true, default expiry date is returned i.e. 1900-01-01T00:00:00. Format: 2024-01-01T00:00:00'
+      never_expires:
+        type: boolean
+        description: 'Card incurs charges with no end date'
+      bill_at_end_of_month:
+        type: boolean
+        description: 'Card will be charged at the end of the month'
+      upcoming_transactions:
+        type: array
+        maxLength: 3
+        items:
+          $ref: '#/definitions/UpcomingTransactionRecord'
+  UpcomingTransactionRecord:
+    properties:
+      billing_date:
+        type: string
+        format: date-time
+        description: 'Start date of the billing cycle. Format: 2024-01-01T00:00:00'
+      billing_end:
+        type: string
+        format: date-time
+        description: 'Last date of the billing cycle. Format: 2024-01-01T00:00:00'
+      amount:
+        type: number
+        format: double
+        description: 'A decimal value in dollars. Uses up to two decimal places.'
+      total_amount:
+        type: number
+        format: double
+        description: 'Total amount of transaction in dollars and cents'
+      tax1:
+        type: number
+        format: double
+        description: 'Total amount of tax1 in dollars and cents'
+      tax2:
+        type: number
+        format: double
+        description: 'Total amount of tax2 in dollars and cents'
   ErrorResponse:
     properties:
       code:
@@ -2367,6 +2561,18 @@ definitions:
           $ref: '#/definitions/Detail'
       validation:
         $ref: '#/definitions/CardValidation'
+  RecurringPaymentErrorResponse:
+    properties:
+      code:
+        type: integer
+        format: int32
+      category:
+        type: integer
+        format: int32
+      category_name:
+        type: string
+      message:
+        type: string
   CardValidation:
     properties:
       id:
@@ -2517,11 +2723,9 @@ definitions:
     properties:
       payment_method:
         type: string
-        description: 'For a 3D Secure payment process the value for this property will always be ''card''. For an Interac Online process the value for this property will always be ''interac''.'
+        description: 'For a 3D Secure payment process the value for this property will always be ''card''.
       card_response:
         $ref: '#/definitions/CardResponse'
-      interac_response:
-        $ref: '#/definitions/InteracResponse'
   CardResponse:
     description: 'For a 3D Secure payment process.'
     required:
@@ -2615,45 +2819,6 @@ definitions:
         type: boolean
         default: true
         description: 'True if the browser has JavaScript enabled.'
-  InteracResponse:
-    description: 'For an Interac Online payment process.'
-    required:
-      - idebit_track2
-      - idebit_isslang
-      - idebit_version
-      - idebit_issconf
-      - idebit_issname
-      - idebit_amount
-      - idebit_invoice
-    properties:
-      idebit_track2:
-        type: string
-        maxLength: 256
-        description: 'Assigned by financial institution. Contains PAN, Expiry Date, and Transaction ID.'
-      idebit_isslang:
-        type: string
-        maxLength: 2
-        description: 'The payments language code that is en or fr.'
-      idebit_version:
-        type: number
-        format: integer
-        description: 'Always 1. This value is in the redirect Bambora initially sends.'
-      idebit_issconf:
-        type: string
-        maxLength: 32
-        description: 'Issuer Confirmation Number from online banking to be displayed on the merchant''s confirmation page. Must be URL decoded.'
-      idebit_issname:
-        type: string
-        maxLength: 32
-        description: 'Financial institution''s name to be displayed on the merchant''s confirmation page. Must be URL decoded.'
-      idebit_amount:
-        type: number
-        format: integer
-        description: 'This is the amount of the transaction, in cents. For example, $13.25 would be represented by 1325.'
-      idebit_invoice:
-        type: string
-        maxLength: 32
-        description: 'The original trnOrderNumber you submitted to Bambora.'
   CardOnFileResponse:
     properties:
       type:
