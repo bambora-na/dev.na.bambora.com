@@ -556,7 +556,7 @@ trnApproved=1
 &ref4=
 &ref5=
 &eci=7
-&3DSecureStatus=Success
+&3DSecureStatus=Succeeded
 ```
 
 ## Card on File Transactions
@@ -905,7 +905,7 @@ curl --location --request GET 'https://api.na.bambora.com/v1/EMV3DS/MDBiYmI5NTYt
         "expiry_year": "2019"
     },
     "flow_type": "F",
-    "status": "Success",
+    "status": "Succeeded",
     "authorization": {
         "eci": "5",
         "cavv": "AAABBEg0VhI0VniQEjRWAAAAAAA=",
