@@ -15,12 +15,10 @@ navigation:
 
 <div style='border-color:red; border-style:solid;padding: 1% 1%' ><p style='font-weight:bold'>PLEASE NOTE: Checkout will no longer be brandable after February 28, 2025.</p> 
  
-To comply with the <a href="https://docs-prv.pcisecuritystandards.org/PCI%20DSS/Standard/PCI-DSS-v4_0.pdf" target="\_blank">PPCI DSS v4.0</a> the brandable functionality of Worldline’s hosted Checkout form will no longer be available after **February 28, 2025.** Please review the upcoming changes: 
+To comply with the <a href="https://docs-prv.pcisecuritystandards.org/PCI%20DSS/Standard/PCI-DSS-v4_0.pdf" target="\_blank">PPCI DSS v4.0</a> the brandable functionality of Worldline’s hosted Checkout form will no longer be available after <strong>February 28, 2025</strong>. Please review the upcoming changes: 
 •	Custom headers and footers will no longer be supported.  
 •	We will implement a neutral colourway to seamlessly fit any checkout. 
-•	For a fully brandable checkout solution, please use Worldline’s <a href="https://dev.na.bambora.com/docs/guides/custom_checkout/" target="\_blank">Custom Checkout</a>.</div>
-
-
+•	For a fully brandable checkout solution, please use Worldline’s <a href="https://dev.na.bambora.com/docs/guides/custom_checkout/" target="\_blank">Custom Checkout</a>.</div></br>
 Checkout allows you to accept payments online with just one link. It is a hosted payment form that supports payment cards and [Visa Secure Remote Commerce (SRC)](https://dev.na.bambora.com/docs/guides/visa_checkout). You can link to Checkout from your website or from an email, allowing it to slot into either a shopping cart flow or an invoicing flow.
 This guide will show you how to create a form and a link before sending it out to clients, customers, and donors
 
