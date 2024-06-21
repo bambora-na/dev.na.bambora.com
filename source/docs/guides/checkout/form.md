@@ -12,7 +12,15 @@ navigation:
 ---
 
 # Configure the form
-After the user clicks on the link or button on your site, they are redirected to the Bambora Checkout Form.
+
+<div style='border-color:red; border-style:solid;padding: 1% 1%' ><p style='font-weight:bold'>PLEASE NOTE: Checkout will no longer be brandable after February 28, 2025.</p> 
+ 
+To comply with the [PPCI DSS v4.0](https://docs-prv.pcisecuritystandards.org/PCI%20DSS/Standard/PCI-DSS-v4_0.pdf) the brandable functionality of Worldline’s hosted Checkout form will no longer be available after **February 28, 2025.** Please review the upcoming changes: 
+•	Custom headers and footers will no longer be supported.  
+•	We will implement a neutral colourway to seamlessly fit any checkout. 
+•	For a fully brandable checkout solution, please use Worldline’s Custom Checkout.</div>
+
+After the user clicks on the link or button on your site, they are redirected to the Worldline Checkout Form.
 
 You can configure the form in the [Member Area](https://web.na.bambora.com). You can control what fields are displayed by default and how they are styled. You can also add a custom header and footer to the page. Click on **configuration**, and select **checkout** to find a list of title and form options.
 
