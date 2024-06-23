@@ -18,7 +18,7 @@ navigation:
 To comply with the <a href="https://docs-prv.pcisecuritystandards.org/PCI%20DSS/Standard/PCI-DSS-v4_0.pdf" target="\_blank">PPCI DSS v4.0</a> the brandable functionality of Worldline’s hosted Checkout form will no longer be available after <strong>February 28, 2025</strong>. Please review the upcoming changes:
 <ul>
   <li>Custom headers and footers will no longer be supported.</li>
-  <li>Custom headers and footers will no longer be supported.</li>
+  <li>We will implement a neutral colourway to seamlessly fit any checkout.</li>
   <li>For a fully brandable checkout solution, please use Worldline’s <a href="https://dev.na.bambora.com/docs/guides/custom_checkout/" target="\_blank">Custom Checkout.</a></li>
 </ul>
 </div>
