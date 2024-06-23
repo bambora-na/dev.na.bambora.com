@@ -29,7 +29,7 @@ This guide will show you how to create a form and a link before sending it out t
 This guide will show you how to create a form and a link before sending it out to clients, customers, and donors.
 
 ## Example
-A common use of Checkout would involve hosting a link or a button on your own website that would then redirect the user to the Checkout product hosted on Bambora's services.
+A common use of Checkout would involve hosting a link or a button on your own website that would then redirect the user to the Checkout product hosted on Worldline’s services.
 
 Try it out! Click the "Pay" button below. You can use using the test card number **4030 0000 1000 1234**, with a security code **123** and any expiry date in the future. Checkout will open in a new tab.
 
