@@ -20,7 +20,7 @@ Custom Checkout minimizes the scope of your PCI compliance - limiting it to SAQ 
 ## Demo
 Here is an example of a custom payment form styled with Bootstrap. Custom Checkout can be styled any way you choose. Try it out!
 
-You can use using the test card number 4030 0000 1000 1234, with a security code 123 and any expiry date in the future.
+You can use using the test card number **4030 0000 1000 1234**, with a security code **123** and any expiry date in the future.
 
 See [more examples](/docs/guides/custom_checkout/demos/) of styled Custom Checkout. See a [demo](https://libs.na.bambora.com/customcheckout/1.0.0/demo.html?source=production) of Custom Checkout’s eventing. See a [demo](https://demo.na.bambora.com) of a complete payment flow Custom Checkout.
 
@@ -31,7 +31,7 @@ Checkout is an alternative to building your own payment form with Custom Checkou
 * Both solutions are PCI SAQ A compliant.
 * Checkout is a payment form - it creates sale and pre-auth transactions. Custom Checkout is a tokenizaton library - it returns a token that you use when creating transactions via the Payment API.
 * Checkout involves redirecting the user to a payment form on bambora.com. Custom Checkout embeds Worldline hosted input fields in your webpage.
-* Checkout is not brandable. Custom Checkout allows you to build a fully customized payment form - you retain as much control over UI/UX as you do with native DOM elements..
+* Checkout is not brandable. Custom Checkout allows you to build a fully customized payment form - you retain as much control over UI/UX as you do with native DOM elements.
 
 ## Migration
 
