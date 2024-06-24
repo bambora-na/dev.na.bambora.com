@@ -13,12 +13,23 @@ navigation:
 
 # Checkout
 
-Checkout allows you to accept payments online with just one link. It is a hosted payment form that supports payment cards and Visa Checkout wallets. You can link to Checkout from your website or from an email, allowing it to slot into either a shopping cart flow or an invoicing flow.
+<div style='border-color:red; border-style:solid;padding: 1% 1%' ><p style='font-weight:bold'>PLEASE NOTE: Checkout will no longer be brandable after February 28, 2025.</p> 
+ 
+To comply with the <a href="https://docs-prv.pcisecuritystandards.org/PCI%20DSS/Standard/PCI-DSS-v4_0.pdf" target="\_blank">PPCI DSS v4.0</a> the brandable functionality of Worldline’s hosted Checkout form will no longer be available after <strong>February 28, 2025</strong>. Please review the upcoming changes:
+<ul>
+  <li>Custom headers and footers will no longer be supported.</li>
+  <li>We will implement a neutral colourway to seamlessly fit any checkout.</li>
+  <li>For a fully brandable checkout solution, please use Worldline’s <a href="https://dev.na.bambora.com/docs/guides/custom_checkout/" target="\_blank">Custom Checkout.</a></li>
+</ul>
+</div>
+
+<br>Checkout allows you to accept payments online with just one link. It is a hosted payment form that supports payment cards and [Visa Secure Remote Commerce (SRC)](https://dev.na.bambora.com/docs/guides/visa_checkout). You can link to Checkout from your website or from an email, allowing it to slot into either a shopping cart flow or an invoicing flow.
+This guide will show you how to create a form and a link before sending it out to clients, customers, and donors
 
 This guide will show you how to create a form and a link before sending it out to clients, customers, and donors.
 
 ## Example
-A common use of Checkout would involve hosting a link or a button on your own website that would then redirect the user to the Checkout product hosted on Bambora's services.
+A common use of Checkout would involve hosting a link or a button on your own website that would then redirect the user to the Checkout product hosted on Worldline’s services.
 
 Try it out! Click the "Pay" button below. You can use using the test card number **4030 0000 1000 1234**, with a security code **123** and any expiry date in the future. Checkout will open in a new tab.
 
@@ -34,8 +45,8 @@ Checkout is an alternative to building your own payment form with Custom Checkou
 
 * Both solutions are PCI SAQ A compliant.
 * Checkout is a payment form - it takes payments. Custom Checkout is a tokenizaton library - it returns a token that you can pass to the Payment API to take a payment.
-* Checkout involves redirecting the user to a payment form on bambora.com. Custom Checkout embeds Bambora hosted input fields in your webpage.
-* Checkout is brandable - you can set the primary color, a custom header and a custom footer. Custom Checkout allows you to build a fully customized payment form - you retain as much control over UI/UX as you do with native DOM elements.
+* Checkout involves redirecting the user to a payment form on bambora.com. Custom Checkout embeds Worldline hosted input fields in your webpage.
+* Checkout is not brandable. [Custom Checkout](https://dev.na.bambora.com/docs/guides/custom_checkout/) allows you to build a fully customized payment form - you retain as much control over UI/UX as you do with native DOM elements.
 
 ## Migration
 
