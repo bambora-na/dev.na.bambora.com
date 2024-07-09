@@ -1145,6 +1145,15 @@ definitions:
         type: string
         description: 'Phone number'
         pattern: '^\d{1,20}$'
+      phone_country_code:
+        type: string
+        maxLength: 3
+        description: The country code of the phone number provided.
+      phone_type:
+        type: string
+        maxLength: 1
+        description: The phone type of the phone number provided (m (Mobile), h (Home), or w (Work)).
+        enum: ["m", "h", "w"]  
       email_address:
         type: string
         maxLength: 64
@@ -1183,6 +1192,10 @@ definitions:
         type: string
         description: 'Phone number'
         pattern: '^\d{1,20}$'
+      phone_country_code:
+        type: string
+        maxLength: 3
+        description: The country code of the phone number provided.
       email_address:
         type: string
         maxLength: 64
