@@ -846,6 +846,15 @@ definitions:
         type: string
         description: 'The desired method of payment.'
         enum: ['card', 'token', 'payment_profile', 'cash', 'cheque', 'apple_pay', 'google_pay', '3d_secure_token','processor_token']
+      ship_same_as_ord:
+        type: boolean
+        default: false
+        description: 'If true, the provided Billing Address information will also be used as the Shipping Address information.'
+      device_channel:
+        type: string
+        maxLength: 2
+        description: 'Type of channel used to initiate the transaction. 01 = App (not supported), 02 = Browser, 03 = 3DS Requestor.'
+        enum: ['01', '02', '03']
       language:
         type: string
         maxLength: 3
