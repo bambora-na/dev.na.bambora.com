@@ -2576,9 +2576,18 @@ definitions:
     required:
       - status
     properties:
-        status: 
+        status:
             type: string
             description: 'Status of 3D secure authentication for the transaction. One of: Succeeded, Attempted, Rejected, Failed, Unavailable, or Error'
+        downgraded:
+            type: boolean
+            description: 'Indicates whether the 3DS transaction was downgraded.'
+        reason_merchant:
+            type: string
+            description: 'The reason for the rejection, provided to the merchant.'
+        reason_cardholder: 
+            type: string
+            description: 'The reason for the rejection, displayed to the cardholder.'
   BrowserData:
     description: |
       Data collected about the cardholders browser, required for 3DS 2.0 transactions, optional for others.
