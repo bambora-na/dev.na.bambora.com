@@ -853,8 +853,8 @@ definitions:
       device_channel:
         type: string
         maxLength: 2
-        description: 'Type of channel used to initiate the transaction. 01 = App (not supported), 02 = Browser, 03 = 3DS Requestor.'
-        enum: ['01', '02', '03']
+        description: 'Type of channel used to initiate the transaction. 02 = Browser, 03 = 3DS Requestor.'
+        enum: ['02', '03']
       language:
         type: string
         maxLength: 3
@@ -2584,7 +2584,7 @@ definitions:
             description: 'Indicates whether the 3DS transaction was downgraded.'
         reason_merchant:
             type: string
-            description: 'The reason for the rejection, provided to the merchant.'
+            description: 'The reason for the rejection, provided to the merchant. [See list of reasons](/docs/references/payment_APIs/3ds_reason_list)'
         reason_cardholder: 
             type: string
             description: 'The reason for the rejection, displayed to the cardholder.'
