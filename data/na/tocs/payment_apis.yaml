@@ -10,3 +10,5 @@
   title: Test cards
 - file: /docs/references/payment_APIs/ip_addresses/
   title: IP Addresses
+- file: /docs/references/payment_APIs/3ds_reason_list/
+  title: 3DS Reason List

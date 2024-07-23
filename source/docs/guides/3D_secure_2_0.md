@@ -177,7 +177,7 @@ Continue response:
       "cavv_result": 2
    },
    "3d_secure": {
-      "status": "Success"
+      "status": "Succeeded"
    }
    "links": [
    {
@@ -556,7 +556,7 @@ trnApproved=1
 &ref4=
 &ref5=
 &eci=7
-&3DSecureStatus=Success
+&3DSecureStatus=Succeeded
 ```
 
 ## Card on File Transactions
@@ -905,7 +905,7 @@ curl --location --request GET 'https://api.na.bambora.com/v1/EMV3DS/MDBiYmI5NTYt
         "expiry_year": "2019"
     },
     "flow_type": "F",
-    "status": "Success",
+    "status": "Succeeded",
     "authorization": {
         "eci": "5",
         "cavv": "AAABBEg0VhI0VniQEjRWAAAAAAA=",
@@ -961,7 +961,7 @@ curl --location --request POST 'https://api.na.bambora.com/v1/payments' \
 
 - Payment API response:
     - The payment response will return a status field under the 3d_secure field. Possible values are:
-        - Success
+        - Succeeded
         - Attempted
         - Rejected
         - Failed
@@ -980,7 +980,7 @@ The 3D Secure Status returned in the authentication response indicates if the ca
 
 | Status | Description | Recommended Merchant Action | Liability Shift | Authentication Required: False | Authentication Required: True | Visa/Amex ECI Code | MasterCard ECI Code |
 |--------|---------|-----|-----|-----|-----|-----|-----|
-| Success | Authentication was successful. | Continue with transaction processing. | Yes | Transaction processes | Transaction processes | 5 | 2 |
+| Succeeded | Authentication was successful. | Continue with transaction processing. | Yes | Transaction processes | Transaction processes | 5 | 2 |
 | Attempted | Authentication was attempted but could not be completed. | Continue with transaction processing | Yes | Transaction processes | Transaction processes | 6 | 1 |
 | Rejected | Rejected by issuing bank. | Do not proceed with the transaction. Notify the card holder to contact their card issuer. | No | Transaction declined message 311 | Transaction declined message 311 | 7 | 7 |
 | Failed | Failed to authenticate card holder. | Do not proceed with the transaction. Notify the card holder to contact their card issuer. | No | Transaction declined message 311 | Transaction declined message 311 | 7 | 7 |
@@ -996,16 +996,16 @@ _In rare cases the issuer can downgrade an authenticated transaction after proce
 
 | Card Type | Card Number | 3DS Status | Flow Type | 
 |--------|---------|-----|-----|
-|Visa|4330264936344675|Success|Frictionless|
-|Visa|4012000033330026|Success|Frictionless|
-|Visa|4532153596910568|Success|Frictionless|
-|Visa|4921810000005462|Success|Frictionless|
-|MasterCard|5137009801943438|Success|Frictionless|
-|MasterCard|5140512592070076|Success|Frictionless|
-|MasterCard|5200000091444270|Success|Frictionless|
-|MasterCard|5576938868353339|Success|Frictionless|
-|Amex|375418081197346|Success|Frictionless|
-|Amex|371449635398431|Success|Frictionless|
+|Visa|4330264936344675|Succeeded|Frictionless|
+|Visa|4012000033330026|Succeeded|Frictionless|
+|Visa|4532153596910568|Succeeded|Frictionless|
+|Visa|4921810000005462|Succeeded|Frictionless|
+|MasterCard|5137009801943438|Succeeded|Frictionless|
+|MasterCard|5140512592070076|Succeeded|Frictionless|
+|MasterCard|5200000091444270|Succeeded|Frictionless|
+|MasterCard|5576938868353339|Succeeded|Frictionless|
+|Amex|375418081197346|Succeeded|Frictionless|
+|Amex|371449635398431|Succeeded|Frictionless|
 |Visa|4450213273993630|Attempted|Frictionless|
 |Visa|4012004040524514|Attempted|Frictionless|
 |Visa|4532155854421931|Attempted|Frictionless|
@@ -1040,16 +1040,16 @@ _In rare cases the issuer can downgrade an authenticated transaction after proce
 |MasterCard|5123301306181325|Unavailable|Frictionless|
 |MasterCard|5141720392778702|Unavailable|Frictionless|
 |Amex|371608168632280|Unavailable|Frictionless|
-|Visa|4874970686672022|Success|Challenge|
-|Visa|4796585406258483|Success|Challenge|
-|Visa|4012007153923001|Success|Challenge|
-|Visa|4532153065352672|Success|Challenge|
-|MasterCard|5130257474533310|Success|Challenge|
-|MasterCard|5140266613691523|Success|Challenge|
-|MasterCard|5200003143732874|Success|Challenge|
-|MasterCard|5576935936143114|Success|Challenge|
-|Amex|379764422997381|Success|Challenge|
-|Amex|378069803818698|Success|Challenge|
+|Visa|4874970686672022|Succeeded|Challenge|
+|Visa|4796585406258483|Succeeded|Challenge|
+|Visa|4012007153923001|Succeeded|Challenge|
+|Visa|4532153065352672|Succeeded|Challenge|
+|MasterCard|5130257474533310|Succeeded|Challenge|
+|MasterCard|5140266613691523|Succeeded|Challenge|
+|MasterCard|5200003143732874|Succeeded|Challenge|
+|MasterCard|5576935936143114|Succeeded|Challenge|
+|Amex|379764422997381|Succeeded|Challenge|
+|Amex|378069803818698|Succeeded|Challenge|
 |Visa|4839645466321180|Attempted|Challenge|
 |MasterCard|5168693992589936|Attempted|Challenge|
 |MasterCard|5132782452891321|Attempted|Challenge|
