@@ -99,7 +99,7 @@ paths:
   '/payments/{transId}/void':
     post:
       summary: Void transaction
-      description: 'Void a transaction. You can void payments, returns, pre-auths, and completions. It will cancel that transaction.'
+      description: 'Void a transaction. You can void payments, returns and pre-auths completions. It will cancel that transaction.'
       tags:
         - Payments
       operationId: voidPayment
