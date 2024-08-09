@@ -593,6 +593,8 @@ One of the primary components of 3D Secure 2.0 is the requirement for card holde
 
 All the browser values can be collected via JavaScript, unless of course they have JavaScript disabled.  For reference on how to use JavaScript to collect the required browser data, use or refer to the following mini-library.  https://web.na.bambora.com/admin/assets/js/Bambora3DS2.js
 
+Please note Cardholder Name and either Billing Email or Billing Phone Number are **mandatory** for Visa.
+
 #### Request Parameters
 |Parameter|Data Type|Description|
 |---:|---:|---|
@@ -612,6 +614,9 @@ All the browser values can be collected via JavaScript, unless of course they ha
 |card.number|String|The credit card number to authenticate against|
 |card.expiry.month|Number|The two digit month of the card expiration date.|
 |card.expiry.year|Number|The four digit year of the card expiration date.|
+|card.name|String|Name of the cardholder *Mandatory for Visa|
+|billing.email_address|String|Email of the cardholder *Mandatory for Visa|
+|billing.phone_number|String|Phone number of the cardholder *Mandatory for Visa|
 |token|String|Single-use token id associated to the card to authenticate|
 |payment_profile.customer_code|String|The Secure Payment Profile Customer Code to process the authentication against|
 |payment_profile.card_id|Number|The Card Id to process the authentication against.  This is an optional field, where if not provided the default card will be referenced.|

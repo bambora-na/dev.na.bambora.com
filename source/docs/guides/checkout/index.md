@@ -39,6 +39,8 @@ target="\_blank" style="word-spacing: .3em; letter-spacing: .05em;
 
 See a [demo](https://demo.na.bambora.com/checkout.html) of a complete payment flow using Checkout, and view the [source](https://github.com/bambora/na-payment-apis-demo).
 
+Please note Cardholder Name and either Billing Email or Billing Phone Number are **mandatory** for Visa.
+
 ## Custom Checkout vs Checkout
 
 Checkout is an alternative to building your own payment form with Custom Checkout.
