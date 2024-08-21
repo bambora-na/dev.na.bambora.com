@@ -35,6 +35,8 @@ paths:
         payment data for card, cash, cheque, profile, and token. You must change the payment&#95;method for each payment type. Credit Card - "card",
         Payment Profile - "payment&#95;profile", Single Use Token - "token", Cash - "cash", Cheque - "cheque", Apple Pay - "apple&#95;pay",
         Google Pay - "google&#95;pay".
+
+        Please note Cardholder Name and either Billing Email or Billing Phone Number are **mandatory** for Visa. 
       tags:
         - Payments
       operationId: makePayment
@@ -895,6 +897,15 @@ definitions:
         type: string
         description: 'The desired method of payment.'
         enum: ['card', 'token', 'payment_profile', 'cash', 'cheque', 'apple_pay', 'google_pay', '3d_secure_token','processor_token']
+      ship_same_as_ord:
+        type: boolean
+        default: false
+        description: 'If true, the provided Billing Address information will also be used as the Shipping Address information.'
+      device_channel:
+        type: string
+        maxLength: 2
+        description: 'Type of channel used to initiate the transaction. 02 = Browser, 03 = 3DS Requestor.'
+        enum: ['02', '03']
       language:
         type: string
         maxLength: 3
@@ -1194,6 +1205,15 @@ definitions:
         type: string
         description: 'Phone number'
         pattern: '^\d{1,20}$'
+      phone_country_code:
+        type: string
+        description: The country code of the phone number provided.
+        pattern: '^\d{1,3}$'
+      phone_type:
+        type: string
+        maxLength: 1
+        description: The phone type of the phone number provided - m (Mobile), h (Home) or w (Work).
+        enum: ["m", "h", "w"]  
       email_address:
         type: string
         maxLength: 64
@@ -1232,6 +1252,10 @@ definitions:
         type: string
         description: 'Phone number'
         pattern: '^\d{1,20}$'
+      phone_country_code:
+        type: string
+        maxLength: 3
+        description: The country code of the phone number provided.
       email_address:
         type: string
         maxLength: 64
@@ -2772,9 +2796,18 @@ definitions:
     required:
       - status
     properties:
-        status: 
+        status:
             type: string
-            description: 'Status of 3D secure authentication for the transaction. One of: Success, Attempted, Rejected, Failed, Unavailable, or Error'
+            description: 'Status of 3D secure authentication for the transaction. One of: Succeeded, Attempted, Rejected, Failed, Unavailable, or Error'
+        downgraded:
+            type: boolean
+            description: 'Indicates whether or not the 3DS transaction was downgraded. A downgraded transaction does not provide a liability shift to the merchant, even if the 3DS authentication result was "Success" or "Attempted".'
+        reason_merchant:
+            type: string
+            description: 'For merchant use only. Provides a category which identifies the reason for the rejection. [See list of reasons](/docs/references/payment_APIs/3ds_reason_list)'
+        reason_cardholder: 
+            type: string
+            description: 'The reason for the rejection and instructions on what to do. This can be returned to the cardholder.'
   BrowserData:
     description: |
       Data collected about the cardholders browser, required for 3DS 2.0 transactions, optional for others.
