@@ -41,14 +41,7 @@ The token returned by Custom Checkout is identical to that returned by these oth
 
 ## Browser support
 
-These are the browsers we actively test.
-
-### Desktop
-* Chrome latest
-* Firefox latest
-* Internet Explorer 9+
-* Microsoft Edge
-* Safari 8+
+We support the latest versions of Chrome, Edge, Safari, and Firefox.
 
 ### iOS
 * Safari 8+
