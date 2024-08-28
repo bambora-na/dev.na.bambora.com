@@ -43,11 +43,3 @@ The token returned by Custom Checkout is identical to that returned by these oth
 
 We support the latest versions of Chrome, Edge, Safari, and Firefox.
 
-### iOS
-* Safari 8+
-* Chrome 48+ (iOS 9+)
-
-### Android
-* Native browser 4.4+
-* Chrome
-* Firefox
