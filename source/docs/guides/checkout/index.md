@@ -84,23 +84,7 @@ You can enable Checkout styling on your legacy Hosted Payment Form in the [Membe
 
 ## Browser support
 
-These are the browsers we actively test.
-
-### Desktop
-* Chrome latest
-* Firefox latest
-* Internet Explorer 10+
-* Microsoft Edge
-* Safari 8+
-
-### iOS
-* Safari 8+
-* Chrome 48+ (iOS 9+)
-
-### Android
-* Native browser 4.4+
-* Chrome
-* Firefox
+We support the latest versions of Chrome, Edge, Safari, and Firefox.
 
 
 ## Test account
