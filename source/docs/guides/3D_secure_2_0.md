@@ -617,10 +617,14 @@ Please note Cardholder Name and either Billing Email or Billing Phone Number are
 |card.name|String|Name of the cardholder *Mandatory for Visa|
 |billing.email_address|String|Email of the cardholder *Mandatory for Visa|
 |billing.phone_number|String|Phone number of the cardholder *Mandatory for Visa|
+|billing.phone_country_code|String|The country code of the phone number provided|
+|billing.phone_type|String|The phone type of the phone number provided - m (Mobile), h (Home) or w (Work)|
 |token|String|Single-use token id associated to the card to authenticate|
 |payment_profile.customer_code|String|The Secure Payment Profile Customer Code to process the authentication against|
 |payment_profile.card_id|Number|The Card Id to process the authentication against.  This is an optional field, where if not provided the default card will be referenced.|
 |reference|String|Reference field to associate with the transaction.|
+|ship_same_as_ord|Boolean|The provided Billing Address information will also be used as the Shipping Address information|
+|device_channel|String|Type of channel used to initiate the transaction|
 
 
 #### Card Data Authentication Request Sample
