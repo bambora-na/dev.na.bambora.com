@@ -1008,7 +1008,7 @@ _In rare cases the issuer can downgrade an authenticated transaction after proce
 |Visa|4330264936344675|Succeeded|Frictionless|
 |Visa|4012000033330026|Succeeded|Frictionless|
 |Visa|4532153596910568|Succeeded|Frictionless|
-|Visa|4921810000005462|Succeeded|Frictionless|
+|Visa*|4921810000005462|Succeeded|Frictionless|
 |MasterCard|5137009801943438|Succeeded|Frictionless|
 |MasterCard|5140512592070076|Succeeded|Frictionless|
 |MasterCard|5200000091444270|Succeeded|Frictionless|
@@ -1046,7 +1046,7 @@ _In rare cases the issuer can downgrade an authenticated transaction after proce
 |Amex|371402182236181|Rejected|Frictionless|
 |Visa|4259701590936889|Unavailable|Frictionless|
 |Visa|4475853611842840|Unavailable|Frictionless|
-|MasterCard|5123301306181325|Unavailable|Frictionless|
+|MasterCard*|5123301306181325|Unavailable|Frictionless|
 |MasterCard|5141720392778702|Unavailable|Frictionless|
 |Amex|371608168632280|Unavailable|Frictionless|
 |Visa|4874970686672022|Succeeded|Challenge|
@@ -1070,3 +1070,4 @@ _In rare cases the issuer can downgrade an authenticated transaction after proce
 |MasterCard|5148904639667695|Unavailable|Challenge|
 |MasterCard|5137739025252071|Unavailable|Challenge|
 
+*Card triggers "downgraded = true" (TD only)
