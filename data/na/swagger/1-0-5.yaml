@@ -1211,6 +1211,53 @@ definitions:
         type: string
         maxLength: 64
         description: Email Address
+  BillingAddress:
+    properties:
+      name:
+        type: string
+        maxLength: 64
+        description: Name of the person/business
+      address_line1:
+        type: string
+        maxLength: 64
+        description: Street address
+      address_line2:
+        type: string
+        maxLength: 64
+        description: Additional address information(eg; suite number, apartment number, etc)
+      city:
+        type: string
+        maxLength: 32
+        description: The city
+      province:
+        type: string
+        description: characters (2)
+      country:
+        type: string
+        maxLength: 2
+        description: 'Valid ISO 3166-1 country code'
+        enum: ["AD", "AE", "AF", "AG", "AI", "AL", "AM", "AO", "AQ", "AR", "AS", "AT", "AU", "AW", "AX", "AZ", "BA", "BB", "BD", "BE", "BF", "BG", "BH", "BI", "BJ", "BL", "BM", "BN", "BO", "BQ", "BR", "BS", "BT", "BV", "BW", "BY", "BZ", "CA", "CC", "CD", "CF", "CG", "CH", "CI", "CK", "CL", "CM", "CN", "CO", "CR", "CU", "CV", "CW", "CX", "CY", "CZ", "DE", "DJ", "DK", "DM", "DO", "DZ", "EC", "EE", "EG", "EH", "ER", "ES", "ET", "FI", "FJ", "FK", "FM", "FO", "FR", "GA", "GB", "GD", "GE", "GF", "GG", "GH", "GI", "GL", "GM", "GN", "GP", "GQ", "GR", "GS", "GT", "GU", "GW", "GY", "HK", "HM", "HN", "HR", "HT", "HU", "ID", "IE", "IL", "IM", "IN", "IO", "IQ", "IR", "IS", "IT", "JE", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KP", "KR", "KW", "KY", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MF", "MG", "MH", "MK", "ML", "MM", "MN", "MO", "MP", "MQ", "MR", "MS", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NC", "NE", "NF", "NG", "NI", "NL", "NO", "NP", "NR", "NU", "NZ", "OM", "PA", "PE", "PF", "PG", "PH", "PK", "PL", "PM", "PN", "PR", "PS", "PT", "PW", "PY", "QA", "RE", "RO", "RS", "RU", "RW", "SA", "SB", "SC", "SD", "SE", "SG", "SH", "SI", "SJ", "SK", "SL", "SM", "SN", "SO", "SR", "SS", "ST", "SV", "SX", "SY", "SZ", "TC", "TD", "TF", "TG", "TH", "TJ", "TK", "TL", "TM", "TN", "TO", "TR", "TT", "TV", "TW", "TZ", "UA", "UG", "UM", "US", "UY", "UZ", "VA", "VC", "VE", "VG", "VI", "VN", "VU", "WF", "WS", "YE", "YT", "ZA", "ZM", "ZW"]
+      postal_code:
+        type: string
+        maxLength: 16
+        description: 'Postal/Zip code'
+      phone_number:
+        type: string
+        description: 'Phone number'
+        pattern: '^\d{1,20}$'
+      phone_country_code:
+        type: string
+        maxLength: 3
+        description: The country code of the phone number provided.
+      phone_type:
+        type: string
+        maxLength: 1
+        description: The phone type of the phone number provided - m (Mobile), h (Home) or w (Work).
+        enum: ["m", "h", "w"] 
+      email_address:
+        type: string
+        maxLength: 64
+        description: Email Address
   Custom:
     properties:
       ref1:
@@ -1454,6 +1501,11 @@ definitions:
         type: string
         format: date-time
         description: 'Time stamp of when the transaction occurred'
+      device_channel:
+        type: string
+        maxLength: 2
+        description: 'Type of channel used to initiate the transaction. 02 = Browser, 03 = 3DS Requestor.'
+        enum: ['02', '03']
       amount:
         type: number
         format: double
@@ -1477,9 +1529,11 @@ definitions:
       card:
         $ref: '#/definitions/CardGetTransactionResponse'
       billing:
-        $ref: '#/definitions/Address'
+        $ref: '#/definitions/BillingAddress'
       shipping:
         $ref: '#/definitions/Address'
+      3d_secure:
+        $ref: '#/definitions/3DSecureGETResponse'
       custom:
         $ref: '#/definitions/Custom'
       adjusted_by:
@@ -2590,6 +2644,28 @@ definitions:
         reason_cardholder: 
             type: string
             description: 'The reason for the rejection and instructions on what to do. This can be returned to the cardholder.'
+  3DSecureGETResponse: 
+    description: |
+      3D Secure result data
+    properties:
+        version:
+            type: string
+            description: '3DS Version'
+        flow_type:
+            type: string
+            description: '3DS flow type'
+        status:
+            type: string
+            description: '3DS status'
+        reason_merchant:
+            type: string
+            description: 'For merchant use only. Provides a category which identifies the reason for the rejection. [See list of reasons](/docs/references/payment_APIs/3ds_reason_list)'
+        reason_cardholder:
+            type: string
+            description: 'The reason for the rejection and instructions on what to do. This can be returned to the cardholder.'
+        downgraded: 
+            type: boolean
+            description: 'Indicates whether or not the 3DS transaction was downgraded. A downgraded transaction does not provide a liability shift to the merchant, even if the 3DS authentication result was "Success" or "Attempted".'
   BrowserData:
     description: |
       Data collected about the cardholders browser, required for 3DS 2.0 transactions, optional for others.
