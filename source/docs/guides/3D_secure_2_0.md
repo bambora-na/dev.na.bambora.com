@@ -891,6 +891,10 @@ Use this endpoint to fetch information about previous 3DSv2 sessions.
 |cavv|String|The cardholder authentication verification value|
 |flow_type|String|Indicates the 3DS flow completed for this transaction set to 'F' for Frictionless, and 'C' for Challenge|
 |status|String|Enum string representing the status of the 3DSv2 session|
+|3ds_reason_merchant|String|For merchant use only. Provides a category which identifies the reason for the rejection. [See list of reasons](/docs/references/payment_APIs/3ds_reason_list)|
+|3ds_reason_cardholder|String|The reason for the rejection and instructions on what to do. This can be returned to the cardholder|
+|3ds_downgraded|Boolean|Indicates whether or not the 3DS transaction was downgraded. A downgraded transaction does not provide a liability shift to the merchant, even if the 3DS authentication result was "Success" or "Attempted"|
+|device_channel|String|Type of channel used to initiate the transaction. 02 = Browser, 03 = 3DS Requestor|
 |error|String|If the request resulted in an error this will contain the emun error identifier|
 
 #### Sample GET Request
@@ -914,6 +918,7 @@ curl --location --request GET 'https://api.na.bambora.com/v1/EMV3DS/MDBiYmI5NTYt
         "expiry_year": "2019"
     },
     "flow_type": "F",
+    "3ds_downgraded": false,
     "status": "Succeeded",
     "authorization": {
         "eci": "5",
@@ -923,7 +928,8 @@ curl --location --request GET 'https://api.na.bambora.com/v1/EMV3DS/MDBiYmI5NTYt
         "protocol_version": "2.2"
     },
     "error": null,
-    "created_datetime_utc": "2021-12-14T02:11:50.45"
+    "created_datetime_utc": "2021-12-14T02:11:50.45",
+    "device_channel": "03"
 }
 ```
 
