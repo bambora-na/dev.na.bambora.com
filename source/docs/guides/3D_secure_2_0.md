@@ -918,8 +918,8 @@ curl --location --request GET 'https://api.na.bambora.com/v1/EMV3DS/MDBiYmI5NTYt
         "expiry_year": "2019"
     },
     "flow_type": "F",
-    "3ds_downgraded": false,
     "status": "Succeeded",
+    "3ds_downgraded": false,
     "authorization": {
         "eci": "5",
         "cavv": "AAABBEg0VhI0VniQEjRWAAAAAAA=",
