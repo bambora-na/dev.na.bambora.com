@@ -2172,7 +2172,7 @@ definitions:
       card:
         $ref: '#/definitions/GetProfileDefaultCard'
       billing:
-        $ref: '#/definitions/Address'
+        $ref: '#/definitions/BillingAddress'
       custom:
         $ref: '#/definitions/Custom'
   GetProfileDefaultCard:
@@ -2262,7 +2262,7 @@ definitions:
       token:
         $ref: '#/definitions/ProfileFromToken'
       billing:
-        $ref: '#/definitions/Address'
+        $ref: '#/definitions/BillingAddress'
       custom:
         $ref: '#/definitions/Custom'
       language:
