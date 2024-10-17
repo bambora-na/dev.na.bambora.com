@@ -35,8 +35,6 @@ paths:
         payment data for card, cash, cheque, profile, and token. You must change the payment&#95;method for each payment type. Credit Card - "card",
         Payment Profile - "payment&#95;profile", Single Use Token - "token", Cash - "cash", Cheque - "cheque", Apple Pay - "apple&#95;pay",
         Google Pay - "google&#95;pay".
-
-        Please note Cardholder Name and either Billing Email or Billing Phone Number are **mandatory** for Visa. 
       tags:
         - Payments
       operationId: makePayment
