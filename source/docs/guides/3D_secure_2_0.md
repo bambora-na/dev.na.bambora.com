@@ -32,6 +32,8 @@ When your customer (the cardholder) starts a transaction on your website, either
 
 As the decision is now in the hands of the issuer, they will ask you for more data. The more data you provide, the more accurate the issuer can make their decision about the risk of the transaction - ultimately lead to a frictionless scenario for your customers.
 
+Please note when using 3DS, Cardholder Name and either Billing Email or Billing Phone Number while not required by our APIs are defined as mandatory according to Visa rules.
+
 In addition to this guide, feel free to check out our [Payment APIs Demo implementation](https://github.com/bambora/na-payment-apis-demo) on GitHub.
 
 # Benefits 
