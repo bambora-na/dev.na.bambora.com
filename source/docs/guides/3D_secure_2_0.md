@@ -583,6 +583,8 @@ The 3D Secure 2.0 API provides a set of end points where you may want to utilize
 
 A passcode must be passed in the authorization header when making a request to the 3D Secure 2.0 API.  This API shares the same passcode as the Payment API.
 
+There is an enhancement that will allow ISVs to only require their <a href="/docs/guides/partner_quickstart">Partner-level API passcode</a> to use the EMV 3DSv2 auth-only API on behalf of their sub-merchants.
+
 Access to this API must be enabled by a member of our support team.  For assistance, you can send a message to Client Services or call 1-888-472-0811.
 
 ### /POST /V1/EMV3DS/AuthRequest
@@ -658,11 +660,79 @@ curl --location --request POST 'https://api.na.bambora.com/v1/EMV3DS/AuthRequest
 }'
 ```
 
+#### Card Data Authentication Auth Partner Request Sample
+```shell
+curl --location --request POST 'https://api.na.bambora.com/v1/EMV3DS/AuthRequest' \
+--header 'Authorization: Passcode MzkwOTgwMDAwOmJhbWJvcmE=' \
+--header 'Content-Type: application/json' \
+--header 'Sub-Merchant-Id: 369170000' \
+--data-raw '{
+	"browser": {
+		"accept_header": "text/html,application/xhtml+xml,application/xml;
+        q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;
+        v=b3",
+		"ip_address": "104.200.16.15",
+		"java_enabled": false,
+		"javascript_enabled": true,
+		"language": "en-US",
+		"color_depth": 24,
+		"screen_height": 1080,
+		"screen_width": 1920,
+		"time_zone": 420,
+		"user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) 
+        AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 
+        Safari/537.36"
+	},
+	"redirect_url": "https://www.mycompanydomain.com/3DSChallengeResonse",
+	"amount": 55.66,
+	"card": {
+		"number": "4567350000427977",
+		"expiry": {
+			"month": "05",
+			"year": "2026"
+		}
+	},
+    "reference":"123"
+}'
+```
+
 #### Secure Payment Profile Authentication Request Sample
 ```shell
 curl --location --request POST 'https://api.na.bambora.com/v1/EMV3DS/AuthRequest' \
 --header 'Authorization: Passcode MzkwOTgwMDAwOmJhbWJvcmE=' \
 --header 'Content-Type: application/json' \
+--data-raw '{
+	"browser": {
+		"accept_header": "text/html,application/xhtml+xml,application/xml;
+        q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;
+        v=b3",
+		"ip_address": "10.200.16.15",
+		"java_enabled": false,
+		"javascript_enabled": true,
+		"language": "en-US",
+		"color_depth": 24,
+		"screen_height": 1080,
+		"screen_width": 1920,
+		"time_zone": 420,
+		"user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) 
+        AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 
+        Safari/537.36"
+	},
+	"redirect_url": "https://www.mycompanydomain.com/3DSChallengeResonse",
+	"amount": 5.22,
+    "payment_profile": {
+        "customer_code": "Rtu6Wop1fdE2S"
+	},
+    "reference":"123"
+}
+```
+
+#### Secure Payment Profile Authentication Auth Partner Request Sample
+```shell
+curl --location --request POST 'https://api.na.bambora.com/v1/EMV3DS/AuthRequest' \
+--header 'Authorization: Passcode MzkwOTgwMDAwOmJhbWJvcmE=' \
+--header 'Content-Type: application/json' \
+--header 'Sub-Merchant-Id: 369170000' \
 --data-raw '{
 	"browser": {
 		"accept_header": "text/html,application/xhtml+xml,application/xml;
@@ -718,6 +788,35 @@ curl --location --request POST 'https://api.na.bambora.com/v1/EMV3DS/AuthRequest
 }
 ```
 
+#### Single Use Token Authentication Auth Partner Request Sample
+```shell
+curl --location --request POST 'https://api.na.bambora.com/v1/EMV3DS/AuthRequest' \
+--header 'Authorization: Passcode MzkwOTgwMDAwOmJhbWJvcmE=' \
+--header 'Content-Type: application/json' \
+--header 'Sub-Merchant-Id: 369170000' \
+--data-raw '{
+	"browser": {
+		"accept_header": "text/html,application/xhtml+xml,application/xml;
+        q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;
+        v=b3",
+		"ip_address": "10.200.16.15",
+		"java_enabled": false,
+		"javascript_enabled": true,
+		"language": "en-US",
+		"color_depth": 24,
+		"screen_height": 1080,
+		"screen_width": 1920,
+		"time_zone": 420,
+		"user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) 
+        AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 
+        Safari/537.36"
+	},
+	"redirect_url": "https://www.mycompanydomain.com/3DSChallengeResonse",
+	"amount": 5.22,
+    "token": "CGY01-acc96ac4-907f-4f9f-8d42-a327072c808c",
+    "reference":"123"
+}
+```
 
 #### Response Parameters
 
