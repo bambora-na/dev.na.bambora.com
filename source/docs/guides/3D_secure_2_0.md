@@ -32,6 +32,8 @@ When your customer (the cardholder) starts a transaction on your website, either
 
 As the decision is now in the hands of the issuer, they will ask you for more data. The more data you provide, the more accurate the issuer can make their decision about the risk of the transaction - ultimately lead to a frictionless scenario for your customers.
 
+Please note when using 3DS, Cardholder Name and either Billing Email or Billing Phone Number while not required by our APIs are defined as mandatory according to Visa rules.
+
 In addition to this guide, feel free to check out our [Payment APIs Demo implementation](https://github.com/bambora/na-payment-apis-demo) on GitHub.
 
 # Benefits 
@@ -619,10 +621,14 @@ Please note Cardholder Name and either Billing Email or Billing Phone Number are
 |card.name|String|Name of the cardholder *Mandatory for Visa|
 |billing.email_address|String|Email of the cardholder *Mandatory for Visa|
 |billing.phone_number|String|Phone number of the cardholder *Mandatory for Visa|
+|billing.phone_country_code|String|The country code of the phone number provided|
+|billing.phone_type|String|The phone type of the phone number provided - m (Mobile), h (Home) or w (Work)|
 |token|String|Single-use token id associated to the card to authenticate|
 |payment_profile.customer_code|String|The Secure Payment Profile Customer Code to process the authentication against|
 |payment_profile.card_id|Number|The Card Id to process the authentication against.  This is an optional field, where if not provided the default card will be referenced.|
 |reference|String|Reference field to associate with the transaction.|
+|ship_same_as_ord|Boolean|The provided Billing Address information will also be used as the Shipping Address information|
+|device_channel|String|Type of channel used to initiate the transaction|
 
 
 #### Card Data Authentication Request Sample
@@ -986,6 +992,10 @@ Use this endpoint to fetch information about previous 3DSv2 sessions.
 |cavv|String|The cardholder authentication verification value|
 |flow_type|String|Indicates the 3DS flow completed for this transaction set to 'F' for Frictionless, and 'C' for Challenge|
 |status|String|Enum string representing the status of the 3DSv2 session|
+|3ds_reason_merchant|String|For merchant use only. Provides a category which identifies the reason for the rejection. [See list of reasons](/docs/references/payment_APIs/3ds_reason_list)|
+|3ds_reason_cardholder|String|The reason for the rejection and instructions on what to do. This can be returned to the cardholder|
+|3ds_downgraded|Boolean|Indicates whether or not the 3DS transaction was downgraded. A downgraded transaction does not provide a liability shift to the merchant, even if the 3DS authentication result was "Success" or "Attempted"|
+|device_channel|String|Type of channel used to initiate the transaction. 02 = Browser, 03 = 3DS Requestor|
 |error|String|If the request resulted in an error this will contain the emun error identifier|
 
 #### Sample GET Request
@@ -1010,6 +1020,7 @@ curl --location --request GET 'https://api.na.bambora.com/v1/EMV3DS/MDBiYmI5NTYt
     },
     "flow_type": "F",
     "status": "Succeeded",
+    "3ds_downgraded": false,
     "authorization": {
         "eci": "5",
         "cavv": "AAABBEg0VhI0VniQEjRWAAAAAAA=",
@@ -1018,7 +1029,8 @@ curl --location --request GET 'https://api.na.bambora.com/v1/EMV3DS/MDBiYmI5NTYt
         "protocol_version": "2.2"
     },
     "error": null,
-    "created_datetime_utc": "2021-12-14T02:11:50.45"
+    "created_datetime_utc": "2021-12-14T02:11:50.45",
+    "device_channel": "03"
 }
 ```
 
@@ -1103,7 +1115,7 @@ _In rare cases the issuer can downgrade an authenticated transaction after proce
 |Visa|4330264936344675|Succeeded|Frictionless|
 |Visa|4012000033330026|Succeeded|Frictionless|
 |Visa|4532153596910568|Succeeded|Frictionless|
-|Visa|4921810000005462|Succeeded|Frictionless|
+|Visa*|4921810000005462|Succeeded|Frictionless|
 |MasterCard|5137009801943438|Succeeded|Frictionless|
 |MasterCard|5140512592070076|Succeeded|Frictionless|
 |MasterCard|5200000091444270|Succeeded|Frictionless|
@@ -1141,7 +1153,7 @@ _In rare cases the issuer can downgrade an authenticated transaction after proce
 |Amex|371402182236181|Rejected|Frictionless|
 |Visa|4259701590936889|Unavailable|Frictionless|
 |Visa|4475853611842840|Unavailable|Frictionless|
-|MasterCard|5123301306181325|Unavailable|Frictionless|
+|MasterCard*|5123301306181325|Unavailable|Frictionless|
 |MasterCard|5141720392778702|Unavailable|Frictionless|
 |Amex|371608168632280|Unavailable|Frictionless|
 |Visa|4874970686672022|Succeeded|Challenge|
@@ -1165,3 +1177,4 @@ _In rare cases the issuer can downgrade an authenticated transaction after proce
 |MasterCard|5148904639667695|Unavailable|Challenge|
 |MasterCard|5137739025252071|Unavailable|Challenge|
 
+*Card triggers "downgraded = true" (TD only)
