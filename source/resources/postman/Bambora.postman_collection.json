@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "45dd963e-2758-47ad-9899-07406d1b42b6",
+		"_postman_id": "1d95e9de-8022-40fc-b8b7-570f3ac9a62d",
 		"name": "Bambora",
 		"description": "Postman collection for Bambora.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
@@ -2521,7 +2521,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"type": "text/javascript",
 								"exec": [
 									"tests[\"Status code is 200\"] = responseCode.code === 200;",
 									"postman.clearEnvironmentVariable(\"passcode_encoded\");",
@@ -2535,17 +2534,20 @@
 									"    postman.setEnvironmentVariable(\"currentOrderNumber\", parseInt(jsonData.order_number)+1);",
 									"}",
 									""
-								]
+								],
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
 							"listen": "prerequest",
 							"script": {
-								"type": "text/javascript",
 								"exec": [
 									"var passcode_encoded = btoa(environment[\"merchant_id\"] + \":\" + environment[\"payment_passcode\"]);",
 									"postman.setEnvironmentVariable(\"passcode_encoded\", passcode_encoded);"
-								]
+								],
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -2563,7 +2565,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"amount\": 120.45,\r\n    \"payment_method\":\"card\",\r\n    \"customer_ip\": \"123.123.123.123\",\r\n    \"term_url\":\"https://test01-web.na.bambora.com\",\r\n    \"billing\":{\r\n        \"name\": \"Test User\",\r\n        \"address_line1\": \"1755 W. BROADWAY SUITE 105\",\r\n        \"address_line2\": \"\",\r\n        \"city\": \"Victoria\",\r\n        \"province\": \"BC\",\r\n        \"country\": \"CA\",\r\n        \"postal_code\": \"J0L1T0\",\r\n        \"phone_number\": \"1234567890\",\r\n        \"email_address\": \"tester@test.com\"\r\n    },\r\n    \"card\":{\r\n        \"name\":\"John Doe\",\r\n        \"number\":\"4012000033330026\",\r\n        \"expiry_month\":\"02\",\r\n        \"expiry_year\":\"27\",\r\n        \"cvd\":\"123\",\r\n        \"3d_secure\": {\r\n            \"browser\": {\r\n            \"accept_header\": \"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3\",\r\n            \"java_enabled\": \"false\",\r\n            \"language\": \"en-US\",\r\n            \"color_depth\": \"24\",\r\n            \"screen_height\": 1080,\r\n            \"screen_width\": 1920,\r\n            \"time_zone\": -120,\r\n            \"user_agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36\",\r\n            \"Javascript_enabled\": true\r\n            },\r\n            \"enabled\": true,\r\n            \"version\": 2,\r\n            \"auth_required\": false\r\n        }\r\n\r\n    }\r\n}"
+							"raw": "{\r\n    \"amount\": 120.45,\r\n    \"payment_method\":\"card\",\r\n    \"customer_ip\": \"123.123.123.123\",\r\n    \"term_url\":\"https://test01-web.na.bambora.com\",\r\n    \"device_channel\": \"02\",\r\n    \"billing\":{\r\n        \"name\": \"Test User\",\r\n        \"address_line1\": \"1755 W. BROADWAY SUITE 105\",\r\n        \"address_line2\": \"\",\r\n        \"city\": \"Victoria\",\r\n        \"province\": \"BC\",\r\n        \"country\": \"CA\",\r\n        \"postal_code\": \"J0L1T0\",\r\n        \"phone_number\": \"1234567890\",\r\n        \"phone_country_code\" : \"1\",\r\n        \"phone_type\" : \"m\",\r\n        \"email_address\": \"tester@test.com\"\r\n    },\r\n    \"shipping\":{\r\n        \"name\": \"User Testson\",\r\n        \"address_line1\": \"1234 Testing Street\",\r\n        \"address_line2\": \"\",\r\n        \"city\": \"Huntsville\",\r\n        \"province\": \"AL\",\r\n        \"country\": \"US\",\r\n        \"postal_code\": \"36000\",\r\n        \"phone_number\": \"0987654321\",\r\n        \"phone_country_code\" : \"1\",\r\n        \"email_address\": \"user@test.com\"\r\n    },\r\n    \"card\":{\r\n        \"name\":\"John Doe\",\r\n        \"number\":\"4012000033330026\",\r\n        \"expiry_month\":\"02\",\r\n        \"expiry_year\":\"27\",\r\n        \"cvd\":\"123\",\r\n        \"3d_secure\": {\r\n            \"browser\": {\r\n            \"accept_header\": \"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3\",\r\n            \"java_enabled\": \"false\",\r\n            \"language\": \"en-US\",\r\n            \"color_depth\": \"24\",\r\n            \"screen_height\": 1080,\r\n            \"screen_width\": 1920,\r\n            \"time_zone\": -120,\r\n            \"user_agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36\",\r\n            \"Javascript_enabled\": true\r\n            },\r\n            \"enabled\": true,\r\n            \"version\": 2,\r\n            \"auth_required\": false\r\n        }\r\n\r\n    }\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/v1/payments",
@@ -2646,7 +2648,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"type": "text/javascript",
 								"exec": [
 									"tests[\"Status code is 200\"] = responseCode.code === 200;",
 									"postman.clearEnvironmentVariable(\"passcode_encoded\");",
@@ -2660,17 +2661,20 @@
 									"    postman.setEnvironmentVariable(\"currentOrderNumber\", parseInt(jsonData.order_number)+1);",
 									"}",
 									""
-								]
+								],
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
 							"listen": "prerequest",
 							"script": {
-								"type": "text/javascript",
 								"exec": [
 									"var passcode_encoded = btoa(environment[\"merchant_id\"] + \":\" + environment[\"payment_passcode\"]);",
 									"postman.setEnvironmentVariable(\"passcode_encoded\", passcode_encoded);"
-								]
+								],
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -2688,7 +2692,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"order_number\":\"{{currentOrderNumber}}\",\r\n    \"amount\": 100.00,\r\n    \"payment_method\":\"token\",\r\n    \"customer_ip\": \"123.123.123.123\",\r\n    \"term_url\":\"https://test01-web.na.bambora.com\",\r\n    \"billing\":{\r\n        \"name\": \"Test User\",\r\n        \"address_line1\": \"1755 W. BROADWAY SUITE 105\",\r\n        \"address_line2\": \"\",\r\n        \"city\": \"Victoria\",\r\n        \"province\": \"BC\",\r\n        \"country\": \"CA\",\r\n        \"postal_code\": \"J0L1T0\",\r\n        \"phone_number\": \"1234567890\",\r\n        \"email_address\": \"tester@test.com\"\r\n    },\r\n    \"token\": { \r\n        \"name\":\"John Doe\", \r\n        \"code\":\"{{tokenizedCC}}\",\r\n        \"complete\": true,\r\n        \"3d_secure\": {\r\n            \"browser\": {\r\n            \"accept_header\": \"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3\",\r\n            \"java_enabled\": \"false\",\r\n            \"language\": \"en-US\",\r\n            \"color_depth\": \"24\",\r\n            \"screen_height\": 1080,\r\n            \"screen_width\": 1920,\r\n            \"time_zone\": -120,\r\n            \"user_agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36\",\r\n            \"Javascript_enabled\": true\r\n            },\r\n            \"enabled\": true,\r\n            \"version\": 2,\r\n            \"auth_required\": false\r\n        }\r\n    }\r\n}"
+							"raw": "{\r\n    \"order_number\":\"{{currentOrderNumber}}\",\r\n    \"amount\": 100.00,\r\n    \"payment_method\":\"token\",\r\n    \"customer_ip\": \"123.123.123.123\",\r\n    \"term_url\":\"https://test01-web.na.bambora.com\",\r\n    \"device_channel\": \"02\",\r\n    \"billing\":{\r\n        \"name\": \"Test User\",\r\n        \"address_line1\": \"1755 W. BROADWAY SUITE 105\",\r\n        \"address_line2\": \"\",\r\n        \"city\": \"Victoria\",\r\n        \"province\": \"BC\",\r\n        \"country\": \"CA\",\r\n        \"postal_code\": \"J0L1T0\",\r\n        \"phone_number\": \"1234567890\",\r\n        \"phone_country_code\" : \"1\",\r\n        \"phone_type\" : \"m\",\r\n        \"email_address\": \"tester@test.com\"\r\n    },\r\n    \"shipping\":{\r\n        \"name\": \"User Testson\",\r\n        \"address_line1\": \"1234 Testing Street\",\r\n        \"address_line2\": \"\",\r\n        \"city\": \"Huntsville\",\r\n        \"province\": \"AL\",\r\n        \"country\": \"US\",\r\n        \"postal_code\": \"36000\",\r\n        \"phone_number\": \"0987654321\",\r\n        \"phone_country_code\" : \"1\",\r\n        \"email_address\": \"user@test.com\"\r\n    },\r\n    \"token\": { \r\n        \"name\":\"John Doe\", \r\n        \"code\":\"{{tokenizedCC}}\",\r\n        \"complete\": true,\r\n        \"3d_secure\": {\r\n            \"browser\": {\r\n            \"accept_header\": \"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3\",\r\n            \"java_enabled\": \"false\",\r\n            \"language\": \"en-US\",\r\n            \"color_depth\": \"24\",\r\n            \"screen_height\": 1080,\r\n            \"screen_width\": 1920,\r\n            \"time_zone\": -120,\r\n            \"user_agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36\",\r\n            \"Javascript_enabled\": true\r\n            },\r\n            \"enabled\": true,\r\n            \"version\": 2,\r\n            \"auth_required\": false\r\n        }\r\n    }\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/v1/payments",
@@ -2766,7 +2770,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"type": "text/javascript",
 								"exec": [
 									"tests[\"Status code is 200\"] = responseCode.code === 200;",
 									"postman.clearEnvironmentVariable(\"passcode_encoded\");",
@@ -2780,17 +2783,20 @@
 									"    // increment order num to keep unique",
 									"    postman.setEnvironmentVariable(\"currentOrderNumber\", parseInt(jsonData.order_number)+1);",
 									"}"
-								]
+								],
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
 							"listen": "prerequest",
 							"script": {
-								"type": "text/javascript",
 								"exec": [
 									"var passcode_encoded = btoa(environment[\"merchant_id\"] + \":\" + environment[\"payment_passcode\"]);",
 									"postman.setEnvironmentVariable(\"passcode_encoded\", passcode_encoded);"
-								]
+								],
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -2808,7 +2814,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"order_number\":{{currentOrderNumber}},\r\n     \"amount\":100.00,\r\n     \"payment_method\":\"card\",\r\n    \"customer_ip\": \"123.123.123.123\",\r\n    \"term_url\":\"https://test01-web.na.bambora.com\",\r\n    \"billing\":{\r\n        \"name\": \"Test User\",\r\n        \"address_line1\": \"1755 W. BROADWAY SUITE 105\",\r\n        \"address_line2\": \"\",\r\n        \"city\": \"Victoria\",\r\n        \"province\": \"BC\",\r\n        \"country\": \"CA\",\r\n        \"postal_code\": \"J0L1T0\",\r\n        \"phone_number\": \"1234567890\",\r\n        \"email_address\": \"tester@test.com\"\r\n    },\r\n    \"card\":{\r\n        \"name\":\"John Doe\",\r\n        \"number\":\"4012000033330026\",\r\n        \"expiry_month\":\"02\",\r\n        \"expiry_year\":\"27\",\r\n        \"cvd\":\"123\",\r\n        \"complete\":false,\r\n        \"3d_secure\": {\r\n            \"browser\": {\r\n            \"accept_header\": \"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3\",\r\n            \"java_enabled\": \"false\",\r\n            \"language\": \"en-US\",\r\n            \"color_depth\": \"24\",\r\n            \"screen_height\": 1080,\r\n            \"screen_width\": 1920,\r\n            \"time_zone\": -120,\r\n            \"user_agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36\",\r\n            \"Javascript_enabled\": true\r\n            },\r\n            \"enabled\": true,\r\n            \"version\": 2,\r\n            \"auth_required\": false\r\n        }\r\n    }\r\n}"
+							"raw": "{\r\n    \"order_number\":{{currentOrderNumber}},\r\n     \"amount\":100.00,\r\n     \"payment_method\":\"card\",\r\n    \"customer_ip\": \"123.123.123.123\",\r\n    \"term_url\":\"https://test01-web.na.bambora.com\",\r\n    \"device_channel\": \"02\",\r\n    \"billing\":{\r\n        \"name\": \"Test User\",\r\n        \"address_line1\": \"1755 W. BROADWAY SUITE 105\",\r\n        \"address_line2\": \"\",\r\n        \"city\": \"Victoria\",\r\n        \"province\": \"BC\",\r\n        \"country\": \"CA\",\r\n        \"postal_code\": \"J0L1T0\",\r\n        \"phone_number\": \"1234567890\",\r\n        \"phone_country_code\" : \"1\",\r\n        \"phone_type\" : \"m\",\r\n        \"email_address\": \"tester@test.com\"\r\n    },\r\n    \"shipping\":{\r\n        \"name\": \"User Testson\",\r\n        \"address_line1\": \"1234 Testing Street\",\r\n        \"address_line2\": \"\",\r\n        \"city\": \"Huntsville\",\r\n        \"province\": \"AL\",\r\n        \"country\": \"US\",\r\n        \"postal_code\": \"36000\",\r\n        \"phone_number\": \"0987654321\",\r\n        \"phone_country_code\" : \"1\",\r\n        \"email_address\": \"user@test.com\"\r\n    },\r\n    \"card\":{\r\n        \"name\":\"John Doe\",\r\n        \"number\":\"4012000033330026\",\r\n        \"expiry_month\":\"02\",\r\n        \"expiry_year\":\"27\",\r\n        \"cvd\":\"123\",\r\n        \"complete\":false,\r\n        \"3d_secure\": {\r\n            \"browser\": {\r\n            \"accept_header\": \"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3\",\r\n            \"java_enabled\": \"false\",\r\n            \"language\": \"en-US\",\r\n            \"color_depth\": \"24\",\r\n            \"screen_height\": 1080,\r\n            \"screen_width\": 1920,\r\n            \"time_zone\": -120,\r\n            \"user_agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36\",\r\n            \"Javascript_enabled\": true\r\n            },\r\n            \"enabled\": true,\r\n            \"version\": 2,\r\n            \"auth_required\": false\r\n        }\r\n    }\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/v1/payments",
@@ -2944,7 +2950,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"type": "text/javascript",
 								"exec": [
 									"tests[\"Status code is 200\"] = responseCode.code === 200;",
 									"",
@@ -2959,17 +2964,20 @@
 									"",
 									"postman.clearEnvironmentVariable(\"passcode_encoded\");",
 									""
-								]
+								],
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
 							"listen": "prerequest",
 							"script": {
-								"type": "text/javascript",
 								"exec": [
 									"var passcode_encoded = btoa(environment[\"merchant_id\"] + \":\" + environment[\"payment_passcode\"]);",
 									"postman.setEnvironmentVariable(\"passcode_encoded\", passcode_encoded);"
-								]
+								],
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -2987,7 +2995,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"order_number\":\"{{currentOrderNumber}}\",\r\n    \"amount\": 123.45,\r\n    \"customer_ip\": \"123.123.123.123\",\r\n    \"term_url\":\"https://test01-web.na.bambora.com\",\r\n    \"payment_method\":\"payment_profile\",\r\n    \"payment_profile\": { \r\n        \"customer_code\": \"{{profileId}}\", \r\n        \"card_id\": \"{{cardId}}\",\r\n        \"complete\": true,\r\n        \"3d_secure\": {\r\n            \"browser\": {\r\n            \"accept_header\": \"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3\",\r\n            \"java_enabled\": \"false\",\r\n            \"language\": \"en-US\",\r\n            \"color_depth\": \"24\",\r\n            \"screen_height\": 1080,\r\n            \"screen_width\": 1920,\r\n            \"time_zone\": -120,\r\n            \"user_agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36\",\r\n            \"Javascript_enabled\": true\r\n            },\r\n            \"enabled\": true,\r\n            \"version\": 2,\r\n            \"auth_required\": false\r\n        }\r\n    }\r\n}"
+							"raw": "{\r\n    \"order_number\":\"{{currentOrderNumber}}\",\r\n    \"amount\": 123.45,\r\n    \"customer_ip\": \"123.123.123.123\",\r\n    \"term_url\":\"https://test01-web.na.bambora.com\",\r\n    \"payment_method\":\"payment_profile\",\r\n    \"device_channel\": \"02\",\r\n    \"payment_profile\": { \r\n        \"customer_code\": \"{{profileId}}\", \r\n        \"card_id\": \"{{cardId}}\",\r\n        \"complete\": true,\r\n        \"3d_secure\": {\r\n            \"browser\": {\r\n            \"accept_header\": \"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3\",\r\n            \"java_enabled\": \"false\",\r\n            \"language\": \"en-US\",\r\n            \"color_depth\": \"24\",\r\n            \"screen_height\": 1080,\r\n            \"screen_width\": 1920,\r\n            \"time_zone\": -120,\r\n            \"user_agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36\",\r\n            \"Javascript_enabled\": true\r\n            },\r\n            \"enabled\": true,\r\n            \"version\": 2,\r\n            \"auth_required\": false\r\n        }\r\n    }\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/v1/payments",
@@ -3142,7 +3150,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"type": "text/javascript",
 								"exec": [
 									"tests[\"Status code is 200\"] = responseCode.code === 200;",
 									"",
@@ -3157,17 +3164,20 @@
 									"",
 									"postman.clearEnvironmentVariable(\"passcode_encoded\");",
 									""
-								]
+								],
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
 							"listen": "prerequest",
 							"script": {
-								"type": "text/javascript",
 								"exec": [
 									"var passcode_encoded = btoa(environment[\"merchant_id\"] + \":\" + environment[\"payment_passcode\"]);",
 									"postman.setEnvironmentVariable(\"passcode_encoded\", passcode_encoded);"
-								]
+								],
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -3185,7 +3195,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"order_number\":\"{{currentOrderNumber}}\",\r\n    \"amount\": 100.00,\r\n    \"payment_method\":\"payment_profile\",\r\n    \"customer_ip\": \"123.123.123.123\",\r\n    \"term_url\":\"https://test01-web.na.bambora.com\",\r\n    \"billing\":{\r\n        \"name\": \"Test User\",\r\n        \"address_line1\": \"1755 W. BROADWAY SUITE 105\",\r\n        \"address_line2\": \"\",\r\n        \"city\": \"Victoria\",\r\n        \"province\": \"BC\",\r\n        \"country\": \"CA\",\r\n        \"postal_code\": \"J0L1T0\",\r\n        \"phone_number\": \"1234567890\",\r\n        \"email_address\": \"tester@test.com\"\r\n    },\r\n    \"payment_profile\": { \r\n        \"customer_code\": \"{{profileId}}\", \r\n        \"card_id\": \"{{cardId}}\",\r\n        \"complete\": false,\r\n        \"3d_secure\": {\r\n            \"browser\": {\r\n            \"accept_header\": \"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3\",\r\n            \"java_enabled\": \"false\",\r\n            \"language\": \"en-US\",\r\n            \"color_depth\": \"24\",\r\n            \"screen_height\": 1080,\r\n            \"screen_width\": 1920,\r\n            \"time_zone\": -120,\r\n            \"user_agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36\",\r\n            \"Javascript_enabled\": true\r\n            },\r\n            \"enabled\": true,\r\n            \"version\": 2,\r\n            \"auth_required\": false\r\n        }\r\n    }\r\n}"
+							"raw": "{\r\n    \"order_number\":\"{{currentOrderNumber}}\",\r\n    \"amount\": 100.00,\r\n    \"payment_method\":\"payment_profile\",\r\n    \"customer_ip\": \"123.123.123.123\",\r\n    \"term_url\":\"https://test01-web.na.bambora.com\",\r\n    \"device_channel\": \"02\",\r\n    \"billing\":{\r\n        \"name\": \"Test User\",\r\n        \"address_line1\": \"1755 W. BROADWAY SUITE 105\",\r\n        \"address_line2\": \"\",\r\n        \"city\": \"Victoria\",\r\n        \"province\": \"BC\",\r\n        \"country\": \"CA\",\r\n        \"postal_code\": \"J0L1T0\",\r\n        \"phone_number\": \"1234567890\",\r\n        \"phone_country_code\" : \"1\",\r\n        \"phone_type\" : \"m\",\r\n        \"email_address\": \"tester@test.com\"\r\n    },\r\n    \"shipping\":{\r\n        \"name\": \"User Testson\",\r\n        \"address_line1\": \"1234 Testing Street\",\r\n        \"address_line2\": \"\",\r\n        \"city\": \"Huntsville\",\r\n        \"province\": \"AL\",\r\n        \"country\": \"US\",\r\n        \"postal_code\": \"36000\",\r\n        \"phone_number\": \"0987654321\",\r\n        \"phone_country_code\" : \"1\",\r\n        \"email_address\": \"user@test.com\"\r\n    },\r\n    \"payment_profile\": { \r\n        \"customer_code\": \"{{profileId}}\", \r\n        \"card_id\": \"{{cardId}}\",\r\n        \"complete\": false,\r\n        \"3d_secure\": {\r\n            \"browser\": {\r\n            \"accept_header\": \"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3\",\r\n            \"java_enabled\": \"false\",\r\n            \"language\": \"en-US\",\r\n            \"color_depth\": \"24\",\r\n            \"screen_height\": 1080,\r\n            \"screen_width\": 1920,\r\n            \"time_zone\": -120,\r\n            \"user_agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36\",\r\n            \"Javascript_enabled\": true\r\n            },\r\n            \"enabled\": true,\r\n            \"version\": 2,\r\n            \"auth_required\": false\r\n        }\r\n    }\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/v1/payments",
@@ -3206,7 +3216,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"type": "text/javascript",
 								"exec": [
 									"tests[\"Status code is 200\"] = responseCode.code === 200;",
 									"postman.clearEnvironmentVariable(\"passcode_encoded\");",
@@ -3220,17 +3229,20 @@
 									"    postman.setEnvironmentVariable(\"currentOrderNumber\", parseInt(jsonData.order_number)+1);",
 									"}",
 									""
-								]
+								],
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
 							"listen": "prerequest",
 							"script": {
-								"type": "text/javascript",
 								"exec": [
 									"var passcode_encoded = btoa(environment[\"merchant_id\"] + \":\" + environment[\"payment_passcode\"]);",
 									"postman.setEnvironmentVariable(\"passcode_encoded\", passcode_encoded);"
-								]
+								],
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -3248,7 +3260,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"order_number\":\"{{currentOrderNumber}}\",\r\n    \"amount\": 100.00,\r\n    \"payment_method\":\"token\",\r\n    \"customer_ip\": \"123.123.123.123\",\r\n    \"term_url\":\"https://test01-web.na.bambora.com\",\r\n    \"billing\":{\r\n        \"name\": \"Test User\",\r\n        \"address_line1\": \"1755 W. BROADWAY SUITE 105\",\r\n        \"address_line2\": \"\",\r\n        \"city\": \"Victoria\",\r\n        \"province\": \"BC\",\r\n        \"country\": \"CA\",\r\n        \"postal_code\": \"J0L1T0\",\r\n        \"phone_number\": \"1234567890\",\r\n        \"email_address\": \"tester@test.com\"\r\n    },\r\n    \"token\": { \r\n        \"name\":\"John Doe\", \r\n        \"code\":\"{{tokenizedCC}}\",\r\n        \"complete\": false,\r\n        \"3d_secure\": {\r\n            \"browser\": {\r\n            \"accept_header\": \"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3\",\r\n            \"java_enabled\": \"false\",\r\n            \"language\": \"en-US\",\r\n            \"color_depth\": \"24\",\r\n            \"screen_height\": 1080,\r\n            \"screen_width\": 1920,\r\n            \"time_zone\": -120,\r\n            \"user_agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36\",\r\n            \"Javascript_enabled\": true\r\n            },\r\n            \"enabled\": true,\r\n            \"version\": 2,\r\n            \"auth_required\": false\r\n        }\r\n    }\r\n}"
+							"raw": "{\r\n    \"order_number\":\"{{currentOrderNumber}}\",\r\n    \"amount\": 100.00,\r\n    \"payment_method\":\"token\",\r\n    \"customer_ip\": \"123.123.123.123\",\r\n    \"term_url\":\"https://test01-web.na.bambora.com\",\r\n    \"device_channel\": \"02\",\r\n    \"billing\":{\r\n        \"name\": \"Test User\",\r\n        \"address_line1\": \"1755 W. BROADWAY SUITE 105\",\r\n        \"address_line2\": \"\",\r\n        \"city\": \"Victoria\",\r\n        \"province\": \"BC\",\r\n        \"country\": \"CA\",\r\n        \"postal_code\": \"J0L1T0\",\r\n        \"phone_number\": \"1234567890\",\r\n        \"phone_country_code\" : \"1\",\r\n        \"phone_type\" : \"m\",\r\n        \"email_address\": \"tester@test.com\"\r\n    },\r\n    \"shipping\":{\r\n        \"name\": \"User Testson\",\r\n        \"address_line1\": \"1234 Testing Street\",\r\n        \"address_line2\": \"\",\r\n        \"city\": \"Huntsville\",\r\n        \"province\": \"AL\",\r\n        \"country\": \"US\",\r\n        \"postal_code\": \"36000\",\r\n        \"phone_number\": \"0987654321\",\r\n        \"phone_country_code\" : \"1\",\r\n        \"email_address\": \"user@test.com\"\r\n    },\r\n    \"token\": { \r\n        \"name\":\"John Doe\", \r\n        \"code\":\"{{tokenizedCC}}\",\r\n        \"complete\": false,\r\n        \"3d_secure\": {\r\n            \"browser\": {\r\n            \"accept_header\": \"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3\",\r\n            \"java_enabled\": \"false\",\r\n            \"language\": \"en-US\",\r\n            \"color_depth\": \"24\",\r\n            \"screen_height\": 1080,\r\n            \"screen_width\": 1920,\r\n            \"time_zone\": -120,\r\n            \"user_agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36\",\r\n            \"Javascript_enabled\": true\r\n            },\r\n            \"enabled\": true,\r\n            \"version\": 2,\r\n            \"auth_required\": false\r\n        }\r\n    }\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/v1/payments",
@@ -3274,7 +3286,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"type": "text/javascript",
 								"exec": [
 									"tests[\"Status code is 200\"] = responseCode.code === 200;",
 									"",
@@ -3285,17 +3296,20 @@
 									"",
 									"postman.clearEnvironmentVariable(\"passcode_encoded\");",
 									""
-								]
+								],
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
 							"listen": "prerequest",
 							"script": {
-								"type": "text/javascript",
 								"exec": [
 									"var passcode_encoded = btoa(environment[\"merchant_id\"] + \":\" + environment[\"profile_passcode\"]);",
 									"postman.setEnvironmentVariable(\"passcode_encoded\", passcode_encoded);"
-								]
+								],
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -3916,7 +3930,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"type": "text/javascript",
 								"exec": [
 									"var responseJson = xml2Json(responseBody).response;",
 									"",
@@ -3928,7 +3941,9 @@
 									"    postman.setEnvironmentVariable(\"profileId\", responseJson.customerCode);",
 									"}",
 									""
-								]
+								],
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -3936,7 +3951,7 @@
 						"method": "POST",
 						"header": [],
 						"url": {
-							"raw": "{{querystring_url}}/scripts/payment_profile.asp?merchantId={{merchant_id}}&passCode={{profile_passcode}}&serviceVersion=1.0&operationType=N&bankAccountType=CA&bankAccountHolder=John Doe&institutionNumber=123&branchNumber=12345&accountNumber=123456789&ordName=Rosanna+Sylvester&ordEmailAddress=joe@mydomain.com&ordPhoneNumber=2504722326&ordAddress1=123+Main+Street&ordCity=Victoria&ordPostalCode=V8T4M3&ordProvince=BC&ordCountry=CA",
+							"raw": "{{querystring_url}}/scripts/payment_profile.asp?merchantId={{merchant_id}}&passCode={{profile_passcode}}&serviceVersion=1.0&operationType=N&bankAccountType=CA&bankAccountHolder=John Doe&institutionNumber=123&branchNumber=12345&accountNumber=123456789&ordName=Rosanna+Sylvester&ordEmailAddress=joe@mydomain.com&ordPhoneNumber=2504722326&ordPhoneCountryCode=1&ordPhoneType=m&ordAddress1=123+Main+Street&ordCity=Victoria&ordPostalCode=V8T4M3&ordProvince=BC&ordCountry=CA",
 							"host": [
 								"{{querystring_url}}"
 							],
@@ -3992,6 +4007,14 @@
 								{
 									"key": "ordPhoneNumber",
 									"value": "2504722326"
+								},
+								{
+									"key": "ordPhoneCountryCode",
+									"value": "1"
+								},
+								{
+									"key": "ordPhoneType",
+									"value": "m"
 								},
 								{
 									"key": "ordAddress1",
@@ -4084,7 +4107,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"type": "text/javascript",
 								"exec": [
 									"var responseJson = xml2Json(responseBody).response;",
 									"",
@@ -4096,7 +4118,9 @@
 									"    postman.setEnvironmentVariable(\"profileId\", responseJson.customerCode);",
 									"}",
 									""
-								]
+								],
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -4169,6 +4193,16 @@
 									"disabled": true
 								},
 								{
+									"key": "ordPhoneCountryCode",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "ordPhoneType",
+									"value": "m",
+									"disabled": true
+								},
+								{
 									"key": "ordAddress1",
 									"value": "1407+Graymalkin+Lane"
 								},
@@ -4210,7 +4244,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"type": "text/javascript",
 								"exec": [
 									"tests[\"Status code is 200\"] = responseCode.code === 200;",
 									"",
@@ -4221,17 +4254,20 @@
 									"",
 									"postman.clearEnvironmentVariable(\"passcode_encoded\");",
 									""
-								]
+								],
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
 							"listen": "prerequest",
 							"script": {
-								"type": "text/javascript",
 								"exec": [
 									"var passcode_encoded = btoa(environment[\"partner_id\"] + \":\" + environment[\"partner_profile_passcode\"]);",
 									"postman.setEnvironmentVariable(\"passcode_encoded\", passcode_encoded);"
-								]
+								],
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -5040,7 +5076,8 @@
 									"}",
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
@@ -5050,7 +5087,8 @@
 									"var passcode_encoded = btoa(environment[\"merchant_id\"] + \":\" + environment[\"payment_passcode\"]);",
 									"postman.setEnvironmentVariable(\"passcode_encoded\", passcode_encoded);"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -5068,7 +5106,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"amount\": 100.00,\r\n    \"payment_method\":\"card\",\r\n    \"customer_ip\": \"123.123.123.123\",\r\n    \"term_url\":\"https://test01-web.na.bambora.com\",\r\n    \"billing\":{\r\n        \"name\": \"Test User\",\r\n        \"address_line1\": \"1755 W. BROADWAY SUITE 105\",\r\n        \"address_line2\": \"\",\r\n        \"city\": \"Victoria\",\r\n        \"province\": \"BC\",\r\n        \"country\": \"CA\",\r\n        \"postal_code\": \"J0L1T0\",\r\n        \"phone_number\": \"1234567890\",\r\n        \"email_address\": \"tester@test.com\"\r\n    },\r\n    \"card\":{\r\n        \"name\":\"John Doe\",\r\n        \"number\":\"4030000010001234\",\r\n        \"expiry_month\":\"02\",\r\n        \"expiry_year\":\"27\",\r\n        \"cvd\":\"123\",\r\n        \"3d_secure\": {\r\n            \"browser\": {\r\n            \"accept_header\": \"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3\",\r\n            \"java_enabled\": \"false\",\r\n            \"language\": \"en-US\",\r\n            \"color_depth\": \"24\",\r\n            \"screen_height\": 1080,\r\n            \"screen_width\": 1920,\r\n            \"time_zone\": -120,\r\n            \"user_agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36\",\r\n            \"Javascript_enabled\": true\r\n            },\r\n            \"enabled\": true,\r\n            \"version\": 2,\r\n            \"auth_required\": false\r\n        }\r\n\r\n    }\r\n}"
+							"raw": "{\r\n    \"amount\": 100.00,\r\n    \"payment_method\":\"card\",\r\n    \"customer_ip\": \"123.123.123.123\",\r\n    \"term_url\":\"https://test01-web.na.bambora.com\",\r\n    \"device_channel\": \"02\",\r\n    \"billing\":{\r\n        \"name\": \"Test User\",\r\n        \"address_line1\": \"1755 W. BROADWAY SUITE 105\",\r\n        \"address_line2\": \"\",\r\n        \"city\": \"Victoria\",\r\n        \"province\": \"BC\",\r\n        \"country\": \"CA\",\r\n        \"postal_code\": \"J0L1T0\",\r\n        \"phone_number\": \"1234567890\",\r\n        \"phone_country_code\" : \"1\",\r\n        \"phone_type\" : \"m\",\r\n        \"email_address\": \"tester@test.com\"\r\n    },\r\n    \"shipping\":{\r\n        \"name\": \"User Testson\",\r\n        \"address_line1\": \"1234 Testing Street\",\r\n        \"address_line2\": \"\",\r\n        \"city\": \"Huntsville\",\r\n        \"province\": \"AL\",\r\n        \"country\": \"US\",\r\n        \"postal_code\": \"36000\",\r\n        \"phone_number\": \"0987654321\",\r\n        \"phone_country_code\" : \"1\",\r\n        \"email_address\": \"user@test.com\"\r\n    },\r\n    \"card\":{\r\n        \"name\":\"John Doe\",\r\n        \"number\":\"4030000010001234\",\r\n        \"expiry_month\":\"02\",\r\n        \"expiry_year\":\"27\",\r\n        \"cvd\":\"123\",\r\n        \"3d_secure\": {\r\n            \"browser\": {\r\n            \"accept_header\": \"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3\",\r\n            \"java_enabled\": \"false\",\r\n            \"language\": \"en-US\",\r\n            \"color_depth\": \"24\",\r\n            \"screen_height\": 1080,\r\n            \"screen_width\": 1920,\r\n            \"time_zone\": -120,\r\n            \"user_agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36\",\r\n            \"Javascript_enabled\": true\r\n            },\r\n            \"enabled\": true,\r\n            \"version\": 2,\r\n            \"auth_required\": false\r\n        }\r\n\r\n    }\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/v1/payments",
@@ -5322,7 +5360,8 @@
 									"var passcode_encoded = btoa(environment[\"merchant_id\"] + \":\" + environment[\"payment_passcode\"]);\r",
 									"postman.setEnvironmentVariable(\"passcode_encoded\", passcode_encoded);"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
@@ -5339,7 +5378,8 @@
 									"}\r",
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -5359,7 +5399,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"amount\": 21,\r\n    \"payment_method\":\"apple_pay\",\r\n    \"apple_pay\": {\r\n        \"apple_pay_merchant_id\": \"{{apple_pay_merchant_id}}\",\r\n        \"complete\": true,\r\n        \"payment_token\": \"{{base64_encoded_encrypted_token}}\"\r\n    },\r\n    \"billing\":{\r\n        \"name\": \"Test User\",\r\n        \"address_line1\": \"1755 W. BROADWAY SUITE 105\",\r\n        \"address_line2\": \"\",\r\n        \"city\": \"Victoria\",\r\n        \"province\": \"BC\",\r\n        \"country\": \"CA\",\r\n        \"postal_code\": \"J0L1T0\",\r\n        \"phone_number\": \"1234567890\",\r\n        \"email_address\": \"tester@test.com\"\r\n    },\r\n    \"custom\": {\r\n        \"ref1\":\"123\"\r\n    }\r\n}"
+							"raw": "{\r\n    \"amount\": 21,\r\n    \"payment_method\":\"apple_pay\",\r\n    \"device_channel\": \"02\",\r\n    \"apple_pay\": {\r\n        \"apple_pay_merchant_id\": \"{{apple_pay_merchant_id}}\",\r\n        \"complete\": true,\r\n        \"payment_token\": \"{{base64_encoded_encrypted_token}}\"\r\n    },\r\n    \"billing\":{\r\n        \"name\": \"Test User\",\r\n        \"address_line1\": \"1755 W. BROADWAY SUITE 105\",\r\n        \"address_line2\": \"\",\r\n        \"city\": \"Victoria\",\r\n        \"province\": \"BC\",\r\n        \"country\": \"CA\",\r\n        \"postal_code\": \"J0L1T0\",\r\n        \"phone_number\": \"1234567890\",\r\n        \"phone_country_code\" : \"1\",\r\n        \"phone_type\" : \"m\",\r\n        \"email_address\": \"tester@test.com\"\r\n    },\r\n    \"shipping\":{\r\n        \"name\": \"User Testson\",\r\n        \"address_line1\": \"1234 Testing Street\",\r\n        \"address_line2\": \"\",\r\n        \"city\": \"Huntsville\",\r\n        \"province\": \"AL\",\r\n        \"country\": \"US\",\r\n        \"postal_code\": \"36000\",\r\n        \"phone_number\": \"0987654321\",\r\n        \"phone_country_code\" : \"1\",\r\n        \"email_address\": \"user@test.com\"\r\n    },\r\n    \"custom\": {\r\n        \"ref1\":\"123\"\r\n    }\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/v1/payments",
@@ -5384,7 +5424,8 @@
 									"var passcode_encoded = btoa(environment[\"merchant_id\"] + \":\" + environment[\"payment_passcode\"]);\r",
 									"postman.setEnvironmentVariable(\"passcode_encoded\", passcode_encoded);"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
@@ -5401,7 +5442,8 @@
 									"}\r",
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -5419,7 +5461,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"amount\": 21,\r\n    \"payment_method\":\"apple_pay\",\r\n    \"apple_pay\": {\r\n        \"passthrough\": true,\r\n        \"complete\": true,\r\n        \"payment_token\": \"{{base64_encoded_decrypted_token}}\"\r\n    },\r\n    \"billing\":{\r\n        \"name\": \"Test User\",\r\n        \"address_line1\": \"1755 W. BROADWAY SUITE 105\",\r\n        \"address_line2\": \"\",\r\n        \"city\": \"Victoria\",\r\n        \"province\": \"BC\",\r\n        \"country\": \"CA\",\r\n        \"postal_code\": \"J0L1T0\",\r\n        \"phone_number\": \"1234567890\",\r\n        \"email_address\": \"tester@test.com\"\r\n    },\r\n    \"custom\": {\r\n        \"ref1\":\"123\"\r\n    }\r\n}"
+							"raw": "{\r\n    \"amount\": 21,\r\n    \"payment_method\":\"apple_pay\",\r\n    \"device_channel\": \"02\",\r\n    \"apple_pay\": {\r\n        \"passthrough\": true,\r\n        \"complete\": true,\r\n        \"payment_token\": \"{{base64_encoded_decrypted_token}}\"\r\n    },\r\n    \"billing\":{\r\n        \"name\": \"Test User\",\r\n        \"address_line1\": \"1755 W. BROADWAY SUITE 105\",\r\n        \"address_line2\": \"\",\r\n        \"city\": \"Victoria\",\r\n        \"province\": \"BC\",\r\n        \"country\": \"CA\",\r\n        \"postal_code\": \"J0L1T0\",\r\n        \"phone_number\": \"1234567890\",\r\n        \"phone_country_code\" : \"1\",\r\n        \"phone_type\" : \"m\",\r\n        \"email_address\": \"tester@test.com\"\r\n    },\r\n    \"shipping\":{\r\n        \"name\": \"User Testson\",\r\n        \"address_line1\": \"1234 Testing Street\",\r\n        \"address_line2\": \"\",\r\n        \"city\": \"Huntsville\",\r\n        \"province\": \"AL\",\r\n        \"country\": \"US\",\r\n        \"postal_code\": \"36000\",\r\n        \"phone_number\": \"0987654321\",\r\n        \"phone_country_code\" : \"1\",\r\n        \"email_address\": \"user@test.com\"\r\n    },\r\n    \"custom\": {\r\n        \"ref1\":\"123\"\r\n    }\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/v1/payments",
@@ -5451,7 +5493,8 @@
 									"\r",
 									"postman.setEnvironmentVariable(\"transaction_payload\", JSON.stringify(environment[\"google_pay_transaction_payload\"]));"
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						},
 						{
@@ -5469,7 +5512,8 @@
 									"}\r",
 									""
 								],
-								"type": "text/javascript"
+								"type": "text/javascript",
+								"packages": {}
 							}
 						}
 					],
@@ -5489,7 +5533,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"amount\": 10,\r\n    \"payment_method\":\"google_pay\",\r\n    \"customer_ip\": \"123.123.123.123\",\r\n    \"term_url\":\"https://test01-web.na.bambora.com\",\r\n    \"google_pay\":\r\n    {\r\n      \"name\": \"Test User\",\r\n      // Supply the payload in the 'google_pay_transaction_payload' environment variable\r\n      \"transaction_payload\": {{transaction_payload}},\r\n      \"complete\": true,\r\n      \"3d_secure\": \r\n        {\r\n            \"browser\":\r\n            {\r\n                \"accept_header\": \"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3\",\r\n                \"java_enabled\": \"false\",\r\n                \"language\": \"en-US\",\r\n                \"color_depth\": \"24\",\r\n                \"screen_height\": 1080,\r\n                \"screen_width\": 1920,\r\n                \"time_zone\": -120,\r\n                \"user_agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36\",\r\n                \"Javascript_enabled\": true\r\n            },\r\n         \"enabled\": true,\r\n         \"version\": 2,\r\n         \"auth_required\": true\r\n        }\r\n    },\r\n    \"billing\":{\r\n        \"name\": \"Test User\",\r\n        \"address_line1\": \"1755 W. BROADWAY SUITE 105\",\r\n        \"address_line2\": \"\",\r\n        \"city\": \"Victoria\",\r\n        \"province\": \"BC\",\r\n        \"country\": \"CA\",\r\n        \"postal_code\": \"J0L1T0\",\r\n        \"phone_number\": \"1234567890\",\r\n        \"email_address\": \"tester@test.com\"\r\n    }\r\n}"
+							"raw": "{\r\n    \"amount\": 10,\r\n    \"payment_method\":\"google_pay\",\r\n    \"customer_ip\": \"123.123.123.123\",\r\n    \"term_url\":\"https://test01-web.na.bambora.com\",\r\n    \"device_channel\": \"02\",\r\n    \"google_pay\":\r\n    {\r\n      \"name\": \"Test User\",\r\n      // Supply the payload in the 'google_pay_transaction_payload' environment variable\r\n      \"transaction_payload\": {{transaction_payload}},\r\n      \"complete\": true,\r\n      \"3d_secure\": \r\n        {\r\n            \"browser\":\r\n            {\r\n                \"accept_header\": \"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3\",\r\n                \"java_enabled\": \"false\",\r\n                \"language\": \"en-US\",\r\n                \"color_depth\": \"24\",\r\n                \"screen_height\": 1080,\r\n                \"screen_width\": 1920,\r\n                \"time_zone\": -120,\r\n                \"user_agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36\",\r\n                \"Javascript_enabled\": true\r\n            },\r\n         \"enabled\": true,\r\n         \"version\": 2,\r\n         \"auth_required\": true\r\n        }\r\n    },\r\n    \"billing\":{\r\n        \"name\": \"Test User\",\r\n        \"address_line1\": \"1755 W. BROADWAY SUITE 105\",\r\n        \"address_line2\": \"\",\r\n        \"city\": \"Victoria\",\r\n        \"province\": \"BC\",\r\n        \"country\": \"CA\",\r\n        \"postal_code\": \"J0L1T0\",\r\n        \"phone_number\": \"1234567890\",\r\n        \"phone_country_code\" : \"1\",\r\n        \"phone_type\" : \"m\",\r\n        \"email_address\": \"tester@test.com\"\r\n    },\r\n    \"shipping\":{\r\n        \"name\": \"User Testson\",\r\n        \"address_line1\": \"1234 Testing Street\",\r\n        \"address_line2\": \"\",\r\n        \"city\": \"Huntsville\",\r\n        \"province\": \"AL\",\r\n        \"country\": \"US\",\r\n        \"postal_code\": \"36000\",\r\n        \"phone_number\": \"0987654321\",\r\n        \"phone_country_code\" : \"1\",\r\n        \"email_address\": \"user@test.com\"\r\n    }\r\n}"
 						},
 						"url": {
 							"raw": "{{url}}/v1/payments",
