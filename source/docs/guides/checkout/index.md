@@ -13,16 +13,6 @@ navigation:
 
 # Checkout
 
-<div style='border-color:red; border-style:solid;padding: 1% 1%' ><p style='font-weight:bold'>PLEASE NOTE: Checkout will no longer be brandable after February 28, 2025.</p> 
- 
-To comply with the <a href="https://docs-prv.pcisecuritystandards.org/PCI%20DSS/Standard/PCI-DSS-v4_0.pdf" target="\_blank">PPCI DSS v4.0</a> the brandable functionality of Worldline’s hosted Checkout form will no longer be available after <strong>February 28, 2025</strong>. Please review the upcoming changes:
-<ul>
-  <li>Custom headers and footers will no longer be supported.</li>
-  <li>We will implement a neutral colourway to seamlessly fit any checkout.</li>
-  <li>For a fully brandable checkout solution, please use Worldline’s <a href="https://dev.na.bambora.com/docs/guides/custom_checkout/" target="\_blank">Custom Checkout.</a></li>
-</ul>
-</div>
-
 <br>Checkout allows you to accept payments online with just one link. It is a hosted payment form that supports payment cards and [Visa Secure Remote Commerce (SRC)](https://dev.na.bambora.com/docs/guides/visa_checkout). You can link to Checkout from your website or from an email, allowing it to slot into either a shopping cart flow or an invoicing flow.
 This guide will show you how to create a form and a link before sending it out to clients, customers, and donors
 
@@ -49,38 +39,6 @@ Checkout is an alternative to building your own payment form with Custom Checkou
 * Checkout is a payment form - it takes payments. Custom Checkout is a tokenizaton library - it returns a token that you can pass to the Payment API to take a payment.
 * Checkout involves redirecting the user to a payment form on bambora.com. Custom Checkout embeds Worldline hosted input fields in your webpage.
 * Checkout is not brandable. [Custom Checkout](https://dev.na.bambora.com/docs/guides/custom_checkout/) allows you to build a fully customized payment form - you retain as much control over UI/UX as you do with native DOM elements.
-
-## Migration
-
-Checkout enhances our legacy Hosted Payment Form. Accounts opened after 1 August 2017 come with Checkout. If your account predates this, you will need to enable Checkout styling on your account.
-
-You can enable Checkout styling on your legacy Hosted Payment Form in the [Member Area](https://web.na.bambora.com). Click on **configuration**, and select **payment form**. Simply copy and paste these two blocks of code into the corresponding text fields.
-
-**Page Header**
-
-```html
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Checkout</title>
-    <link rel="stylesheet" type="text/css" href="https://libs.na.bambora.com/checkouttheme/0.1.0/ui.bambora/ui.bambora.1.1.0.css">
-    <link rel="stylesheet" type="text/css" href="https://libs.na.bambora.com/checkouttheme/0.1.0/style.css">
-  </head>
-  <body>
-    <script src="https://libs.na.bambora.com/checkouttheme/0.1.0/checkouttheme.min.js"></script>
-    <script>CheckoutTheme.init();</script>
-```
-<div style="margin-bottom:24px;"></div>
-
-**Page Footer**
-
-```html
-  </body>
-</html>
-```
-<div style="margin-bottom:24px;"></div>
 
 ## Browser support
 
