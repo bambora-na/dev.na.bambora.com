@@ -30,6 +30,7 @@ target="\_blank" style="word-spacing: .3em; letter-spacing: .05em;
 See a [demo](https://demo.na.bambora.com/checkout.html) of a complete payment flow using Checkout, and view the [source](https://github.com/bambora/na-payment-apis-demo).
 
 Please note when using 3DS, Cardholder Name and either Billing Email or Billing Phone Number are **mandatory** for Visa.
+<img src="/docs/guides/checkout/PaymentFormCheckOut.png" alt="PaymentFormCheckOut.png">
 
 ## Custom Checkout vs Checkout
 
