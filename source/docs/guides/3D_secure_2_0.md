@@ -613,20 +613,22 @@ Please note Cardholder Name and either Billing Email or Billing Phone Number are
 |redirect_url|String|The URL that you would like your customer redirect to after completing their 3DS challenge.  Maximum length of 255 characters.|
 |message_category|Enum|Set to a value of ‘PaymentAuthentication’ when the 3DS check is being performed before authorizing a charge to the card.  Use ‘NonPaymentAuthentication’ when there will be no immediate authorization such as storing a card to a profile for later use.|
 |amount|Numeric|The amount to be charged in the payment associated to this authentication.|
-|card.number|String|The credit card number to authenticate against|
+|card.number|String|The credit card number to authenticate against.|
 |card.expiry.month|Number|The two digit month of the card expiration date.|
 |card.expiry.year|Number|The four digit year of the card expiration date.|
-|card.name|String|Name of the cardholder *Mandatory for Visa|
-|billing.email_address|String|Email of the cardholder *Mandatory for Visa|
-|billing.phone_number|String|Phone number of the cardholder *Mandatory for Visa|
-|billing.phone_country_code|String|The country code of the phone number provided|
-|billing.phone_type|String|The phone type of the phone number provided - m (Mobile), h (Home) or w (Work)|
-|token|String|Single-use token id associated to the card to authenticate|
-|payment_profile.customer_code|String|The Secure Payment Profile Customer Code to process the authentication against|
+|card.name|String|Name of the cardholder. *Mandatory for Visa|
+|billing.email_address|String|Email of the cardholder. *Mandatory for Visa|
+|billing.phone_number|String|Phone number of the cardholder. *Mandatory for Visa|
+|billing.phone_country_code|String|The country code of the phone number provided.|
+|billing.phone_type|String|The phone type of the phone number provided - m (Mobile), h (Home) or w (Work).|
+|token|String|Single-use token id associated to the card to authenticate.|
+|payment_profile.customer_code|String|The Secure Payment Profile Customer Code to process the authentication against.|
 |payment_profile.card_id|Number|The Card Id to process the authentication against.  This is an optional field, where if not provided the default card will be referenced.|
 |reference|String|Reference field to associate with the transaction.|
-|ship_same_as_ord|Boolean|The provided Billing Address information will also be used as the Shipping Address information|
-|device_channel|String|Type of channel used to initiate the transaction|
+|ship_same_as_ord|Boolean|The provided Billing Address information will also be used as the Shipping Address information.|
+|device_channel|String|Type of channel used to initiate the transaction.|
+|disable_method_url|Boolean|Indicates whether or not BIC Method URL has been disabled for the current transaction.|
+|threeDS_server_transaction_id|String|The threeDS_server_transaction_id returned by the call to the PrepInfo endpoint.|
 
 
 #### Card Data Authentication Request Sample
