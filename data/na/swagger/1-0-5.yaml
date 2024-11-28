@@ -1120,6 +1120,12 @@ definitions:
       auth_required:
         type: boolean
         description: 'If set to true the transaction will not continue processing unless 3DS authentication is successful.'
+      disable_method_url:
+        type: boolean
+        description: 'Indicates whether or not BIC Method URL has been disabled for the current transaction.'
+      threeDS_server_transaction_id:
+        type: string
+        description: 'The threeDS\_server\_transaction\_id returned by the call to the PrepInfo endpoint.'
   RequestBillingAddress:
     properties:
       name:
