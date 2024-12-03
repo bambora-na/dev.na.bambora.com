@@ -81,8 +81,8 @@ curl https://api.na.bambora.com/v1/payments \
       "name": "TD QA",
       "number": "373410980824106",
       "complete": true,
-      "expiry_month": "09",
-      "expiry_year": "20",
+      "expiry_month": "12",
+      "expiry_year": "28",
       "cvd": "1234",
       "3d_secure": {
          "browser": {
