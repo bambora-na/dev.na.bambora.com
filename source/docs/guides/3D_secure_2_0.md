@@ -70,15 +70,20 @@ curl https://api.na.bambora.com/v1/payments \
 -H "Authorization: Passcode MzAwMjAwNTc4OjRCYUQ4MkQ5MTk3YjRjYzRiNzBhMjIxOTExZUU5Zjcw" \
 -H "Content-Type: application/json" \
 -d '{
-   "amount": 250.01,
-   "payment_method": "card",
+   "amount": 10,
    "customer_ip": "123.123.123.123",
-   "term_url":"{{term_url}}",
+   "term_url": "https://dev01-web.na.bambora.com/debug.asp",
+   "payment_method": "card",
+   "ship_same_as_ord": false,
+   "device_channel": "02",
+   "language": "eng",
    "card": {
-      "name": "Test User",
-      "number": "4716519788977219",
+      "name": "TD QA",
+      "number": "373410980824106",
+      "complete": true,
       "expiry_month": "09",
       "expiry_year": "20",
+      "cvd": "1234",
       "3d_secure": {
          "browser": {
             "accept_header": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3",
@@ -93,7 +98,9 @@ curl https://api.na.bambora.com/v1/payments \
          },
          "enabled": true,
          "version": 2,
-         "auth_required": false
+         "auth_required": false,
+         "disable_method_url": false,
+         "threeDS_server_transaction_id":"8cf1171a-5d3f-495c-8125-1746d0261d60"
       }
    }
 }'
