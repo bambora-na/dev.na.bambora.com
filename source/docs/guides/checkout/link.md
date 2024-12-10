@@ -18,10 +18,10 @@ Checkout is configured by the parameters passed in the URL of a GET request. The
 
 While it is possible to also do this through a Form element using a POST request, we have found that the POST approach does not always work with older browsers and some versions of Internet Explorer. We recommend using a GET request with a link or button.
 
-The most basic URL contains just the `merchant_id` and `hashValue` parameters. If your merchant ID is "123456789" and your hash key is "abc", you would create a SHA-1 hash of the string `merchant_id=123456789abc`. You would then pass the hashed string with the parameters `hashValue`.
+The most basic URL contains just the `merchant_id` and `hashValue` parameters. If your merchant ID is "123456789" and your hash key is "abc", you would create a SHA-1 hash of the string `merchant_id=123456789abc`. You would then pass the hashed string with the parameters `hashValue`.  It is recommended to include as much data as possible in the hash.
 
 ```curl
-https://web.na.bambora.com/scripts/payment/payment.asp?merchant_id=123456789&hashValue=468155ff50e868a98626b1a5a5de6474999b04fe
+https://web.na.bambora.com/scripts/payment/payment.asp?merchant_id=123456789&trnAmount=0.19&trnOrderNumber=3213213&trnType=credit&trnCardOwner=bogus+name&hashValue=8fac840f314153daa53f988574f0d903af7a58b3
 ```
 
 Any parameters passed within the hashed string is secure and cannot be modified. Any parameters passed after the `hashValue` parameter are insecure and can be modified.

@@ -28,7 +28,7 @@ COPY . /usr/src/app
 RUN cp /usr/src/app/version.json /usr/src/app/source/
 
 # Set values read from command line arguments 
-RUN sed -i 's|BRANCH|'${BRANCH}'|g' /usr/src/app/source/version.json
+RUN if [ -z "$BRANCH" ] || [ "$BRANCH" = "dev portal" ]; then sed -i 's|BRANCH|production|g' /usr/src/app/source/version.json; else sed -i 's|BRANCH|'${BRANCH}'|g' /usr/src/app/source/version.json; fi
 RUN sed -i 's|REVISION|'${REVISION}'|g' /usr/src/app/source/version.json
 RUN sed -i 's|BUILD_TIME|'${BUILD_TIME}'|g' /usr/src/app/source/version.json
 RUN sed -i 's|BUILD_NUMBER|'${BUILD_NUMBER}'|g' /usr/src/app/source/version.json

@@ -120,12 +120,6 @@ cards:
         icon: creditcard-outline
         link: /docs/guides/FlexCommissions_report
     -
-        title: SSL
-        description: >
-            Encrypt information and provide computer to computer authentication.
-        icon: checkmark
-        link: /docs/guides/SSL
-    -
         title: Visa Secure Remote Commerce
         description: >
             Process payments with Visa Secure Remote Commerce (SRC).
