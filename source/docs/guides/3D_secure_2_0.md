@@ -1112,7 +1112,7 @@ The 3D Secure Status returned in the authentication response indicates if the ca
 | Failed | Failed to authenticate card holder. | Do not proceed with the transaction. Notify the card holder to contact their card issuer. | No | Transaction declined message 311 | Transaction declined message 311 | 7 | 7 |
 | Unavailable | The 3DS service is unavailable due to technical issues. | If you continue with the transaction there will be no liability shift and there will be risk of chargeback. The transaction and 3DS authentication can be retried at a later time. | No | Transaction processes | Transaction declined message 311 | 7 | 7 |
 | Error | Authentication failed due to an internal error. | If you continue with the transaction there will be no liability shift and there will be risk of chargeback. An unexpected internal error occurred processing the 3D Secure authentication. If the problem persists contact Customer Care. | No | Transaction processes | Transaction declined message 311 | 7 | 7 |
-| NotSupported | The 3DS service does not support the card or card is not enrolled in 3DS service. | Continue with transaction processing. | No | Transaction processes | Transaction processes | 7 | 7 |
+| NotSupported | The 3DS service does not support the card or card is not enrolled in 3DS service. | If you continue with the transaction there will be no liability shift and there will be risk of chargeback. Retrying the transaction and 3DS authentication won't change the 3DS status. | No | Transaction processes | Transaction declined message 311 | 7 | 7 |
 
 _Please note that the liability shift only applies for chargebacks based on a fraud reason code. Any reason codes related to other types disputes are not covered by the liability shift._
 
