@@ -79,9 +79,9 @@ Response : Result object will be returned back to the merchants
 
 Please note that the Method URL execution process consists of the below steps that have been encapsulated by the JS Library to help merchants integrate Method URL within their hosted checkout.
 
- <font size=3>1.</font> **Method URL from DS server :** The JS library will request the Method URL from the DS Server through Worldline’s public service. Worldline’s Prepinfo service endpoint will be calling the DS server’s service to get the Method URL for the card holder’s PAN no.\
-  <font size=3>2.</font> **Initial Method URL :** The JS library will create an Iframe and related HTML elements on the merchant’s browser by accessing its div element. Merchants need to create a Div element named “MethodURLBox” as mentioned in step 2.\
-   <font size=3>3.</font>  **Invoke/Submit Method URL:** If Method URL is received for the card number used by the cardholder then the final step will be to submit the form created in step 3 along with the DS transaction server Id as threeDSServerTransactionId. A notification URL to receive a response from the issuer once Method URL execution is completed will be encapsulated and provided by the JS library.\
+ 1. **Method URL from DS server :** The JS library will request the Method URL from the DS Server through Worldline’s public service. Worldline’s Prepinfo service endpoint will be calling the DS server’s service to get the Method URL for the card holder’s PAN no.
+ 2. **Initial Method URL :** The JS library will create an Iframe and related HTML elements on the merchant’s browser by accessing its div element. Merchants need to create a Div element named “MethodURLBox” as mentioned in step 2.
+ 3. **Invoke/Submit Method URL:** If Method URL is received for the card number used by the cardholder then the final step will be to submit the form created in step 3 along with the DS transaction server Id as threeDSServerTransactionId. A notification URL to receive a response from the issuer once Method URL execution is completed will be encapsulated and provided by the JS library.
 
 **Note:** Steps 1 – 4 will be executed seamlessly behind the scenes and users won’t experience any post back or loading of the hosted checkout page. 
 
