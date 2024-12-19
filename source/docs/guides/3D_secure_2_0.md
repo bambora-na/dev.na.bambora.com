@@ -46,6 +46,7 @@ Depending on your integration method, you may need to pass in new parameters rel
 
 - RESTful Payments API integrations require new parameters detailed below, and also accept new optional parameters. 
 - Hosted checkout integrations have a new optional parameter but require no changes.
+- Method URL
 
 The payment response will now return a status code to indicate if 3DS authentication was successful. The naming of the parameters in the redirection will also be changing, but their contents and usage will be the same.
 
