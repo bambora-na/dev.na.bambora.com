@@ -47,7 +47,7 @@ Merchants needs to create a Div element on the web page that will host the ifram
 <!-- ... -->
 ```
 
-### Step 3: Initialize Method URL
+### Step 3: Initialize Method URL and create HTML Elements
 
 Configure/Declare the Method URL object from the library to use the inbuilt internal functions provided by the library. Please find below a sample declaration of the object.
 
@@ -59,11 +59,11 @@ Configure/Declare the Method URL object from the library to use the inbuilt inte
 
 Create/setup the required HTML elements (Iframe, form, and hidden input) needed to submit the Method URL within the merchant’s browser. The JS library provides a method to create all the required HTML elements using the below method.
 
-*methodURL.CreateElements(parentId,callback)* - parentid is the id of the div element created in step 1. callback function to receive a callback once the operation completes.
+*methodURL.CreateElements(parentId,callback)* - parentid is the id of the div element created in step 2 i.e. methodURLBox). callback function to receive a callback once the operation completes.
 
 ### Step 4: Execute Method URL
 
-Once the JavaScript library is referenced or loaded in the web page and the Method URL object is initialized in step 2, the web page is ready to invoke the Method URL process. The Method URL process can be executed once the credit card information is available or made available by the cardholder on the merchant’s hosted checkout. Ideally the event that will invoke the Method URL process would be an onChange event of the Card number text field on the checkout page.
+Once the JavaScript library is referenced or loaded in the web page on step 1 and the Method URL object is initialized with HTML elements in step 2 and 3, the web page is ready to invoke the Method URL process. The Method URL process can be executed once the credit card information is available or made available by the cardholder on the merchant’s hosted checkout. Ideally the event that will invoke the Method URL process would be an onChange event of the Card number text field on the checkout page.
 
 The command to invoke the Method URL process is as below and expects a input parameter of the actual Card Number or PAN Number of the card holder.
 
@@ -73,7 +73,7 @@ Input : cardNumber : Card Number of the cardholder.
 
 Callback : callback function to receive a callback once the operation completes.
 
-Response : Result object will be returned back to the merchants
+Response : Result object will be returned back to the merchants in the callback function. Below three fields will be returned by the Result object.
 
 * Result.threeDSServerTransactionId : The DS server transaction Id issued by the DS server to identify the Method URL process initiated by the merchant. The merchant needs to pass this field to Worldline’s payment API. This field will be passed to the 3DS Authentication request to help the issuer identify the Method URL execution.
 * Result.Error : In case of errors in the execution or invocation of Method URL, the error attribute will be returned by the Execute method.
