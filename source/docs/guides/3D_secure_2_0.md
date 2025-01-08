@@ -666,7 +666,9 @@ curl --location --request POST 'https://api.na.bambora.com/v1/EMV3DS/AuthRequest
 --header 'Content-Type: application/json' \
 --data-raw '{
 	"browser": {
-        "accept_header": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,/;q=0.8,application/signed-exchange;v=b3",
+        "accept_header": "text/html,application/xhtml+xml,application/xml;
+        q=0.9,image/webp,image/apng,/;q=0.8,application/signed-exchange;
+        v=b3",
         "ip_address": "10.200.16.15",
         "java_enabled": false,
         "javascript_enabled": true,
@@ -675,7 +677,9 @@ curl --location --request POST 'https://api.na.bambora.com/v1/EMV3DS/AuthRequest
         "screen_height": 1080,
         "screen_width": 1920,
         "time_zone": 420,
-        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36"
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+        AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90
+        Safari/537.36"
     },
     "language":"eng",
     "ship_same_as_ord":false,
@@ -703,7 +707,9 @@ curl --location --request POST 'https://api.na.bambora.com/v1/EMV3DS/AuthRequest
 --header 'Sub-Merchant-Id: 369170000' \
 --data-raw '{
 	"browser": {
-        "accept_header": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,/;q=0.8,application/signed-exchange;v=b3",
+        "accept_header": "text/html,application/xhtml+xml,application/xml;
+        q=0.9,image/webp,image/apng,/;q=0.8,application/signed-exchange;
+        v=b3",
         "ip_address": "10.200.16.15",
         "java_enabled": false,
         "javascript_enabled": true,
@@ -712,7 +718,9 @@ curl --location --request POST 'https://api.na.bambora.com/v1/EMV3DS/AuthRequest
         "screen_height": 1080,
         "screen_width": 1920,
         "time_zone": 420,
-        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36"
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+        AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90
+        Safari/537.36"
     },
     "language":"eng",
     "ship_same_as_ord":false,
@@ -802,7 +810,9 @@ curl --location --request POST 'https://api.na.bambora.com/v1/EMV3DS/AuthRequest
 --header 'Content-Type: application/json' \
 --data-raw '{
 	"browser": {
-        "accept_header": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,/;q=0.8,application/signed-exchange;v=b3",
+        "accept_header": "text/html,application/xhtml+xml,application/xml;
+        q=0.9,image/webp,image/apng,/;q=0.8,application/signed-exchange;
+        v=b3",
         "ip_address": "10.200.16.15",
         "java_enabled": false,
         "javascript_enabled": true,
@@ -811,7 +821,9 @@ curl --location --request POST 'https://api.na.bambora.com/v1/EMV3DS/AuthRequest
         "screen_height": 1080,
         "screen_width": 1920,
         "time_zone": 420,
-        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36"
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+        AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90
+        Safari/537.36"
     },
     "language":"eng",
     "ship_same_as_ord":false,
@@ -833,7 +845,9 @@ curl --location --request POST 'https://api.na.bambora.com/v1/EMV3DS/AuthRequest
 --header 'Sub-Merchant-Id: 369170000' \
 --data-raw '{
 	"browser": {
-        "accept_header": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,/;q=0.8,application/signed-exchange;v=b3",
+        "accept_header": "text/html,application/xhtml+xml,application/xml;
+        q=0.9,image/webp,image/apng,/;q=0.8,application/signed-exchange;
+        v=b3",
         "ip_address": "10.200.16.15",
         "java_enabled": false,
         "javascript_enabled": true,
@@ -842,7 +856,9 @@ curl --location --request POST 'https://api.na.bambora.com/v1/EMV3DS/AuthRequest
         "screen_height": 1080,
         "screen_width": 1920,
         "time_zone": 420,
-        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36"
+        "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)
+        AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90
+        Safari/537.36"
     },
     "language":"eng",
     "ship_same_as_ord":false,
