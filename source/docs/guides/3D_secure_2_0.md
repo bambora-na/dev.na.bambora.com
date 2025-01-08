@@ -690,6 +690,8 @@ curl --location --request POST 'https://api.na.bambora.com/v1/EMV3DS/AuthRequest
 			"year": "2026"
 		}
 	},
+    "disable_method_url" : false,
+    "threeDS_server_transaction_id":"6603db66-f730-471f-9159-c25b354cdf8f",
     "reference":"123"
 }'
 ```
@@ -726,6 +728,8 @@ curl --location --request POST 'https://api.na.bambora.com/v1/EMV3DS/AuthRequest
 			"year": "2026"
 		}
 	},
+    "disable_method_url" : false,
+    "threeDS_server_transaction_id":"6603db66-f730-471f-9159-c25b354cdf8f",
     "reference":"123"
 }'
 ```
@@ -818,6 +822,8 @@ curl --location --request POST 'https://api.na.bambora.com/v1/EMV3DS/AuthRequest
 	"redirect_url": "https://www.mycompanydomain.com/3DSChallengeResonse",
 	"amount": 5.22,
     "token": "CGY01-acc96ac4-907f-4f9f-8d42-a327072c808c",
+    "disable_method_url" : false,
+    "threeDS_server_transaction_id":"6603db66-f730-471f-9159-c25b354cdf8f",
     "reference":"123"
 }
 ```
@@ -848,6 +854,8 @@ curl --location --request POST 'https://api.na.bambora.com/v1/EMV3DS/AuthRequest
 	"redirect_url": "https://www.mycompanydomain.com/3DSChallengeResonse",
 	"amount": 5.22,
     "token": "CGY01-acc96ac4-907f-4f9f-8d42-a327072c808c",
+    "disable_method_url" : false,
+    "threeDS_server_transaction_id":"6603db66-f730-471f-9159-c25b354cdf8f",
     "reference":"123"
 }
 ```

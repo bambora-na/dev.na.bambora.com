@@ -30,7 +30,7 @@ The below technical details will help merchants integrate the JS library needed 
 Include the reference to the Worldline-provided JS library in the webpage or any relevant client application.
 
 ```shell
-<script src='https://web.na.bambora.com/assets/emv3ds/methodurl_1.0.0.js'></script>
+<script src='https://web.na.bambora.com/assets/emv3ds/1/methodurl_1.0.0.js'></script>
 ```
 
 **Note:** The below example is for a simple html-based web application. The inclusion step below will differ as per the UI application frameworks. Please refer to application framework documentation for details.
