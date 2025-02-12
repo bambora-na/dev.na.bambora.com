@@ -56,7 +56,11 @@ The payment response will now return a status code to indicate if 3DS authentica
 
 ***If you are a TD customer interested in enabling Method URL for 3DS Requests, please contact us at [support@onlinemart.ca](mailto:support@onlinemart.ca).***
 
-Method URL support has been added for Worldline’s Hosted Checkout solution and REST API integrations. It is a concept in the EMV 3DS protocol that allows an issuing bank to obtain additional browser information at the start of the authentication session to help facilitate risk-based authentication.
+Method URL is a concept in the EMV 3DS protocol that allows an issuing bank to obtain additional browser information at the start of the authentication session to help facilitate risk-based authentication. This feature is currently supported in:
+
+- Hosted Checkout
+- Payment REST API (with card number)
+- EMV3DS Auth Request API (with card number)
 
 Method URL is a scripting call executed by the merchant on behalf of the issuer. 
 
