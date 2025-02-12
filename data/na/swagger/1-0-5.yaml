@@ -1581,6 +1581,8 @@ definitions:
         type: string
       card:
         $ref: '#/definitions/CardGetTransactionResponse'
+      payment_profile:
+        $ref: '#/definitions/ProfilePurchaseResponse'
       billing:
         $ref: '#/definitions/BillingAddress'
       shipping:
@@ -1618,6 +1620,21 @@ definitions:
         description: "The date it was created '2015-04-22T10:03:19.323-07:00'"
       url:
         type: string
+
+  ProfilePurchaseResponse:
+    properties:
+      complete:
+        type: boolean
+        default: true
+        description: 'False for Pre-Authorize, and true for a payment complete.'
+      customer_code:
+        type: string
+        maxLength: 32
+        description: 'The payment profile ID.'
+      card_id:
+        type: integer
+        maxLength: 1
+        description: 'card_id is always 0 and is deprecated so should be ignored.'
 
   CardSettlementReport:
     properties:
