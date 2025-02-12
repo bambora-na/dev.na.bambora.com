@@ -56,12 +56,6 @@ $("#show-optional-fields input[type=checkbox]").change(function() {
   const HPF_REF_4 = 'ref4';
   const HPF_REF_5 = 'ref5';
 
-  // desjardins info
-  const HPF_D_FINANCING_TYPE = 'aDFinancingType';
-  const HPF_D_PLAN_NUMBER = 'aDPlanNumber';
-  const HPF_D_GRACE_PERIOD = 'aDGracePeriod';
-  const HPF_D_TERM = 'aDTerm';
-
   function FormController() {
   }
 
@@ -118,10 +112,6 @@ $("#show-optional-fields input[type=checkbox]").change(function() {
     this.ref4 = document.getElementById('ref4');
     this.ref5 = document.getElementById('ref5');
 
-    this.dFinancingType = document.getElementById('d-financing-type');
-    this.dPlanNumber = document.getElementById('d-plan-number');
-    this.dGracePeriod = document.getElementById('d-grace-period');
-    this.dTerm = document.getElementById('d-term');
   };
 
   FormController.prototype.attachListeners = function(){
@@ -170,11 +160,6 @@ $("#show-optional-fields input[type=checkbox]").change(function() {
     params[HPF_REF_3] = this.ref3.value.trim();
     params[HPF_REF_4] = this.ref4.value.trim();
     params[HPF_REF_5] = this.ref5.value.trim();
-
-    params[HPF_D_FINANCING_TYPE] = this.dFinancingType.value.trim();
-    params[HPF_D_PLAN_NUMBER] = this.dPlanNumber.value.trim();
-    params[HPF_D_GRACE_PERIOD] = this.dGracePeriod.value.trim();
-    params[HPF_D_TERM] = this.dTerm.value.trim();
 
     var stringToHash = '';
     for (var key in params) {
