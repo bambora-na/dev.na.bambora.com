@@ -46,8 +46,27 @@ Depending on your integration method, you may need to pass in new parameters rel
 
 - RESTful Payments API integrations require new parameters detailed below, and also accept new optional parameters. 
 - Hosted checkout integrations have a new optional parameter but require no changes.
+- Method URL
 
 The payment response will now return a status code to indicate if 3DS authentication was successful. The naming of the parameters in the redirection will also be changing, but their contents and usage will be the same.
+
+# Method URL
+
+***\*TD Support Only***
+
+***If you are a TD customer interested in enabling Method URL for 3DS Requests, please contact us at [support@onlinemart.ca](mailto:support@onlinemart.ca).***
+
+Method URL support has been added for Worldline’s Hosted Checkout solution and REST API integrations. It is a concept in the EMV 3DS protocol that allows an issuing bank to obtain additional browser information at the start of the authentication session to help facilitate risk-based authentication.
+
+Method URL is a scripting call executed by the merchant on behalf of the issuer. 
+
+If Method URL is requested by an issuer, it is mandatory for the merchant to run it on their behalf.
+
+During checkout, the merchant must run the Method URL script, allowing the issuer to collect a rich set of data elements such as device info, IP address, and other fields that could be used in models and rules.
+
+*Please note, there is no action required for merchants using the Hosted Checkout integration as the process will be handled by Worldline.
+
+For more information on integrating Method URL, [click here](/docs/references/MethodURL/).
 
 # Processing Payments with 3DS Authentication
 
@@ -70,15 +89,20 @@ curl https://api.na.bambora.com/v1/payments \
 -H "Authorization: Passcode MzAwMjAwNTc4OjRCYUQ4MkQ5MTk3YjRjYzRiNzBhMjIxOTExZUU5Zjcw" \
 -H "Content-Type: application/json" \
 -d '{
-   "amount": 250.01,
-   "payment_method": "card",
+   "amount": 10,
    "customer_ip": "123.123.123.123",
-   "term_url":"{{term_url}}",
+   "term_url": "https://dev01-web.na.bambora.com/debug.asp",
+   "payment_method": "card",
+   "ship_same_as_ord": false,
+   "device_channel": "02",
+   "language": "eng",
    "card": {
-      "name": "Test User",
-      "number": "4716519788977219",
-      "expiry_month": "09",
-      "expiry_year": "20",
+      "name": "TD QA",
+      "number": "373410980824106",
+      "complete": true,
+      "expiry_month": "12",
+      "expiry_year": "28",
+      "cvd": "1234",
       "3d_secure": {
          "browser": {
             "accept_header": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3",
@@ -93,7 +117,9 @@ curl https://api.na.bambora.com/v1/payments \
          },
          "enabled": true,
          "version": 2,
-         "auth_required": false
+         "auth_required": false,
+         "disable_method_url": false,
+         "threeDS_server_transaction_id":"8cf1171a-5d3f-495c-8125-1746d0261d60"
       }
    }
 }'
@@ -615,20 +641,22 @@ Please note Cardholder Name and either Billing Email or Billing Phone Number are
 |redirect_url|String|The URL that you would like your customer redirect to after completing their 3DS challenge.  Maximum length of 255 characters.|
 |message_category|Enum|Set to a value of ‘PaymentAuthentication’ when the 3DS check is being performed before authorizing a charge to the card.  Use ‘NonPaymentAuthentication’ when there will be no immediate authorization such as storing a card to a profile for later use.|
 |amount|Numeric|The amount to be charged in the payment associated to this authentication.|
-|card.number|String|The credit card number to authenticate against|
+|card.number|String|The credit card number to authenticate against.|
 |card.expiry.month|Number|The two digit month of the card expiration date.|
 |card.expiry.year|Number|The four digit year of the card expiration date.|
-|card.name|String|Name of the cardholder *Mandatory for Visa|
-|billing.email_address|String|Email of the cardholder *Mandatory for Visa|
-|billing.phone_number|String|Phone number of the cardholder *Mandatory for Visa|
-|billing.phone_country_code|String|The country code of the phone number provided|
-|billing.phone_type|String|The phone type of the phone number provided - m (Mobile), h (Home) or w (Work)|
-|token|String|Single-use token id associated to the card to authenticate|
-|payment_profile.customer_code|String|The Secure Payment Profile Customer Code to process the authentication against|
+|card.name|String|Name of the cardholder. *Mandatory for Visa|
+|billing.email_address|String|Email of the cardholder. *Mandatory for Visa|
+|billing.phone_number|String|Phone number of the cardholder. *Mandatory for Visa|
+|billing.phone_country_code|String|The country code of the phone number provided.|
+|billing.phone_type|String|The phone type of the phone number provided - m (Mobile), h (Home) or w (Work).|
+|token|String|Single-use token id associated to the card to authenticate.|
+|payment_profile.customer_code|String|The Secure Payment Profile Customer Code to process the authentication against.|
 |payment_profile.card_id|Number|The Card Id to process the authentication against.  This is an optional field, where if not provided the default card will be referenced.|
 |reference|String|Reference field to associate with the transaction.|
-|ship_same_as_ord|Boolean|The provided Billing Address information will also be used as the Shipping Address information|
-|device_channel|String|Type of channel used to initiate the transaction|
+|ship_same_as_ord|Boolean|The provided Billing Address information will also be used as the Shipping Address information.|
+|device_channel|String|Type of channel used to initiate the transaction.|
+|disable_method_url|Boolean|Indicates whether or not BIC Method URL has been disabled for the current transaction.|
+|threeDS_server_transaction_id|String|The threeDS_server_transaction_id returned by the call to the PrepInfo endpoint.|
 
 
 #### Card Data Authentication Request Sample
@@ -662,6 +690,8 @@ curl --location --request POST 'https://api.na.bambora.com/v1/EMV3DS/AuthRequest
 			"year": "2026"
 		}
 	},
+    "disable_method_url" : false,
+    "threeDS_server_transaction_id":"6603db66-f730-471f-9159-c25b354cdf8f",
     "reference":"123"
 }'
 ```
@@ -698,6 +728,8 @@ curl --location --request POST 'https://api.na.bambora.com/v1/EMV3DS/AuthRequest
 			"year": "2026"
 		}
 	},
+    "disable_method_url" : false,
+    "threeDS_server_transaction_id":"6603db66-f730-471f-9159-c25b354cdf8f",
     "reference":"123"
 }'
 ```
@@ -790,6 +822,8 @@ curl --location --request POST 'https://api.na.bambora.com/v1/EMV3DS/AuthRequest
 	"redirect_url": "https://www.mycompanydomain.com/3DSChallengeResonse",
 	"amount": 5.22,
     "token": "CGY01-acc96ac4-907f-4f9f-8d42-a327072c808c",
+    "disable_method_url" : false,
+    "threeDS_server_transaction_id":"6603db66-f730-471f-9159-c25b354cdf8f",
     "reference":"123"
 }
 ```
@@ -820,6 +854,8 @@ curl --location --request POST 'https://api.na.bambora.com/v1/EMV3DS/AuthRequest
 	"redirect_url": "https://www.mycompanydomain.com/3DSChallengeResonse",
 	"amount": 5.22,
     "token": "CGY01-acc96ac4-907f-4f9f-8d42-a327072c808c",
+    "disable_method_url" : false,
+    "threeDS_server_transaction_id":"6603db66-f730-471f-9159-c25b354cdf8f",
     "reference":"123"
 }
 ```
@@ -1083,6 +1119,7 @@ curl --location --request POST 'https://api.na.bambora.com/v1/payments' \
         - Failed
         - Unavailable
         - Error
+        - NotSupported
     - Challenge Redirection: In the case of a challenge flow the parameter names returned in the response will be changing:
         - 'md' will instead be named '3d_session_data'
         - 'pa_res' will instead be named 'cres'
@@ -1097,11 +1134,12 @@ The 3D Secure Status returned in the authentication response indicates if the ca
 | Status | Description | Recommended Merchant Action | Liability Shift | Authentication Required: False | Authentication Required: True | Visa/Amex ECI Code | MasterCard ECI Code |
 |--------|---------|-----|-----|-----|-----|-----|-----|
 | Succeeded | Authentication was successful. | Continue with transaction processing. | Yes | Transaction processes | Transaction processes | 5 | 2 |
-| Attempted | Authentication was attempted but could not be completed. | Continue with transaction processing | Yes | Transaction processes | Transaction processes | 6 | 1 |
+| Attempted | Authentication was attempted but could not be completed. | Continue with transaction processing. | Yes | Transaction processes | Transaction processes | 6 | 1 |
 | Rejected | Rejected by issuing bank. | Do not proceed with the transaction. Notify the card holder to contact their card issuer. | No | Transaction declined message 311 | Transaction declined message 311 | 7 | 7 |
 | Failed | Failed to authenticate card holder. | Do not proceed with the transaction. Notify the card holder to contact their card issuer. | No | Transaction declined message 311 | Transaction declined message 311 | 7 | 7 |
 | Unavailable | The 3DS service is unavailable due to technical issues. | If you continue with the transaction there will be no liability shift and there will be risk of chargeback. The transaction and 3DS authentication can be retried at a later time. | No | Transaction processes | Transaction declined message 311 | 7 | 7 |
 | Error | Authentication failed due to an internal error. | If you continue with the transaction there will be no liability shift and there will be risk of chargeback. An unexpected internal error occurred processing the 3D Secure authentication. If the problem persists contact Customer Care. | No | Transaction processes | Transaction declined message 311 | 7 | 7 |
+| NotSupported | The 3DS service does not support the card or card is not enrolled in 3DS service. | If you continue with the transaction there will be no liability shift and there will be risk of chargeback. Retrying the transaction and 3DS authentication won't change the 3DS status. | No | Transaction processes | Transaction declined message 311 | 7 | 7 |
 
 _Please note that the liability shift only applies for chargebacks based on a fraud reason code. Any reason codes related to other types disputes are not covered by the liability shift._
 
