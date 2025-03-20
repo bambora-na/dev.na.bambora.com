@@ -1073,6 +1073,42 @@ curl --location --request GET 'https://api.na.bambora.com/v1/EMV3DS/MDBiYmI5NTYt
     "device_channel": "03"
 }
 ```
+#### Sample GET Auth Partner Request 
+
+```shell
+curl --location --request GET 'https://api.na.bambora.com/v1/EMV3DS/MDBiYmI5NTYtOTEwNy0A5Y2FlZDMxY2Vh' \
+--header 'Authorization: Passcode MzkwOTgwMDAwOmJhbWJvcmE=' \
+--header 'Content-Type: application/json'
+--header 'Sub-Merchant-Id: 369170000' \
+```
+#### Sample GET Auth Partner Response
+
+```shell
+{
+    "threeDS_session_data": "MDBiYmI5NTYtOTEwNy00MzU1LTg0YmUtMTA5Y2FlZDMxY2Vh",
+    "amount": 55.66,
+    "card": {
+        "bin": "456735",
+        "last_four": "7977",
+        "expiry_month": "05",
+        "expiry_year": "2019"
+    },
+    "flow_type": "F",
+    "status": "Succeeded",
+    "3ds_downgraded": false,
+    "authorization": {
+        "eci": "5",
+        "cavv": "AAABBEg0VhI0VniQEjRWAAAAAAA=",
+        "xid": 12093654972,
+        "ds_transaction_id": "63AEEFE8-BE1F-41FA-AD52-4B5E2E16671D",
+        "protocol_version": "2.2"
+    },
+    "error": null,
+    "created_datetime_utc": "2021-12-14T02:11:50.45",
+    "device_channel": "03"
+}
+```
+
 
 ### Processing a Payment Using a 3DS Session Data Token
 
@@ -1087,6 +1123,23 @@ The 3DS Session Data Token must be related to an authenticated 3D Secure transac
 curl --location --request POST 'https://api.na.bambora.com/v1/payments' \
 --header 'Authorization: Passcode MzkwOTgwMDAwOmJhbWJvcmE=' \
 --header 'Content-Type: application/json' \
+--data-raw '{
+   "payment_method": "3d_secure_token",
+   "customer_ip": "123.123.123.123",
+   "amount": 41.99,
+   "3d_secure_token": {
+       "threeDS_session_data": "OGE5OWYzYTgtZDIwMi00MTFiLWFiNjctYjJmNTU1ODJjNTAy",
+       "complete": true
+   }
+}
+```
+
+#### Payment Request using a 3DS Auth Partner Session Data Token
+```shell
+curl --location --request POST 'https://api.na.bambora.com/v1/payments' \
+--header 'Authorization: Passcode MzkwOTgwMDAwOmJhbWJvcmE=' \
+--header 'Content-Type: application/json' \
+--header 'Sub-Merchant-Id: 369170000' \
 --data-raw '{
    "payment_method": "3d_secure_token",
    "customer_ip": "123.123.123.123",
