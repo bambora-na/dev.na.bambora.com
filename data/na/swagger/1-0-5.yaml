@@ -1183,7 +1183,7 @@ definitions:
         description: Name of the person/business
       address_line1:
         type: string
-        maxLength: 64
+        maxLength: 50
         description: Street address. Impacts risk score.
       address_line2:
         type: string
