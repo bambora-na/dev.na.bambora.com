@@ -5552,7 +5552,7 @@
 		},
 		{
 			"name": "3DS2",
-			"item": [
+			"item": [	
 				{
 					"name": "Payment API",
 					"item": [
@@ -9783,69 +9783,69 @@
 									"response": []
 								},
 								{
-									"name": "3 - Auth Partner Only Token Frictionless Success",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"var jsonData = JSON.parse(responseBody);\r",
-													"\r",
-													"// Transaction Id used for Pre-Auth Completion\r",
-													"postman.setEnvironmentVariable(\"threeDS_session_data\", jsonData.threeDS_session_data); \r",
-													""
-												],
-												"type": "text/javascript"
-											}
-										},
-										{
-											"listen": "prerequest",
-											"script": {
-												"exec": [
-													"var _passcode_encoded = btoa(environment[\"merchant_id_3ds2\"] + \":\" + environment[\"passcode_payment_api\"]);\r",
-													"postman.setEnvironmentVariable(\"_passcode_encoded\", _passcode_encoded);"
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Authorization",
-												"value": "Passcode {{passcode_encoded_CP_MID}}",
-												"type": "text"
-											},
-											{
-												"key": "Content-Type",
-												"value": "application/json",
-												"type": "text"
-											},
-											{
-												"key": "Sub-Merchant-Id",
-												"value": "{{sub_merchant_id}}",
-												"type": "text"
-											}
+								  "name": "3 - Auth Partner Only Token Frictionless Success",
+								  "event": [
+									{
+									  "listen": "test",
+									  "script": {
+										"exec": [
+										  "var jsonData = JSON.parse(responseBody);\r",
+										  "\r",
+										  "// Transaction Id used for Pre-Auth Completion\r",
+										  "postman.setEnvironmentVariable(\"threeDS_session_data\", jsonData.threeDS_session_data); \r",
+										  ""
 										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n\t\"browser\": {\r\n\t\t\"accept_header\": \"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3\",\r\n\t\t\"ip_address\": \"10.200.16.15\",\r\n\t\t\"java_enabled\": false,\r\n\t\t\"javascript_enabled\": true,\r\n\t\t\"language\": \"en-US\",\r\n\t\t\"color_depth\": 24,\r\n\t\t\"screen_height\": 1080,\r\n\t\t\"screen_width\": 1920,\r\n\t\t\"time_zone\": 420,\r\n\t\t\"user_agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36\"\r\n\t},\r\n\t\"redirect_url\": \"{{term_url}}\",\r\n\t\"amount\": 102.10,\r\n    \"token\": \"{{tokenizedCC}}\",\r\n\t\"reference\": \"abc123\"\r\n}"
-										},
-										"url": {
-											"raw": "https://{{domain_api}}/v1/EMV3DS/AuthRequest",
-											"protocol": "https",
-											"host": [
-												"{{domain_api}}"
-											],
-											"path": [
-												"v1",
-												"EMV3DS",
-												"AuthRequest"
-											]
-										}
+										"type": "text/javascript"
+									  }
 									},
-									"response": []
+									{
+									  "listen": "prerequest",
+									  "script": {
+										"exec": [
+										  "var _passcode_encoded = btoa(environment[\"merchant_id_3ds2\"] + \":\" + environment[\"passcode_payment_api\"]);\r",
+										  "postman.setEnvironmentVariable(\"_passcode_encoded\", _passcode_encoded);"
+										],
+										"type": "text/javascript"
+									  }
+									}
+								  ],
+								  "request": {
+									"method": "POST",
+									"header": [
+									  {
+										"key": "Authorization",
+										"value": "Passcode {{passcode_encoded_CP_MID}}",
+										"type": "text"
+									  },
+									  {
+										"key": "Content-Type",
+										"value": "application/json",
+										"type": "text"
+									  },
+									  {
+										"key": "Sub-Merchant-Id",
+										"value": "{{sub_merchant_id}}",
+										"type": "text"
+									  }
+									],
+									"body": {
+									  "mode": "raw",
+									  "raw": "{\r\n\t\"browser\": {\r\n\t\t\"accept_header\": \"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3\",\r\n\t\t\"ip_address\": \"10.200.16.15\",\r\n\t\t\"java_enabled\": false,\r\n\t\t\"javascript_enabled\": true,\r\n\t\t\"language\": \"en-US\",\r\n\t\t\"color_depth\": 24,\r\n\t\t\"screen_height\": 1080,\r\n\t\t\"screen_width\": 1920,\r\n\t\t\"time_zone\": 420,\r\n\t\t\"user_agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36\"\r\n\t},\r\n\t\"redirect_url\": \"{{term_url}}\",\r\n\t\"amount\": 102.10,\r\n    \"token\": \"{{tokenizedCC}}\",\r\n\t\"reference\": \"abc123\"\r\n}"
+									},
+									"url": {
+									  "raw": "https://{{domain_api}}/v1/EMV3DS/AuthRequest",
+									  "protocol": "https",
+									  "host": [
+										"{{domain_api}}"
+									  ],
+									  "path": [
+										"v1",
+										"EMV3DS",
+										"AuthRequest"
+									  ]
+									}
+								  },
+								  "response": []
 								}
 							]
 						},
@@ -9978,132 +9978,132 @@
 							]
 						},
 						{
-							"name": "Auth Only with SPP Shared Profile",
-							"item": [
+						  "name": "Auth Only with SPP Shared Profile",
+						  "item": [
+							{
+							  "name": "1 - SPP Create - valid card",
+							  "event": [
 								{
-									"name": "1 - SPP Create - valid card",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"try {",
-													"    var jsonData = JSON.parse(responseBody);",
-													"    tests[\"Create Profile\"] = jsonData.message === \"Operation Successful\";",
-													"    postman.setEnvironmentVariable(\"customer_code\", jsonData.customer_code)",
-													"}",
-													"",
-													"catch(error) {",
-													"    postman.setEnvironmentVariable(\"error\", error);",
-													"    console.log(\"*** Error *** /n\" + error);",
-													"}",
-													""
-												],
-												"type": "text/javascript"
-											}
-										},
-										{
-											"listen": "prerequest",
-											"script": {
-												"exec": [
-													"var _passcode_encoded = btoa(environment[\"merchant_id_3ds2\"] + \":\" + environment[\"passcode_payment_api\"]);",
-													"postman.setEnvironmentVariable(\"_passcode_encoded\", _passcode_encoded);"
-												],
-												"type": "text/javascript"
-											}
-										}
+								  "listen": "test",
+								  "script": {
+									"exec": [
+									  "try {",
+									  "    var jsonData = JSON.parse(responseBody);",
+									  "    tests[\"Create Profile\"] = jsonData.message === \"Operation Successful\";",
+									  "    postman.setEnvironmentVariable(\"customer_code\", jsonData.customer_code)",
+									  "}",
+									  "",
+									  "catch(error) {",
+									  "    postman.setEnvironmentVariable(\"error\", error);",
+									  "    console.log(\"*** Error *** /n\" + error);",
+									  "}",
+									  ""
 									],
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Authorization",
-												"value": "Passcode {{passcode_encoded_master_MID}}"
-											},
-											{
-												"key": "Content-Type",
-												"value": "application/json"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n    \"language\": \"en\",\n    \"comments\": \"SPP-REST-CreateProfile\",\n    \"card\":{\n\t\t\"name\":\"Mr 3DSecure Secure Profile\",\n\t\t\"number\":\"4532153596910568\",\n\t\t\"expiry_month\":\"02\",\n\t\t\"expiry_year\":\"28\",\n\t\t\"cvd\":\"123\"\n\t},\n    \"billing\": {\n        \"name\": \"3DS2 Tester\",\n        \"address_line1\": \"2659 Douglas Street\",\n        \"address_line2\": \"Suite 302\",\n        \"city\": \"Victoria\",\n        \"province\": \"BC\",\n        \"country\": \"CA\",\n        \"postal_code\": \"V8T 4M3\",\n        \"phone_number\": \"250-246-2326\",\n        \"email_address\": \"test@test.com\"\n    },\n    \"custom\": {\n        \"ref1\": \"Reference one\",\n        \"ref2\": \"Reference two\",\n        \"ref3\": \"Reference three\",\n        \"ref4\": \"Reference four\",\n        \"ref5\": \"Reference five\"\n    }\n}"
-										},
-										"url": {
-											"raw": "https://{{domain_api}}/v1/profiles",
-											"protocol": "https",
-											"host": [
-												"{{domain_api}}"
-											],
-											"path": [
-												"v1",
-												"profiles"
-											]
-										}
-									},
-									"response": []
+									"type": "text/javascript"
+								  }
 								},
 								{
-									"name": "2 - Auth Only Token Frictionless Success",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"var jsonData = JSON.parse(responseBody);\r",
-													"\r",
-													"// Transaction Id used for Pre-Auth Completion\r",
-													"postman.setEnvironmentVariable(\"threeDS_session_data\", jsonData.threeDS_session_data); \r",
-													""
-												],
-												"type": "text/javascript"
-											}
-										},
-										{
-											"listen": "prerequest",
-											"script": {
-												"exec": [
-													"var _passcode_encoded = btoa(environment[\"merchant_id_3ds2\"] + \":\" + environment[\"passcode_payment_api\"]);\r",
-													"postman.setEnvironmentVariable(\"_passcode_encoded\", _passcode_encoded);"
-												],
-												"type": "text/javascript"
-											}
-										}
+								  "listen": "prerequest",
+								  "script": {
+									"exec": [
+									  "var _passcode_encoded = btoa(environment[\"merchant_id_3ds2\"] + \":\" + environment[\"passcode_payment_api\"]);",
+									  "postman.setEnvironmentVariable(\"_passcode_encoded\", _passcode_encoded);"
 									],
-									"request": {
-										"method": "POST",
-										"header": [
-											{
-												"key": "Authorization",
-												"value": "Passcode {{passcode_encoded_MID_NOT_SPP}}",
-												"type": "text"
-											},
-											{
-												"key": "Content-Type",
-												"value": "application/json",
-												"type": "text"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n\t\"browser\": {\r\n\t\t\"accept_header\": \"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3\",\r\n\t\t\"ip_address\": \"10.200.16.15\",\r\n\t\t\"java_enabled\": false,\r\n\t\t\"javascript_enabled\": true,\r\n\t\t\"language\": \"en-US\",\r\n\t\t\"color_depth\": 24,\r\n\t\t\"screen_height\": 1080,\r\n\t\t\"screen_width\": 1920,\r\n\t\t\"time_zone\": 420,\r\n\t\t\"user_agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36\"\r\n\t},\r\n\t\"redirect_url\": \"{{term_url}}\",\r\n\t\"amount\": 5.22,\r\n    \"payment_profile\": {\r\n        \"customer_code\": \"{{customer_code}}\"\r\n    },\r\n\t\"reference\": \"abc123\"\r\n}"
-										},
-										"url": {
-											"raw": "https://{{domain_api}}/v1/EMV3DS/AuthRequest",
-											"protocol": "https",
-											"host": [
-												"{{domain_api}}"
-											],
-											"path": [
-												"v1",
-												"EMV3DS",
-												"AuthRequest"
-											]
-										}
-									},
-									"response": []
+									"type": "text/javascript"
+								  }
 								}
-							]
+							  ],
+							  "request": {
+								"method": "POST",
+								"header": [
+								  {
+									"key": "Authorization",
+									"value": "Passcode {{passcode_encoded_master_MID}}"
+								  },
+								  {
+									"key": "Content-Type",
+									"value": "application/json"
+								  }
+								],
+								"body": {
+								  "mode": "raw",
+								  "raw": "{\n    \"language\": \"en\",\n    \"comments\": \"SPP-REST-CreateProfile\",\n    \"card\":{\n\t\t\"name\":\"Mr 3DSecure Secure Profile\",\n\t\t\"number\":\"4532153596910568\",\n\t\t\"expiry_month\":\"02\",\n\t\t\"expiry_year\":\"28\",\n\t\t\"cvd\":\"123\"\n\t},\n    \"billing\": {\n        \"name\": \"3DS2 Tester\",\n        \"address_line1\": \"2659 Douglas Street\",\n        \"address_line2\": \"Suite 302\",\n        \"city\": \"Victoria\",\n        \"province\": \"BC\",\n        \"country\": \"CA\",\n        \"postal_code\": \"V8T 4M3\",\n        \"phone_number\": \"250-246-2326\",\n        \"email_address\": \"test@test.com\"\n    },\n    \"custom\": {\n        \"ref1\": \"Reference one\",\n        \"ref2\": \"Reference two\",\n        \"ref3\": \"Reference three\",\n        \"ref4\": \"Reference four\",\n        \"ref5\": \"Reference five\"\n    }\n}"
+								},
+								"url": {
+								  "raw": "https://{{domain_api}}/v1/profiles",
+								  "protocol": "https",
+								  "host": [
+									"{{domain_api}}"
+								  ],
+								  "path": [
+									"v1",
+									"profiles"
+								  ]
+								}
+							  },
+							  "response": []
+							},
+							{
+							  "name": "2 - Auth Only Token Frictionless Success",
+							  "event": [
+								{
+								  "listen": "test",
+								  "script": {
+									"exec": [
+									  "var jsonData = JSON.parse(responseBody);\r",
+									  "\r",
+									  "// Transaction Id used for Pre-Auth Completion\r",
+									  "postman.setEnvironmentVariable(\"threeDS_session_data\", jsonData.threeDS_session_data); \r",
+									  ""
+									],
+									"type": "text/javascript"
+								  }
+								},
+								{
+								  "listen": "prerequest",
+								  "script": {
+									"exec": [
+									  "var _passcode_encoded = btoa(environment[\"merchant_id_3ds2\"] + \":\" + environment[\"passcode_payment_api\"]);\r",
+									  "postman.setEnvironmentVariable(\"_passcode_encoded\", _passcode_encoded);"
+									],
+									"type": "text/javascript"
+								  }
+								}
+							  ],
+							  "request": {
+								"method": "POST",
+								"header": [
+								  {
+									"key": "Authorization",
+									"value": "Passcode {{passcode_encoded_MID_NOT_SPP}}",
+									"type": "text"
+								  },
+								  {
+									"key": "Content-Type",
+									"value": "application/json",
+									"type": "text"
+								  }
+								],
+								"body": {
+								  "mode": "raw",
+								  "raw": "{\r\n\t\"browser\": {\r\n\t\t\"accept_header\": \"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3\",\r\n\t\t\"ip_address\": \"10.200.16.15\",\r\n\t\t\"java_enabled\": false,\r\n\t\t\"javascript_enabled\": true,\r\n\t\t\"language\": \"en-US\",\r\n\t\t\"color_depth\": 24,\r\n\t\t\"screen_height\": 1080,\r\n\t\t\"screen_width\": 1920,\r\n\t\t\"time_zone\": 420,\r\n\t\t\"user_agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36\"\r\n\t},\r\n\t\"redirect_url\": \"{{term_url}}\",\r\n\t\"amount\": 5.22,\r\n    \"payment_profile\": {\r\n        \"customer_code\": \"{{customer_code}}\"\r\n    },\r\n\t\"reference\": \"abc123\"\r\n}"
+								},
+								"url": {
+								  "raw": "https://{{domain_api}}/v1/EMV3DS/AuthRequest",
+								  "protocol": "https",
+								  "host": [
+									"{{domain_api}}"
+								  ],
+								  "path": [
+									"v1",
+									"EMV3DS",
+									"AuthRequest"
+								  ]
+								}
+							  },
+							  "response": []
+							}
+						  ]
 						},
 						{
 							"name": "Session Data Payments",
