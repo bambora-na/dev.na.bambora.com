@@ -2285,6 +2285,10 @@ definitions:
         maxLength: 2
         description: 'The type of card associated with the profile. AM = American Express, DI = Diners, JB = JCB, MC = MasterCard, NN = Discover, VI = Visa'
         enum: ['AM','DI','JB','MC','NN''VI']
+      limited_use_card_token:
+        type: string
+        maxLength: 36
+        description: Uniquely identifies specific cards in payment profile accounts. Used only for performing Method URL operations.
   ProfileGetCards:
     properties:
       code:
@@ -2485,6 +2489,11 @@ definitions:
         description: the ID of the payment profile. You need to keep track of this value.
       validation:
         $ref: '#/definitions/CardValidation'
+      limited_use_card_token:
+        type: string
+        maxLength: 36
+        description: Uniquely identifies specific cards in payment profile accounts. Used only for performing Method URL operations.
+  
   ProfileCardResponse:
     properties:
       code:
