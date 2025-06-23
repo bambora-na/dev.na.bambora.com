@@ -2519,7 +2519,6 @@ definitions:
         type: string
         maxLength: 36
         description: Uniquely identifies specific cards in payment profile accounts. Used only for performing Method URL operations.
-  
   ProfileCardResponse:
     properties:
       code:
