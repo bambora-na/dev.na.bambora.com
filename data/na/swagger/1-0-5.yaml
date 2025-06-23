@@ -2237,7 +2237,7 @@ definitions:
         enum: ['02', '03']
       method_url_3ds: 
         type: string
-        description: 'The outcome of a 3DS Method URL operation performed during the course of a transaction. Either Succeeded (3DS Method URL was initiated and was successful), Failed (3DS Method URL was initiated but failed. The transaction will proceed but without the support of Method URL.) or NotAttempted (3DS Method URL was not requested for this transaction or a validation error existed in the supplied threeDS_server_transaction_id).'
+        description: 'The outcome of a 3DS Method URL operation performed during the course of a transaction. Either Succeeded (3DS Method URL was initiated and was successful), Failed (3DS Method URL was initiated but failed. The transaction will proceed but without the support of Method URL.) or NotAttempted (3DS Method URL was not requested for this transaction or a validation error existed in the supplied threeDS\_server\_transaction\_id).'
   PaymentProfileResponse:
     properties:
       code:
@@ -2919,7 +2919,7 @@ definitions:
             description: 'The reason for the rejection and instructions on what to do. This can be returned to the cardholder.'
         method_url: 
             type: string
-            description: 'The outcome of a 3DS Method URL operation performed during the course of a transaction. Either Succeeded (3DS Method URL was initiated and was successful), Failed (3DS Method URL was initiated but failed. The transaction will proceed but without the support of Method URL.) or NotAttempted (3DS Method URL was not requested for this transaction or a validation error existed in the supplied threeDS_server_transaction_id).'
+            description: 'The outcome of a 3DS Method URL operation performed during the course of a transaction. Either Succeeded (3DS Method URL was initiated and was successful), Failed (3DS Method URL was initiated but failed. The transaction will proceed but without the support of Method URL.) or NotAttempted (3DS Method URL was not requested for this transaction or a validation error existed in the supplied threeDS\_server\_transaction\_id).'
   3DSecureGETResponse: 
     description: |
       3D Secure result data
@@ -2944,7 +2944,7 @@ definitions:
             description: 'Indicates whether or not the 3DS transaction was downgraded. A downgraded transaction does not provide a liability shift to the merchant, even if the 3DS authentication result was "Success" or "Attempted".'
         method_url: 
             type: string
-            description: 'The outcome of a 3DS Method URL operation performed during the course of a transaction. Either Succeeded (3DS Method URL was initiated and was successful), Failed (3DS Method URL was initiated but failed. The transaction will proceed but without the support of Method URL.) or NotAttempted (3DS Method URL was not requested for this transaction or a validation error existed in the supplied threeDS_server_transaction_id).'
+            description: 'The outcome of a 3DS Method URL operation performed during the course of a transaction. Either Succeeded (3DS Method URL was initiated and was successful), Failed (3DS Method URL was initiated but failed. The transaction will proceed but without the support of Method URL.) or NotAttempted (3DS Method URL was not requested for this transaction or a validation error existed in the supplied threeDS\_server\_transaction\_id).'
   BrowserData:
     description: |
       Data collected about the cardholders browser, required for 3DS 2.0 transactions, optional for others.
