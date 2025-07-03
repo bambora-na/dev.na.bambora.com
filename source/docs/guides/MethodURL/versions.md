@@ -15,7 +15,7 @@ navigation:
 # Method URL Versions
 Only use the `MAJOR` version to ensure you have the latest backwards compatible changes.
 
-`https://web.na.bambora.com/assets/emv3ds/1/methodurl_1.0.0.js` 
+`https://web.na.bambora.com/assets/emv3ds/2/methodurl.js` 
 
 
 ### Semantic Versioning
