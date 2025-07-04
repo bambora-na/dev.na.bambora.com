@@ -59,8 +59,10 @@ The payment response will now return a status code to indicate if 3DS authentica
 Method URL is a concept in the EMV 3DS protocol that allows an issuing bank to obtain additional browser information at the start of the authentication session to help facilitate risk-based authentication. This feature is currently supported in:
 
 - Hosted Checkout
-- Payment REST API (with card number)
-- EMV3DS Auth Request API (with card number)
+- Payment REST API
+    - using card number & Payment Profile (Limited_use_case_token)
+- EMV3DS Auth Request API
+    - using card number & Payment Profile (Limited_use_case_token)
 
 Method URL is a scripting call executed by the merchant on behalf of the issuer. 
 
@@ -145,7 +147,10 @@ Payment response - redirect to challenge flow (HTTP status code 302 redirect):
  "href":"https://api.na.bambora.com/v1/payments/YTk5OWM1OTEtZTI0OC00NzY2LTk2NjEtODlmNzNhYWRjYmZi/continue",
  "method":"POST"
  }
- ]
+ ],
+"reason_merchant": "MediumConfidence",
+"reason_cardholder": "cardholder",
+"method_url": "Succeeded"
 }
 ```
 
@@ -209,7 +214,10 @@ Continue response:
       "cavv_result": 2
    },
    "3d_secure": {
-      "status": "Succeeded"
+      "status": "Succeeded",
+      "downgraded": false,
+      "reason_cardholder": "cardholder",
+      "method_url": "Succeeded"
    }
    "links": [
    {
@@ -254,7 +262,9 @@ Payments request:
          },
          "enabled": true,
          "version": 2,
-         "auth_required": false
+         "auth_required": false,
+         "disable_method_url": false,
+         "threeDS_server_transaction_id": "1CFE4A5E-E15A-4B41-8121-848EA0A7C9F4"
       }
    }
 }'
@@ -269,7 +279,8 @@ Payments response:
     "message": "3D Secure Failed",
     "reference": "",
     "3d_secure": {
-        "status": "Rejected"
+        "status": "Rejected",
+        "method_url": "Succeeded"
     }
 }
 ```
@@ -335,7 +346,9 @@ curl --location --request POST 'https://api.na.bambora.com/v1/payments' \
          },
          "enabled": true,
          "version": 2,
-         "auth_required": false
+         "auth_required": false,
+         "disable_method_url": false,
+         "threeDS_server_transaction_id": "1CFE4A5E-E15A-4B41-8121-848EA0A7C9F4"
       }
    }
 }'
@@ -376,7 +389,9 @@ curl --location --request POST 'https://api.na.bambora.com/v1/payments' \
          },
          "enabled": true,
          "version": 2,
-         "auth_required": false
+         "auth_required": false,
+         "disable_method_url": false,
+         "threeDS_server_transaction_id": "1CFE4A5E-E15A-4B41-8121-848EA0A7C9F4"
       }
    }
 }'
@@ -421,7 +436,8 @@ Payments response:
         }
     },
     "3d_secure": {
-        "status": "Succeeded"
+        "status": "Succeeded",
+        "method_url": "Succeeded"
     },
     "links": [
         {
