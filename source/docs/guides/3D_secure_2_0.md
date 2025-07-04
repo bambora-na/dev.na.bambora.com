@@ -782,7 +782,9 @@ curl --location --request POST 'https://api.na.bambora.com/v1/EMV3DS/AuthRequest
     "payment_profile": {
         "customer_code": "Rtu6Wop1fdE2S"
 	},
-    "reference":"123"
+    "reference":"123",
+    "disable_method_url": false,
+    "threeDS_server_transaction_id": "1CFE4A5E-E15A-4B41-8121-848EA0A7C9F1"
 }
 ```
 
@@ -814,7 +816,9 @@ curl --location --request POST 'https://api.na.bambora.com/v1/EMV3DS/AuthRequest
     "payment_profile": {
         "customer_code": "Rtu6Wop1fdE2S"
 	},
-    "reference":"123"
+    "reference":"123",
+    "disable_method_url": false,
+    "threeDS_server_transaction_id": "1CFE4A5E-E15A-4B41-8121-848EA0A7C9F1"
 }
 ```
 
@@ -910,7 +914,8 @@ curl --location --request POST 'https://api.na.bambora.com/v1/EMV3DS/AuthRequest
         "ds_transaction_id": "E50D953F-3E7B-401C-8A46-37300431E211",
         "protocol_version": "2.2"
     },
-    "status": "Succeeded"
+    "status": "Succeeded",
+    "method_url": "Succeeded"
 }
 ```
 
@@ -927,7 +932,8 @@ curl --location --request POST 'https://api.na.bambora.com/v1/EMV3DS/AuthRequest
         }
     },
     "authorization": null,
-    "status": "PendingChallenge"
+    "status": "PendingChallenge",
+    "method_url": "Succeeded"
 }
 ```
 
