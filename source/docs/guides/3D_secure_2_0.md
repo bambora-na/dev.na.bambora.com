@@ -148,8 +148,6 @@ Payment response - redirect to challenge flow (HTTP status code 302 redirect):
  "method":"POST"
  }
  ],
-"reason_merchant": "MediumConfidence",
-"reason_cardholder": "cardholder",
 "method_url": "Succeeded"
 }
 ```
@@ -215,8 +213,6 @@ Continue response:
    },
    "3d_secure": {
       "status": "Succeeded",
-      "downgraded": false,
-      "reason_cardholder": "cardholder",
       "method_url": "Succeeded"
    }
    "links": [
