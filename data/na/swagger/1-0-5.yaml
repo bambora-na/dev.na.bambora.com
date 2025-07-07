@@ -500,7 +500,7 @@ paths:
         200:
           description: The Profile.
           schema:
-            $ref: '#/definitions/ProfileResponse'
+            $ref: '#/definitions/CreateProfileResponse'
         400:
           $ref: '#/responses/BadRequest'
         401:
@@ -661,7 +661,7 @@ paths:
         200:
           description: The Profile.
           schema:
-            $ref: '#/definitions/ProfileResponse'
+            $ref: '#/definitions/CreateProfileResponse'
         400:
           $ref: '#/responses/BadRequest'
         401:
@@ -2504,6 +2504,18 @@ definitions:
         maxLength: 64
         description: The token received from the client-side tokenization service.
   ProfileResponse:
+    properties:
+      code:
+        type: number
+        format: integer
+      message:
+        type: string
+      customer_code:
+        type: string
+        description: the ID of the payment profile. You need to keep track of this value.
+      validation:
+        $ref: '#/definitions/CardValidation'
+  CreateProfileResponse:
     properties:
       code:
         type: number
