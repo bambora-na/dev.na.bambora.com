@@ -70,7 +70,7 @@ During checkout, the merchant must run the Method URL script, allowing the issue
 
 *Please note, there is no action required for merchants using the Hosted Checkout integration as the process will be handled by Worldline.
 
-For more information on integrating Method URL, [click here](/docs/references/MethodURL/).
+For more information on integrating Method URL, [click here](/docs/guides/MethodURL/).
 
 # Processing Payments with 3DS Authentication
 
