@@ -60,9 +60,9 @@ Method URL is a concept in the EMV 3DS protocol that allows an issuing bank to o
 
 - Hosted Checkout
 - Payment REST API
-    - using card number & Payment Profile (Limited_use_case_token)
+    - using card number & Payment Profile (limited_use_case_token)
 - EMV3DS Auth Request API
-    - using card number & Payment Profile (Limited_use_case_token)
+    - using card number & Payment Profile (limited_use_case_token)
 
 Method URL is a scripting call executed by the merchant on behalf of the issuer. 
 
@@ -958,7 +958,8 @@ curl --location --request POST 'https://api.na.bambora.com/v1/EMV3DS/AuthRequest
     "threeDS_session_data": "MzdjMTQ1OGYtMmFlZS00ZDBkLWEyNTQtNDUyYzdjNDM1ZGUw",
     "redirection": null,
     "authorization": null,
-    "status": "Unavailable"
+    "status": "Unavailable",
+    "method_url": "NotAttempted"
 }
 ```
 
