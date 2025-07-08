@@ -143,7 +143,7 @@ There will be 4 different statuses the JS library will provide:
 Please note that the Method URL execution process consists of the below steps in sequence that have been encapsulated by the JS Library to help merchants integrate Method URL within their hosted checkout.
 
 1. **Method URL from DS server :** The JS library will request the Method URL from the DS Server through Worldline's public service. Worldline's Prepinfo service endpoint will be calling the DS server's service to get the Method URL for the card holder's PAN no.
-2. **Initiate Method URL :** The JS library will create an Iframe and related HTML elements on the merchant's browser by accessing its div element. Merchants need to create a Div element named ?MethodURLBox? as mentioned above in the setup step 2 & 3.
+2. **Initiate Method URL :** The JS library will create an Iframe and related HTML elements on the merchant's browser by accessing its div element. Merchants need to create a Div element named 'MethodURLBox' as mentioned above in the setup step 2 & 3.
 3. **Invoke/Submit Method URL :** If Method URL is received for the card number used by the cardholder in step 1 then the final step will be to submit the form created in step 3 along with the DS transaction server Id as threeDSServerTransactionId. A notification URL to receive a response from the issuer once Method URL execution is completed will be encapsulated and provided by the JS library.
 
 **Note:** Setup steps 1 - 4 will be executed seamlessly behind the scenes and users won't experience any post back or loading of the hosted checkout page.
