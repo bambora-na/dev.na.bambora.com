@@ -1082,6 +1082,7 @@ curl --location --request GET 'https://api.na.bambora.com/v1/EMV3DS/MDBiYmI5NTYt
     "flow_type": "F",
     "status": "Succeeded",
     "3ds_downgraded": false,
+    "method_url": "Succeeded",
     "authorization": {
         "eci": "5",
         "cavv": "AAABBEg0VhI0VniQEjRWAAAAAAA=",
@@ -1117,6 +1118,7 @@ curl --location --request GET 'https://api.na.bambora.com/v1/EMV3DS/MDBiYmI5NTYt
     "flow_type": "F",
     "status": "Succeeded",
     "3ds_downgraded": false,
+    "method_url": "Succeeded",
     "authorization": {
         "eci": "5",
         "cavv": "AAABBEg0VhI0VniQEjRWAAAAAAA=",
