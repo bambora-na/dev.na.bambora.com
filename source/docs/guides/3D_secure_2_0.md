@@ -59,8 +59,10 @@ The payment response will now return a status code to indicate if 3DS authentica
 Method URL is a concept in the EMV 3DS protocol that allows an issuing bank to obtain additional browser information at the start of the authentication session to help facilitate risk-based authentication. This feature is currently supported in:
 
 - Hosted Checkout
-- Payment REST API (with card number)
-- EMV3DS Auth Request API (with card number)
+- Payment REST API
+    - using card number & Payment Profile (limited_use_case_token)
+- EMV3DS Auth Request API
+    - using card number & Payment Profile (limited_use_case_token)
 
 Method URL is a scripting call executed by the merchant on behalf of the issuer. 
 
@@ -145,7 +147,8 @@ Payment response - redirect to challenge flow (HTTP status code 302 redirect):
  "href":"https://api.na.bambora.com/v1/payments/YTk5OWM1OTEtZTI0OC00NzY2LTk2NjEtODlmNzNhYWRjYmZi/continue",
  "method":"POST"
  }
- ]
+ ],
+"method_url": "Succeeded"
 }
 ```
 
@@ -209,7 +212,8 @@ Continue response:
       "cavv_result": 2
    },
    "3d_secure": {
-      "status": "Succeeded"
+      "status": "Succeeded",
+      "method_url": "Succeeded"
    }
    "links": [
    {
@@ -254,7 +258,9 @@ Payments request:
          },
          "enabled": true,
          "version": 2,
-         "auth_required": false
+         "auth_required": false,
+         "disable_method_url": false,
+         "threeDS_server_transaction_id": "1CFE4A5E-E15A-4B41-8121-848EA0A7C9F4"
       }
    }
 }'
@@ -269,7 +275,8 @@ Payments response:
     "message": "3D Secure Failed",
     "reference": "",
     "3d_secure": {
-        "status": "Rejected"
+        "status": "Rejected",
+        "method_url": "Succeeded"
     }
 }
 ```
@@ -335,7 +342,9 @@ curl --location --request POST 'https://api.na.bambora.com/v1/payments' \
          },
          "enabled": true,
          "version": 2,
-         "auth_required": false
+         "auth_required": false,
+         "disable_method_url": false,
+         "threeDS_server_transaction_id": "1CFE4A5E-E15A-4B41-8121-848EA0A7C9F4"
       }
    }
 }'
@@ -376,7 +385,9 @@ curl --location --request POST 'https://api.na.bambora.com/v1/payments' \
          },
          "enabled": true,
          "version": 2,
-         "auth_required": false
+         "auth_required": false,
+         "disable_method_url": false,
+         "threeDS_server_transaction_id": "1CFE4A5E-E15A-4B41-8121-848EA0A7C9F4"
       }
    }
 }'
@@ -421,7 +432,8 @@ Payments response:
         }
     },
     "3d_secure": {
-        "status": "Succeeded"
+        "status": "Succeeded",
+        "method_url": "Succeeded"
     },
     "links": [
         {
@@ -766,7 +778,9 @@ curl --location --request POST 'https://api.na.bambora.com/v1/EMV3DS/AuthRequest
     "payment_profile": {
         "customer_code": "Rtu6Wop1fdE2S"
 	},
-    "reference":"123"
+    "reference":"123",
+    "disable_method_url": false,
+    "threeDS_server_transaction_id": "1CFE4A5E-E15A-4B41-8121-848EA0A7C9F1"
 }
 ```
 
@@ -798,7 +812,9 @@ curl --location --request POST 'https://api.na.bambora.com/v1/EMV3DS/AuthRequest
     "payment_profile": {
         "customer_code": "Rtu6Wop1fdE2S"
 	},
-    "reference":"123"
+    "reference":"123",
+    "disable_method_url": false,
+    "threeDS_server_transaction_id": "1CFE4A5E-E15A-4B41-8121-848EA0A7C9F1"
 }
 ```
 
@@ -880,7 +896,7 @@ curl --location --request POST 'https://api.na.bambora.com/v1/EMV3DS/AuthRequest
 |status|String|The status of the authentication set to a value of either 'Succeeded', 'Attempted', 'Rejected', 'Failed', 'Unavailable', or 'Error'.|
 |type|String|If the request resulted in an error this will contain the error type identifier. Possible values are Validation, Account, Unavailable, Processor, TransactionNotFound, Internal, and Unknown|
 |message|String|In the case of an error, this field will contain a descriptive message indicating the reason the request was rejected.|
-
+|method_url|String|The outcome of a 3DS Method URL operation performed during the course of a transaction. Either Succeeded (3DS Method URL was initiated and was successful), Failed (3DS Method URL was initiated but failed. The transaction will proceed but without the support of Method URL.) or NotAttempted (3DS Method URL was not requested for this transaction or a validation error existed in the supplied threeDS\_server\_transaction\_id).|
 
 #### Successful Frictionless Sample Response
 ```shell
@@ -894,7 +910,8 @@ curl --location --request POST 'https://api.na.bambora.com/v1/EMV3DS/AuthRequest
         "ds_transaction_id": "E50D953F-3E7B-401C-8A46-37300431E211",
         "protocol_version": "2.2"
     },
-    "status": "Succeeded"
+    "status": "Succeeded",
+    "method_url": "Succeeded"
 }
 ```
 
@@ -911,7 +928,8 @@ curl --location --request POST 'https://api.na.bambora.com/v1/EMV3DS/AuthRequest
         }
     },
     "authorization": null,
-    "status": "PendingChallenge"
+    "status": "PendingChallenge",
+    "method_url": "Succeeded"
 }
 ```
 
@@ -936,7 +954,8 @@ curl --location --request POST 'https://api.na.bambora.com/v1/EMV3DS/AuthRequest
     "threeDS_session_data": "MzdjMTQ1OGYtMmFlZS00ZDBkLWEyNTQtNDUyYzdjNDM1ZGUw",
     "redirection": null,
     "authorization": null,
-    "status": "Unavailable"
+    "status": "Unavailable",
+    "method_url": "NotAttempted"
 }
 ```
 
@@ -1036,6 +1055,7 @@ Use this endpoint to fetch information about previous 3DSv2 sessions.
 |3ds_reason_merchant|String|For merchant use only. Provides a category which identifies the reason for the rejection. [See list of reasons](/docs/references/payment_APIs/3ds_reason_list)|
 |3ds_reason_cardholder|String|The reason for the rejection and instructions on what to do. This can be returned to the cardholder|
 |3ds_downgraded|Boolean|Indicates whether or not the 3DS transaction was downgraded. A downgraded transaction does not provide a liability shift to the merchant, even if the 3DS authentication result was "Success" or "Attempted"|
+|method_url|String|The outcome of a 3DS Method URL operation performed during the course of a transaction. Either Succeeded (3DS Method URL was initiated and was successful), Failed (3DS Method URL was initiated but failed. The transaction will proceed but without the support of Method URL.) or NotAttempted (3DS Method URL was not requested for this transaction or a validation error existed in the supplied threeDS\_server\_transaction\_id).|
 |device_channel|String|Type of channel used to initiate the transaction. 02 = Browser, 03 = 3DS Requestor|
 |error|String|If the request resulted in an error this will contain the emun error identifier|
 
