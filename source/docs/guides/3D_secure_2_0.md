@@ -896,7 +896,7 @@ curl --location --request POST 'https://api.na.bambora.com/v1/EMV3DS/AuthRequest
 |status|String|The status of the authentication set to a value of either 'Succeeded', 'Attempted', 'Rejected', 'Failed', 'Unavailable', or 'Error'.|
 |type|String|If the request resulted in an error this will contain the error type identifier. Possible values are Validation, Account, Unavailable, Processor, TransactionNotFound, Internal, and Unknown|
 |message|String|In the case of an error, this field will contain a descriptive message indicating the reason the request was rejected.|
-
+|method_url|String|The outcome of a 3DS Method URL operation performed during the course of a transaction. Either Succeeded (3DS Method URL was initiated and was successful), Failed (3DS Method URL was initiated but failed. The transaction will proceed but without the support of Method URL.) or NotAttempted (3DS Method URL was not requested for this transaction or a validation error existed in the supplied threeDS\_server\_transaction\_id).|
 
 #### Successful Frictionless Sample Response
 ```shell
@@ -1055,6 +1055,7 @@ Use this endpoint to fetch information about previous 3DSv2 sessions.
 |3ds_reason_merchant|String|For merchant use only. Provides a category which identifies the reason for the rejection. [See list of reasons](/docs/references/payment_APIs/3ds_reason_list)|
 |3ds_reason_cardholder|String|The reason for the rejection and instructions on what to do. This can be returned to the cardholder|
 |3ds_downgraded|Boolean|Indicates whether or not the 3DS transaction was downgraded. A downgraded transaction does not provide a liability shift to the merchant, even if the 3DS authentication result was "Success" or "Attempted"|
+|method_url|String|The outcome of a 3DS Method URL operation performed during the course of a transaction. Either Succeeded (3DS Method URL was initiated and was successful), Failed (3DS Method URL was initiated but failed. The transaction will proceed but without the support of Method URL.) or NotAttempted (3DS Method URL was not requested for this transaction or a validation error existed in the supplied threeDS\_server\_transaction\_id).|
 |device_channel|String|Type of channel used to initiate the transaction. 02 = Browser, 03 = 3DS Requestor|
 |error|String|If the request resulted in an error this will contain the emun error identifier|
 
