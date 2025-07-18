@@ -33,6 +33,8 @@ Include the reference to the Worldline-provided JS library in the webpage or any
 <script src='https://web.na.bambora.com/assets/emv3ds/2/methodurl.js'></script>
 ```
 
+&ast; Please refer to the release notes section to include the latest or specific library and the functionality available.
+
 **Note:** The below example is for a simple html-based web application. The inclusion step below will differ as per the UI application frameworks. Please refer to application framework documentation for details.
 
 ### Step 2: Create div element
