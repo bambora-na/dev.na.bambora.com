@@ -1022,7 +1022,8 @@ p a:not(.btn) {
   font-size: 16px;
   overflow: visible;
   position: relative;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.04); }
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.04); 
+  padding-bottom: 165px;}
   .nav-pane .nav-links > a {
     font-weight: 400;
     padding: 21px 20px 23.5px 20px;
@@ -1087,7 +1088,8 @@ p a:not(.btn) {
     cursor: pointer; }
   .nav-pane.nav-pane-dark {
     background-color: #1f2532;
-    box-shadow: none; }
+    box-shadow: none;
+    padding-bottom: 165px; }
     .nav-pane.nav-pane-dark .nav-links > a:hover:not(.logo) {
       color: rgba(255, 255, 255, 1); }
     .nav-pane.nav-pane-dark .nav-links > a.active {
