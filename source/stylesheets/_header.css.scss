@@ -75,8 +75,14 @@ nav { // transitions on landing page scroll
   }
 
   .nav-pane {
-
-      height: 66px !important;
+      height: 66px;
+      
+      @media (max-width: 985px) {
+        .nav-pane {
+            height: 235px !important;
+            position: relative;
+        }
+      } 
 
       /* colors for dark/transparent nav and menu */
       &.nav-pane-transparent, &.nav-pane-dark {

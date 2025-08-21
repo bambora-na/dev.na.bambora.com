@@ -27,6 +27,13 @@ body {
     }
 }
 
+@media (max-width: 985px) {
+    .hero-image {
+        padding-bottom: 166px;
+        margin-bottom: -166px;
+    }
+  }
+
 .hero-image-gradient {
     &:before {
         content: '';
