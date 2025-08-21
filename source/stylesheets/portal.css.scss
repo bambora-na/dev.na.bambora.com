@@ -28,6 +28,13 @@ footer {
   margin-top: 166px;
 }
 
+@media (max-width: 985px) {
+  .container {
+      margin: 66px !important;
+      position: relative;
+  }
+}
+
 table {
   margin-bottom: 24px;
 
