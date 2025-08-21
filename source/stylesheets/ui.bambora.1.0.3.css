@@ -1149,7 +1149,7 @@ p a:not(.btn) {
 
 @media (max-width: 985px) {
   .nav-pane {
-      height: 66px !important;
+      height: 235px !important;
       position: relative;
   }
 }
