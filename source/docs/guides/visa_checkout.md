@@ -53,7 +53,7 @@ You can test Visa SRC on sandbox-web.na.bambora.com.
 ### Visa SRC SDK
 
 You will need to add Visa SRC to your page and register a listener to handle
-payments originating from it. You can find out more [here](https://developer.visa.com/capabilities/visa_checkout/docs).
+payments originating from it. You can find out more [here](https://developer.visa.com/capabilities/visa-secure-remote-commerce/docs-getting-started).
 
 
 ### Example requests:

@@ -69,7 +69,7 @@ cards:
     -
         title: Method URL
         description: >
-            Method URL is a concept in the EMV 3DS protocol that allows an issuing bank to obtain additional browser information at the start of the authentication session to help facilitate risk-based authentication.
+                Method URL is a concept in the EMV 3DS protocol that allows an issuing bank to obtain additional browser information at the start of the authentication session to help facilitate risk-based authentication.
         icon: creditcard-outline
         link: /docs/references/MethodURL/
 

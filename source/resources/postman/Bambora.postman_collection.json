@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "1d95e9de-8022-40fc-b8b7-570f3ac9a62d",
+		"_postman_id": "9295a770-e268-49fa-9da2-f97c53952bf5",
 		"name": "Bambora",
 		"description": "Postman collection for Bambora.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
@@ -10558,6 +10558,156 @@
 							]
 						}
 					]
+				}
+			]
+		},
+		{
+			"name": "MethodURL",
+			"item": [
+				{
+					"name": "Make Payment (MethodURL - card)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status code is 200'), pm.response.code === 200;\r",
+									"pm.environment.unset('passcode_encoded');\r",
+									"\r",
+									"if(pm.response.code === 200) {\r",
+									"    var jsonData = JSON.parse(pm.response.text());\r",
+									"    // transaction id used for refund: \r",
+									"    pm.environment.set('transId', jsonData.id);\r",
+									"    \r",
+									"    // increment order num to keep unique: \r",
+									"    pm.environment.set('currentOrderNumber', parseInt(jsonData.order_number)+1);\r",
+									"}\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var passcode_encoded = btoa(pm.environment.get('merchant_id') + \":\" + pm.environment.get('payment_passcode'));\r",
+									"pm.environment.set('passcode_encoded', passcode_encoded);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Passcode {{passcode_encoded}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"amount\": 21,\r\n    \"payment_method\":\"card\",\r\n    \"customer_ip\": \"123.123.123.123\",\r\n    \"term_url\":\"https://test01-web.na.bambora.com\",\r\n    \"device_channel\": \"02\",\r\n    \"billing\":{\r\n        \"name\": \"Test User\",\r\n        \"address_line1\": \"1755 W. BROADWAY SUITE 105\",\r\n        \"address_line2\": \"\",\r\n        \"city\": \"Victoria\",\r\n        \"province\": \"BC\",\r\n        \"country\": \"CA\",\r\n        \"postal_code\": \"J0L1T0\",\r\n        \"phone_number\": \"1234567890\",\r\n        \"phone_country_code\" : \"1\",\r\n        \"phone_type\" : \"m\",\r\n        \"email_address\": \"tester@test.com\"\r\n    },\r\n    \"shipping\":{\r\n        \"name\": \"User Testson\",\r\n        \"address_line1\": \"1234 Testing Street\",\r\n        \"address_line2\": \"\",\r\n        \"city\": \"Huntsville\",\r\n        \"province\": \"AL\",\r\n        \"country\": \"US\",\r\n        \"postal_code\": \"36000\",\r\n        \"phone_number\": \"0987654321\",\r\n        \"phone_country_code\" : \"1\",\r\n        \"email_address\": \"user@test.com\"\r\n    },\r\n    \"card\":{\r\n        \"name\":\"John Doe\",\r\n        \"number\":\"4567350000427977\",\r\n        \"expiry_month\":\"02\",\r\n        \"expiry_year\":\"27\",\r\n        \"cvd\":\"123\",\r\n        \"3d_secure\": {\r\n            \"browser\": {\r\n            \"accept_header\": \"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3\",\r\n            \"java_enabled\": \"false\",\r\n            \"language\": \"en-US\",\r\n            \"color_depth\": \"24\",\r\n            \"screen_height\": 1080,\r\n            \"screen_width\": 1920,\r\n            \"time_zone\": -120,\r\n            \"user_agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36\",\r\n            \"Javascript_enabled\": true\r\n            },\r\n            \"enabled\": true,\r\n            \"version\": 2,\r\n            \"auth_required\": false,\r\n            \"disable_method_url\": false,\r\n            // Supply the threeDS_server_transaction_id in the environment variable of the same name\r\n            // You can get a threeDS_server_transaction_id for your card at https://codepen.io/na-bambora/pen/QWeZbgv\r\n            // In the CodePen, you must first change the 'src' attribute in the <script> element in the HTML section to 'https://web.na.bambora.com/assets/emv3ds/2/methodurl.js'\r\n            \"threeDS_server_transaction_id\": \"{{threeDS_server_transaction_id}}\"\r\n        }\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/v1/payments",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"payments"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Make Payment (MethodURL - Payment Profile)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('Status code is 200'), pm.response.code === 200;\r",
+									"pm.environment.unset('passcode_encoded');\r",
+									"\r",
+									"if(pm.response.code === 200) {\r",
+									"    var jsonData = JSON.parse(pm.response.text());\r",
+									"    // transaction id used for refund: \r",
+									"    pm.environment.set('transId', jsonData.id);\r",
+									"    \r",
+									"    // increment order num to keep unique: \r",
+									"    pm.environment.set('currentOrderNumber', parseInt(jsonData.order_number)+1);\r",
+									"}\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"var passcode_encoded = btoa(pm.environment.get('merchant_id') + \":\" + pm.environment.get('payment_passcode'));\r",
+									"pm.environment.set('passcode_encoded', passcode_encoded);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Passcode {{passcode_encoded}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"amount\": 10.36,\r\n    \"payment_method\":\"payment_profile\",\r\n    \"customer_ip\": \"123.123.123.123\",\r\n    \"term_url\":\"https://test01-web.na.bambora.com\",\r\n    \"device_channel\": \"02\",\r\n    \"billing\":{\r\n        \"name\": \"Test User\",\r\n        \"address_line1\": \"1755 W. BROADWAY SUITE 105\",\r\n        \"address_line2\": \"\",\r\n        \"city\": \"Victoria\",\r\n        \"province\": \"BC\",\r\n        \"country\": \"CA\",\r\n        \"postal_code\": \"J0L1T0\",\r\n        \"phone_number\": \"1234567890\",\r\n        \"phone_country_code\" : \"1\",\r\n        \"phone_type\" : \"m\",\r\n        \"email_address\": \"tester@test.com\"\r\n    },\r\n    \"shipping\":{\r\n        \"name\": \"User Testson\",\r\n        \"address_line1\": \"1234 Testing Street\",\r\n        \"address_line2\": \"\",\r\n        \"city\": \"Huntsville\",\r\n        \"province\": \"AL\",\r\n        \"country\": \"US\",\r\n        \"postal_code\": \"36000\",\r\n        \"phone_number\": \"0987654321\",\r\n        \"phone_country_code\" : \"1\",\r\n        \"email_address\": \"user@test.com\"\r\n    },\r\n    \"payment_profile\": { \r\n        \"customer_code\": \"{{profileId}}\", \r\n        \"card_id\": \"{{cardId}}\",\r\n        \"complete\": true,\r\n        \"3d_secure\": {\r\n            \"browser\": {\r\n            \"accept_header\": \"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3\",\r\n            \"java_enabled\": \"false\",\r\n            \"language\": \"en-US\",\r\n            \"color_depth\": \"24\",\r\n            \"screen_height\": 1080,\r\n            \"screen_width\": 1920,\r\n            \"time_zone\": -120,\r\n            \"user_agent\": \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36\",\r\n            \"Javascript_enabled\": true\r\n            },\r\n            \"enabled\": true,\r\n            \"version\": 2,\r\n            \"auth_required\": false,\r\n            \"disable_method_url\": false,\r\n            // Supply the threeDS_server_transaction_id in the environment variable of the same name\r\n            // You can get a threeDS_server_transaction_id for your card at https://codepen.io/na-bambora/pen/QWeZbgv\r\n            // In the CodePen, you must first change the 'src' attribute in the <script> element in the HTML section to 'https://web.na.bambora.com/assets/emv3ds/2/methodurl.js'\r\n            \"threeDS_server_transaction_id\": \"{{threeDS_server_transaction_id}}\"\r\n        }\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/v1/payments",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"v1",
+								"payments"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		}

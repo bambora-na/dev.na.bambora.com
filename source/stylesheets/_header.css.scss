@@ -76,7 +76,7 @@ nav { // transitions on landing page scroll
 
   .nav-pane {
 
-      height: 66px !important;
+      height: 66px;
 
       /* colors for dark/transparent nav and menu */
       &.nav-pane-transparent, &.nav-pane-dark {
@@ -175,6 +175,12 @@ nav { // transitions on landing page scroll
         overflow-y: visible;
       }
   }
+
+  @media (max-width: 985px) {
+    .nav-pane {
+        height: 235px !important;
+    }
+  } 
 
   footer {
     display: none;

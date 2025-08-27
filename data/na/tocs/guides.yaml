@@ -38,3 +38,5 @@
   title: 'Visa Secure Remote Commerce'
 - file: '/docs/guides/receipt_guide'
   title: 'Receipt Integration Guide'
+- file: '/docs/guides/MethodURL/'
+  title: 'Method URL'
